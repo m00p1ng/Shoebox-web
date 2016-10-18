@@ -1,0 +1,12 @@
+# node files
+node_modules/
+
+# vim temporaly files
+*.sw[op]
+
+# python cache
+__pycache__/
+*.py[cod]
+
+# macOS cache
+.DS_Store
