@@ -13,4 +13,4 @@ def insert(request):
         testData = 'Test data insert to database.'
 
         TestDB.objects.create(test=testData)
-        return redirect('/test/')
+        return redirect('/')
