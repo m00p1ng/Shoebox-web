@@ -6,6 +6,7 @@
 - MongoDB 
 
 ## How to install
+
 0. install all requirements
 
 1. clone repository in your virtualenv
@@ -26,4 +27,16 @@
 4. install npm package
     ```
     $ npm install
+    ```
+
+## How to run demo for testing
+
+1. change branch to test
+    ```
+    $ git checkout test
+    ```
+
+2. run server side
+    ```
+    $ ./manage.py runserver
     ```
