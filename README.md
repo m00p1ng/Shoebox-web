@@ -9,24 +9,21 @@
 0. install all requirements
 
 1. clone repository in your virtualenv
-
-```
-$ git clone https://github.com/moopings/EZ-eCommerce ecom
-```
+    ```
+    $ git clone https://github.com/moopings/EZ-eCommerce ecom
+    ```
 
 2. activate your virtualenv
-
-```
-$ source ./bin/activate
-```
+    ```
+    $ source ./bin/activate
+    ```
 
 3. install python package
-
-```
-$ pip install -r requirements.txt
-```
+    ```
+    $ pip install -r requirements.txt
+    ```
 
 4. install npm package
-```
-$ npm install
-```
+    ```
+    $ npm install
+    ```
