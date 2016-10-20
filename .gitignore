@@ -1,6 +1,9 @@
 # node files
 node_modules/
 
+# bundles folder
+bundles/
+
 # vim temp files
 *.sw[op]
 
