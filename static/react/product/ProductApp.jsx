@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Button } from 'react-bootstrap';
+import axios from 'axios'
 
 import Navibar from 'Navibar'
+import ProductList from 'ProductList'
 
 export default class ProductApp extends Component {
   render() {
     return (
       <div>
         <Navibar />
-        <h1>Product View eiei</h1>
-        <Button>Default</Button>
+        <ProductList />
       </div>
     )
   }

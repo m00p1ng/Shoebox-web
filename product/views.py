@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
 
-def index(request):
+def product_all(request):
+    # Product.objects.create(
+    #     prodname = "nikeeiei",
+    #     prodtype = 'running',
+    # )
     return render(request, 'index.html', {})

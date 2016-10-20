@@ -5,7 +5,7 @@ var BundleTracker = require('webpack-bundle-tracker')
 module.exports = {
   context: path.resolve('./static/react'),
   entry: {
-    product: './product/ProductApp.js',
+    product: './product/ProductApp.jsx',
   },
   output: {
     path: path.resolve('./static/bundles/'),
@@ -26,6 +26,7 @@ module.exports = {
       modulesDirectories: [
         'node_modules',
         './react',
+        './react/product',
       ],
   },
   plugins: [

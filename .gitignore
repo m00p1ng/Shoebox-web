@@ -1,7 +1,7 @@
 # node files
 node_modules/
 
-# vim temporaly files
+# vim temp files
 *.sw[op]
 
 # python cache

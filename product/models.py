@@ -12,5 +12,5 @@ class Product(Document):
     amount = IntField()
     size = StringField(max_length=10)
     color = StringField(max_length=20)
-    productAvailable = IntField()
-    discountAvailable = IntField()
+    productAvailable = BooleanField()
+    discountAvailable = BooleanField()
