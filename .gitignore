@@ -16,3 +16,5 @@ __pycache__/
 
 # log file
 *.log
+
+webpack-stats.json
