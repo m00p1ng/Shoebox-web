@@ -3,40 +3,33 @@
 ## Requirement
 - Python 3
 - Node.js
-- MongoDB 
+- MongoDB
 
 ## How to install
 
-0. install all requirements
+1. install all requirements
 
-1. clone repository in your virtualenv
+2. clone repository in your virtualenv
     ```
     $ git clone https://github.com/moopings/EZ-eCommerce ecom
     ```
 
-2. activate your virtualenv
+3. activate your virtualenv
     ```
     $ source ./bin/activate
     ```
 
-3. install python package
+4. install python dependencies package
     ```
     $ pip install -r requirements.txt
     ```
 
-4. install npm package
+5. install npm dependencies package
     ```
     $ npm install
     ```
 
-## How to run demo for testing
-
-1. change branch to test
+6. generate bundles.js
     ```
-    $ git checkout test
-    ```
-
-2. run server side
-    ```
-    $ ./manage.py runserver
+    $ npm run build
     ```
