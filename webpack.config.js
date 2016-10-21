@@ -3,12 +3,12 @@ var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
-  context: path.resolve('./static/react'),
+  // context: path.resolve('./static/react'),
   entry: {
-    product: './product/ProductApp.jsx',
+    product: 'product/templates/components/ProductApp.jsx',
   },
   output: {
-    path: path.resolve('./static/bundles/'),
+    path:'static/bundles/',
     filename: '[name].js',
   },
   module: {
@@ -22,12 +22,15 @@ module.exports = {
     }]
   },
   resolve: {
-      extensions: ['', '.js', '.jsx'],
-      modulesDirectories: [
-        'node_modules',
-        './react',
-        './react/product',
-      ],
+    root: __dirname,
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: [
+      'node_modules',
+      'product/templates/components',
+    ],
+    alias: {
+      Navibar: 'static/components/Navibar.jsx',
+    },
   },
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'}),

@@ -1,16 +1,25 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from product.models import Product
 
 # Create your views here.
 
 def product_all(request):
-    response_data = Product.objects.all().to_json()
+    request = Product.objects.all()
+    if not request:
+        raise Http404('Content not found')
+    response_data = request.to_json()
     return HttpResponse(response_data, content_type="application/json")
 
 def product_name(request, name):
-    response_data = Product.objects(prodname=name).to_json()
+    request = Product.objects(prodname=name)
+    if not request:
+        raise Http404('Content not found')
+    response_data = request.to_json()
     return HttpResponse(response_data, content_type="application/json")
 
 def product_size(request, size):
-    response_data = Product.objects(size=size).to_json()
+    request = Product.objects(size=size)
+    if not request:
+        raise Http404('Content not found')
+    response_data = request.to_json()
     return HttpResponse(response_data, content_type="application/json")
