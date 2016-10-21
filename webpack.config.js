@@ -3,7 +3,6 @@ var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
-  // context: path.resolve('./static/react'),
   entry: {
     product: 'product/templates/components/ProductApp.jsx',
   },
