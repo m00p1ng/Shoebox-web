@@ -41,9 +41,14 @@ INSTALLED_APPS = [
 
     # third party apps
     'webpack_loader',
+    'django_mongoengine',
+    'django_mongoengine.mongo_auth',
+    'django_mongoengine.mongo_admin.sites',
+    'django_mongoengine.mongo_admin',
 
     # my apps
     'product',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +91,20 @@ DATABASES = {
     }
 }
 
-from mongoengine import connect
-connect('ez-ecommerce')
+MONGODB_DATABASES = {
+    "default": {
+        "name": "ez-ecommerce",
+        "tz_aware": True,
+    },
+}
+
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+
+AUTHENTICATION_BACKENDS = [
+    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+]
+
+SESSION_ENGINE = 'django_mongoengine.sessions'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -113,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 

@@ -13,13 +13,12 @@ def request_get(request, data):
         return HttpResponse('Method not allowed', status=405)
 
 def user_all(request):
-    return request_get(request, Users.objects.all())
-
-def user_id(reqeust, id):
-    return request_get(request, Users.objects(pk=id))
+    query = Users.objects.all().exclude('password')
+    return request_get(request, query)
 
 def user_username(request, username):
-    return request_get(request, Users.objects(username=username))
+    query = Users.objects(username=username).exclude('password')
+    return request_get(request, query)
 
 def user_validation(data):
     err = []
@@ -31,6 +30,7 @@ def user_validation(data):
         err.append('Re password cannot empty')
     if 'email' not in data:
         err.append('Email cannot empty')
+    return err
 
 @csrf_exempt
 def user_create(request):
@@ -41,7 +41,7 @@ def user_create(request):
             data = json.loads(raw_data)
             Users.objects.create(
                 username=data['username'],
-                password=data['password'],
+                password=password_hashing(data['password']),
                 email=data['email'],
                 role=data['role']
             ).save()
