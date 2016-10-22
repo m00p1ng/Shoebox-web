@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from product.models import Products
 import json
@@ -11,7 +11,7 @@ def request_from(request, data):
     if request.method == 'GET':
         if not data:
             return HttpResponse('Content not found', status=404)
-        return JsonResponse(data.to_json())
+        return HttpResponse(data.to_json(), content_type="application/json")
     else:
         return HttpResponseBadRequest('Method Not Allowed', status=405)
 
