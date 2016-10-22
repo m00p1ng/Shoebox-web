@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from product.models import Products
 import json
@@ -7,14 +7,13 @@ import re
 
 # Create your views here.
 
-def request_from(request, request_data):
+def request_from(request, data):
     if request.method == 'GET':
-        if not request_data:
-            return HttpResponseNotFound('Content not found')
-        response_data = request_data.to_json()
-        return HttpResponse(response_data, content_type="application/json")
+        if not data:
+            return HttpResponse('Content not found', status=404)
+        return JsonResponse(data.to_json())
     else:
-        return HttpResponseBadRequest('Bad Request')
+        return HttpResponseBadRequest('Method Not Allowed', status=405)
 
 def product_all(request):
     return request_from(request, Products.objects.all())
@@ -81,14 +80,14 @@ def product_create(request):
                 discountAvailable=data['discountAvailable'],
                 slug=product_slug(data['name'])
             )
-            return HttpResponse('Product created')
+            return HttpResponse('Product created', status=201)
         else:
             output = ''
             for e in err:
                 output += e + '<br />'
             return HttpResponse(output)
     else:
-        return HttpResponseBadRequest('Bad Request')
+        return HttpResponse('Method not Allowed', status=405)
 
 @csrf_exempt
 def product_delete(request, id):
@@ -96,4 +95,4 @@ def product_delete(request, id):
         Products.objects(pk=id).delete()
         return HttpResponse('Product removed')
     else:
-        return HttpResponseBadRequest('Bad Request')
+        return HttpResponse('Method not Allowed', status=405)
