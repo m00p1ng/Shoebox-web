@@ -13,7 +13,7 @@ class Orders(Document):
     employeeID = ReferenceField(Employees)
     promotionID = ReferenceField(Promotions)
     timeStamp = DateTimeField(required=True, default=datetime.datetime.now)
-    totolprice = IntField(required=True)
+    totalprice = IntField(required=True)
     shipDate = DateTimeField(required=True)
     Paid = BooleanField(required=True)
 

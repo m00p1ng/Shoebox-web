@@ -21,11 +21,11 @@ urlpatterns = [
 
     # app url
     url(r'^product/', include('product.urls')),
-    # url(r'^user/', include('user.urls')),
+    url(r'^user/', include('user.urls')),
     # url(r'^order/', include('order.urls')),
 
     # api url
     url(r'^api/product/', include('product.api.urls')),
-    # url(r'^api/user/', include('user.api.urls')),
+    url(r'^api/user/', include('user.api.urls')),
     # url(r'^api/order/', include('order.api.urls')),
 ]

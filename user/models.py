@@ -4,11 +4,10 @@ from mongoengine import *
 # Create your models here.
 
 class Users(Document):
-    role = StringField(max_length=10, required=True)
-    username = StringField(max_length=50, unique=True, required=True)
+    username = StringField(max_length=50, required=True, unique=True, primary_key=True)
     password = StringField(max_length=50, required=True)
-    email = StringField(max_length=50, required=True)
-    slug = StringField(max_lenght=200, required=True)
+    email = StringField(max_length=50, required=True, unique=True)
+    role = StringField(max_length=20, required=True)
 
 class Employees(Document):
     firstname = StringField(max_length=50, required=True)
@@ -21,7 +20,7 @@ class Employees(Document):
     zipcode = StringField(max_length=10, required=True)
     phone = StringField(max_length=10, required=True)
     dateEntered = DateTimeField(required=True)
-    usersID = ReferenceField(Users)
+    username = StringField(max_length=50, required=True)
 
 class Customers(Document):
     firstname = StringField(max_length=50, required=True)
@@ -41,4 +40,4 @@ class Customers(Document):
     shipStreet = StringField(max_length=50, required=True)
     shipZip = StringField(max_length=10, required=True)
     dateEntered = DateTimeField(required=True)
-    usersID = ReferenceField(Users)
+    username = StringField(max_length=50, required=True)

@@ -5,31 +5,35 @@ import json
 import datetime
 import re
 
-# Create your views here.
 
-def request_from(request, data):
+def request_get(request, data):
     if request.method == 'GET':
         if not data:
-            return HttpResponse('Content not found', status=404)
+            return HttpResponse('Not found', status=404)
         return HttpResponse(data.to_json(), content_type="application/json")
     else:
-        return HttpResponseBadRequest('Method Not Allowed', status=405)
+        return HttpResponse('Method not allowed', status=405)
+
+def to_slug(string):
+    string = re.sub(r"[^\w\s]", '', string)
+    string = re.sub(r"\s+", '-', string)
+    return string.lower()
 
 def product_all(request):
-    return request_from(request, Products.objects.all())
+    return request_get(request, Products.objects.all())
 
-def product_name(request, name):
-    return request_from(request, Products.objects(name=name))
+def product_name(request, slug):
+    return request_get(request, Products.objects(slug=slug))
 
 def product_size(request, size):
-    return request_from(request, Products.objects(size=size))
+    return request_get(request, Products.objects(size=size))
 
 def product_validation(data):
     err = []
     if 'name' not in data:
         err.append('Product name cannot empty')
-    if 'type' not in data:
-        err.append('Product type cannot empty')
+    if 'types' not in data:
+        err.append('Product types cannot empty')
     if 'description' not in data:
         err.append('Description cannot empty')
     if 'price' not in data:
@@ -54,11 +58,6 @@ def product_validation(data):
         err.append('Discount status cannot empty')
     return err
 
-def product_slug(name):
-    name = re.sub(r"[^\w\s]", '', name)
-    name = re.sub(r"\s+", '-', name)
-    return name.lower()
-
 @csrf_exempt
 def product_create(request):
     if request.method == 'POST':
@@ -68,7 +67,7 @@ def product_create(request):
             data = json.loads(raw_data)
             Products.objects.create(
                 name=data['name'],
-                type=data['type'],
+                types=data['types'],
                 description=data['description'],
                 price=data['price'],
                 # picture=data['picture'],
@@ -78,7 +77,7 @@ def product_create(request):
                 color=data['color'],
                 available=data['available'],
                 discountAvailable=data['discountAvailable'],
-                slug=product_slug(data['name'])
+                slug=to_slug(data['name'])
             )
             return HttpResponse('Product created', status=201)
         else:
@@ -87,12 +86,27 @@ def product_create(request):
                 output += e + '<br />'
             return HttpResponse(output)
     else:
-        return HttpResponse('Method not Allowed', status=405)
+        return HttpResponse('Method not allowed', status=405)
 
 @csrf_exempt
-def product_delete(request, id):
+def product_delete(request, slug):
     if request.method == 'DELETE':
-        Products.objects(pk=id).delete()
+        item = Products.objects(slug=slug)
+        if not item:
+            return HttpResponse('This product not exist', status=404)
+        item.delete()
         return HttpResponse('Product removed')
     else:
-        return HttpResponse('Method not Allowed', status=405)
+        return HttpResponse('Method not allowed', status=405)
+
+@csrf_exempt
+def product_update(request, slug):
+    if request.method == 'PUT':
+        item = Products.objects(slug=slug)
+        if not item:
+            return HttpResponse('This product not exist', status=404)
+        data = json.loads(request.body.decode())
+        item.update(**data)
+        return HttpResponse('Product updated')
+    else:
+        return HttpResponse('Method not allowed', status=405)
