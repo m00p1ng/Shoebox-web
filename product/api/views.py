@@ -27,9 +27,9 @@ def product_size(request, size):
 
 def product_validation(data):
     err = []
-    if 'prodname' not in data:
+    if 'name' not in data:
         err.append('Product name cannot empty')
-    if 'prodtype' not in data:
+    if 'productType' not in data:
         err.append('Product type cannot empty')
     if 'description' not in data:
         err.append('Description cannot empty')
@@ -45,7 +45,7 @@ def product_validation(data):
         err.append('Size cannot empty')
     if 'color' not in data:
         err.append('Color cannot empty')
-    if 'productAvailable' not in data:
+    if 'available' not in data:
         err.append('Product status cannot empty')
     if 'discountAvailable' not in data:
         err.append('Discount available status cannot empty')
@@ -64,8 +64,8 @@ def product_create(request):
         if len(err) == 0:
             data = json.loads(raw_data)
             Product.objects.create(
-                prodname=data['prodname'],
-                prodtype=data['prodtype'],
+                name=data['name'],
+                producttype=data['productType'],
                 description=data['description'],
                 unitprice=data['unitprice'],
                 # picture=data['picture'],
@@ -73,7 +73,7 @@ def product_create(request):
                 amount=data['amount'],
                 size=data['size'],
                 color=data['color'],
-                productAvailable=data['productAvailable'],
+                available=data['available'],
                 discountAvailable=data['discountAvailable'],
                 slug=product_slug(data['prodname'])
             )
@@ -88,7 +88,6 @@ def product_create(request):
 
 @csrf_exempt
 def product_delete(request, id):
-    print(id)
     if request.method == 'DELETE':
         Product.objects(pk=id).delete()
         return HttpResponse('Product removed')

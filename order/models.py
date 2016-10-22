@@ -1,26 +1,25 @@
 from django.db import models
 from mongoengine import *
+import datetime
+
+from user.models import Customers, Employees
+from proudct.models import Products
+from promotion.moedels import Promotions
 
 # Create your models here.
 
 class Orders(Document):
-    custId = ObjectIdField()
-    empId = ObjectIdField()
-    promoId = ObjectIdField()
-    shipperId = ObjectIdField()
-    timeStamp = DateTimeField(required=True, default=datetime.datetime.now) 
+    customerID = ReferenceField(Customers)
+    employeeID = ReferenceField(Employees)
+    promotionID = ReferenceField(Promotions)
+    timeStamp = DateTimeField(required=True, default=datetime.datetime.now)
     totolprice = IntField(required=True)
     shipDate = DateTimeField(required=True)
-    payments = ListField(EmbeddedDocumentField(Payments))
     Paid = BooleanField(required=True)
 
-class Payments(EmbeddedDocument):
-    payMethod = StringField(max_length=10,required=True)
-    allowed = BooleanField(required=True)
-
 class OrderGroup(Document):
-    ordId = ObjectIdField()
-    prodId = ObjectIdField()
+    orderID = ReferenceField(Orders)
+    productID = ReferenceField(Products)
     price = IntField()
     quantity = IntField()
     shipDate = DateTimeField()
