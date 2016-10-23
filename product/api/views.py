@@ -32,6 +32,8 @@ def product_validation(data):
     err = []
     if 'name' not in data:
         err.append('Product name cannot empty')
+    if 'brand' not in data:
+        err.append('Brand cannot empty')
     if 'types' not in data:
         err.append('Product types cannot empty')
     if 'description' not in data:
@@ -40,12 +42,8 @@ def product_validation(data):
         err.append('Unit price cannot empty')
     # if 'picture' not in data:
     #     err.append('Picture cannot empty')
-    if 'year' not in data:
-        err.append('year cannot empty')
-    if 'month' not in data:
-        err.append('month cannot empty')
-    if 'day' not in data:
-        err.append('day cannot empty')
+    if 'date' not in data:
+        err.append('date cannot empty')
     if 'amount' not in data:
         err.append('Amount cannot empty')
     if 'size' not in data:
@@ -61,17 +59,18 @@ def product_validation(data):
 @csrf_exempt
 def product_create(request):
     if request.method == 'POST':
-        raw_data = request.body.decode()
-        err = product_validation(raw_data)
+        data = json.loads(request.body.decode())
+        err = product_validation(data)
         if len(err) == 0:
-            data = json.loads(raw_data)
             Products.objects.create(
+                # supplierID=data['supplierID'],
                 name=data['name'],
+                brand=data['brand'],
                 types=data['types'],
                 description=data['description'],
                 price=data['price'],
                 # picture=data['picture'],
-                date=datetime.datetime(year=data['year'], month=data['month'], day=data['day']),
+                date=datetime.datetime(year=data['date']['year'], month=data['date']['month'], day=data['date']['day']),
                 amount=data['amount'],
                 size=data['size'],
                 color=data['color'],
@@ -103,9 +102,20 @@ def product_delete(request, slug):
 def product_update(request, slug):
     if request.method == 'PUT':
         item = Products.objects(slug=slug)
+
         if not item:
             return HttpResponse('This product not exist', status=404)
+        if not request.body:
+            return HttpResponse('Request cannot empty', status=400)
+
         data = json.loads(request.body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
+        if 'date' in data:
+            data['date'] = datetime.datetime(year=data['date']['year'], month=data['date']['month'], day=data['date']['day'])
+        if 'name' in data:
+            data['slug'] = to_slug(data[''])
+
         item.update(**data)
         return HttpResponse('Product updated')
     else:

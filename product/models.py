@@ -6,6 +6,7 @@ from suppliers.models import Suppliers
 class Products(Document):
     supplierID = ReferenceField(Suppliers)
     name = StringField(max_length=200, required=True, unique=True)
+    brand = StringField(max_length=100, required=True)
     types = StringField(max_length=100, required=True)
     description = StringField(max_length=10000, required=True)
     price = FloatField(required=True)

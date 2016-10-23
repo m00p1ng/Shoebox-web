@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from user.models import Users
+from .customers import *
+from .employees import *
 import json
 
 
@@ -35,10 +37,9 @@ def user_validation(data):
 @csrf_exempt
 def user_create(request):
     if request.method == 'POST':
-        raw_data = request.body.decode()
-        err = user_validation(raw_data)
+        data = json.loads(request.body.decode())
+        err = user_validation(data)
         if len(err) == 0:
-            data = json.loads(raw_data)
             Users.objects.create(
                 username=data['username'],
                 password=password_hashing(data['password']),
@@ -70,7 +71,13 @@ def user_update(request, username):
         user = Users.objects(pk=username)
         if not item:
             return HttpResponse('This user not exist', status=404)
+        if not request.body:
+            return HttpResponse('Request cannot empty', status=400)
+
         data = json.loads(request.body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
+
         user.update(**data)
         return HttpResponse('User updated')
     else:
