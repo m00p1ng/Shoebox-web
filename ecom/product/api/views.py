@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from product.models import Products
+from ecom.product.models import Products
 import json
 import datetime
 import re
@@ -116,7 +116,11 @@ def product_update(request, slug):
         if not data:
             return HttpResponse('Data cannot empty', status=400)
         if 'date' in data:
-            data['date'] = datetime.datetime(year=data['date']['year'], month=data['date']['month'], day=data['date']['day'])
+            data['date'] = datetime.datetime(
+                                year=data['date']['year'],
+                                month=data['date']['month'],
+                                day=data['date']['day']
+                            )
         if 'name' in data:
             data['slug'] = to_slug(data[''])
 

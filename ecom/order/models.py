@@ -3,8 +3,8 @@ from mongoengine import *
 import datetime
 
 from user.models import Customers, Employees
-from proudct.models import Products
-from promotion.moedels import Promotions
+from ecom.proudct.models import Products
+from ecom.promotion.moedels import Promotions
 
 # Create your models here.
 

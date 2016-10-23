@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from promotion.models import Promotions
+from ecom.promotion.models import Promotions
 import json
 import datetime
 import re

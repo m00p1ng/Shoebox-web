@@ -1,6 +1,6 @@
 from django.db import models
 from mongoengine import *
-from suppliers.models import Suppliers
+from ecom.suppliers.models import Suppliers
 
 # Create your models here.
 class Products(Document):

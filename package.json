@@ -4,7 +4,7 @@
   "description": "This is a EZ-ecommerce project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch"
   },

@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from user.models import Users
+from ecom.user.models import Users
 from .customers import *
 from .employees import *
 import json
