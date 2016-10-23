@@ -34,7 +34,7 @@
     $ npm install
     ```
 
-7. generate bundles.js
+7. generate javascript
     ```
     $ npm run build
     ```
