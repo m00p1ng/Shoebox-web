@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'django_mongoengine.mongo_admin',
 
     # my apps
-    'product',
-    'user',
+    'ecom.product',
+    'ecom.user',
 ]
 
 MIDDLEWARE = [

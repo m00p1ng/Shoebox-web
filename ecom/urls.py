@@ -20,12 +20,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # app url
-    url(r'^product/', include('product.urls')),
-    url(r'^user/', include('user.urls')),
+    url(r'^product/', include('ecom.product.urls')),
+    url(r'^user/', include('ecom.user.urls')),
     # url(r'^order/', include('order.urls')),
 
     # api url
-    url(r'^api/product/', include('product.api.urls')),
-    url(r'^api/user/', include('user.api.urls')),
+    url(r'^api/product/', include('ecom.product.api.urls')),
+    url(r'^api/user/', include('ecom.user.api.urls')),
     # url(r'^api/order/', include('order.api.urls')),
 ]
