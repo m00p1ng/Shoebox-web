@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from mongoengine import connect
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,10 +42,8 @@ INSTALLED_APPS = [
 
     # third party apps
     'webpack_loader',
-    'django_mongoengine',
-    'django_mongoengine.mongo_auth',
-    'django_mongoengine.mongo_admin.sites',
-    'django_mongoengine.mongo_admin',
+    'mongoengine.django.mongo_auth',
+    'mongoengine.django',
 
     # my apps
     'ecom.product',
@@ -66,7 +65,9 @@ ROOT_URLCONF = 'ecom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,20 +92,17 @@ DATABASES = {
     }
 }
 
-MONGODB_DATABASES = {
-    "default": {
-        "name": "ez-ecommerce",
-        "tz_aware": True,
-    },
-}
-
-AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+connect('ez-ecommerce')
 
 AUTHENTICATION_BACKENDS = [
-    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+    'mongoengine.django.auth.MongoEngineBackend',
 ]
 
-SESSION_ENGINE = 'django_mongoengine.sessions'
+SESSION_ENGINE = 'mongoengine.django.sessions'
+
+SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+
+MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

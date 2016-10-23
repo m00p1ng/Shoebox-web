@@ -13,4 +13,4 @@ class Suppliers(Document):
     zipcode = StringField(max_length=10, required=True)
     phone = StringField(max_length=10, required=True)
     email = EmailField(max_length=50, required=True)
-    slug = StringField(max_lenght=200, required=True, unique=True)
+    slug = StringField(max_length=200, required=True, unique=True)
