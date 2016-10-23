@@ -29,7 +29,7 @@ def promotion_validation(data):
     if 'dateStart' not in data:
         err.append('dateStart cannot empty')
     if 'dateEnd' not in data:
-        err.append('dateEnd month cannot empty')
+        err.append('dateEnd cannot empty')
     return err
 
 def to_slug(string):
