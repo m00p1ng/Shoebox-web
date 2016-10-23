@@ -18,4 +18,4 @@ class Products(Document):
     available = BooleanField(required=True)
     discountAvailable = BooleanField(required=True)
     discountPercent = FloatField(defalut=0)
-    slug = StringField(max_lenght=200, required=True, unique=True)
+    slug = StringField(max_length=200, required=True, unique=True)

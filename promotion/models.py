@@ -8,3 +8,4 @@ class Promotions(Document):
     cutprice = IntField(required=True)
     dateStart = DateTimeField(required=True)
     dateEnd = DateTimeField(required=True)
+    slug = StringField(max_length=200, required=True)
