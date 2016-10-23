@@ -15,7 +15,7 @@ class Orders(Document):
     timeStamp = DateTimeField(required=True, default=datetime.datetime.now)
     totalprice = IntField(required=True)
     shipDate = DateTimeField(required=True)
-    Paid = BooleanField(required=True)
+    status = BooleanField(required=True)
 
 class OrderGroup(Document):
     orderID = ReferenceField(Orders)
