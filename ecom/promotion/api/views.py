@@ -78,3 +78,36 @@ def promotion_delete(request, slug):
         return HttpResponse('Promotion removed')
     else:
         return HttpResponse('Method not allowed', status=405)
+
+@csrf_exempt
+def product_update(request, slug):
+    if request.method == 'PUT':
+        item = Products.objects(slug=slug)
+
+        if not item:
+            return HttpResponse('This promotion not exist', status=404)
+        if not request.body:
+            return HttpResponse('Request cannot empty', status=400)
+
+        data = json.loads(request.body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
+        if 'dateStart' in data:
+            data['dateStart'] = datetime.datetime(
+                                year=data['dateStart']['year'],
+                                month=data['dateStart']['month'],
+                                day=data['dateStart']['day']
+                            )
+        if 'dateEnd' in data:
+            data['dateEnd'] = datetime.datetime(
+                                year=data['dateEnd']['year'],
+                                month=data['dateEnd']['month'],
+                                day=data['dateEnd']['day']
+                            )
+        if 'name' in data:
+            data['slug'] = to_slug(data['name'])
+
+        item.update(**data)
+        return HttpResponse('Product updated')
+    else:
+        return HttpResponse('Method not allowed', status=405)

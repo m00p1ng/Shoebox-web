@@ -122,7 +122,7 @@ def product_update(request, slug):
                                 day=data['date']['day']
                             )
         if 'name' in data:
-            data['slug'] = to_slug(data[''])
+            data['slug'] = to_slug(data['name'])
 
         item.update(**data)
         return HttpResponse('Product updated')
