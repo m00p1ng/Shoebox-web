@@ -1,6 +1,12 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from ecom.product.models import Products
+from ecom.product.models import (
+    Products, ProductSizes, ProductColors, ProductBrands, ProductTypes
+)
+from ecom.product.api.productType import *
+from ecom.product.api.productBrand import *
+from ecom.product.api.productSize import *
+from ecom.product.api.productColor import *
 import json
 import datetime
 import re
@@ -25,36 +31,51 @@ def product_all(request):
 def product_name(request, slug):
     return request_get(request, Products.objects(slug=slug))
 
-def product_size(request, size):
-    return request_get(request, Products.objects(size=size))
-
 def product_validation(data):
     err = []
     if 'name' not in data:
-        err.append('Product name cannot empty')
+        err.append('Name cannot empty')
     if 'brand' not in data:
         err.append('Brand cannot empty')
     if 'types' not in data:
-        err.append('Product types cannot empty')
+        err.append('Types cannot empty')
     if 'description' not in data:
         err.append('Description cannot empty')
     if 'price' not in data:
-        err.append('Unit price cannot empty')
-    # if 'picture' not in data:
-    #     err.append('Picture cannot empty')
+        err.append('Price cannot empty')
+    if 'picture' not in data:
+        err.append('Picture cannot empty')
     if 'date' not in data:
-        err.append('date cannot empty')
+        err.append('Date cannot empty')
     if 'amount' not in data:
         err.append('Amount cannot empty')
     if 'size' not in data:
         err.append('Size cannot empty')
     if 'color' not in data:
         err.append('Color cannot empty')
-    if 'available' not in data:
-        err.append('Product status cannot empty')
-    if 'discountAvailable' not in data:
-        err.append('Discount status cannot empty')
+    if 'is_available' not in data:
+        err.append('is_available cannot empty')
+    if 'is_discount' not in data:
+        err.append('is_discount cannot empty')
+    if 'discountPercent' not in data:
+        err.append('discountPercent cannot empty')
     return err
+
+def get_id_from_field(data):
+    field_id = {}
+    brand = ProductBrands.objects(slug=data['brand']).first().id
+    types = ProductTypes.objects(slug=data['types']).first().id
+    colors = []
+    sizes = []
+    for color in data['color']:
+        colors.append(ProductColors.objects(slug=color).first().id)
+    for size in data['size']:
+        sizes.append(ProductSizes.objects(slug=size).first().id)
+    field_id['brand'] = brand
+    field_id['types'] = types
+    field_id['color'] = colors
+    field_id['size'] = sizes
+    return field_id
 
 @csrf_exempt
 def product_create(request):
@@ -62,25 +83,27 @@ def product_create(request):
         data = json.loads(request.body.decode())
         err = product_validation(data)
         if len(err) == 0:
-            Products.objects.create(
+            field_id = get_id_from_field(data)
+            product = Products.objects.create(
                 # supplierID=data['supplierID'],
                 name=data['name'],
-                brand=data['brand'],
-                types=data['types'],
                 description=data['description'],
                 price=data['price'],
-                # picture=data['picture'],
+                picture=data['picture'],
                 date=datetime.datetime(
                     year=data['date']['year'],
                     month=data['date']['month'],
                     day=data['date']['day']
                 ),
                 amount=data['amount'],
-                size=data['size'],
-                color=data['color'],
-                available=data['available'],
-                discountAvailable=data['discountAvailable'],
-                slug=to_slug(data['name'])
+                is_available=data['is_available'],
+                is_discount=data['is_discount'],
+                discountPercent=data['discountPercent'],
+                slug=to_slug(data['name']),
+                productBrandID=field_id['brand'],
+                productTypeID=field_id['types'],
+                productColorID=field_id['color'],
+                proudctSizeID=field_id['size']
             )
             return HttpResponse('Product created', status=201)
         else:

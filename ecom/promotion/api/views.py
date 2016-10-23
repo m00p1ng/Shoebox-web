@@ -29,7 +29,7 @@ def promotion_validation(data):
     if 'dateStart' not in data:
         err.append('dateStart cannot empty')
     if 'dateEnd' not in data:
-        err.append('dateEnd month cannot empty')
+        err.append('dateEnd cannot empty')
     return err
 
 def to_slug(string):
@@ -108,6 +108,6 @@ def product_update(request, slug):
             data['slug'] = to_slug(data['name'])
 
         item.update(**data)
-        return HttpResponse('Product updated')
+        return HttpResponse('Promotion updated')
     else:
         return HttpResponse('Method not allowed', status=405)
