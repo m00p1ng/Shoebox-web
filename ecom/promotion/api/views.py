@@ -80,9 +80,9 @@ def promotion_delete(request, slug):
         return HttpResponse('Method not allowed', status=405)
 
 @csrf_exempt
-def product_update(request, slug):
+def promotion_update(request, slug):
     if request.method == 'PUT':
-        item = Products.objects(slug=slug)
+        item = Promotions.objects(slug=slug)
 
         if not item:
             return HttpResponse('This promotion not exist', status=404)
@@ -108,6 +108,6 @@ def product_update(request, slug):
             data['slug'] = to_slug(data['name'])
 
         item.update(**data)
-        return HttpResponse('Product updated')
+        return HttpResponse('Promotion updated')
     else:
         return HttpResponse('Method not allowed', status=405)
