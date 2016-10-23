@@ -70,7 +70,11 @@ def product_create(request):
                 description=data['description'],
                 price=data['price'],
                 # picture=data['picture'],
-                date=datetime.datetime(year=data['date']['year'], month=data['date']['month'], day=data['date']['day']),
+                date=datetime.datetime(
+                    year=data['date']['year'],
+                    month=data['date']['month'],
+                    day=data['date']['day']
+                ),
                 amount=data['amount'],
                 size=data['size'],
                 color=data['color'],
