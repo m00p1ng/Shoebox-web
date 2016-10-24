@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import ProductColors
-from ecom.product.api.views import to_slug, request_get
+from ecom.product.api.functions import request_get
 import json
 
 def productColor_all(request):
@@ -10,25 +10,13 @@ def productColor_all(request):
 def productColor_name(request, slug):
     return request_get(request, ProductColors.objects(slug=slug))
 
-def productColor_validation(data):
-    err = []
-    if 'name' not in data:
-        err.append('Name cannot empty')
-    if 'is_active' not in data:
-        err.append('is_active cannot empty')
-    return err
-
 @csrf_exempt
 def productColor_create(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode())
-        err = productColor_validation(data)
+        err = ProductColors.validation(data)
         if len(err) == 0:
-            ProductColors.objects.create(
-                name=data['name'],
-                is_active=data['is_active'],
-                slug=to_slug(data['name'])
-            )
+            ProductColors.create_obj(data)
             return HttpResponse('productColor created', status=201)
         else:
             output = ''
@@ -50,7 +38,7 @@ def productColor_delete(request):
         return HttpResponse('Method not allowed', status=405)
 
 @csrf_exempt
-def productColor_update(request):
+def productColor_update(request, slug):
     if request.method == 'PUT':
         item = ProductColors.objects(slug=slug)
 
@@ -63,10 +51,7 @@ def productColor_update(request):
         if not data:
             return HttpResponse('Data cannot empty', status=400)
 
-        if 'name' in data:
-            data['slug'] = to_slug(data['name'])
-
-        item.update(**data)
+        ProductColors.update_obj(data)
         return HttpResponse('productColor updated')
     else:
         return HttpResponse('Method not allowed', status=405)

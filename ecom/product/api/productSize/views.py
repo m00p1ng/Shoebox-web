@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import ProductSizes
-from ecom.product.api.views import to_slug, request_get
+from ecom.product.api.functions import request_get
 import json
 
 def productSize_all(request):
@@ -10,25 +10,13 @@ def productSize_all(request):
 def productSize_name(request, slug):
     return request_get(request, ProductSizes.objects(slug=slug))
 
-def productSize_validation(data):
-    err = []
-    if 'name' not in data:
-        err.append('Name cannot empty')
-    if 'is_active' not in data:
-        err.append('is_active cannot empty')
-    return err
-
 @csrf_exempt
 def productSize_create(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode())
-        err = productSize_validation(data)
+        err = ProductSizes.validation(data)
         if len(err) == 0:
-            ProductSizes.objects.create(
-                name=data['name'],
-                is_active=data['is_active'],
-                slug=to_slug(data['name'])
-            )
+            ProductSizes.create_obj(data)
             return HttpResponse('productSize created', status=201)
         else:
             output = ''
@@ -50,7 +38,7 @@ def productSize_delete(request):
         return HttpResponse('Method not allowed', status=405)
 
 @csrf_exempt
-def productSize_update(request):
+def productSize_update(request, slug):
     if request.method == 'PUT':
         item = ProductSizes.objects(slug=slug)
 
@@ -63,10 +51,7 @@ def productSize_update(request):
         if not data:
             return HttpResponse('Data cannot empty', status=400)
 
-        if 'name' in data:
-            data['slug'] = to_slug(data['name'])
-
-        item.update(**data)
+        ProductSizes.update_obj(slug, data)
         return HttpResponse('productSize updated')
     else:
         return HttpResponse('Method not allowed', status=405)
