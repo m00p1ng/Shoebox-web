@@ -23,20 +23,30 @@ class Products(Document):
 
     def get_id_from_field(data):
         field_id = {}
-        # supplier = Suppliers.objects(slug=data['supplier']).first().id
-        brand = ProductBrands.objects(slug=data['brand']).first().id
-        types = ProductTypes.objects(slug=data['types']).first().id
-        colors = []
-        sizes = []
-        for color in data['color']:
-            colors.append(ProductColors.objects(slug=color).first().id)
-        for size in data['size']:
-            sizes.append(ProductSizes.objects(slug=size).first().id)
-        # field_id['supplier'] = supplier
-        field_id['brand'] = brand
-        field_id['types'] = types
-        field_id['color'] = colors
-        field_id['size'] = sizes
+        # if 'supplier' in data:
+            # supplier = Suppliers.objects(slug=data['supplier']).first().id
+            # field_id['supplier'] = supplier
+
+        if 'brand' in data:
+            brand = ProductBrands.objects(slug=data['brand']).first().id
+            field_id['brand'] = brand
+
+        if 'types' in data:
+            types = ProductTypes.objects(slug=data['types']).first().id
+            field_id['types'] = types
+
+        if 'color' in data:
+            colors = []
+            for color in data['color']:
+                colors.append(ProductColors.objects(slug=color).first().id)
+            field_id['color'] = colors
+
+        if 'size' in data:
+            sizes = []
+            for size in data['size']:
+                sizes.append(ProductSizes.objects(slug=size).first().id)
+            field_id['size'] = sizes
+
         return field_id
 
     def validation(data):
@@ -106,8 +116,15 @@ class Products(Document):
                 month=data['date']['month'],
                 day=data['date']['day']
             )
+
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
+
+        field_id = cls.get_id_from_field(data)
+
+        if field_id:
+            for key in field_id:
+                data[key] = field_id[key]
 
         product = cls.objects(slug=slug)
         product.update(**data)

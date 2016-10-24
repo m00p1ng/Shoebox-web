@@ -31,6 +31,7 @@ example
 }
 ```
 
+
 ### Search
 method GET to retrieve data
 
@@ -48,6 +49,7 @@ URL: /api/product/type/<productType>
 
 #### by brand
 URL: /api/product/type/<productBrand>
+
 
 ### Update
 method PUT for edit product data
