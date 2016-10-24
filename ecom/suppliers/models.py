@@ -1,6 +1,4 @@
-from django.db import models
 from mongoengine import *
-# Create your models here.
 
 class Suppliers(Document):
     companyName = StringField(max_length=50, required=True, unique=True)

@@ -1,12 +1,8 @@
-from django.db import models
 from mongoengine import *
-import datetime
-
-from user.models import Customers, Employees
+from ecom.user.models import Customers, Employees
 from ecom.proudct.models import Products
 from ecom.promotion.moedels import Promotions
-
-# Create your models here.
+import datetime
 
 class Orders(Document):
     customerID = ReferenceField(Customers)

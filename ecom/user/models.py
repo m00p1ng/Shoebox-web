@@ -1,15 +1,13 @@
-from django.db import models
 from mongoengine import *
+from mongoengine.django.auth import User
+import datetime
 
-# Create your models here.
 
-class Users(Document):
-    username = StringField(max_length=50, required=True, unique=True, primary_key=True)
-    password = StringField(max_length=100, required=True)
-    email = StringField(max_length=50, required=True, unique=True)
-    role = StringField(max_length=20, required=True)
+class UserRoles(Document):
+    name = StringField(max_length=20, required=True)
+    is_active = BooleanField(required=True)
 
-class Employees(Document):
+class UserInfo(Document):
     firstname = StringField(max_length=50, required=True)
     lastname = StringField(max_length=50, required=True)
     gender = StringField(max_length=10, required=True)
@@ -19,25 +17,10 @@ class Employees(Document):
     street = StringField(max_length=50, required=True)
     zipcode = StringField(max_length=10, required=True)
     phone = StringField(max_length=10, required=True)
-    dateEntered = DateTimeField(required=True)
-    username = StringField(max_length=50, required=True)
 
-class Customers(Document):
-    firstname = StringField(max_length=50, required=True)
-    lastname = StringField(max_length=50, required=True)
-    gender = StringField(max_length=10, required=True)
-    birthday = DateTimeField(required=True)
-    city = StringField(max_length=50, required=True)
-    district = StringField(max_length=50, required=True)
-    street = StringField(max_length=50, required=True)
-    zipcode = StringField(max_length=10, required=True)
-    phone = StringField(max_length=10, required=True)
-    creditType = StringField(max_length=10, required=True)
-    creditId = StringField(max_length=16, required=True)
-    creditEXP = DateTimeField(required=True)
-    shipCity = StringField(max_length=50, required=True)
-    shipDistrict = StringField(max_length=50, required=True)
-    shipStreet = StringField(max_length=50, required=True)
-    shipZip = StringField(max_length=10, required=True)
-    dateEntered = DateTimeField(required=True)
-    username = StringField(max_length=50, required=True)
+class Users(User):
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email', 'password', 'date_joined', 'is_active']
+
+    userRoleID = ReferenceField(UserRoles, required=True)
+    userInfoID = ReferenceField(UserInfo, required=True)
