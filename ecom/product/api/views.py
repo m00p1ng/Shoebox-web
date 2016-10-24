@@ -14,14 +14,45 @@ def product_all(request):
 def product_name(request, slug):
     return request_get(request, Products.objects(slug=slug))
 
+def product_type(request, slug):
+    types = ProductTypes.objects(slug=slug).first()
+    if not types:
+        return HttpResponse('Not found', status=404)
+    product = Products.objects(types=types.id)
+    return request_get(request, product)
+
+def product_brand(request, slug):
+    brand = ProductBrands.objects(slug=slug).first()
+    if not brand:
+        return HttpResponse('Not found', status=404)
+    product = Products.objects(brand=brand.id)
+    return request_get(request, product)
+
+def product_size(request, slug):
+    size = ProductSizes.objects(slug=slug).first()
+    if not size:
+        return HttpResponse('Not found', status=404)
+    product = Products.objects(size=size.id)
+    return request_get(request, product)
+
+def product_color(request, slug):
+    color = ProductColors.objects(slug=slug).first()
+    if not color:
+        return HttpResponse('Not found', status=404)
+    product = Products.objects(color=color.id)
+    return request_get(request, product)
+
 @csrf_exempt
 def product_create(request):
     if request.method == 'POST':
+        if not request.body:
+            return HttpResponse('Request cannot empty', status=400)
+
         data = json.loads(request.body.decode())
         err = Products.validation(data)
+
         if len(err) == 0:
-            field_id = get_id_from_field(data)
-            Product.create_obj(data)
+            Products.create_obj(data)
             return HttpResponse('Product created', status=201)
         else:
             output = ''
