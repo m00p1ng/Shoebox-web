@@ -5,7 +5,7 @@ from ecom.product.api.productType import *
 from ecom.product.api.productBrand import *
 from ecom.product.api.productSize import *
 from ecom.product.api.productColor import *
-from .functions import request_get
+from ecom.include.api import request_get
 import json
 
 def product_all(request):

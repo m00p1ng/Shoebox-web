@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import ProductSizes
-from ecom.product.api.functions import request_get
+from ecom.include.api import request_get
 import json
 
 def productSize_all(request):

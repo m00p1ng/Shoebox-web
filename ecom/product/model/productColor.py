@@ -1,5 +1,5 @@
 from mongoengine import *
-from .functions import to_slug
+from ecom.include.model import to_slug
 
 class ProductColors(Document):
     name = StringField(max_length=100, required=True, unique=True)

@@ -1,5 +1,5 @@
 from mongoengine import *
-from .functions import to_slug
+from ecom.include.model import to_slug
 from ecom.suppliers.models import Suppliers
 from ecom.product.models import *
 import datetime
