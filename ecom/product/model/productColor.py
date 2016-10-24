@@ -8,11 +8,8 @@ class ProductColors(Document):
 
     @classmethod
     def create_obj(cls, data):
-        productcolor = cls(
-            name=data['name'],
-            is_active=data['is_active'],
-            slug=to_slug(data['name'])
-        )
+        productcolor = cls(**data)
+        productcolor.slug = to_slug(data['name'])
         productcolor.save()
         return productcolor
 
@@ -28,6 +25,4 @@ class ProductColors(Document):
         err = []
         if 'name' not in data:
             err.append('Name cannot empty')
-        if 'is_active' not in data:
-            err.append('is_active cannot empty')
         return err

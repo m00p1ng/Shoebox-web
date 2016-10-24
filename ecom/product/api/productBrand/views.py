@@ -51,9 +51,6 @@ def productBrand_update(request, slug):
         if not data:
             return HttpResponse('Data cannot empty', status=400)
 
-        if 'name' in data:
-            data['slug'] = to_slug(data['name'])
-
         ProductBrands.update_obj(slug, data)
         return HttpResponse('ProductBrand updated')
     else:

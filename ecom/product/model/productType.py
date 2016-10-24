@@ -8,13 +8,10 @@ class ProductTypes(Document):
 
     @classmethod
     def create_obj(cls, data):
-        productType = cls(
-            name=data['name'],
-            is_active=data['is_active'],
-            slug=to_slug(data['name'])
-        )
-        productType.save()
-        return productType
+        producttype = cls(**data)
+        producttype.slug = to_slug(data['name'])
+        producttype.save()
+        return producttype
 
     @classmethod
     def update_obj(cls, slug, data):
@@ -28,6 +25,4 @@ class ProductTypes(Document):
         err = []
         if 'name' not in data:
             err.append('Name cannot empty')
-        if 'is_active' not in data:
-            err.append('is_active cannot empty')
         return err

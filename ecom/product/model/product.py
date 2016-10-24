@@ -1,5 +1,5 @@
 from mongoengine import *
-from ecom.include.model import to_slug
+from ecom.include.model import to_slug, timestamp_date
 from ecom.suppliers.models import Suppliers
 from ecom.product.models import *
 import datetime
@@ -132,7 +132,6 @@ class Products(Document):
         return product
 
     def to_realData(data):
-        real_data = {}
         colors = []
         sizes = []
         # supplier = Suppliers.objects(pk=data['supplier']).first().name
@@ -147,10 +146,12 @@ class Products(Document):
             query = ProductSizes.objects(pk=size.id).first().name
             sizes.append(query)
 
-        real_data['brand'] = brand
-        real_data['types'] = types
-        real_data['color'] = colors
-        real_data['size'] = sizes
+        real_data = {
+            'brand': brand,
+            'types': types,
+            'color': colors,
+            'size': sizes
+        }
 
         return real_data
 
@@ -158,37 +159,32 @@ class Products(Document):
     def map_referenceID(cls, products):
         output = []
         for product in products:
-            obj = {}
-            obj['name'] = product.name
-            obj['description'] = product.description
-            obj['price'] = product.price
-            obj['picture'] = product.picture
-            obj['amount'] = product.amount
-            obj['is_available'] = product.is_available
-            obj['is_discount'] = product.is_discount
-            obj['discountPercent'] = product.discountPercent
-            obj['slug'] = product.slug
-
-            to_date = {}
-            to_date['year'] = product.date.year
-            to_date['month'] = product.date.month
-            to_date['day'] = product.date.day
-            obj['date'] = to_date
-
-            data = {}
-            data['brand'] = product.brand.id
-            data['types'] = product.types.id
-            data['color'] = product.color
-            data['size'] = product.size
-            # data['supplier'] = product.supplier
-
+            data = {
+                'brand': product.brand.id,
+                'types': product.types.id,
+                'color': product.color,
+                'size': product.size
+                # 'supplier' : product.supplier
+            }
             real_data = cls.to_realData(data)
 
-            obj['brand'] = real_data['brand']
-            obj['types'] = real_data['types']
-            obj['color'] = real_data['color']
-            obj['size'] = real_data['size']
-            # obj['supplier'] = real_data['supplier']
+            obj = {
+                'name' : product.name,
+                'description' : product.description,
+                'price' : product.price,
+                'picture' : product.picture,
+                'amount' : product.amount,
+                'is_available' : product.is_available,
+                'is_discount' : product.is_discount,
+                'discountPercent' : product.discountPercent,
+                'slug' : product.slug,
+                'date' : timestamp_date(product.date),
+                'brand' : real_data['brand'],
+                'types' : real_data['types'],
+                'color' : real_data['color'],
+                'size' : real_data['size'],
+                # obj['supplier'] = real_data['supplier']
+            }
 
             output.append(obj)
 

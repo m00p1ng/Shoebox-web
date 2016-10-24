@@ -8,11 +8,8 @@ class ProductSizes(Document):
 
     @classmethod
     def create_obj(cls, data):
-        productsize = cls(
-            name=data['name'],
-            is_active=data['is_active'],
-            slug=to_slug(data['name'])
-        )
+        productsize = cls(**data)
+        productsize.slug = to_slug(data['name'])
         productsize.save()
         return productsize
 
@@ -28,6 +25,4 @@ class ProductSizes(Document):
         err = []
         if 'name' not in data:
             err.append('Name cannot empty')
-        if 'is_active' not in data:
-            err.append('is_active cannot empty')
         return err
