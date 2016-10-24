@@ -3,11 +3,11 @@
 ## Product
 
 ### Create
-method POST to create Product
+method **POST** to create Product
 
 URL: /api/product/create
 
-example
+Example
 
 ```json
 {
@@ -33,7 +33,7 @@ example
 
 
 ### Search
-method GET to retrieve data
+method **GET** to retrieve data
 
 #### All product
 URL: /api/product/all
@@ -52,7 +52,7 @@ URL: /api/product/type/<productBrand>
 
 
 ### Update
-method PUT for edit product data
+method **PUT** for edit product data
 
 URL: /api/user/product/update/<product-slug>
 
