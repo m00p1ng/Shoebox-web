@@ -3,10 +3,9 @@
 ## Product
 
 ### Create
+method POST to create Product
 
 URL: /api/product/create
-
-method POST to create Product
 
 example
 
@@ -33,8 +32,35 @@ example
 ```
 
 ### Search
-
 method GET to retrieve data
 
 #### All product
 URL: /api/product/all
+
+#### by name
+URL: /api/product/name/<productName>
+
+#### by size
+URL: /api/product/size/<productSize>
+
+#### by type
+URL: /api/product/type/<productType>
+
+#### by brand
+URL: /api/product/type/<productBrand>
+
+### Update
+method PUT for edit product data
+
+URL: /api/user/product/update/<product-slug>
+
+send some field for update
+
+example: update amount and brand
+
+```json
+{
+  "amount": 20,
+  "brand": "adidas"
+}
+```
