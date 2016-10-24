@@ -3,6 +3,7 @@ from ecom.include.model import to_slug
 from ecom.suppliers.models import Suppliers
 from ecom.product.models import *
 import datetime
+import json
 
 class Products(Document):
     supplier = ReferenceField(Suppliers)
@@ -129,3 +130,66 @@ class Products(Document):
         product = cls.objects(slug=slug)
         product.update(**data)
         return product
+
+    def to_realData(data):
+        real_data = {}
+        colors = []
+        sizes = []
+        # supplier = Suppliers.objects(pk=data['supplier']).first().name
+        brand = ProductBrands.objects(pk=data['brand']).first().name
+        types = ProductTypes.objects(pk=data['types']).first().name
+
+        for color in data['color']:
+            query = ProductColors.objects(pk=color.id).first().name
+            colors.append(query)
+
+        for size in data['size']:
+            query = ProductSizes.objects(pk=size.id).first().name
+            sizes.append(query)
+
+        real_data['brand'] = brand
+        real_data['types'] = types
+        real_data['color'] = colors
+        real_data['size'] = sizes
+
+        return real_data
+
+    @classmethod
+    def map_referenceID(cls, products):
+        output = []
+        for product in products:
+            obj = {}
+            obj['name'] = product.name
+            obj['description'] = product.description
+            obj['price'] = product.price
+            obj['picture'] = product.picture
+            obj['amount'] = product.amount
+            obj['is_available'] = product.is_available
+            obj['is_discount'] = product.is_discount
+            obj['discountPercent'] = product.discountPercent
+            obj['slug'] = product.slug
+
+            to_date = {}
+            to_date['year'] = product.date.year
+            to_date['month'] = product.date.month
+            to_date['day'] = product.date.day
+            obj['date'] = to_date
+
+            data = {}
+            data['brand'] = product.brand.id
+            data['types'] = product.types.id
+            data['color'] = product.color
+            data['size'] = product.size
+            # data['supplier'] = product.supplier
+
+            real_data = cls.to_realData(data)
+
+            obj['brand'] = real_data['brand']
+            obj['types'] = real_data['types']
+            obj['color'] = real_data['color']
+            obj['size'] = real_data['size']
+            # obj['supplier'] = real_data['supplier']
+
+            output.append(obj)
+
+        return json.dumps(output)

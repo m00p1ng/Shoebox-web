@@ -5,42 +5,42 @@ from ecom.product.api.productType import *
 from ecom.product.api.productBrand import *
 from ecom.product.api.productSize import *
 from ecom.product.api.productColor import *
-from ecom.include.api import request_get
+from ecom.include.api import request_get, request_get_real
 import json
 
 def product_all(request):
-    return request_get(request, Products.objects.all())
+    return request_get_real(request, Products, Products.objects.all())
 
 def product_name(request, slug):
-    return request_get(request, Products.objects(slug=slug))
+    return request_get_real(request, Products, Products.objects(slug=slug))
 
 def product_type(request, slug):
     types = ProductTypes.objects(slug=slug).first()
     if not types:
         return HttpResponse('Not found', status=404)
     product = Products.objects(types=types.id)
-    return request_get(request, product)
+    return request_get_real(request, Products, product)
 
 def product_brand(request, slug):
     brand = ProductBrands.objects(slug=slug).first()
     if not brand:
         return HttpResponse('Not found', status=404)
     product = Products.objects(brand=brand.id)
-    return request_get(request, product)
+    return request_get_real(request, Products, product)
 
 def product_size(request, slug):
     size = ProductSizes.objects(slug=slug).first()
     if not size:
         return HttpResponse('Not found', status=404)
     product = Products.objects(size=size.id)
-    return request_get(request, product)
+    return request_get_real(request, Products, product)
 
 def product_color(request, slug):
     color = ProductColors.objects(slug=slug).first()
     if not color:
         return HttpResponse('Not found', status=404)
     product = Products.objects(color=color.id)
-    return request_get(request, product)
+    return request_get_real(request, Products, product)
 
 @csrf_exempt
 def product_create(request):
