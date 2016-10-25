@@ -4,7 +4,7 @@ from . import views
 regex_search = r'(?P<slug>\b(?!create|delete|update|all|name).+?\b)/?$'
 
 urlpatterns = [
-    url(r'^all/?$', views.product_all),
+    url(r'^$', views.product_all),
     url(r'^name/(?P<slug>.+?)/?$', views.product_name),
     url(r'^type/'+regex_search, views.product_type),
     url(r'^size/'+regex_search, views.product_size),
