@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import Navibar from 'Navibar'
 import ProductList from 'ProductList'
 
-export default class ProductApp extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -14,5 +14,3 @@ export default class ProductApp extends Component {
     )
   }
 }
-
-render(<ProductApp />, document.getElementById('app'))
