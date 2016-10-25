@@ -21,9 +21,3 @@ def login(request):
 def logout(request):
     request.session.flush()
     return HttpResponse("logout")
-
-def test_view(request):
-    if 'username' in request.session:
-        return HttpResponse(request.session['username'])
-    else:
-        return HttpResponse('Not login')

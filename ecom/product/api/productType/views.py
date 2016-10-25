@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import ProductTypes
 from ecom.include.api import request_get
+from mongoengine import NotUniqueError
 import json
 
 def productType_all(request):
@@ -13,16 +14,23 @@ def productType_name(request, slug):
 @csrf_exempt
 def productType_create(request):
     if request.method == 'POST':
-        data = json.loads(request.body.decode())
-        err = ProductTypes.validation(data)
-        if len(err) == 0:
-            ProductTypes.create_obj(data)
-            return HttpResponse('ProductType created', status=201)
-        else:
-            output = ''
-            for e in err:
-                output += e + '<br />'
-            return HttpResponse(output)
+        try:
+            data = json.loads(request.body.decode())
+            err = ProductTypes.validation(data)
+            if len(err) == 0:
+                ProductTypes.create_obj(data)
+                return HttpResponse('ProductType created', status=201)
+            else:
+                output = ''
+                for e in err:
+                    output += e + '<br />'
+                return HttpResponse(output)
+
+        except ValueError as e:
+            return HttpResponse('JSON Decode error', status=400)
+
+        except NotUniqueError as e:
+            return HttpResponse('Product type already exist', status=400)
     else:
         return HttpResponse('Method not allowed', status=405)
 
@@ -40,18 +48,19 @@ def productType_delete(request):
 @csrf_exempt
 def productType_update(request, slug):
     if request.method == 'PUT':
-        item = ProductTypes.objects(slug=slug)
+        try:
+            item = ProductTypes.objects(slug=slug)
+            if not item:
+                return HttpResponse('This productType not exist', status=404)
 
-        if not item:
-            return HttpResponse('This productType not exist', status=404)
-        if not request.body:
-            return HttpResponse('Request cannot empty', status=400)
+            data = json.loads(request.body.decode())
+            if not data:
+                return HttpResponse('Data cannot empty', status=400)
 
-        data = json.loads(request.body.decode())
-        if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            ProductTypes.update_obj(slug, data)
+            return HttpResponse('ProductType updated')
 
-        ProductTypes.update_obj(slug, data)
-        return HttpResponse('ProductType updated')
+        except ValueError as e:
+            return HttpResponse('JSON Decode error', status=400)
     else:
         return HttpResponse('Method not allowed', status=405)
