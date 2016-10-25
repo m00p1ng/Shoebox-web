@@ -69,6 +69,17 @@ class Products(Document):
             err.append('Picture cannot empty')
         if 'date' not in data:
             err.append('Date cannot empty')
+            err.append('- Year cannot empty')
+            err.append('- Month cannot empty')
+            err.append('- Day cannot empty')
+        else:
+            err.append('Date cannot empty')
+            if 'year' not in data['date']:
+                err.append('- Year cannot empty')
+            if 'month' not in data['date']:
+                err.append('- Month cannot empty')
+            if 'day' not in data['date']:
+                err.append('- Day cannot empty')
         if 'amount' not in data:
             err.append('Amount cannot empty')
         if 'size' not in data:

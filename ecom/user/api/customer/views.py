@@ -9,7 +9,7 @@ def customer_all(request):
     return request_get(request, query)
 
 def customer_username(request, username):
-    query = Customers.objects(username=username).exclude('password')
+    query = Customers.objects(username=username).exclude('password').first()
     return request_get(request, query)
 
 @csrf_exempt

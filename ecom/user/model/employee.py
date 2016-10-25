@@ -35,8 +35,33 @@ class Employees(User):
             err.append('Gender cannot empty')
         if 'birthday' not in data:
             err.append('Birthday cannot empty')
+            err.append('- Year cannot empty')
+            err.append('- Month cannot empty')
+            err.append('- Day cannot empty')
+        else:
+            err.append('Birthday cannot empty')
+            if 'year' not in data['birthday']:
+                err.append('- Year cannot empty')
+            if 'month' not in data['birthday']:
+                err.append('- Month cannot empty')
+            if 'day' not in data['birthday']:
+                err.append('- Day cannot empty')
         if 'address' not in data:
             err.append('Address cannot empty')
+            err.append('- City cannot empty')
+            err.append('- District cannot empty')
+            err.append('- Street cannot empty')
+            err.append('- Zipcode cannot empty')
+        else:
+            err.append('Address cannot empty')
+            if 'city' not in data['address']:
+                err.append('- City cannot empty')
+            if 'district' not in data['address']:
+                err.append('- District cannot empty')
+            if 'street' not in data['address']:
+                err.append('- Street cannot empty')
+            if 'zipcode' not in data['address']:
+                err.append('- Zipcode cannot empty')
         if 'phone' not in data:
             err.append('Phone cannot empty')
         return err
@@ -84,6 +109,16 @@ class Employees(User):
                 day=data['birthday']['day']
             )
             print(data['birthday'])
+        if 'address' in data:
+            if 'city' in data['address']:
+                data['city'] = data['address']['city']
+            if 'district' in data['address']:
+                data['district'] = data['address']['district']
+            if 'street' in data['address']:
+                data['street'] = data['address']['street']
+            if 'zipcode' in data['address']:
+                data['zipcode'] = data['address']['zipcode']
+            data.pop('address')
 
         employee = cls.objects(username=username)
         employee.update(**data)

@@ -9,7 +9,7 @@ def employee_all(request):
     return request_get(request, query)
 
 def employee_username(request, username):
-    query = Employees.objects(username=username).exclude('password')
+    query = Employees.objects(username=username).exclude('password').first()
     return request_get(request, query)
 
 @csrf_exempt
