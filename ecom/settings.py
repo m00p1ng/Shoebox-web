@@ -152,3 +152,9 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
+
+TEST_MONGO_DATABASE = {
+    'db': 'test-ez',
+    'host': ['localhost'],
+    'port': 27017,
+}

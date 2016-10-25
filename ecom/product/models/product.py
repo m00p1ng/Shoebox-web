@@ -1,7 +1,7 @@
 from mongoengine import *
 from ecom.include.model import to_slug, timestamp_date
 from ecom.suppliers.models import Suppliers
-from ecom.product.model import *
+from ecom.product.models import *
 import datetime
 import json
 
