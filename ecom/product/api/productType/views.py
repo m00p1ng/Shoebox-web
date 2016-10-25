@@ -8,7 +8,7 @@ def productType_all(request):
     return request_get(request, ProductTypes.objects.all())
 
 def productType_name(request, slug):
-    return request_get(request, ProductTypes.objects(slug=slug))
+    return request_get(request, ProductTypes.objects(slug=slug).first())
 
 @csrf_exempt
 def productType_create(request):

@@ -1,10 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import *
-from ecom.product.api.productType import *
-from ecom.product.api.productBrand import *
-from ecom.product.api.productSize import *
-from ecom.product.api.productColor import *
 from ecom.include.api import request_get, request_get_real
 import json
 
@@ -12,7 +8,7 @@ def product_all(request):
     return request_get_real(request, Products, Products.objects.all())
 
 def product_name(request, slug):
-    return request_get_real(request, Products, Products.objects(slug=slug))
+    return request_get_real(request, Products, Products.objects(slug=slug).first())
 
 def product_type(request, slug):
     types = ProductTypes.objects(slug=slug).first()

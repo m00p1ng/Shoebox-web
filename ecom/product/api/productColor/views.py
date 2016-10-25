@@ -8,7 +8,7 @@ def productColor_all(request):
     return request_get(request, ProductColors.objects.all())
 
 def productColor_name(request, slug):
-    return request_get(request, ProductColors.objects(slug=slug))
+    return request_get(request, ProductColors.objects(slug=slug).first())
 
 @csrf_exempt
 def productColor_create(request):

@@ -8,7 +8,7 @@ def productBrand_all(request):
     return request_get(request, ProductBrands.objects.all())
 
 def productBrand_name(request, slug):
-    return request_get(request, ProductBrands.objects(slug=slug))
+    return request_get(request, ProductBrands.objects(slug=slug).first())
 
 @csrf_exempt
 def productBrand_create(request):

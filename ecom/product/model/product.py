@@ -1,7 +1,7 @@
 from mongoengine import *
 from ecom.include.model import to_slug, timestamp_date
 from ecom.suppliers.models import Suppliers
-from ecom.product.models import *
+from ecom.product.model import *
 import datetime
 import json
 
@@ -50,6 +50,7 @@ class Products(Document):
 
         return field_id
 
+    @staticmethod
     def validation(data):
         err = []
         # if 'supplier' not in data:
@@ -156,36 +157,43 @@ class Products(Document):
         return real_data
 
     @classmethod
+    def mapID_to_obj(cls, product):
+        data = {
+            'brand': product.brand.id,
+            'types': product.types.id,
+            'color': product.color,
+            'size': product.size
+            # 'supplier' : product.supplier
+        }
+        real_data = cls.to_realData(data)
+
+        obj = {
+            'name' : product.name,
+            'description' : product.description,
+            'price' : product.price,
+            'picture' : product.picture,
+            'amount' : product.amount,
+            'is_available' : product.is_available,
+            'is_discount' : product.is_discount,
+            'discountPercent' : product.discountPercent,
+            'slug' : product.slug,
+            'date' : timestamp_date(product.date),
+            'brand' : real_data['brand'],
+            'types' : real_data['types'],
+            'color' : real_data['color'],
+            'size' : real_data['size'],
+            # obj['supplier'] = real_data['supplier']
+        }
+        return obj
+
+    @classmethod
     def map_referenceID(cls, products):
         output = []
-        for product in products:
-            data = {
-                'brand': product.brand.id,
-                'types': product.types.id,
-                'color': product.color,
-                'size': product.size
-                # 'supplier' : product.supplier
-            }
-            real_data = cls.to_realData(data)
-
-            obj = {
-                'name' : product.name,
-                'description' : product.description,
-                'price' : product.price,
-                'picture' : product.picture,
-                'amount' : product.amount,
-                'is_available' : product.is_available,
-                'is_discount' : product.is_discount,
-                'discountPercent' : product.discountPercent,
-                'slug' : product.slug,
-                'date' : timestamp_date(product.date),
-                'brand' : real_data['brand'],
-                'types' : real_data['types'],
-                'color' : real_data['color'],
-                'size' : real_data['size'],
-                # obj['supplier'] = real_data['supplier']
-            }
-
-            output.append(obj)
-
-        return json.dumps(output)
+        if not hasattr(products, 'count'):
+            obj = cls.mapID_to_obj(products)
+            return json.dumps(obj)
+        else:
+            for product in products:
+                obj = cls.mapID_to_obj(product)
+                output.append(obj)
+            return json.dumps(output)

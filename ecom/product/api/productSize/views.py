@@ -8,7 +8,7 @@ def productSize_all(request):
     return request_get(request, ProductSizes.objects.all())
 
 def productSize_name(request, slug):
-    return request_get(request, ProductSizes.objects(slug=slug))
+    return request_get(request, ProductSizes.objects(slug=slug).first())
 
 @csrf_exempt
 def productSize_create(request):
