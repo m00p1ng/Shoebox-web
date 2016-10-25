@@ -1,11 +1,10 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
     url(r'^all/?$', views.user_all),
-    url(r'^username/(?P<username>.+?)/?$', views.user_username),
 
-    url(r'^create/?$', views.user_create),
-    url(r'^delete/(?P<username>.+?)/?$', views.user_delete),
-    url(r'^update/(?P<username>.+?)/?$', views.user_update),
+    url(r'^role/', include('ecom.user.api.userrole.urls')),
+    url(r'^customer/', include('ecom.user.api.customer.urls')),
+    url(r'^employee/', include('ecom.user.api.employee.urls')),
 ]
