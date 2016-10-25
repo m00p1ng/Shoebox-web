@@ -39,13 +39,14 @@ class Employees(User):
             err.append('- Month cannot empty')
             err.append('- Day cannot empty')
         else:
-            err.append('Birthday cannot empty')
-            if 'year' not in data['birthday']:
-                err.append('- Year cannot empty')
-            if 'month' not in data['birthday']:
-                err.append('- Month cannot empty')
-            if 'day' not in data['birthday']:
-                err.append('- Day cannot empty')
+            if not {'year', 'month', 'day'} <= set(data['birthday']):
+                err.append('Birthday cannot empty')
+                if 'year' not in data['birthday']:
+                    err.append('- Year cannot empty')
+                if 'month' not in data['birthday']:
+                    err.append('- Month cannot empty')
+                if 'day' not in data['birthday']:
+                    err.append('- Day cannot empty')
         if 'address' not in data:
             err.append('Address cannot empty')
             err.append('- City cannot empty')
@@ -53,15 +54,16 @@ class Employees(User):
             err.append('- Street cannot empty')
             err.append('- Zipcode cannot empty')
         else:
-            err.append('Address cannot empty')
-            if 'city' not in data['address']:
-                err.append('- City cannot empty')
-            if 'district' not in data['address']:
-                err.append('- District cannot empty')
-            if 'street' not in data['address']:
-                err.append('- Street cannot empty')
-            if 'zipcode' not in data['address']:
-                err.append('- Zipcode cannot empty')
+            if not {'city', 'district', 'street', 'zipcode'} <= set(data['address']):
+                err.append('Address cannot empty')
+                if 'city' not in data['address']:
+                    err.append('- City cannot empty')
+                if 'district' not in data['address']:
+                    err.append('- District cannot empty')
+                if 'street' not in data['address']:
+                    err.append('- Street cannot empty')
+                if 'zipcode' not in data['address']:
+                    err.append('- Zipcode cannot empty')
         if 'phone' not in data:
             err.append('Phone cannot empty')
         return err
