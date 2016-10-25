@@ -35,26 +35,21 @@ Example
 ### Search
 method **GET** to retrieve data
 
-#### All product
-URL: /api/product/all
+***All product*** URL: /api/product/all
 
-#### by name
-URL: /api/product/name/<productName>
+***By name*** URL: /api/product/name/&lt;productName>
 
-#### by size
-URL: /api/product/size/<productSize>
+***By size*** URL: /api/product/size/&lt;productSize>
 
-#### by type
-URL: /api/product/type/<productType>
+***By type*** URL: /api/product/type/&lt;productType>
 
-#### by brand
-URL: /api/product/type/<productBrand>
+***By brand*** URL: /api/product/brand/&lt;productBrand>
 
 
 ### Update
 method **PUT** for edit product data
 
-URL: /api/user/product/update/<product-slug>
+URL: /api/user/product/update/&lt;product-slug>
 
 send some field for update
 
@@ -66,3 +61,9 @@ example: update amount and brand
   "brand": "adidas"
 }
 ```
+
+
+### Delete
+method **DELETE** for delete product
+
+URL: /api/user/product/delete/&lt;product-slug>

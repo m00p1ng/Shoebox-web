@@ -3,11 +3,11 @@
 ## Employee
 
 ### Create
+method **POST** for create employee
+
 URL: /api/user/employee/create
 
-method POST for create employee
-
-example
+Example
 
 ```json
 {
@@ -34,20 +34,17 @@ example
 ```
 
 ### Search
-method GET for retrieve data
+method **GET** for retrieve data
 
-#### All employee
-URL: /api/user/employee/all
+***All employee*** URL: /api/user/employee/all
 
-#### by username
-URL: /api/user/employee/username/<username>
+***By username*** URL: /api/user/employee/username/&lt;username>
 
 
 ### Update
+method **PUT** for edit employee data
 
-method PUT for edit employee data
-
-URL: /api/user/employee/update/<username>
+URL: /api/user/employee/update/&lt;username>
 
 send some field for update
 
@@ -64,17 +61,18 @@ example: update email and city
 
 
 ### Delete
-method DELETE for delete employee
+method **DELETE** for delete employee
 
-URL: /api/user/employee/delete<username>
+URL: /api/user/employee/delete/&lt;username>
+
+
 
 ## Customer
 
 ### Create
+method **POST** for create employee
 
 URL: /api/user/customer/create
-
-method POST for create employee
 
 example
 
@@ -116,16 +114,35 @@ example
 }
 ```
 
+
 ### Search
-method GET for retrieve data
+method **GET** for retrieve data
 
-#### All employee
-URL: /api/user/customer/all
+***All employee*** URL: /api/user/customer/all
 
-#### by username
-URL: /api/user/employee/customer/<username>
+***By username*** URL: /api/user/employee/customer/&lt;username>
+
+
+### Update
+method **PUT** for edit employee data
+
+URL: /api/user/employee/update/&lt;username>
+
+send some field for update
+
+example: update email and city
+
+```json
+{
+  "email": "test@email.com",
+  "address": {
+    "city": "test city"
+  }
+}
+```
+
 
 ### Delete
-method DELETE for delete employee
+method **DELETE** for delete employee
 
-URL: /api/user/customer/delete<username>
+URL: /api/user/customer/delete/&lt;username>
