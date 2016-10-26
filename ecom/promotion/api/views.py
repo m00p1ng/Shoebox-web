@@ -21,7 +21,7 @@ def promotion_create(request):
 
             if len(err) == 0:
                 Promotions.create_obj(data)
-                return HttpResponse('Product created', status=201)
+                return HttpResponse('Promotion created', status=201)
             else:
                 output = ''
                 for e in err:
@@ -32,7 +32,7 @@ def promotion_create(request):
             return HttpResponse('JSON Decode error',status =400)
 
         except NotUniqueError as e:
-            return HttpResponse('Product already exist', status=400)
+            return HttpResponse('Promotion already exist', status=400)
     else:
         return HttpResponse('Method not allowed', status=405)
 
@@ -53,14 +53,14 @@ def promotion_update(request, slug):
         try:
             item = Promotions.object(slug=slug)
             if not item:
-                return HttpResponse('This product not exist',status=404)
+                return HttpResponse('This promotion not exist',status=404)
 
             data = json.loads(request.body.decode())
             if not data:
                 return HttpResponse('Data cannot empty', status=400)
 
             Promotions.update_obj(slug,data)
-            return HttpResponse('Product updated')
+            return HttpResponse('Promotion updated')
 
         except ValueError as e:
             return HttpResponse('JSON Decode error', status=400)

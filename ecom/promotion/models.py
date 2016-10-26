@@ -1,5 +1,6 @@
 from mongoengine import *
 from ecom.include.model import to_slug, timestamp_date
+import datetime
 
 class Promotions(Document):
     name = StringField(max_length=200, required=True, unique=True)
