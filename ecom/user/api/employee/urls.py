@@ -2,10 +2,6 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.employee_all),
-    url(r'^username/(?P<username>.+?)/?$', views.employee_username),
-
-    url(r'^create/?$', views.employee_create),
-    url(r'^delete/(?P<username>.+?)/?$', views.employee_delete),
-    url(r'^update/(?P<username>.+?)/?$', views.employee_update),
+    url(r'^$', views.employee),
+    url(r'^(?P<username>.+?)/?$', views.employee_with_username),
 ]

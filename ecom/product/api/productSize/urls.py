@@ -2,10 +2,6 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.productSize_all),
-    url(r'^name/(?P<slug>.+?)/?$', views.productSize_name),
-
-    url(r'^create/?$', views.productSize_create),
-    url(r'^delete/(?P<slug>.+?)/?$', views.productSize_delete),
-    url(r'^update/(?P<slug>.+?)/?$', views.productSize_update),
+    url(r'^$', views.productSize),
+    url(r'^(?P<slug>.+?)/?$', views.productSize_with_size),
 ]

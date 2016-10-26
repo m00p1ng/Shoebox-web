@@ -5,62 +5,81 @@ from ecom.include.api import request_get
 from mongoengine import NotUniqueError
 import json
 
-def productSize_all(request):
-    return request_get(request, ProductSizes.objects.all())
-
-def productSize_name(request, slug):
-    return request_get(request, ProductSizes.objects(slug=slug).first())
 
 @csrf_exempt
-def productSize_create(request):
+def productSize(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode())
-            err = ProductSizes.validation(data)
-            if len(err) == 0:
-                ProductSizes.create_obj(data)
-                return HttpResponse('productSize created', status=201)
-            else:
-                output = ''
-                for e in err:
-                    output += e + '<br />'
-                return HttpResponse(output)
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-
-        except NotUniqueError as e:
-            return HttpResponse('Product sizes already exist', status=400)
-    else:
+        return productSize_create(body)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
         return HttpResponse('Method not allowed', status=405)
 
+
 @csrf_exempt
-def productSize_delete(request):
+def productSize_with_size(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_by_name(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return productSize_update(body, slug)
     if request.method == 'DELETE':
+        return productSize_delete(slug)
+
+
+def query_all():
+    return ProductSizes.objects.all()
+
+
+def query_by_name(slug):
+    return ProductSizes.objects(slug=slug).first()
+
+
+def productSize_create(body):
+    try:
+        data = json.loads(body.decode())
+        err = ProductSizes.validation(data)
+        if len(err) == 0:
+            ProductSizes.create_obj(data)
+            return HttpResponse('productSize created', status=201)
+        else:
+            output = ''
+            for e in err:
+                output += e + '<br />'
+            return HttpResponse(output)
+
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
+
+    except NotUniqueError as e:
+        return HttpResponse('Product sizes already exist', status=400)
+
+
+def productSize_delete(slug):
+    item = ProductSizes.objects(slug=slug)
+    if not item:
+        return HttpResponse('This productSize not exist', status=404)
+    item.delete()
+    return HttpResponse('productSize removed')
+
+
+def productSize_update(body, slug):
+    try:
         item = ProductSizes.objects(slug=slug)
         if not item:
             return HttpResponse('This productSize not exist', status=404)
-        item.delete()
-        return HttpResponse('productSize removed')
-    else:
-        return HttpResponse('Method not allowed', status=405)
 
-@csrf_exempt
-def productSize_update(request, slug):
-    if request.method == 'PUT':
-        try:
-            item = ProductSizes.objects(slug=slug)
-            if not item:
-                return HttpResponse('This productSize not exist', status=404)
+        data = json.loads(body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
 
-            data = json.loads(request.body.decode())
-            if not data:
-                return HttpResponse('Data cannot empty', status=400)
+        ProductSizes.update_obj(slug, data)
+        return HttpResponse('productSize updated')
 
-            ProductSizes.update_obj(slug, data)
-            return HttpResponse('productSize updated')
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-    else:
-        return HttpResponse('Method not allowed', status=405)
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)

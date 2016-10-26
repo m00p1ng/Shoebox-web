@@ -5,7 +5,7 @@
 ### Create
 method **POST** for create employee
 
-URL: /api/user/employee/create
+URL: /api/user/employee/
 
 Example
 
@@ -36,15 +36,15 @@ Example
 ### Search
 method **GET** for retrieve data
 
-***All employee*** URL: /api/user/employee/all
+***All employee*** URL: /api/user/employee/
 
-***By username*** URL: /api/user/employee/username/&lt;username>
+***By username*** URL: /api/user/employee/&lt;username>
 
 
 ### Update
 method **PUT** for edit employee data
 
-URL: /api/user/employee/update/&lt;username>
+URL: /api/user/employee/&lt;username>
 
 send some field for update
 
@@ -63,16 +63,16 @@ example: update email and city
 ### Delete
 method **DELETE** for delete employee
 
-URL: /api/user/employee/delete/&lt;username>
+URL: /api/user/employee/&lt;username>
 
 
 
 ## Customer
 
 ### Create
-method **POST** for create employee
+method **POST** for create customer
 
-URL: /api/user/customer/create
+URL: /api/user/customer/
 
 example
 
@@ -118,15 +118,15 @@ example
 ### Search
 method **GET** for retrieve data
 
-***All employee*** URL: /api/user/customer/all
+***All employee*** URL: /api/user/customer/
 
-***By username*** URL: /api/user/employee/customer/&lt;username>
+***By username*** URL: /api/user/customer/&lt;username>
 
 
 ### Update
-method **PUT** for edit employee data
+method **PUT** for edit custoemr data
 
-URL: /api/user/employee/update/&lt;username>
+URL: /api/user/customer/&lt;username>
 
 send some field for update
 
@@ -143,6 +143,6 @@ example: update email and city
 
 
 ### Delete
-method **DELETE** for delete employee
+method **DELETE** for delete customer
 
-URL: /api/user/customer/delete/&lt;username>
+URL: /api/user/customer/&lt;username>

@@ -5,59 +5,77 @@ from ecom.include.api import request_get
 from mongoengine import NotUniqueError
 import json
 
-def userRole_all(request):
-    return request_get(request, UserRoles.objects.all())
 
 @csrf_exempt
-def userRole_create(request):
+def userRole(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode())
-            err = UserRoles.validation(data)
-            if len(err) == 0:
-                UserRoles.create_obj(data)
-                return HttpResponse('User role created', status=201)
-            else:
-                output = ''
-                for e in err:
-                    output += e + '<br />'
-                return HttpResponse(output)
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-
-        except NotUniqueError as e:
-            return HttpResponse('Role already exist', status=400)
-    else:
+        return userRole_delete_create(body)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
         return HttpResponse('Method not allowed', status=405)
 
+
 @csrf_exempt
-def userRole_delete(request):
+def userRole_with_role(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return userRole_update(body, slug)
     if request.method == 'DELETE':
+        return userRole_delete(slug)
+
+
+def query_all():
+    return  UserRoles.objects.all()
+
+
+def userRole_create(body):
+    try:
+        data = json.loads(body.decode())
+        err = UserRoles.validation(data)
+        if len(err) == 0:
+            UserRoles.create_obj(data)
+            return HttpResponse('User role created', status=201)
+        else:
+            output = ''
+            for e in err:
+                output += e + '<br />'
+            return HttpResponse(output)
+
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
+
+    except NotUniqueError as e:
+        return HttpResponse('Role already exist', status=400)
+
+
+def userRole_delete(request):
+    item = UserRoles.objects(role=role)
+    if not item:
+        return HttpResponse('This user role not exist', status=404)
+    item.delete()
+    return HttpResponse('User role removed')
+
+
+def userRole_update(request, slug):
+    try:
         item = UserRoles.objects(role=role)
         if not item:
-            return HttpResponse('This user role not exist', status=404)
-        item.delete()
-        return HttpResponse('User role removed')
-    else:
-        return HttpResponse('Method not allowed', status=405)
+            return HttpResponse('This userRole not exist', status=404)
 
-@csrf_exempt
-def userRole_update(request, slug):
-    if request.method == 'PUT':
-        try:
-            item = UserRoles.objects(role=role)
-            if not item:
-                return HttpResponse('This userRole not exist', status=404)
+        data = json.loads(body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
 
-            data = json.loads(request.body.decode())
-            if not data:
-                return HttpResponse('Data cannot empty', status=400)
+        UserRoles.update_obj(slug, data)
+        return HttpResponse('User role updated')
 
-            UserRoles.update_obj(slug, data)
-            return HttpResponse('User role updated')
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-    else:
-        return HttpResponse('Method not allowed', status=405)
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)

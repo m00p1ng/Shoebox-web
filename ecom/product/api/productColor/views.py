@@ -5,11 +5,40 @@ from ecom.include.api import request_get
 from mongoengine import NotUniqueError
 import json
 
-def productColor_all(request):
-    return request_get(request, ProductColors.objects.all())
 
-def productColor_name(request, slug):
-    return request_get(request, ProductColors.objects(slug=slug).first())
+@csrf_exempt
+def productColor(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
+    if request.method == 'POST':
+        return productColor_create(body)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
+        return HttpResponse('Method not allowed', status=405)
+
+
+@csrf_exempt
+def productColor_with_name(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_by_name(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return productColor_update(body, slug)
+    if request.method == 'DELETE':
+        return productColor_delete(slug)
+
+
+def productColor_all():
+    return ProductColors.objects.all()
+
+
+def productColor_name(slug):
+    return ProductColors.objects(slug=slug).first()
+
 
 @csrf_exempt
 def productColor_create(request):
@@ -59,7 +88,7 @@ def productColor_update(request, slug):
 
             ProductColors.update_obj(data)
             return HttpResponse('productColor updated')
-            
+
         except ValueError as e:
             return HttpResponse('JSON Decode error', status=400)
     else:

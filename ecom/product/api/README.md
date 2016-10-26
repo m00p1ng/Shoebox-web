@@ -5,7 +5,7 @@
 ### Create
 method **POST** to create Product
 
-URL: /api/product/create
+URL: /api/product/
 
 Example
 
@@ -35,21 +35,21 @@ Example
 ### Search
 method **GET** to retrieve data
 
-***All product*** URL: /api/product/all
+***All product*** URL: /api/product/
 
-***By name*** URL: /api/product/name/&lt;productName>
+***By name*** URL: /api/product/&lt;productName-slug>
 
-***By size*** URL: /api/product/size/&lt;productSize>
+***By size*** URL: /api/product/size/&lt;productSize-slug>
 
-***By type*** URL: /api/product/type/&lt;productType>
+***By type*** URL: /api/product/type/&lt;productType-slug>
 
-***By brand*** URL: /api/product/brand/&lt;productBrand>
+***By brand*** URL: /api/product/brand/&lt;productBrand-slug>
 
 
 ### Update
 method **PUT** for edit product data
 
-URL: /api/user/product/update/&lt;product-slug>
+URL: /api/user/product/&lt;product-slug>
 
 send some field for update
 
@@ -66,4 +66,4 @@ example: update amount and brand
 ### Delete
 method **DELETE** for delete product
 
-URL: /api/user/product/delete/&lt;product-slug>
+URL: /api/user/product/&lt;product-slug>

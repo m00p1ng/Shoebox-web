@@ -2,9 +2,6 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.userRole_all),
-
-    url(r'^create/?$', views.userRole_create),
-    url(r'^delete/(?P<slug>.+?)/?$', views.userRole_delete),
-    url(r'^update/(?P<slug>.+?)/?$', views.userRole_update),
+    url(r'^$', views.userRole),
+    url(r'^(?P<slug>.+?)/?$', views.userRole_with_role),
 ]

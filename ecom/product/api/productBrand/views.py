@@ -5,62 +5,81 @@ from ecom.include.api import request_get
 from mongoengine import NotUniqueError
 import json
 
-def productBrand_all(request):
-    return request_get(request, ProductBrands.objects.all())
-
-def productBrand_name(request, slug):
-    return request_get(request, ProductBrands.objects(slug=slug).first())
 
 @csrf_exempt
-def productBrand_create(request):
+def productBrand(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode())
-            err = ProductBrands.validation(data)
-            if len(err) == 0:
-                ProductBrands.create_obj(data)
-                return HttpResponse('ProductBrand created', status=201)
-            else:
-                output = ''
-                for e in err:
-                    output += e + '<br />'
-                return HttpResponse(output)
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-
-        except NotUniqueError as e:
-            return HttpResponse('Brand already exist', status=400)
-    else:
+        return productBrand_create(body)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
         return HttpResponse('Method not allowed', status=405)
 
+
 @csrf_exempt
-def productBrand_delete(request):
+def productBrand_with_brand(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_by_brand(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return productBrand_update(body, slug)
     if request.method == 'DELETE':
+        return productBrand_delete(slug)
+
+
+def query_all():
+    return ProductBrands.objects.all
+
+
+def productBrand_name(slug):
+    return ProductBrands.objects(slug=slug).first()
+
+
+def productBrand_create(body):
+    try:
+        data = json.loads(body.decode())
+        err = ProductBrands.validation(data)
+        if len(err) == 0:
+            ProductBrands.create_obj(data)
+            return HttpResponse('ProductBrand created', status=201)
+        else:
+            output = ''
+            for e in err:
+                output += e + '<br />'
+            return HttpResponse(output)
+
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
+
+    except NotUniqueError as e:
+        return HttpResponse('Brand already exist', status=400)
+
+
+def productBrand_delete(slug):
+    item = ProductBrands.objects(slug=slug)
+    if not item:
+        return HttpResponse('This productBrand not exist', status=404)
+    item.delete()
+    return HttpResponse('ProductBrand removed')
+
+
+def productBrand_update(slug):
+    try:
         item = ProductBrands.objects(slug=slug)
         if not item:
             return HttpResponse('This productBrand not exist', status=404)
-        item.delete()
-        return HttpResponse('ProductBrand removed')
-    else:
-        return HttpResponse('Method not allowed', status=405)
 
-@csrf_exempt
-def productBrand_update(request, slug):
-    if request.method == 'PUT':
-        try:
-            item = ProductBrands.objects(slug=slug)
-            if not item:
-                return HttpResponse('This productBrand not exist', status=404)
+        data = json.loads(body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
 
-            data = json.loads(request.body.decode())
-            if not data:
-                return HttpResponse('Data cannot empty', status=400)
+        ProductBrands.update_obj(slug, data)
+        return HttpResponse('ProductBrand updated')
 
-            ProductBrands.update_obj(slug, data)
-            return HttpResponse('ProductBrand updated')
-            
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-    else:
-        return HttpResponse('Method not allowed', status=405)
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)

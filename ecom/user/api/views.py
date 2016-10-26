@@ -4,10 +4,35 @@ from mongoengine.django.auth import User
 from ecom.include.api import request_get
 import json
 
-def user_all(request):
-    query = User.objects.all().exclude('password')
-    return request_get(request, query)
+@csrf_exempt
+def user(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
+        return HttpResponse('Method not allowed', status=405)
 
-def user_username(request, username):
-    query = User.objects(username=username).exclude('password')
-    return request_get(request, query)
+
+@csrf_exempt
+def user_with_username(request, username):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_username(username))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
+        return HttpResponse('Method not allowed', status=405)
+
+
+def query_all():
+    return User.objects.all().exclude('password')
+
+
+def query_username(username):
+    return User.objects(username=username).exclude('password')
