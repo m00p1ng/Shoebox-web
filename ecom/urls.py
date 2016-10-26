@@ -25,9 +25,9 @@ urlpatterns = [
     # url(r'^order/', include('order.urls')),
 
     # api url
-    url(r'^api/product/', include('ecom.product.api.urls')),
-    url(r'^api/user/', include('ecom.user.api.urls')),
-    url(r'^api/promotion/', include('ecom.promotion.api.urls')),
-    url(r'^api/supplier/', include('ecom.suppliers.api.urls'))
+    url(r'^api/product/?', include('ecom.product.api.urls')),
+    url(r'^api/user/?', include('ecom.user.api.urls')),
+    url(r'^api/promotion/?', include('ecom.promotion.api.urls')),
+    url(r'^api/supplier/?', include('ecom.suppliers.api.urls'))
     # url(r'^api/order/', include('order.api.urls')),
 ]

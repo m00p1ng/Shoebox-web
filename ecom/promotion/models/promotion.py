@@ -1,5 +1,5 @@
 from mongoengine import *
-from ecom.include.model import to_slug, timestamp_date
+from ecom.include.model import to_slug
 import datetime
 
 class Promotions(Document):
@@ -88,4 +88,3 @@ class Promotions(Document):
         promotion = cls.objects(slug=slug)
         promotion.update(**data)
         return promotion
-

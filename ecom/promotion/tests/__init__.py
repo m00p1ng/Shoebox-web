@@ -1,1 +1,1 @@
-from .promotion import *
+from .promotion_api import *

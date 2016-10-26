@@ -87,4 +87,3 @@ class Suppliers(Document):
         supplier = cls.objects(slug=slug)
         supplier.update(**data)
         return supplier
-

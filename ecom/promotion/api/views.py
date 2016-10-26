@@ -3,67 +3,82 @@ from django.views.decorators.csrf import csrf_exempt
 from ecom.include.api import request_get
 from ecom.promotion.models import *
 import json
-import datetime
-import re
-
-def promotion_all(request):
-    return request_get(request, Promotions.objects.all())
-
-def promotion_name(request, slug):
-    return request_get(request, Promotions.objects(slug=slug).first())
 
 @csrf_exempt
-def promotion_create(request):
+def promotion(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_all())
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode())
-            err = Promotions.validation(data)
-
-            if len(err) == 0:
-                Promotions.create_obj(data)
-                return HttpResponse('Promotion created', status=201)
-            else:
-                output = ''
-                for e in err:
-                    output += e + '<br />'
-                return HttpResponse(output)
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error',status =400)
-
-        except NotUniqueError as e:
-            return HttpResponse('Promotion already exist', status=400)
-    else:
+        return promotion_create(body)
+    if request.method == 'PUT':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'DELETE':
         return HttpResponse('Method not allowed', status=405)
 
+
 @csrf_exempt
-def promotion_delete(request, slug):
+def promotion_with_name(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return request_get(query_by_name(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return promotion_update(body, slug)
     if request.method == 'DELETE':
+        return promotion_delete(slug)
+
+
+def query_all():
+    return Promotions.objects.all()
+
+
+def query_by_name(slug):
+    return Promotions.objects(slug=slug).first()
+
+
+def promotion_create(body):
+    try:
+        data = json.loads(body.decode())
+        err = Promotions.validation(data)
+
+        if len(err) == 0:
+            Promotions.create_obj(data)
+            return HttpResponse('Promotion created', status=201)
+        else:
+            output = ''
+            for e in err:
+                output += e + '<br />'
+            return HttpResponse(output)
+
+    except ValueError as e:
+        return HttpResponse('JSON Decode error',status =400)
+
+    except NotUniqueError as e:
+        return HttpResponse('Promotion already exist', status=400)
+
+
+def promotion_delete(slug):
+    item = Promotions.objects(slug=slug)
+    if not item:
+        return HttpResponse('This promotion not exist', status=404)
+    item.delete()
+    return HttpResponse('Promotion removed')
+
+
+def promotion_update(body, slug):
+    try:
         item = Promotions.objects(slug=slug)
         if not item:
-            return HttpResponse('This promotion not exist', status=404)
-        item.delete()
-        return HttpResponse('Promotion removed')
-    else:
-        return HttpResponse('Method not allowed', status=405)
+            return HttpResponse('This promotion not exist',status=404)
 
-@csrf_exempt
-def promotion_update(request, slug):
-    if request.method == 'PUT':
-        try:
-            item = Promotions.objects(slug=slug)
-            if not item:
-                return HttpResponse('This promotion not exist',status=404)
+        data = json.loads(body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
 
-            data = json.loads(request.body.decode())
-            if not data:
-                return HttpResponse('Data cannot empty', status=400)
+        Promotions.update_obj(slug,data)
+        return HttpResponse('Promotion updated')
 
-            Promotions.update_obj(slug,data)
-            return HttpResponse('Promotion updated')
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-
-    else:
-        return HttpResponse('Method not allowed', status=405)
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
