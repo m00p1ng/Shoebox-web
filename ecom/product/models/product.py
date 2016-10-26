@@ -68,19 +68,19 @@ class Products(Document):
         if 'picture' not in data:
             err.append('Picture cannot empty')
         if 'date' not in data:
-            err.append('Date cannot empty')
-            err.append('- Year cannot empty')
-            err.append('- Month cannot empty')
-            err.append('- Day cannot empty')
+            err.append('date cannot empty')
+            err.append('- year cannot empty')
+            err.append('- month cannot empty')
+            err.append('- day cannot empty')
         else:
             if not {'year', 'month', 'day'} <= set(data['date']):
-                err.append('Date cannot empty')
+                err.append('date cannot empty')
                 if 'year' not in data['date']:
-                    err.append('- Year cannot empty')
+                    err.append('- year cannot empty')
                 if 'month' not in data['date']:
-                    err.append('- Month cannot empty')
+                    err.append('- month cannot empty')
                 if 'day' not in data['date']:
-                    err.append('- Day cannot empty')
+                    err.append('- day cannot empty')
         if 'amount' not in data:
             err.append('Amount cannot empty')
         if 'size' not in data:
