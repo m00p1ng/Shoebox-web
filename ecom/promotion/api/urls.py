@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^name/(?P<slug>.+?)/?$', views.promotion_name),
 
     url(r'^create/?$', views.promotion_create),
+    url(r'^update/(?P<slug>.+?)/?$', views.promotion_update),
     url(r'^delete/(?P<slug>.+?)/?$', views.promotion_delete),
 ]

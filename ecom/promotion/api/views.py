@@ -51,7 +51,7 @@ def promotion_delete(request, slug):
 def promotion_update(request, slug):
     if request.method == 'PUT':
         try:
-            item = Promotions.object(slug=slug)
+            item = Promotions.objects(slug=slug)
             if not item:
                 return HttpResponse('This promotion not exist',status=404)
 
