@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from mongoengine.django.auth import User
 from ecom.include.api import request_get
@@ -36,3 +37,37 @@ def query_all():
 
 def query_username(username):
     return User.objects(username=username).exclude('password')
+
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        try:
+            if 'username' in request.session:
+                return HttpResponse(request.session['username'])
+
+            data = json.loads(request.body.decode())
+            username = data['username']
+            password = data['password']
+            user = User.objects(username=username).first()
+            if user and user.check_password(password):
+                request.session['username'] = username
+                request.session['role'] = user.role
+                return HttpResponse(username)
+            else:
+                return HttpResponse('Username or password not correct')
+
+        except ValueError as e:
+            return HttpResponse('JSON Decode error', status=400)
+        except KeyError as e:
+            return HttpResponse('Username or password cannot empty', status=400)
+
+
+@csrf_exempt
+def logout(request):
+    request.session.flush()
+    return HttpResponse("logout")
+
+
+def register(request):
+    pass

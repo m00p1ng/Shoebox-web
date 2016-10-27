@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { render } from 'react-dom'
+import { Link } from 'react-router'
 import {
   FormGroup,
   ControlLabel,
@@ -29,21 +31,23 @@ export default class FormLogin extends Component {
         <h1>Login</h1>
         <form>
           <FieldGroup
-            id="formControlsEmail"
+            id="username-input"
             type="text"
             label="Username"
             placeholder="Enter username"
+            onChange={this.props.onUsernameChange}
           />
           <FieldGroup
-            id="formControlsPassword"
+            id="password-input"
             label="Password"
             type="password"
             placeholder="Enter password"
+            onChange={this.props.onPasswordChange}
           />
 
-          <Button type="submit">
+          <Button type="submit" onClick={this.props.onLogin}>
             Submit
-          </Button>
+          </Button> or <Link to="/app/register"> register</Link>
         </form>
       </Grid>
     )
