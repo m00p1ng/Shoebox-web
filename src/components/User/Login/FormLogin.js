@@ -26,6 +26,7 @@ export default class FormLogin extends Component {
   render() {
     return (
       <Grid>
+        <h1>Login</h1>
         <form>
           <FieldGroup
             id="formControlsEmail"

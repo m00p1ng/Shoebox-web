@@ -29,7 +29,7 @@ module.exports = {
     // alias: {
     // },
   },
-  plugins: [
-    new BundleTracker({filename: './webpack-stats.json'}),
-  ],
+  // plugins: [
+  //   new BundleTracker({filename: './webpack-stats.json'}),
+  // ],
 }
