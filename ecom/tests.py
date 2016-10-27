@@ -1,2 +1,3 @@
 from .user.tests import *
 from .promotion.tests import *
+from .product.tests import *
