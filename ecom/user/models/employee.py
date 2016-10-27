@@ -94,7 +94,9 @@ class Employees(User):
             district = data['address']['district'],
             street = data['address']['street'],
             zipcode = data['address']['zipcode'],
-            phone = data['phone']
+            phone = data['phone'],
+            is_superuser=True,
+            is_staff=True
         )
         employee.set_password(data['password'])
         employee.save()

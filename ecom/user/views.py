@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from mongoengine.django.auth import User
@@ -18,6 +18,14 @@ def login(request):
         else:
             return HttpResponse('Username or password not correct')
 
+    if request.method == 'GET':
+        if 'username' in request.session:
+            return redirect('/')
+        return render(request, 'user/login.html', {})
+
 def logout(request):
     request.session.flush()
     return HttpResponse("logout")
+
+def register(request):
+    pass

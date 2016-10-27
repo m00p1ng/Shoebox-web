@@ -7,13 +7,13 @@ export default class Navibar extends Component {
       <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">EZ-Dev</a>
+            <a href="/">Shoe box</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">product</NavItem>
+            <NavItem eventKey={1} href="/product">Product</NavItem>
             <NavItem eventKey={2} href="#">Link</NavItem>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
@@ -25,7 +25,7 @@ export default class Navibar extends Component {
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
+            <NavItem eventKey={2} href="/login">Guest</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

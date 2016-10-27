@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-APPEND_SLASH=False 
+APPEND_SLASH=False
 
 # Application definition
 
@@ -98,6 +98,8 @@ connect('ez-ecommerce')
 AUTHENTICATION_BACKENDS = [
     'mongoengine.django.auth.MongoEngineBackend',
 ]
+
+# AUTH_USER_MODEL = 'mongo_auth.MongoUser'
 
 SESSION_ENGINE = 'mongoengine.django.sessions'
 

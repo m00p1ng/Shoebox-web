@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from .views import home
+from .user.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # app url
+    url(r'^$', home),
+    url(r'^login/?', login),
     url(r'^product/', include('ecom.product.urls')),
-    url(r'^user/', include('ecom.user.urls')),
     # url(r'^order/', include('order.urls')),
 
     # api url

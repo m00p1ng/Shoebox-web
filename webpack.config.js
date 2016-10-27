@@ -4,7 +4,9 @@ var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
   entry: {
-    product: 'src/product/index.js',
+    product: 'src/components/Product/index.js',
+    home: 'src/components/Home/index.js',
+    login: 'src/components/User/Login/index.js'
   },
   output: {
     path:'static/bundles/',
@@ -24,12 +26,10 @@ module.exports = {
     root: __dirname,
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
-      'node_modules',
-      'src/product/components',
+      'node_modules'
     ],
-    alias: {
-      Navibar: 'src/web-components/Navibar.js',
-    },
+    // alias: {
+    // },
   },
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'}),

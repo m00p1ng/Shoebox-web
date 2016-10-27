@@ -3,7 +3,7 @@ import axios from 'axios';
 const ROOT_URL = 'http://localhost/api';
 
 export function fetchAllProduct() {
-  const url = `${ROOT_URL}/product/all`;
+  const url = `${ROOT_URL}/product`;
   const request = axios.get(url);
 
   console.log('Request: ', request);
