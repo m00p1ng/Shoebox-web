@@ -68,7 +68,7 @@ def productBrand_delete(slug):
     return HttpResponse('ProductBrand removed')
 
 
-def productBrand_update(slug):
+def productBrand_update(body, slug):
     try:
         item = ProductBrands.objects(slug=slug)
         if not item:
