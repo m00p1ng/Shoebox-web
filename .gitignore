@@ -1,7 +1,9 @@
 # node files
 node_modules/
 
-# bundle folder
+# bundle file
+bundle.js
+bundle.js.map
 bundles/
 
 # vim temp files

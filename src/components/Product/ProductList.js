@@ -7,7 +7,7 @@ export default class ProductList extends Component {
       return (
         <Grid>
           <h1>Product List</h1>
-          <h3>No item</h3>
+          <h3>Loading...</h3>
         </Grid>
       )
     }

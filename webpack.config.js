@@ -7,8 +7,8 @@ module.exports = {
     bundle: 'src/route.js',
   },
   output: {
-    path:'static/bundles/',
-    filename: '[name].js',
+    path:'static/js/',
+    filename: 'bundle.js',
   },
   module: {
     loaders: [{
@@ -29,7 +29,4 @@ module.exports = {
     // alias: {
     // },
   },
-  // plugins: [
-  //   new BundleTracker({filename: './webpack-stats.json'}),
-  // ],
 }

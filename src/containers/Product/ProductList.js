@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { ProductList } from '../../components'
 
-const URL = "/api/product"
+const URL = "/api/product/tes"
 
 export default class ProductListContainer extends Component {
   constructor(props) {

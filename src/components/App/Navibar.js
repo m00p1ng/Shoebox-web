@@ -1,5 +1,15 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  MenuItem,
+  NavDropdown,
+  Form,
+  FormGroup,
+  FormControl,
+  InputGroup
+} from 'react-bootstrap'
 
 export default class Navibar extends Component {
   render() {
@@ -15,15 +25,17 @@ export default class Navibar extends Component {
           <Nav>
             <NavItem eventKey={1} href="/app/product">Product</NavItem>
             <NavItem eventKey={2} href="#">Link</NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
           </Nav>
           <Nav pullRight>
+            <NavItem eventKey={1} href="#">
+              <Form inline>
+                <FormGroup>
+                  <InputGroup>
+                    <FormControl type="text" />
+                  </InputGroup>
+                </FormGroup>
+              </Form>
+            </NavItem>
             <NavItem eventKey={1} href="#">Link Right</NavItem>
             <NavItem eventKey={2} href="/app/login">Guest</NavItem>
           </Nav>
