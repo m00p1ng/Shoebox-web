@@ -24,7 +24,6 @@ export default class Navibar extends Component {
         <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={1} href="/app/product">Product</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={1} href="#">
@@ -36,8 +35,8 @@ export default class Navibar extends Component {
                 </FormGroup>
               </Form>
             </NavItem>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="/app/login">Guest</NavItem>
+            <NavItem eventKey={2} href="/app/cart">Cart</NavItem>
+            <NavItem eventKey={3} href="/app/login">Guest</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

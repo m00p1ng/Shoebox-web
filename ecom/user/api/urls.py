@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^role/?', include('ecom.user.api.userrole.urls')),
     url(r'^customer/?', include('ecom.user.api.customer.urls')),
     url(r'^employee/?', include('ecom.user.api.employee.urls')),
+
+    url(r'^login/?', views.login),
+    url(r'^logout/?', views.logout),
 ]

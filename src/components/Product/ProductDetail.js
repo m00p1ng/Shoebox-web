@@ -1,29 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Grid } from 'react-bootstrap'
 
-const URL = "/api/product/name"
-
 export default class ProductDetail extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      product: {
-        date: [],
-        color: [],
-        size: []
-      }
-    }
-  }
-
-  componentDidMount() {
-    axios.get(`${URL}/${this.props.params.slug}`)
-      .then((response) => {
-        let product = response.data
-        this.setState({product: product})
-      });
-  }
-
   render_list(list) {
     let out = list.map(item => {
       return <li key={item}>{item}&nbsp;</li>
@@ -32,8 +10,7 @@ export default class ProductDetail extends Component {
   }
 
   render() {
-    var product = this.state.product
-    console.log(product)
+    var product = this.props.product
     return (
       <Grid>
         <h1>{product.name}</h1>

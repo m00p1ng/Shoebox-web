@@ -43,7 +43,7 @@ export default class FormLogin extends Component {
 
           <Button type="submit">
             Submit
-          </Button>
+          </Button> or <a href="/app/register"> register</a>
         </form>
       </Grid>
     )
