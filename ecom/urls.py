@@ -15,17 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
 from .views import home
-from .user.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # app url
     url(r'^$', home),
-    url(r'^login/?', login),
-    url(r'^product/', include('ecom.product.urls')),
-    # url(r'^order/', include('order.urls')),
+    url(r'^app/?', TemplateView.as_view(template_name="index.html")),
 
     # api url
     url(r'^api/product/?', include('ecom.product.api.urls')),

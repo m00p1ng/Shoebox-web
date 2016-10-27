@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
-
-import Navibar from '../App/Navibar'
-import Home from './Home'
+import Navibar from './Navibar'
 
 export default class App extends Component {
   render() {
     return (
       <div>
         <Navibar />
-        <Home />
+        <div className='container'>
+          <div>
+            {this.props.children}
+          </div>
+        </div>
       </div>
     )
   }
 }
-
-render(<App />, document.getElementById('app'))

@@ -4,9 +4,7 @@ var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
   entry: {
-    product: 'src/components/Product/index.js',
-    home: 'src/components/Home/index.js',
-    login: 'src/components/User/Login/index.js'
+    bundle: 'src/route.js',
   },
   output: {
     path:'static/bundles/',
