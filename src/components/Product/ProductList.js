@@ -25,7 +25,7 @@ export default class ProductList extends Component {
   render() {
     return (
       <Grid>
-        <h1>Product List by mooping eiei 555</h1>
+        <h1>Product List</h1>
         {
           this.state.products.map(product =>
             <ProductDetail key={product.slug} product={product} />
