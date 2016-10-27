@@ -1,17 +1,19 @@
 from mongoengine import *
+from ecom.include.model import to_slug
 
 class Companies(Document):
-    companyName = StringField(max_length=50, required=True, unique=True)
+    name = StringField(max_length=100, required=True, unique=True)
     city = StringField(max_length=50, required=True)
     district = StringField(max_length=50, required=True)
     street = StringField(max_length=50, required=True)
     zipcode = StringField(max_length=10, required=True)
+    slug = StringField(max_length=100, required=True, unique=True)
 
     @staticmethod
     def validation(data):
         err = []
-        if 'companyName' not in data:
-            err.append('Companies name cannot empty')
+        if 'name' not in data:
+            err.append('Company name cannot empty')
         if 'address' not in data:
             err.append('Address cannot empty')
             err.append('- City cannot empty')
@@ -35,17 +37,18 @@ class Companies(Document):
     @classmethod
     def create_obj(cls, data):
        companies = cls(
-           companyName=data['companyName'],
+           name=data['name'],
            city=data['address']['city'],
            district=data['address']['district'],
            street=data['address']['street'],
            zipcode=data['address']['zipcode'],
+           slug=to_slug(data['name'])
        )
        companies.save()
        return companies
 
     @classmethod
-    def update_obj(cls, companyName, data):
+    def update_obj(cls, slug, data):
         if 'address' in data:
             if 'city' in data['address']:
                 data['city'] = data['address']['city']
@@ -56,7 +59,9 @@ class Companies(Document):
             if 'zipcode' in data['address']:
                 data['zipcode'] = data['address']['zipcode']
             data.pop('address')
+        if 'name' in data:
+            data['slug'] = to_slug(data['name'])
 
-        companies = cls.objects(companyName=companyName)
+        companies = cls.objects(slug=slug)
         companies.update(**data)
         return companies

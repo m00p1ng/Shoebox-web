@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^name/(?P<slug>.+?)/?$', views.supplier_with_name),
 #    url(r'^by(?P<search>.+?)/(?P<slug>.+?)/?$', views.product_search),
 
-    url(r'^companyname/?', include('ecom.suppliers.api.company.urls'))
+    url(r'^company/?', include('ecom.suppliers.api.company.urls'))
 ]
