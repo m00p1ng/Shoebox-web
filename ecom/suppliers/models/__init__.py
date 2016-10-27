@@ -1,1 +1,2 @@
-from .suppliers import *
+from .company import Companies
+from .suppliers import Suppliers
