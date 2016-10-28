@@ -17,12 +17,27 @@ def order(request):
     if request.method == 'POST':
         return order_create(body)
     if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
+def order_with_customerID(request):
+    body  = request.body
+    if request.method == 'GET':
+        return request_get_real(Orders, query_by_customerID(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allow', status=405)
+    if request.method == 'PUT':
         return order_update(body, slug)
     if request.method == 'DELETE':
         return order_delete(slug)
 
+
 def query_all():
     return Orders.objects.all()
+
+def query_by_customerID(slug):
+    return Orders.objects(slug=slug).first()
 
 
 

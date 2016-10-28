@@ -2,6 +2,7 @@ from mongoengine import *
 from ecom.user.models import Customers, Employees
 from ecom.proudct.models import Products
 from ecom.promotion.models import Promotions
+from ecom.include.model import to_slug
 import datetime
 
 class Orders(Document):
@@ -15,6 +16,7 @@ class Orders(Document):
     productID = ReferenceField(Products)
     price = IntField()
     quantity = IntField()
+    slug = StringField(max_length=200, required=True, unique=True)
 
     @staticmethod
     def validation(data):
@@ -55,12 +57,12 @@ class Orders(Document):
             quantity = data['quantity'],
             price = data['price'],
         )
-
+        slug = to_slug(data['customerID']
         order.save()
         return order
 
     @classmethod
-    def update_obj(cls,data) 
+    def update_obj(cls, slug, data) 
         if 'shipDate' in data:
             data['shipDate'] = datetime.datetime(
                 year = data['date']['year'],
@@ -75,5 +77,8 @@ class Orders(Document):
             status = data['quantity']
         if 'price' in data
             totalprice = data['price']
+        if 'customerID' in data
+            data['slug'] = to_slug(data['customerID'])
+        order = cls.objects(slug=slug)
         order.update(**data)
         return order
