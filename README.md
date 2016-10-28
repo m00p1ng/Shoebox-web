@@ -34,30 +34,18 @@
     $ npm install
     ```
 
-7. generate javascript
+7. generate bundle javascript file
     ```
     $ npm run build
     ```
 
 ## How to run server
+1. run server
+    ```
+    $ npm start
+    ```
 
-  ```
-  $ python manage.py runserver
-
-  or
-
-  $ ./manage.py runserver
-
-  or
-
-  $ npm start
-  ```
-
-## How to run webpack (for FrontEnd)
-  ```
-  $ npm run watch
-
-  or
-
-  $ webpack --config webpack.config.js
-  ```
+2. *(for FrontEnd)* run webpack for generate new bundle of javascript
+    ```
+    $ npm run watch
+    ```
