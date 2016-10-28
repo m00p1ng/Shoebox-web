@@ -4,7 +4,7 @@ import { Grid } from 'react-bootstrap'
 export default class ProductDetail extends Component {
   render_list(list) {
     let out = list.map(item => {
-      return <li key={item}>{item}&nbsp;</li>
+      return <li key={item}>{item}</li>
     })
     return out
   }

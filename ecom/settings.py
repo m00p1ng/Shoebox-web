@@ -45,10 +45,6 @@ INSTALLED_APPS = [
     'webpack_loader',
     'mongoengine.django.mongo_auth',
     'mongoengine.django',
-
-    # my apps
-    'ecom.product',
-    'ecom.user',
 ]
 
 MIDDLEWARE = [

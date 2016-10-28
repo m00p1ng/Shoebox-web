@@ -26,7 +26,8 @@ module.exports = {
     modulesDirectories: [
       'node_modules'
     ],
-    // alias: {
-    // },
+    alias: {
+      config: 'src/config'
+    },
   },
 }
