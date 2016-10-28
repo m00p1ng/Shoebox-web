@@ -89,7 +89,7 @@ DATABASES = {
     }
 }
 
-connect('ez-ecommerce')
+connect('shoebox')
 
 AUTHENTICATION_BACKENDS = [
     'mongoengine.django.auth.MongoEngineBackend',
@@ -145,15 +145,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
-
 TEST_MONGO_DATABASE = {
-    'db': 'test-ez',
+    'db': 'test-shoebox',
     'host': ['localhost'],
     'port': 27017,
 }
