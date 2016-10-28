@@ -1,10 +1,10 @@
 {
-  "name": "ecom",
+  "name": "shoebox-ecommerce",
   "version": "0.0.1",
-  "description": "This is a EZ-ecommerce project",
+  "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "./manage.py runserver",
+    "start": "source ../bin/activate && ./manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch"
   },
@@ -29,7 +29,6 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "redux-devtools": "^3.3.1",
     "webpack": "^1.13.2",
-    "webpack-bundle-tracker": "0.0.93",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {

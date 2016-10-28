@@ -27,9 +27,9 @@ def product_with_name(request, slug):
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':
-        return product_update(body, username)
+        return product_update(body, slug)
     if request.method == 'DELETE':
-        return product_delete(username)
+        return product_delete(slug)
 
 
 @csrf_exempt

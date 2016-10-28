@@ -42,6 +42,7 @@ def query_username(username):
 @csrf_exempt
 def login(request):
     if request.method == 'POST':
+<<<<<<< HEAD
         data = json.loads(request.body.decode())
         username = data['username']
         password = data['password']
@@ -58,6 +59,30 @@ def login(request):
             return redirect('/app')
 
 
+=======
+        try:
+            if 'username' in request.session:
+                return HttpResponse(request.session['username'])
+
+            data = json.loads(request.body.decode())
+            username = data['username']
+            password = data['password']
+            user = User.objects(username=username).first()
+            if user and user.check_password(password):
+                request.session['username'] = username
+                request.session['role'] = user.role
+                return HttpResponse(username)
+            else:
+                return HttpResponse('Username or password not correct')
+
+        except ValueError as e:
+            return HttpResponse('JSON Decode error', status=400)
+        except KeyError as e:
+            return HttpResponse('Username or password cannot empty', status=400)
+
+
+@csrf_exempt
+>>>>>>> 15af0d458029c84411ae3b0c4fad61c3eba78004
 def logout(request):
     request.session.flush()
     return HttpResponse("logout")

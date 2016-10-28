@@ -1,18 +1,16 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from ecom.product.models import ProductColors
 from ecom.include.api import request_get
-from mongoengine import NotUniqueError
+from ecom.suppliers.models import Companies
 import json
 
-
 @csrf_exempt
-def productColor(request):
+def company(request):
     body = request.body
     if request.method == 'GET':
         return request_get(query_all())
     if request.method == 'POST':
-        return productColor_create(body)
+        return company_create(body)
     if request.method == 'PUT':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'DELETE':
@@ -20,33 +18,34 @@ def productColor(request):
 
 
 @csrf_exempt
-def productColor_with_name(request, slug):
+def company_with_name(request, slug):
     body = request.body
     if request.method == 'GET':
         return request_get(query_by_name(slug))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':
-        return productColor_update(body, slug)
+        return company_update(body, slug)
     if request.method == 'DELETE':
-        return productColor_delete(slug)
+        return company_delete(slug)
 
 
-def productColor_all():
-    return ProductColors.objects.all()
+def query_all():
+    return Companies.objects.all()
 
 
-def productColor_name(slug):
-    return ProductColors.objects(slug=slug).first()
+def query_by_name(slug):
+    return Companies.objects(slug=slug).first()
 
 
-def productColor_create(body):
+def company_create(body):
     try:
         data = json.loads(body.decode())
-        err = ProductColors.validation(data)
+        err = Companies.validation(data)
+
         if len(err) == 0:
-            ProductColors.create_obj(data)
-            return HttpResponse('productColor created', status=201)
+            Companies.create_obj(data)
+            return HttpResponse('Company created', status=201)
         else:
             output = ''
             for e in err:
@@ -54,32 +53,32 @@ def productColor_create(body):
             return HttpResponse(output)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        return HttpResponse('JSON Decode error',status =400)
 
     except NotUniqueError as e:
-        return HttpResponse('Product color already exist', status=400)
+        return HttpResponse('Company already exist', status=400)
 
 
-def productColor_delete(slug):
-    item = ProductColors.objects(slug=slug)
+def company_delete(slug):
+    item = Companies.objects(slug=slug)
     if not item:
-        return HttpResponse('This productColor not exist', status=404)
+        return HttpResponse('This company not exist', status=404)
     item.delete()
-    return HttpResponse('productColor removed')
+    return HttpResponse('Company removed')
 
 
-def productColor_update(body, slug):
+def company_update(body, slug):
     try:
-        item = ProductColors.objects(slug=slug)
+        item = Companies.objects(slug=slug)
         if not item:
-            return HttpResponse('This productColor not exist', status=404)
+            return HttpResponse('This company not exist',status=404)
 
         data = json.loads(body.decode())
         if not data:
             return HttpResponse('Data cannot empty', status=400)
 
-        ProductColors.update_obj(slug, data)
-        return HttpResponse('productColor updated')
+        Companies.update_obj(slug,data)
+        return HttpResponse('Company updated')
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

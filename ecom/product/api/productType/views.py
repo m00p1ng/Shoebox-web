@@ -46,7 +46,7 @@ def productType_create(body):
         err = ProductTypes.validation(data)
         if len(err) == 0:
             ProductTypes.create_obj(data)
-            return HttpResponse('ProductType created', status=201)
+            return HttpResponse('productType created', status=201)
         else:
             output = ''
             for e in err:
@@ -57,7 +57,7 @@ def productType_create(body):
         return HttpResponse('JSON Decode error', status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('Product type already exist', status=400)
+        return HttpResponse('product type already exist', status=400)
 
 
 def productType_delete(slug):
@@ -65,7 +65,7 @@ def productType_delete(slug):
     if not item:
         return HttpResponse('This productType not exist', status=404)
     item.delete()
-    return HttpResponse('ProductType removed')
+    return HttpResponse('productType removed')
 
 
 def productType_update(body, slug):
@@ -79,7 +79,7 @@ def productType_update(body, slug):
             return HttpResponse('Data cannot empty', status=400)
 
         ProductTypes.update_obj(slug, data)
-        return HttpResponse('ProductType updated')
+        return HttpResponse('productType updated')
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

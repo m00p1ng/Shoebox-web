@@ -27,7 +27,11 @@ module.exports = {
       'node_modules'
     ],
     alias: {
+<<<<<<< HEAD
       config: 'src/config.js'
+=======
+      config: 'src/config'
+>>>>>>> 15af0d458029c84411ae3b0c4fad61c3eba78004
     },
   },
 }

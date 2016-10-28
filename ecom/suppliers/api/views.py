@@ -1,69 +1,92 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from ecom.include.api import request_get
+from ecom.include.api import request_get, request_get_real
 from ecom.suppliers.models import *
 from mongoengine import NotUniqueError
 import json
 
-def supplier_all(request):
-    return request_get(request, Suppliers.objects.all())
-
-def supplier_companyName(request, username):
-    return request_get(request, Suppliers.objects(slug=slug).first())
-
 @csrf_exempt
-def supplier_create(request):
+def supplier(request):
+    body = request.body
+    if request.method == 'GET':
+        return request_get_real(Suppliers, query_all())
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode())
-            err = Suppliers.validation(data)
+        return supplier_create(body)
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
 
-            if len(err) == 0:
-                Suppliers.create_obj(data)
-                return HttpResponse('Supplier created', status=201)
-            else:
-                output = ''
-                for e in err:
-                    output += e + '<br />'
-                return HttpResponse(output)
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-
-        except NotUniqueError as e:
-            return HttpResponse('Supplier already exist', status=400)
-    else:
-        return HttpResponse('Method not allowed', status=405)
 
 @csrf_exempt
-def supplier_delete(request, slug):
+def supplier_with_name(request, slug):
+    body = request.body
+    if request.method == 'GET':
+        return request_get_real(Suppliers, query_by_name(slug))
+    if request.method == 'POST':
+        return HttpResponse('Method not allowed', status=405)
+    if request.method == 'PUT':
+        return supplier_update(body, slug)
     if request.method == 'DELETE':
+        return supplier_delete(slug)
+
+def query_all():
+    return Suppliers.objects.all()
+
+
+def query_by_name(slug):
+    return Suppliers.objects(slug=slug).first()
+
+
+def supplier_companyName(companyName):
+    companyName = Companies.objects(companyName=companyName).first()
+    if not companyName:
+        return HttpResponse('Not found', status=404)
+    supplier = SupplicompanyName.objects(companyName=companyName.id)
+    return request_get_real(Suppliers, supplier)
+
+
+def supplier_create(body):
+    try:
+        data = json.loads(body.decode())
+        err = Suppliers.validation(data)
+
+        if len(err) == 0:
+            Suppliers.create_obj(data)
+            return HttpResponse('Supplier created', status=201)
+        else:
+            output = ''
+            for e in err:
+                output += e + '<br />'
+            return HttpResponse(output)
+
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
+
+    except NotUniqueError as e:
+        return HttpResponse('Supplier already exist', status=400)
+
+
+def supplier_delete(slug):
+    item = Suppliers.objects(slug=slug)
+    if not item:
+        return HttpResponse('This supplier not exist', status=404)
+    item.delete()
+    return HttpResponse('Supplier removed')
+
+
+def supplier_update(body, slug):
+    try:
         item = Suppliers.objects(slug=slug)
         if not item:
             return HttpResponse('This supplier not exist', status=404)
-        return HttpResponse('Supplier removed')
-    else:
-        return HttpResponse('Method not allowed', status=405)
 
-@csrf_exempt
-def supplier_update(request, slug):
-    if request.method == 'PUT':
-        try:
-            item = Suppliers.objects(slug=slug)
-            if not item:
-                return HttpResponse('This supplier not exist', status=404)
+        data = json.loads(body.decode())
+        if not data:
+            return HttpResponse('Data cannot empty', status=400)
 
-            data = json.loads(request.body.decode())
-            if not data:
-                return HttpResponse('Data cannot empty', status=400)
+        Suppliers.update_obj(slug, data)
+        return HttpResponse('Supplier updated')
 
-            Suppliers.update_obj(slug, data)
-            return HttpResponse('Supplier updated')
-
-        except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
-    else:
-        return HttpResponse('Method not allowed', status=405)
-
-
-
+    except ValueError as e:
+        return HttpResponse('JSON Decode error', status=400)
