@@ -38,3 +38,26 @@
     ```
     $ npm run build
     ```
+
+## How to run server
+
+  ```
+  $ python manage.py runserver
+
+  or
+
+  $ ./manage.py runserver
+
+  or
+
+  $ npm start
+  ```
+
+## How to run webpack (for FrontEnd)
+  ```
+  $ npm run watch
+
+  or
+
+  $ webpack --config webpack.config.js
+  ```
