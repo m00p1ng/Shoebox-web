@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 import { Grid } from 'react-bootstrap'
 
 export default class ProductList extends Component {
@@ -16,7 +17,9 @@ export default class ProductList extends Component {
         <h1>Product List</h1>
         {
           this.props.products.map(product =>
-            <h3 key={product.slug}><a href={`/app/product/${product.slug}`}>{product.name}</a></h3>
+            <h3 key={product.slug}>
+              <Link to={`/app/product/${product.slug}`}>{product.name}</Link>
+            </h3>
           )
         }
       </Grid>

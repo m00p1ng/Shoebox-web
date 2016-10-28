@@ -1,28 +1,29 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { loadProducts } from '../../actions/product'
 import { ProductList } from '../../components'
 
-const URL = "/api/product"
-
-export default class ProductListContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: []
-    }
-  }
-
+class ProductListContainer extends Component {
   componentDidMount() {
-    axios.get(URL)
-      .then((response) => {
-        let products = response.data
-        this.setState({products})
-      });
+    this.props.loadProducts()
   }
 
   render() {
     return (
-      <ProductList products={this.state.products} />
+      <ProductList products={this.props.products} />
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { products: state.products }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ products: loadProducts }, dispatch);
+}
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(ProductListContainer)

@@ -2,9 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: {
-    bundle: 'src/route.js',
-  },
+  entry: [
+    'src/index.js',
+  ],
   output: {
     path:'static/js/',
     filename: 'bundle.js',
@@ -26,7 +26,7 @@ module.exports = {
       'node_modules'
     ],
     alias: {
-      config: 'src/config'
+      endpoint: 'src/constants/endpoint'
     },
   },
 }

@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { URL_ROOT } from 'config'
+import { URL_ROOT } from 'endpoint'
 
 import {
   App,
   Home,
-  FormLogin,
-  FormRegister,
+  Register,
+  Login,
   Cart
 } from './components'
 
 import {
   ProductList,
-  ProductDetail
+  ProductDetail,
 } from './containers'
 
-render((
-  <Router history={browserHistory}>
+export default (
     <Route path='/'>
       <Route path={`${URL_ROOT}`} component={App}>
         <IndexRoute component={Home} />
@@ -25,10 +23,9 @@ render((
           <IndexRoute component={ProductList} />
           <route path=':slug' component={ProductDetail} />
         </route>
-        <Route path='login' component={FormLogin} />
-        <Route path='register' component={FormRegister} />
+        <Route path='login' component={Login} />
+        <Route path='register' component={Register} />
         <Route path='cart' component={Cart} />
       </Route>
     </Route>
-  </Router>
-), document.getElementById('app'))
+)

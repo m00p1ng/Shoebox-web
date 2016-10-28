@@ -16,15 +16,20 @@ export default class Navibar extends Component {
   render() {
     return (
       <Navbar inverse>
-        <IndexLinkContainer to='/app'>
+        {/* <IndexLinkContainer to='/app'> */}
         <Navbar.Header>
           <Navbar.Brand>
             The Shoebox
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        </IndexLinkContainer>
+        {/* </IndexLinkContainer> */}
         <Navbar.Collapse>
+          <Nav>
+            <LinkContainer to="/app">
+              <NavItem eventKey={1}>Home</NavItem>
+            </LinkContainer>
+          </Nav>
           <Nav>
             <LinkContainer to="/app/product">
               <NavItem eventKey={1}>Product</NavItem>
