@@ -4,7 +4,7 @@
   "description": "This is a EZ-ecommerce project",
   "main": "index.js",
   "scripts": {
-    "start": "./manage.py runserver",
+    "start": "source ../bin/activate && ./manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch"
   },
