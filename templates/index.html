@@ -1,8 +1,14 @@
-{% extends 'base.html' %}
-{% load render_bundle from webpack_loader %}
-
-{% block content %}
-<div id='app'></div>
-<script type="text/javascript" src="/static/js/bundle.js"></script>
-
-{% endblock %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The ShoeBox</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href='{% static 'css/bootstrap.css' %}'>
+  </head>
+  <body>
+    <div id='app'></div>
+    <script type="text/javascript" src="/static/js/bundle.js"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FormLogin } from '../../components'
+import { FormLogin } from '../../../components'
 
 export default class FormLoginContainer extends Component {
   constructor(props) {
