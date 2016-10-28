@@ -6,14 +6,14 @@ import { URL_ROOT } from 'config'
 import {
   App,
   Home,
+  FormLogin,
   FormRegister,
-  Cart,
-  Login
+  Cart
 } from './components'
 
 import {
   ProductList,
-  ProductDetail,
+  ProductDetail
 } from './containers'
 
 render((
@@ -25,7 +25,7 @@ render((
           <IndexRoute component={ProductList} />
           <route path=':slug' component={ProductDetail} />
         </route>
-        <Route path='login' component={Login} />
+        <Route path='login' component={FormLogin} />
         <Route path='register' component={FormRegister} />
         <Route path='cart' component={Cart} />
       </Route>
