@@ -21,7 +21,7 @@ class productColor_API_Test(MongoTestCase):
         c.post(self.URL, data=self.CREATE_BODY, content_type="application/json")
 
         UPDATE_BODY = """{ "name": "black" }"""
-        
+
         c = Client()
         res = c.put(self.URL_COLOR, data=UPDATE_BODY, content_type="application/json")
         self.assertEqual(res.content.decode(), 'productColor updated')

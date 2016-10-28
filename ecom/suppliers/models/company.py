@@ -53,7 +53,7 @@ class Companies(Document):
             if 'city' in data['address']:
                 data['city'] = data['address']['city']
             if 'district' in data['address']:
-                data['district'] = data['district']['city']
+                data['district'] = data['address']['district']
             if 'street' in data['address']:
                 data['street'] = data['address']['street']
             if 'zipcode' in data['address']:

@@ -28,6 +28,7 @@ def supplier_with_name(request, slug):
     if request.method == 'PUT':
         return supplier_update(body, slug)
     if request.method == 'DELETE':
+        print(slug)
         return supplier_delete(slug)
 
 def query_all():
@@ -38,11 +39,11 @@ def query_by_name(slug):
     return Suppliers.objects(slug=slug).first()
 
 
-def supplier_companyName(companyName):
-    companyName = Companies.objects(companyName=companyName).first()
-    if not companyName:
+def supplier_company(company):
+    company = Companies.objects(name=company).first()
+    if not company:
         return HttpResponse('Not found', status=404)
-    supplier = SupplicompanyName.objects(companyName=companyName.id)
+    supplier = Suppliers.objects(company=company.id)
     return request_get_real(Suppliers, supplier)
 
 
@@ -68,6 +69,7 @@ def supplier_create(body):
 
 
 def supplier_delete(slug):
+    print(slug)
     item = Suppliers.objects(slug=slug)
     if not item:
         return HttpResponse('This supplier not exist', status=404)

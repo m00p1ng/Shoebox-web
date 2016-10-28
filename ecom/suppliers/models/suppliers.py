@@ -1,9 +1,10 @@
 from mongoengine import *
 from ecom.include.model import to_slug
 from ecom.suppliers.models import Companies
+import json
 
 class Suppliers(Document):
-    companyName = ReferenceField(Companies, required=True)
+    company = ReferenceField(Companies, required=True)
     contactFirstname = StringField(max_length=50, required=True)
     contactLastname = StringField(max_length=50, required=True)
     contactTitle = StringField(max_length=50, required=True)
@@ -14,9 +15,9 @@ class Suppliers(Document):
     def get_id_from_field(data):
         field_id = {}
 
-        if 'companyName' in data:
-            companyName = Companies.objects(companyName=data['companyName']).first().id
-            field_id['companyName'] = companyName
+        if 'company' in data:
+            company = Companies.objects(slug=data['company']).first().id
+            field_id['company'] = company
 
         return field_id
 
@@ -46,10 +47,10 @@ class Suppliers(Document):
             email=data['email'],
             phone=data['phone'],
             slug=to_slug(uniqueName),
-            companyName=field_id['companyName']
+            company=field_id['company']
         )
         supplier.save()
-        return product
+        return supplier
 
     @classmethod
     def update_obj(cls, slug, data):
@@ -69,10 +70,10 @@ class Suppliers(Document):
         return supplier
 
     def to_realData(data):
-        companyName = ProductBrands.objects(pk=data['companyName']).first().name
+        company = Companies.objects(pk=data['company']).first().name
 
         real_data = {
-            'companyName': companyName
+            'company': company
         }
 
         return real_data
@@ -80,7 +81,7 @@ class Suppliers(Document):
     @classmethod
     def mapID_to_obj(cls, supplier):
         data = {
-            'brand': product.brand.id,
+            'company': supplier.company.id,
         }
         real_data = cls.to_realData(data)
 
@@ -91,7 +92,7 @@ class Suppliers(Document):
             'email' : supplier.email,
             'phone' : supplier.phone,
             'slug' : supplier.slug,
-            'companyName' : real_data['companyName']
+            'company' : real_data['company']
         }
         return obj
 
