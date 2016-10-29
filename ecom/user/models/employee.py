@@ -17,7 +17,6 @@ class Employees(User):
 
     def validation(data):
         err = defaultdict(list)
-        print(dir(err))
         if 'username' not in data:
             err['username'].append('Username cannot empty')
         if 'password' not in data:

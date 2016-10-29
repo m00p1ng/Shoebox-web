@@ -1,6 +1,5 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from ecom.promotion.api import *
 from ecom.promotion.models import Promotions
 
 class Promotion_API_Test(MongoTestCase):

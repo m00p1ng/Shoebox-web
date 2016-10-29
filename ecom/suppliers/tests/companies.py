@@ -1,6 +1,6 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from ecom.suppliers.api.company import *
+from ecom.suppliers.company import *
 from ecom.suppliers.models import company
 
 class Supplier_API_Test(MongoTestCase):

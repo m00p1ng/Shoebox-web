@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^delete/(?P<slug>.+?)/?$', views.order_delete),
     url(r'^update/(?P<slug>.+?)/?$', views.order_update),
 
-    url(r'^group/', include('ecom.orderGroup.api.urls'))
+    url(r'^group/', include('ecom.orderGroup.urls'))
 ]

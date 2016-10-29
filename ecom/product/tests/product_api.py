@@ -1,6 +1,5 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from ecom.product.api import *
 from ecom.product.models import product
 from ecom.product.models import productColor
 from ecom.product.models import productBrand

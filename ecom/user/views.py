@@ -65,8 +65,15 @@ def login(request):
         except KeyError as e:
             return HttpResponse('Username or password cannot empty', status=400)
 
+    if request.method == 'GET':
+        return HttpResponse('Method not allowed', status=405)
+
 
 @csrf_exempt
 def logout(request):
-    request.session.flush()
-    return HttpResponse("logout")
+    if 'username' in request.session:
+        request.session.flush()
+        logged_out = {"logged_out": True}
+    else:
+        logged_out = {"logged_out": False}
+    return HttpResponse(json.dumps(logged_out), content_type="application/json")

@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from .views import home
-from .user.api.views import login, logout
+from .user.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,9 +29,9 @@ urlpatterns = [
     # api url
     url(r'^api/login/?', login),
     url(r'^api/logout/?', logout),
-    url(r'^api/product/?', include('ecom.product.api.urls')),
-    url(r'^api/user/?', include('ecom.user.api.urls')),
-    url(r'^api/promotion/?', include('ecom.promotion.api.urls')),
-    url(r'^api/supplier/?', include('ecom.suppliers.api.urls'))
+    url(r'^api/product/?', include('ecom.product.urls')),
+    url(r'^api/user/?', include('ecom.user.urls')),
+    url(r'^api/promotion/?', include('ecom.promotion.urls')),
+    url(r'^api/supplier/?', include('ecom.suppliers.urls'))
     # url(r'^api/order/', include('order.api.urls')),
 ]

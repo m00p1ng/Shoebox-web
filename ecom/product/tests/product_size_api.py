@@ -1,6 +1,5 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from ecom.product.api.productSize import *
 from ecom.product.models import productSize
 
 class productSize_API_Test(MongoTestCase):

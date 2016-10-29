@@ -1,6 +1,5 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from ecom.user.api.employee import *
 from ecom.user.models import Employees
 
 class Employee_API_Test(MongoTestCase):
