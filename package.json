@@ -7,7 +7,7 @@
     "start": "source ../bin/activate && ./manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
-    "test-api": "source ../bin/activate && python manage.py test ecom.tests"
+    "test-api": "source ../bin/activate && python manage.py test api.tests"
   },
   "repository": {
     "type": "git",
