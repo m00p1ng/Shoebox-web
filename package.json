@@ -1,24 +1,25 @@
 {
-  "name": "shoebox-ecommerce",
+  "name": "shoebox-web",
   "version": "0.0.1",
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "source ../bin/activate && ./manage.py runserver",
+    "start": "source ./shoebox-env/bin/activate && ./manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
-    "test-api": "source ../bin/activate && python manage.py test api.tests"
+    "env": "source ./shoebox-env/bin/activate",
+    "test-api": "source ./shoebox-env/bin/activate && python manage.py test api.tests"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/moopings/EZ-eCommerce.git"
+    "url": "git+ssh://git@github.com/moopings/Shoebox-web.git"
   },
   "author": "Mongkonchai Priyachiwa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/moopings/EZ-eCommerce/issues"
+    "url": "https://github.com/moopings/Shoebox-web/issues"
   },
-  "homepage": "https://github.com/moopings/EZ-eCommerce#readme",
+  "homepage": "https://github.com/moopings/Shoebox-web#readme",
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third party apps
-    'webpack_loader',
     'mongoengine.django.mongo_auth',
     'mongoengine.django',
 ]
