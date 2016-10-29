@@ -101,7 +101,7 @@ def product_create(body):
             Products.create_obj(data)
             return HttpResponse('Product created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

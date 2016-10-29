@@ -1,8 +1,9 @@
 from mongoengine import *
+from collections import defaultdict
 
 class UserRoles(Document):
     role = StringField(max_length=20, required=True, unique=True)
-    is_active = BooleanField(required=True)
+    is_active = BooleanField(required=True, default=True)
 
     @classmethod
     def create_obj(cls, data):
@@ -22,7 +23,5 @@ class UserRoles(Document):
     def validation(data):
         err = []
         if 'role' not in data:
-            err.append('Role cannot empty')
-        if 'is_active' not in data:
-            err.append('is_active cannot empty')
+            err['role'].append('Role cannot empty')
         return err

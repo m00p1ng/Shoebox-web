@@ -48,7 +48,7 @@ def productColor_create(body):
             ProductColors.create_obj(data)
             return HttpResponse('productColor created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

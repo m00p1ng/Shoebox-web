@@ -47,7 +47,7 @@ def promotion_create(body):
             Promotions.create_obj(data)
             return HttpResponse('Promotion created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error',status =400)

@@ -48,7 +48,7 @@ def productSize_create(body):
             ProductSizes.create_obj(data)
             return HttpResponse('productSize created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

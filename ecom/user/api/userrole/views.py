@@ -44,7 +44,7 @@ def userRole_create(body):
             UserRoles.create_obj(data)
             return HttpResponse('User role created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

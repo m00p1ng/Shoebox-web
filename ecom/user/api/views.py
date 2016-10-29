@@ -58,7 +58,7 @@ def login(request):
                 token = {"token": request.session.session_key}
                 return HttpResponse(json.dumps(token), content_type="application/json")
             else:
-                return HttpResponse('Username or password not correct')
+                return HttpResponse('Unauthorized', status=401)
 
         except ValueError as e:
             return HttpResponse('JSON Decode error', status=400)
@@ -70,7 +70,3 @@ def login(request):
 def logout(request):
     request.session.flush()
     return HttpResponse("logout")
-
-
-def register(request):
-    pass

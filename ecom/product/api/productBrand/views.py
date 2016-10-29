@@ -48,7 +48,7 @@ def productBrand_create(body):
             ProductBrands.create_obj(data)
             return HttpResponse('ProductBrand created', status=201)
         else:
-            errors_to_json(err)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
