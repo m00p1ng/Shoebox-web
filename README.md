@@ -25,10 +25,6 @@
   ```
   $ source ./shoebox-env/bin/activate
   ```
-  or
-  ```
-  $ npm run env
-  ```
 
 5. install python project package dependencies
   ```
