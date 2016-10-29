@@ -5,8 +5,8 @@ import { URL_ROOT } from 'endpoint'
 import {
   App,
   Home,
-  Register,
-  Login,
+  FormRegister,
+  FormLogin,
   Cart
 } from './components'
 
@@ -23,8 +23,8 @@ export default (
           <IndexRoute component={ProductList} />
           <route path=':slug' component={ProductDetail} />
         </route>
-        <Route path='login' component={Login} />
-        <Route path='register' component={Register} />
+        <Route path='login' component={FormLogin} />
+        <Route path='register' component={FormRegister} />
         <Route path='cart' component={Cart} />
       </Route>
     </Route>

@@ -45,7 +45,7 @@ export default class FormLogin extends Component {
             onChange={this.props.onPasswordChange}
           />
 
-          <Button type="submit" onClick={this.props.onLogin}>
+          <Button type="button" onClick={this.props.onLogin}>
             Submit
           </Button> or <Link to="/app/register"> register</Link>
         </form>
