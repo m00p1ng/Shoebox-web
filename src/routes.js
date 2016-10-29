@@ -6,13 +6,15 @@ import {
   App,
   Home,
   FormRegister,
-  FormLogin,
-  Cart
+  Cart,
+  NotFound,
+  ProductNotFound
 } from './components'
 
 import {
   ProductList,
   ProductDetail,
+  FormLogin
 } from './containers'
 
 export default (
@@ -22,10 +24,12 @@ export default (
         <route path='product'>
           <IndexRoute component={ProductList} />
           <route path=':slug' component={ProductDetail} />
+          <Route path='*' component={ProductNotFound} />
         </route>
         <Route path='login' component={FormLogin} />
         <Route path='register' component={FormRegister} />
         <Route path='cart' component={Cart} />
+        <Route path='*' component={NotFound} />
       </Route>
     </Route>
 )

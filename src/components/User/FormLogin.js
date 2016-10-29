@@ -14,6 +14,7 @@ import {
   Row,
   Col
 } from 'react-bootstrap'
+import { URL_ROOT } from 'endpoint'
 
 
 function FieldGroup({ id, label, help, ...props }) {
@@ -49,9 +50,12 @@ export default class FormLogin extends Component {
                 onChange={this.props.onPasswordChange}
               />
 
-              <Button type="button" bsStyle="success" onClick={this.props.onLogin}>
-                Submit
-              </Button> or <Link to="/app/register"> register</Link>
+              <Button 
+                type="button"
+                bsStyle="success"
+                onClick={this.props.onLogin}>
+                Login
+              </Button> or <Link to={`${URL_ROOT}/register`}> register</Link>
             </form>
           </Col>
         </Row>

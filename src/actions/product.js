@@ -9,7 +9,7 @@ import {
   LOAD_PRODUCT_REQUEST,
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE
-} from '../constants/actionTypes'
+} from 'actionTypes'
 
 export const loadProducts = () => ({
   [CALL_API]: {

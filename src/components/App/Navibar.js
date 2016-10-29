@@ -9,29 +9,30 @@ import {
   Form,
   FormGroup,
   FormControl,
-  InputGroup
+  InputGroup,
+  Label
 } from 'react-bootstrap'
+
+import { URL_ROOT } from 'endpoint'
 
 export default class Navibar extends Component {
   render() {
     return (
       <Navbar inverse>
-        {/* <IndexLinkContainer to='/app'> */}
         <Navbar.Header>
           <Navbar.Brand>
             The Shoebox
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        {/* </IndexLinkContainer> */}
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to="/app">
+            <LinkContainer to={`${URL_ROOT}`}>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
           </Nav>
           <Nav>
-            <LinkContainer to="/app/product">
+            <LinkContainer to={`${URL_ROOT}/product`}>
               <NavItem eventKey={2}>Product</NavItem>
             </LinkContainer>
           </Nav>
@@ -45,11 +46,11 @@ export default class Navibar extends Component {
                 </FormGroup>
               </Form>
             </NavItem>
-            <LinkContainer to="/app/cart">
-              <NavItem eventKey={2} href="/app/cart">Cart</NavItem>
+            <LinkContainer to={`${URL_ROOT}/cart`}>
+              <NavItem eventKey={2}>Cart<span>&nbsp;<Label bsStyle="danger">0</Label></span></NavItem>
             </LinkContainer>
-            <LinkContainer to="/app/login">
-              <NavItem eventKey={3} href="/app/login">Guest</NavItem>
+            <LinkContainer to={`${URL_ROOT}/login`}>
+              <NavItem eventKey={3}>Guest</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

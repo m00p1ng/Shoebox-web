@@ -29,12 +29,10 @@ export default class ProductList extends Component {
               <Thumbnail src={product.picture} alt="242x200">
               <Link to={`/app/product/${product.slug}`}><h3>{product.name}</h3></Link>
                 <p>{product.description}</p>
-                <p>
-                  <ButtonGroup>
-                    <Button bsStyle="primary">Add to Cart</Button>&nbsp;
-                    <Button bsStyle="default">+</Button>
-                  </ButtonGroup>
-                </p>
+                <ButtonGroup>
+                  <Button bsStyle="primary">Add to Cart</Button>&nbsp;
+                  <Button bsStyle="default">+</Button>
+                </ButtonGroup>
               </Thumbnail>
             </Col>
           )
@@ -44,22 +42,3 @@ export default class ProductList extends Component {
     )
   }
 }
-
-// return (
-//   <Grid>
-//     <h1>Product List</h1>
-//     {
-//       this.props.products.map(product =>
-//         <div key={product.slug}>
-//           <h3>
-//             <Link to={`/app/product/${product.slug}`}>{product.name}</Link>
-//           </h3>
-//           <div>
-//             <img src={product.picture} />
-//           </div>
-//           <Button bsStyle="success">Add to Cart</Button>
-//         </div>
-//       )
-//     }
-//   </Grid>
-// )

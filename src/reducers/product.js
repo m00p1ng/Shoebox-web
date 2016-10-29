@@ -1,7 +1,8 @@
 import {
   LOAD_PRODUCTS_SUCCESS,
-  LOAD_PRODUCT_SUCCESS
-} from '../constants/actionTypes'
+  LOAD_PRODUCT_SUCCESS,
+  LOAD_PRODUCT_FAILURE
+} from 'actionTypes'
 
 const initialState = []
 
@@ -10,6 +11,8 @@ export default (state = initialState, action) => {
     case LOAD_PRODUCTS_SUCCESS:
       return action.payload
     case LOAD_PRODUCT_SUCCESS:
+      return [action.payload]
+    case LOAD_PRODUCT_FAILURE:
       return [action.payload]
     default:
       return state

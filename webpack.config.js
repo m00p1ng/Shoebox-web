@@ -26,7 +26,8 @@ module.exports = {
       'node_modules'
     ],
     alias: {
-      endpoint: 'src/constants/endpoint'
+      endpoint: 'src/constants/endpoint',
+      actionTypes: 'src/constants/actionTypes'
     },
   },
 }
