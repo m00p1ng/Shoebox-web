@@ -44,7 +44,8 @@ def login(request):
     if request.method == 'POST':
         try:
             if 'username' in request.session:
-                return HttpResponse(request.session['username'])
+                token = {"token": request.session.session_key}
+                return HttpResponse(json.dumps(token), content_type="application/json")
 
             data = json.loads(request.body.decode())
             username = data['username']
@@ -53,7 +54,9 @@ def login(request):
             if user and user.check_password(password):
                 request.session['username'] = username
                 request.session['role'] = user.role
-                return HttpResponse(username)
+                request.session.save()
+                token = {"token": request.session.session_key}
+                return HttpResponse(json.dumps(token), content_type="application/json")
             else:
                 return HttpResponse('Username or password not correct')
 

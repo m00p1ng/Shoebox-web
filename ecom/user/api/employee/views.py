@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.user.models import Employees
-from ecom.include.api import request_get
+from ecom.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -48,10 +48,7 @@ def employee_create(body):
             Employees.create_obj(data)
             return HttpResponse('Employee created', status=201)
         else:
-            output = ''
-            for e in err:
-                output += e + '<br />'
-            return HttpResponse(output)
+            return errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.user.models import UserRoles
-from ecom.include.api import request_get
+from ecom.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -44,10 +44,7 @@ def userRole_create(body):
             UserRoles.create_obj(data)
             return HttpResponse('User role created', status=201)
         else:
-            output = ''
-            for e in err:
-                output += e + '<br />'
-            return HttpResponse(output)
+            errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

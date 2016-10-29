@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from ecom.user.models import (Customers,Employees)
 from ecom.prommotion.models import Promotions
 from ecom.order.models import Orders,OrderGroup
-from ecom.include.api import request_get, request_get_real
+from ecom.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
 import datetime
@@ -36,12 +36,11 @@ def order_with_customerID(request):
 def query_all():
     return Orders.objects.all()
 
+
 def query_by_customerID(slug):
     return Orders.objects(slug=slug).first()
 
 
-
-@csrf_exempt
 def order_create(body):
     try:
         data = json.loads(body.decode())
@@ -50,14 +49,13 @@ def order_create(body):
             Orders.creat_obj(data)
             return HttpResponse('Orders create', status=201)
         else:
-            output = ''
-            for e in err :
-                output += e + '<br/>'
-            return HttpResponse(output)
+            errors_to_json(err)
+            
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
     except NotUniqueError as e:
         return HttpResponse('Order already exist', status=400)
+
 
 def order_delete(slug):
     item = Orders.objects(slug=slug)
@@ -65,6 +63,7 @@ def order_delete(slug):
         return HttpResponse('This order not exist', status=404)
     item.delete()
     return HttpResponse('Order removed')
+
 
 def order_update(body, slug):
     try:
@@ -78,4 +77,3 @@ def order_update(body, slug):
         return HttpResponse('Orders updated')
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
-

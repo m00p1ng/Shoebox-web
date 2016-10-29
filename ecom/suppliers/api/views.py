@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from ecom.include.api import request_get, request_get_real
+from ecom.include.api import request_get, request_get_real, errors_to_json
 from ecom.suppliers.models import *
 from mongoengine import NotUniqueError
 import json
@@ -56,10 +56,7 @@ def supplier_create(body):
             Suppliers.create_obj(data)
             return HttpResponse('Supplier created', status=201)
         else:
-            output = ''
-            for e in err:
-                output += e + '<br />'
-            return HttpResponse(output)
+            errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ecom.product.models import *
-from ecom.include.api import request_get, request_get_real
+from ecom.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -101,10 +101,7 @@ def product_create(body):
             Products.create_obj(data)
             return HttpResponse('Product created', status=201)
         else:
-            output = ''
-            for e in err:
-                output += e + '<br />'
-            return HttpResponse(output)
+            errors_to_json(err)
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
