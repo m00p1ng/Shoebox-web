@@ -32,11 +32,11 @@ def productColor_with_name(request, slug):
         return productColor_delete(slug)
 
 
-def productColor_all():
+def query_all():
     return ProductColors.objects.all()
 
 
-def productColor_name(slug):
+def query_by_name(slug):
     return ProductColors.objects(slug=slug).first()
 
 
