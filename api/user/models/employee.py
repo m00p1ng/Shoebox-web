@@ -96,7 +96,6 @@ class Employees(User):
             street = data['address']['street'],
             zipcode = data['address']['zipcode'],
             phone = data['phone'],
-            is_superuser=True,
             is_staff=True
         )
         employee.set_password(data['password'])

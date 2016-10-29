@@ -8,8 +8,7 @@ class UserRoles(Document):
     @classmethod
     def create_obj(cls, data):
         userrole = cls(
-            role=data['role'].lower(),
-            is_active=data['is_active'],
+            role=data['role'].lower()
         )
         userrole.save()
         return role
