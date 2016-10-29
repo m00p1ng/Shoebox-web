@@ -33,7 +33,7 @@ def productBrand_with_brand(request, slug):
 
 
 def query_all():
-    return ProductBrands.objects.all
+    return ProductBrands.objects.all()
 
 
 def productBrand_name(slug):
