@@ -32,15 +32,15 @@ export default class Navibar extends Component {
           </Nav>
           <Nav>
             <LinkContainer to="/app/product">
-              <NavItem eventKey={1}>Product</NavItem>
+              <NavItem eventKey={2}>Product</NavItem>
             </LinkContainer>
           </Nav>
           <Nav pullRight>
             <NavItem eventKey={1}>
               <Form inline>
-                <FormGroup>
+                <FormGroup bsSize="small">
                   <InputGroup>
-                    <FormControl type="text" />
+                    <FormControl type="text" placeholder="search" />
                   </InputGroup>
                 </FormGroup>
               </Form>
