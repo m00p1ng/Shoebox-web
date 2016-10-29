@@ -1,7 +1,8 @@
-# EZ eCommerce
+# Shoebox Web
 
 ## Requirement
 - Python 3
+  - virturalenv
 - Node.js
 - MongoDB
 
@@ -9,43 +10,54 @@
 
 1. install all requirements
 
-2. create virturalenv
-    ```
-    $ virtualenv EZ-eCommerce
-    ```
+2. clone this project
+  ```
+  $ git clone https://github.com/moopings/Shoebox-web Shoebox-web
+  ```
 
-3. clone repository in your virtualenv
-    ```
-    $ git clone https://github.com/moopings/EZ-eCommerce ecom
-    ```
+3. create virturalenv
+  ```
+  $ cd Shoebox-web
+  $ virtualenv shoebox-env
+  ```
 
 4. activate your virtualenv
-    ```
-    $ source ./bin/activate
-    ```
+  ```
+  $ source ./shoebox-env/bin/activate
+  ```
+  or
+  ```
+  $ npm run env
+  ```
 
 5. install python project package dependencies
-    ```
-    $ pip install -r requirements.txt
-    ```
+  ```
+  $ pip install -r requirements.txt
+  ```
 
 6. install javascript project package dependencies
-    ```
-    $ npm install
-    ```
+  ```
+  $ npm install
+  ```
 
 7. generate bundle javascript file
-    ```
-    $ npm run build
-    ```
+  ```
+  $ npm run build
+  ```
 
 ## How to run server
+
 1. run server
-    ```
-    $ npm start
-    ```
+  ```
+  $ source ./shoebox-env/bin/activate
+  $ python manage.py runserver
+  ```
+  or
+  ```
+  $ npm start
+  ```
 
 2. *(for FrontEnd)* run webpack for generate new bundle of javascript
-    ```
-    $ npm run watch
-    ```
+  ```
+  $ npm run watch
+  ```
