@@ -4,10 +4,11 @@
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "source ./shoebox-env/bin/activate && ./manage.py runserver",
+    "start": "source ./shoebox-env/bin/activate && python manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
-    "test-api": "source ./shoebox-env/bin/activate && python manage.py test api.tests"
+    "test-api": "source ./shoebox-env/bin/activate && python manage.py test api.tests",
+    "production": "source ./shoebox-env/bin/activate && sudo python manage.py runserver 0.0.0.0:80"
   },
   "repository": {
     "type": "git",
@@ -44,7 +45,6 @@
     "redux": "^3.6.0",
     "redux-api-middleware": "^1.0.2",
     "redux-form": "^6.1.1",
-    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0"
   }
 }
