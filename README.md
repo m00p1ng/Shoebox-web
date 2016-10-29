@@ -12,7 +12,7 @@
 
 2. clone this project
   ```
-  $ git clone https://github.com/moopings/Shoebox-web Shoebox-web
+  $ git clone https://github.com/moopings/Shoebox-web
   ```
 
 3. create virturalenv
