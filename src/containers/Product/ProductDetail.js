@@ -1,33 +1,24 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { loadProduct } from '../../actions/product'
+import { bindActionCreators } from 'redux'
+import { getProductBySlug } from '../../reducers/product'
 import { ProductDetail } from '../../components'
 
-const API_URL = "/api/product/name"
-
-export default class ProductDetailContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      product: {
-        date: [],
-        color: [],
-        size: []
-      }
-    }
-  }
-
+class ProductDetailContainer extends Component {
   componentDidMount() {
-    axios.get(`${API_URL}/${this.props.params.slug}`)
-      .then((response) => {
-        let product = response.data
-        this.setState({product: product})
-      });
+    this.props.loadProduct(this.props.params.slug)
   }
 
   render() {
-    var product = this.state.product
     return(
-      <ProductDetail product={product} />
+      <ProductDetail product={this.props.product} />
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+  product: getProductBySlug(state, ownProps.params.slug)
+})
+
+export default connect(mapStateToProps,{ loadProduct })(ProductDetailContainer)
