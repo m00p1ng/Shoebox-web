@@ -125,19 +125,20 @@ class Products(Document):
     def to_realData(data):
         colors = []
         sizes = []
-        supplier = Suppliers.objects(pk=data['supplier']).first().name
-        brand = ProductBrands.objects(pk=data['brand']).first().name
-        types = ProductTypes.objects(pk=data['types']).first().name
+        supplier = Suppliers.objects(pk=data['supplier']).first().slug
+        brand = ProductBrands.objects(pk=data['brand']).first().slug
+        types = ProductTypes.objects(pk=data['types']).first().slug
 
         for color in data['color']:
-            query = ProductColors.objects(pk=color.id).first().name
+            query = ProductColors.objects(pk=color.id).first().slug
             colors.append(query)
 
         for size in data['size']:
-            query = ProductSizes.objects(pk=size.id).first().name
+            query = ProductSizes.objects(pk=size.id).first().slug
             sizes.append(query)
 
         real_data = {
+            'supplier': supplier,
             'brand': brand,
             'types': types,
             'color': colors,
