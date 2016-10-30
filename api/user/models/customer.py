@@ -12,7 +12,7 @@ class Customers(User):
     district = StringField(max_length=50)
     street = StringField(max_length=50)
     zipcode = StringField(max_length=10)
-    phone = StringField(max_length=10)
+    phone = StringField(max_length=20)
     role = StringField(max_length=20, required=True, default="customer")
     creditType = StringField(max_length=10, required=True)
     creditID = StringField(max_length=16, required=True)

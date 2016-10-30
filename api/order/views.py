@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.user.models import (Customers,Employees)
-from api.prommotion.models import Promotions
-from api.order.models import Orders,OrderGroup
-from api.include.api import request_get, request_get_real, errors_to_json
+from api.user.models import customer
+from api.order.models import *
+from api.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
 import datetime
@@ -13,7 +12,7 @@ import re
 def order(request):
     body  = request.body
     if request.method == 'GET':
-        return request_get_real(Orders, query_all())
+        return request_get(query_all())
     if request.method == 'POST':
         return order_create(body)
     if request.method == 'PUT':
@@ -21,33 +20,34 @@ def order(request):
     if request.method == 'DELETE':
         pass
 
-def order_with_customerID(request):
+@csrf_exempt
+def order_with_id(request,cid):
     body  = request.body
     if request.method == 'GET':
-        return request_get_real(Orders, query_by_customerID(slug))
+        return request_get(query_by_id(cid))
     if request.method == 'POST':
         return HttpResponse('Method not allow', status=405)
     if request.method == 'PUT':
-        return order_update(body, slug)
+        return order_update(body,cid)
     if request.method == 'DELETE':
-        return order_delete(slug)
+        return order_delete(cid)
 
 
 def query_all():
     return Orders.objects.all()
 
 
-def query_by_customerID(slug):
-    return Orders.objects(slug=slug).first()
+def query_by_id(cid):
+    return Orders.objects(pk=cid).first()
 
 
 def order_create(body):
     try:
         data = json.loads(body.decode())
         err = Orders.validation(data)
-        if Len(err) == 0:
-            Orders.creat_obj(data)
-            return HttpResponse('Orders create', status=201)
+        if len(err) == 0:
+            Orders.create_obj(data)
+            return HttpResponse('Order created', status=201)
         else:
             return errors_to_json(err)
 
@@ -57,23 +57,33 @@ def order_create(body):
         return HttpResponse('Order already exist', status=400)
 
 
-def order_delete(slug):
-    item = Orders.objects(slug=slug)
-    if not item :
-        return HttpResponse('This order not exist', status=404)
-    item.delete()
-    return HttpResponse('Order removed')
-
-
-def order_update(body, slug):
+def order_update(body, cid):
     try:
-        item = Orders.objects(slug=slug)
+        item = Orders.objects(pk=cid)
         if not item:
             return HttpResponse('This order not exist', status=404)
+
         data = json.loads(body.decode())
         if not data:
             return HttpResponse('Data cannot empty', status=400)
-        Orders.update_obj(slug, data)
-        return HttpResponse('Orders updated')
+
+        Orders.update_obj(cid, data)
+        return HttpResponse('Order updated')
+
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
+
+
+def order_delete(cid):
+    order = Orders.objects(pk=cid)
+    if not order :
+        return HttpResponse('This order not exist', status=404)
+    order.delete()
+
+    # orderDetails = OrderDetails.objects(slug=slug)
+    # if not orderDetails:
+    #     return HttpResponse('This orderDetail not exist', status=404)
+    # for orderDetail in orderDetails:
+    #     orderDetail.delete()
+
+    return HttpResponse('Order removed')

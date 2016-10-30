@@ -1,32 +1,34 @@
 from mongoengine import *
-from api.user.models import Customers, Employees
-from api.proudct.models import Products
-from api.promotion.models import Promotions
-from api.include.model import to_slug
+from api.include.model import timestamp_date
+from api.user.models import Customers
 import datetime
+import json
 
 class Orders(Document):
-    customerID = ReferenceField(Customers)
-    employeeID = ReferenceField(Employees)
-    promotionID = ReferenceField(Promotions)
-    timeStamp = DateTimeField(required=True, default=datetime.datetime.now)
-    totalprice = IntField(required=True)
-    shipDate = DateTimeField(required=True)
+    customer = ReferenceField(Customers)
+    date = DateTimeField(required=True)
+    timeStamp = StringField(required=True)
     status = BooleanField(required=True)
-    productID = ReferenceField(Products)
-    price = IntField()
-    quantity = IntField()
-    slug = StringField(max_length=200, required=True, unique=True)
+    username = StringField(max_length=200,required=True)
+
+    def get_id_from_field(data):
+        field_id = {}
+
+        if 'customer' in data:
+            customer = Customers.objects(username=data['customer']).first().id
+            field_id['customer'] = customer
+
+        return field_id
 
     @staticmethod
     def validation(data):
         err = []
-        if 'totalprice' not in data:
-            err.append('Totalprice cannot empty')
-        if 'shipDate' not in data:
-            err.append('ShipDate cannot empty')
+        if 'status' not in data:
+            err.append('Status cannot empty')
+        if 'date' not in data:
+            err.append('Date cannot empty')
             err.append('- year cannot empty')
-            err.appemd('- month cannot empty')
+            err.append('- month cannot empty')
             err.append('- day cannot empty')
         else:
             if not {'year', 'month' , 'day'} <= set(data['date']):
@@ -37,48 +39,41 @@ class Orders(Document):
                     err.append('- year cannot empty')
                 if 'year' not in data['date']:
                     err.append('- year cannot empty')
-        if 'status' not in data:
-            err.append('Status cannot empty')
-        if 'price' not in data:
-            err.append('Price cannot empty')
-        if 'quantity' not in data:
-            err.append('Quantity cannot empty')
+        return err
 
     @classmethod
     def create_obj(cls, data):
+        field_id = cls.get_id_from_field(data)
         order = cls(
-            totalprice = data['totalprice'],
-            shipDate = datetime.datetime(
+            customer = field_id['customer'],
+            date = datetime.datetime(
                 year = data['date']['year'],
                 month = data['date']['month'],
-                day = data['date']['day'],
+                day = data['date']['day']
             ),
             status = data['status'],
-            quantity = data['quantity'],
-            price = data['price'],
+            timeStamp = get_Timestamp(),
+            username = Customers.objects(username=data['customer']).first().username
         )
-        slug = to_slug(data['customerID']
         order.save()
         return order
 
     @classmethod
-    def update_obj(cls, slug, data)
-        if 'shipDate' in data:
-            data['shipDate'] = datetime.datetime(
-                year = data['date']['year'],
-                month = data['date']['month'],
-                day = data['date']['day'],
+    def update_obj(cls, cid, data):
+        if 'date' in data:
+            data['date'] = datetime.datetime(
+                year=data['date']['year'],
+                month=data['date']['month'],
+                day=data['date']['day']
             )
-        if 'status' in data:
-            status = data['status']
-        if 'totalprice' in data
-            totalprice = data['totalprice']
-        if 'quantity' in data:
-            status = data['quantity']
-        if 'price' in data
-            totalprice = data['price']
-        if 'customerID' in data
-            data['slug'] = to_slug(data['customerID'])
-        order = cls.objects(slug=slug)
+
+        order = cls.objects(pk=cid)
         order.update(**data)
         return order
+
+def get_Timestamp():
+    now = datetime.datetime.now()
+    split = str(now).split()
+    timestamp = split[1][0:8]
+    return timestamp
+

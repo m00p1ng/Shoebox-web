@@ -46,7 +46,7 @@ def customer_create(body):
         err = Customers.validation(data)
         if len(err) == 0:
             Customers.create_obj(data)
-            return HttpResponse('Employee created', status=201)
+            return HttpResponse('Customer created', status=201)
         else:
             return errors_to_json(err)
 
@@ -60,22 +60,22 @@ def customer_create(body):
 def customer_delete(username):
     user = Customers.objects(username=username)
     if not user:
-        return HttpResponse('This employee not exist', status=404)
-    return HttpResponse('Employee removed')
+        return HttpResponse('This customer not exist', status=404)
+    return HttpResponse('Customer removed')
 
 
 def customer_update(body, username):
     try:
         user = Customers.objects(username=username)
         if not user:
-            return HttpResponse('This employee not exist', status=404)
+            return HttpResponse('This customer not exist', status=404)
 
         data = json.loads(body.decode())
         if not data:
             return HttpResponse('Data cannot empty', status=400)
 
         Customers.update_obj(username, data)
-        return HttpResponse('Employee updated')
+        return HttpResponse('Customer updated')
 
     except ValueError as e:
         return HttpResponse('JSON Decode error', status=400)
