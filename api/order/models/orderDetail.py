@@ -1,155 +1,96 @@
-# from mongoengine import *
-# from api.product.models import product
-# from api.promotion.models import promotion
-# from api.order.models import order
+from mongoengine import *
+from api.product.models import Products
+from api.promotion.models import Promotions
+from api.order.models import Orders
+import json
 
-# class OrderDetails(Document):
-#     orderID = ReferenceField(Orders)
-#     product = ReferenceField(Products)
-#     price = IntField(required=True)
-#     quantity = IntField(required=True)
-#     promotion = ReferenceField(Promotion)
-#     totalprice = IntField(required=True)
+class OrderDetails(Document):
+    orderID = ReferenceField(Orders)
+    product = ReferenceField(Products)
+    price = IntField(required=True)
+    quantity = IntField(required=True)
+    promotion = ReferenceField(Promotions)
+    totalprice = FloatField(required=True)
 
 
-#     def get_id_from_field(data):
-#         field_id = {}
+    def get_id_from_field(data):
+        field_id = {}
 
-#         if 'promotion' in data:
-#             promotion = Promotions.objects(slug=data['promotion']).first().id
-#             field_id['promotion'] = promotion
+        if 'promotion' in data:
+            promotion = Promotions.objects(slug=data['promotion']).first().id
+            field_id['promotion'] = promotion
 
-#         if 'product' in data:
-#             product = Products.objects(slug=data['product']).first().id
-#             field_id['product'] = product
+        if 'product' in data:
+            product = Products.objects(slug=data['product']).first().id
+            field_id['product'] = product
+        return field_id
 
-#         if 'orderID' in data:
-#             orderID = Orders.objects(id=data['orderID']).first().id
-#             field_id['orderID'] = orderID
+    @staticmethod
+    def validation(data):
+        err = []
+        if 'quantity' not in data:
+            err.append('Quantity cannot empty')
+        if 'product' not in data:
+            err.append('Product cannot empty')
+        if 'promotion' not in data:
+            err.append('Promotion cannot empty')
+        return err
 
-#         if 'orderNumber' in data:
-#             orderNumber = Orders.objects(id=data['order']).first().id
-#             field_id['orderID'] = orderID
-#         return field_id
+    @classmethod
+    def create_obj(cls, data):
+        productprice = Products.objects(slug=data['product']).first().price
+        cutpercent = Promotions.objects(slug=data['promotion']).first().cutpercent
+        discountpercent = Products.objects(slug=data['product']).first().discountPercent
+        discount = productprice*(cutpercent/100)*(discountpercent/100)
+        field_id = cls.get_id_from_field(data)
+        orderDetail = cls(
+            quantity=data['quantity'],
+            orderID=Orders.objects(pk=data['orderID']).first().id,
+            price=productprice,
+            totalprice = productprice-discount,
+            product=field_id['product'],
+            promotion=field_id['promotion']
+        )
+        orderDetail.save()
+        return orderDetail
 
-#     @staticmethod
-#     def validation(data):
-#         err = []
-#         if 'quantity' not in data:
-#             err.append('Quantity cannot empty')
-#         return err
+    def to_realData(data):
+        product = Products.objects(pk=data['product']).first().name
+        promotion = Promotions.objects(pk=data['promotion']).first().name
 
-#     @classmethod
-#     def create_obj(cls, data):
-#         field_id = cls.get_id_from_field(data)
-#         orderDetail = cls(
-#             # supplier=field_id['supplier'],
-#             orderNumber=data['orderNumber'],
-#             description=data['description'],
-#             price=data['price'],
-#             picture=data['picture'],
-#             date=datetime.datetime(
-#                 year=data['date']['year'],
-#                 month=data['date']['month'],
-#                 day=data['date']['day']
-#             ),
-#             amount=data['amount'],
-#             is_available=data['is_available'],
-#             is_discount=data['is_discount'],
-#             discountPercent=data['discountPercent'],
-#             slug=to_slug(data['name']),
-#             brand=field_id['brand'],
-#             types=field_id['types'],
-#             color=field_id['color'],
-#             size=field_id['size']
-#         )
-#         orderDetail.save()
-#         return orderDetail
+        real_data = {
+            'product': product,
+            'promotion': promotion
+        }
+        return real_data
 
-#     @classmethod
-#     def update_obj(cls, slug, data):
-#         if 'date' in data:
-#             data['date'] = datetime.datetime(
-#                 year=data['date']['year'],
-#                 month=data['date']['month'],
-#                 day=data['date']['day']
-#             )
+    @classmethod
+    def mapID_to_obj(cls, orderDetail):
+        data = {
+            'product': orderDetail.product.id,
+            'promotion': orderDetail.promotion.id
+        }
+        real_data = cls.to_realData(data)
 
-#         if 'name' in data:
-#             data['slug'] = to_slug(data['name'])
+        orderid = str(orderDetail.orderID.id)
+        obj = {
+            'orderID' : orderid,
+            'product' : real_data['product'],
+            'price' : orderDetail.price,
+            'quantity' : orderDetail.quantity,
+            'promotion' : real_data['promotion'],
+            'totalprice' : orderDetail.totalprice
+        }
+        return obj
 
-#         field_id = cls.get_id_from_field(data)
-
-#         if field_id:
-#             for key in field_id:
-#                 data[key] = field_id[key]
-
-#         product = cls.objects(slug=slug)
-#         product.update(**data)
-#         return product
-
-#     def to_realData(data):
-#         colors = []
-#         sizes = []
-#         # supplier = Suppliers.objects(pk=data['supplier']).first().name
-#         brand = ProductBrands.objects(pk=data['brand']).first().name
-#         types = ProductTypes.objects(pk=data['types']).first().name
-
-#         for color in data['color']:
-#             query = ProductColors.objects(pk=color.id).first().name
-#             colors.append(query)
-
-#         for size in data['size']:
-#             query = ProductSizes.objects(pk=size.id).first().name
-#             sizes.append(query)
-
-#         real_data = {
-#             'brand': brand,
-#             'types': types,
-#             'color': colors,
-#             'size': sizes
-#         }
-
-#         return real_data
-
-#     @classmethod
-#     def mapID_to_obj(cls, product):
-#         data = {
-#             'brand': product.brand.id,
-#             'types': product.types.id,
-#             'color': product.color,
-#             'size': product.size
-#             # 'supplier' : product.supplier
-#         }
-#         real_data = cls.to_realData(data)
-
-#         obj = {
-#             'name' : product.name,
-#             'description' : product.description,
-#             'price' : product.price,
-#             'picture' : product.picture,
-#             'amount' : product.amount,
-#             'is_available' : product.is_available,
-#             'is_discount' : product.is_discount,
-#             'discountPercent' : product.discountPercent,
-#             'slug' : product.slug,
-#             'date' : timestamp_date(product.date),
-#             'brand' : real_data['brand'],
-#             'types' : real_data['types'],
-#             'color' : real_data['color'],
-#             'size' : real_data['size'],
-#             # obj['supplier'] = real_data['supplier']
-#         }
-#         return obj
-
-#     @classmethod
-#     def map_referenceID(cls, products):
-#         output = []
-#         if not hasattr(products, 'count'):
-#             obj = cls.mapID_to_obj(products)
-#             return json.dumps(obj)
-#         else:
-#             for product in products:
-#                 obj = cls.mapID_to_obj(product)
-#                 output.append(obj)
-#             return json.dumps(output)
+    @classmethod
+    def map_referenceID(cls, orderDetails):
+        output = []
+        if not hasattr(orderDetails, 'count'):
+            obj = cls.mapID_to_obj(orderDetails)
+            return json.dumps(obj)
+        else:
+            for orderDetail in orderDetails:
+                obj = cls.mapID_to_obj(orderDetail)
+                output.append(obj)
+            return json.dumps(output)

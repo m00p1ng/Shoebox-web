@@ -27,9 +27,9 @@ class Products(Document):
 
     def get_id_from_field(data):
         field_id = {}
-        # if 'supplier' in data:
-            # supplier = Suppliers.objects(slug=data['supplier']).first().id
-            # field_id['supplier'] = supplier
+        if 'supplier' in data:
+            supplier = Suppliers.objects(slug=data['supplier']).first().id
+            field_id['supplier'] = supplier
 
         if 'brand' in data:
             brand = ProductBrands.objects(slug=data['brand']).first().id
@@ -56,8 +56,8 @@ class Products(Document):
     @staticmethod
     def validation(data):
         err = []
-        # if 'supplier' not in data:
-        #     err.append('Supplier cannot empty')
+        if 'supplier' not in data:
+            err.append('Supplier cannot empty')
         if 'name' not in data:
             err.append('Name cannot empty')
         if 'brand' not in data:
@@ -88,7 +88,7 @@ class Products(Document):
     def create_obj(cls, data):
         field_id = cls.get_id_from_field(data)
         product = cls(
-            # supplier=field_id['supplier'],
+            supplier=field_id['supplier'],
             name=data['name'],
             description=data['description'],
             price=data['price'],
@@ -125,7 +125,7 @@ class Products(Document):
     def to_realData(data):
         colors = []
         sizes = []
-        # supplier = Suppliers.objects(pk=data['supplier']).first().name
+        supplier = Suppliers.objects(pk=data['supplier']).first().name
         brand = ProductBrands.objects(pk=data['brand']).first().name
         types = ProductTypes.objects(pk=data['types']).first().name
 
@@ -152,8 +152,8 @@ class Products(Document):
             'brand': product.brand.id,
             'types': product.types.id,
             'color': product.color,
-            'size': product.size
-            # 'supplier' : product.supplier
+            'size': product.size,
+            'supplier' : product.supplier.id
         }
         real_data = cls.to_realData(data)
 
@@ -172,7 +172,7 @@ class Products(Document):
             'types' : real_data['types'],
             'color' : real_data['color'],
             'size' : real_data['size'],
-            # obj['supplier'] = real_data['supplier']
+            obj['supplier'] = real_data['supplier']
         }
         return obj
 
