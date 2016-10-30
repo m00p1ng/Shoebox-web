@@ -4,10 +4,12 @@
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": ". ./shoebox-env/bin/activate && python manage.py runserver",
+    "start": "webpack --config webpack.config.js && . ./shoebox-env/bin/activate && python manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
+    "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
     "test-api": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
+    "test-ui": "echo non set now",
     "production": ". ./shoebox-env/bin/activate && sudo python manage.py runserver 0.0.0.0:80"
   },
   "repository": {
@@ -27,10 +29,12 @@
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "css-loader": "^0.25.0",
     "eslint": "^3.8.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "redux-devtools": "^3.3.1",
     "redux-logger": "^2.7.4",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },

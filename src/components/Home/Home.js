@@ -8,6 +8,7 @@ export default class Home extends Component {
       <div>
         <Grid>
           <h1>Home page</h1>
+          <input class="btn btn-default" type="button" value="Input"/>
           <ControlledCarousel />
         </Grid>
       </div>

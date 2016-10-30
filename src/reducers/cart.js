@@ -1,5 +1,5 @@
 import {
-  ADD_TO_CART_SUCCESS,
+  ADD_TO_CART,
   CHECKOUT_REQUEST,
   CHECKOUT_FAILURE
 } from 'actionTypes'
