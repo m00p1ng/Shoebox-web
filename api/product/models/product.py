@@ -125,7 +125,7 @@ class Products(Document):
     def to_realData(data):
         colors = []
         sizes = []
-        supplier = Suppliers.objects(pk=data['supplier']).first().name
+        supplier = Suppliers.objects(pk=data['supplier']).first().slug
         brand = ProductBrands.objects(pk=data['brand']).first().name
         types = ProductTypes.objects(pk=data['types']).first().name
 
@@ -141,6 +141,7 @@ class Products(Document):
             'brand': brand,
             'types': types,
             'color': colors,
+            'supplier': supplier,
             'size': sizes
         }
 
