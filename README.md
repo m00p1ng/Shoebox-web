@@ -18,7 +18,7 @@
 3. create virturalenv
   ```
   $ cd Shoebox-web
-  $ virtualenv -p python shoebox-env
+  $ virtualenv -p python3 shoebox-env
   ```
 
 4. activate your virtualenv
@@ -43,17 +43,21 @@
 
 ## How to run server
 
-1. run server
-  ```
-  $ source ./shoebox-env/bin/activate
-  $ python manage.py runserver
-  ```
-  or
-  ```
-  $ npm start
-  ```
 
-2. *(for FrontEnd)* run webpack for generate new bundle of javascript
+```
+$ source ./shoebox-env/bin/activate
+$ python manage.py runserver
+```
+or
+```
+$ npm start
+  ```
+  
+*(for FrontEnd)* run webpack for generate new bundle of javascript
   ```
   $ npm run watch
   ```
+
+## How to run test
+
+-
