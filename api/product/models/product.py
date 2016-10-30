@@ -172,7 +172,7 @@ class Products(Document):
             'types' : real_data['types'],
             'color' : real_data['color'],
             'size' : real_data['size'],
-            obj['supplier'] = real_data['supplier']
+            'supplier': real_data['supplier']
         }
         return obj
 
