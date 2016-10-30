@@ -19,11 +19,6 @@ class product_API_Test(MongoTestCase):
         "description": "product description",
         "price": 20,
         "picture": "picture URL",
-        "date" : {
-            "year": 2016,
-            "month": 10,
-            "day": 10
-        },
         "amount": 20,
         "size": ["48"],
         "color": ["red"],
