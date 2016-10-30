@@ -4,10 +4,10 @@
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "source ./shoebox-env/bin/activate && python manage.py runserver",
+    "start": ". ./shoebox-env/bin/activate && python manage.py runserver",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
-    "test-api": "source ./shoebox-env/bin/activate && python manage.py test api.tests",
+    "test-api": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
     "production": "source ./shoebox-env/bin/activate && sudo python manage.py runserver 0.0.0.0:80"
   },
   "repository": {
