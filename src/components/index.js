@@ -4,6 +4,7 @@ export Navibar from './App/Navibar'
 export Home from './Home/Home'
 
 export ProductList from './Product/ProductList'
+export ProductItem from './Product/ProductItem'
 export ProductDetail from './Product/ProductDetail'
 export Cart from './Cart/Cart'
 

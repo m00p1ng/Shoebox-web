@@ -4,9 +4,11 @@ import {
   LOAD_PRODUCT_FAILURE
 } from 'actionTypes'
 
-const initialState = []
+const initialState = {
+  products: []
+}
 
-export default (state = initialState, action) => {
+export default (state = initialState.products, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_SUCCESS:
       return action.payload

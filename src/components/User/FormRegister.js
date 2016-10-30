@@ -110,7 +110,10 @@ export default class FormRegister extends Component {
                 placeholder="Enter firstname"
               />
 
-              <Button type="submit" bsStyle="success">
+              <Button
+                type="submit"
+                bsStyle="success"
+                disabled>
                 Submit
               </Button>
             </form>

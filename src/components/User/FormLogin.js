@@ -53,7 +53,8 @@ export default class FormLogin extends Component {
               <Button
                 type="button"
                 bsStyle="success"
-                onClick={this.props.onLogin}>
+                onClick={this.props.onLogin}
+                disabled>
                 Login
               </Button> or <Link to={`${URL_ROOT}/register`}> register</Link>
             </form>

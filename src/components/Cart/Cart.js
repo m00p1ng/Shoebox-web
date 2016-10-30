@@ -23,7 +23,8 @@ export default class Cart extends Component {
               <Button bsStyle="warning">Remove</Button>
             </Col>
           </Panel>
-          <Button bsStyle="danger">Remove All</Button>
+          <Button bsStyle="danger">Remove All</Button>{' '}
+          <Button bsStyle="success" disabled>Check out</Button>
       </Grid>
     )
   }
