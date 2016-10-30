@@ -5,7 +5,7 @@ export default class ProductNotFound extends Component {
   render() {
     return (
       <Grid>
-        <h1>Not found</h1>
+        <h1>Product Not found</h1>
       </Grid>
     )
   }

@@ -24,7 +24,6 @@ export default (
         <route path='product'>
           <IndexRoute component={ProductList} />
           <route path=':slug' component={ProductDetail} />
-          <Route path='*' component={ProductNotFound} />
         </route>
         <Route path='login' component={FormLogin} />
         <Route path='register' component={FormRegister} />

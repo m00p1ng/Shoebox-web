@@ -32,7 +32,7 @@ export default class FormLogin extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-          <Col sm={6} smOffset={3}>
+          <Col lg={6} lgOffset={3} sm={6} smOffset={3} xs={10} xsOffset={1}>
             <h1>Login</h1>
             <form>
               <FieldGroup
@@ -50,7 +50,7 @@ export default class FormLogin extends Component {
                 onChange={this.props.onPasswordChange}
               />
 
-              <Button 
+              <Button
                 type="button"
                 bsStyle="success"
                 onClick={this.props.onLogin}>

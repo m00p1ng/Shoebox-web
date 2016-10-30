@@ -13,7 +13,7 @@ import {
 
 export const loadProducts = () => ({
   [CALL_API]: {
-    endpoint: PRODUCT_ENDPOINT,
+    endpoint: `${PRODUCT_ENDPOINT}/latest`,
     method: 'GET',
     types: [LOAD_PRODUCTS_REQUEST, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_FAILURE]
   }

@@ -10,7 +10,8 @@ import {
   FormGroup,
   FormControl,
   InputGroup,
-  Label
+  Label,
+  Button
 } from 'react-bootstrap'
 
 import { URL_ROOT } from 'endpoint'
@@ -37,15 +38,6 @@ export default class Navibar extends Component {
             </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1}>
-              <Form inline>
-                <FormGroup bsSize="small">
-                  <InputGroup>
-                    <FormControl type="text" placeholder="search" />
-                  </InputGroup>
-                </FormGroup>
-              </Form>
-            </NavItem>
             <LinkContainer to={`${URL_ROOT}/cart`}>
               <NavItem eventKey={2}>Cart<span>&nbsp;<Label bsStyle="danger">0</Label></span></NavItem>
             </LinkContainer>
@@ -53,6 +45,11 @@ export default class Navibar extends Component {
               <NavItem eventKey={3}>Guest</NavItem>
             </LinkContainer>
           </Nav>
+          <Navbar.Form pullRight>
+            <FormGroup>
+              <FormControl type="text" placeholder="Search" />
+            </FormGroup>
+          </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>
     )

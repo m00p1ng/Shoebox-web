@@ -7,15 +7,17 @@ import { apiMiddleware } from 'redux-api-middleware'
 import { Router, browserHistory } from 'react-router'
 import routes from './routes'
 import rootReducer from './reducers'
+import createLogger from 'redux-logger'
 
 const middlewares = [thunk, apiMiddleware]
+middlewares.push(createLogger())
 const store = createStore(
   rootReducer,
   applyMiddleware(...middlewares)
 )
 
 render((
-    <Provider store={store} key='provider'>
-        <Router history={browserHistory} routes={routes}/>
-    </Provider>
+  <Provider store={store} key='provider'>
+    <Router history={browserHistory} routes={routes}/>
+  </Provider>
 ), document.getElementById('app'))
