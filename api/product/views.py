@@ -51,9 +51,24 @@ def product_search(request, search, slug):
     if request.method == 'DELETE':
         pass
 
+@csrf_exempt
+def product_latest(request):
+    if request.method == 'GET':
+        return request_get_real(Products, query_latest())
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
 
 def query_all():
     return Products.objects.all()
+
+
+def query_latest():
+    return Products.objects.all().order_by('-id')
 
 
 def query_by_name(slug):

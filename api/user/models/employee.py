@@ -1,7 +1,9 @@
 from mongoengine import *
 from mongoengine.django.auth import User
+from api.include.model import timestamp_date, timestamp_fulldate
 from collections import defaultdict
 import datetime
+import json
 
 class Employees(User):
     firstname = StringField(max_length=50, required=True)
@@ -127,3 +129,38 @@ class Employees(User):
         employee = cls.objects(username=username)
         employee.update(**data)
         return employee
+
+
+    def map_data_to_dict(employee):
+        obj = {
+            'username': employee.username,
+            'email': employee.email,
+            'firstname': employee.firstname,
+            'lastname': employee.lastname,
+            'gender': employee.gender,
+            'birthday': timestamp_date(employee.birthday),
+            'address': {
+                'city': employee.city,
+                'district': employee.district,
+                'street': employee.street,
+                'zipcode': employee.zipcode
+            },
+            'phone': employee.phone,
+            'date_joined': timestamp_fulldate(employee.date_joined),
+            'role': employee.role,
+            'is_active': employee.is_active,
+            'last_login': timestamp_fulldate(employee.last_login)
+        }
+        return obj
+
+    @classmethod
+    def map_to_json(cls, employees):
+        output = []
+        if not hasattr(employees, 'count'):
+            obj = cls.map_data_to_dict(employees)
+            return json.dumps(obj)
+        else:
+            for employee in employees:
+                obj = cls.map_data_to_dict(employee)
+                output.append(data)
+            return json.dumps(output)

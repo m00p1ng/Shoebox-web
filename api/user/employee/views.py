@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.user.models import Employees
-from api.include.api import request_get, errors_to_json
+from api.include.api import request_get, errors_to_json, request_get_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -10,7 +10,7 @@ import json
 def employee(request):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_all())
+        return request_get_to_json(Employees, query_all())
     if request.method == 'POST':
         return employee_create(body)
     if request.method == 'PUT':
@@ -23,7 +23,7 @@ def employee(request):
 def employee_with_username(request, username):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_by_username(username))
+        return request_get_to_json(Employees, query_by_username(username))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':

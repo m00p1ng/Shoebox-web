@@ -21,6 +21,9 @@ class Products(Document):
     is_discount = BooleanField(required=True)
     discountPercent = FloatField(required=True, default=0)
     slug = StringField(max_length=200, required=True, unique=True)
+    sold_unit = IntField(required=True, default=0)
+    number_of_views = IntField(required=True, default=0)
+
 
     def get_id_from_field(data):
         field_id = {}
