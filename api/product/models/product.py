@@ -70,20 +70,6 @@ class Products(Document):
             err.append('Price cannot empty')
         if 'picture' not in data:
             err.append('Picture cannot empty')
-        if 'date' not in data:
-            err.append('date cannot empty')
-            err.append('- year cannot empty')
-            err.append('- month cannot empty')
-            err.append('- day cannot empty')
-        else:
-            if not {'year', 'month', 'day'} <= set(data['date']):
-                err.append('date cannot empty')
-                if 'year' not in data['date']:
-                    err.append('- year cannot empty')
-                if 'month' not in data['date']:
-                    err.append('- month cannot empty')
-                if 'day' not in data['date']:
-                    err.append('- day cannot empty')
         if 'amount' not in data:
             err.append('Amount cannot empty')
         if 'size' not in data:
@@ -107,11 +93,7 @@ class Products(Document):
             description=data['description'],
             price=data['price'],
             picture=data['picture'],
-            date=datetime.datetime(
-                year=data['date']['year'],
-                month=data['date']['month'],
-                day=data['date']['day']
-            ),
+            date=datetime.datetime.now(),
             amount=data['amount'],
             is_available=data['is_available'],
             is_discount=data['is_discount'],
@@ -127,12 +109,6 @@ class Products(Document):
 
     @classmethod
     def update_obj(cls, slug, data):
-        if 'date' in data:
-            data['date'] = datetime.datetime(
-                year=data['date']['year'],
-                month=data['date']['month'],
-                day=data['date']['day']
-            )
 
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
