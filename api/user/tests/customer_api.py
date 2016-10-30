@@ -105,7 +105,7 @@ class Customer_API_Test(MongoTestCase):
         self.assertEqual(data['birthday']['year'], 2000)
         self.assertEqual(data['credit']['type'], 'XXX')
         self.assertEqual(data['credit']['id'], 6625526)
-        self.assertEqual(data['credit']['exp']['day'], 10)
+        self.assertEqual(data['credit']['exp']['day'], 1)
         self.assertEqual(data['credit']['exp']['month'], 10)
         self.assertEqual(data['credit']['exp']['year'], 2000)
         self.assertEqual(data['ship']['city'], 'my-city')
