@@ -6,6 +6,7 @@
 - Node.js
 - MongoDB
 
+
 ## How to install
 
 1. install all requirements
@@ -41,8 +42,8 @@
   $ npm run build
   ```
 
-## How to run server
 
+## How to run server
 
 ```
 $ source ./shoebox-env/bin/activate
@@ -52,12 +53,21 @@ or
 ```
 $ npm start
   ```
-  
+
 *(for FrontEnd)* run webpack for generate new bundle of javascript
   ```
   $ npm run watch
   ```
 
+
 ## How to run test
 
--
+API test
+```
+$ npm run test-api
+```
+
+UI test
+```
+$
+```
