@@ -18,7 +18,7 @@
 3. create virturalenv
   ```
   $ cd Shoebox-web
-  $ virtualenv shoebox-env
+  $ virtualenv -p python shoebox-env
   ```
 
 4. activate your virtualenv

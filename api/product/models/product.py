@@ -13,7 +13,7 @@ class Products(Document):
     description = StringField(max_length=10000, required=True)
     price = FloatField(required=True)
     picture = StringField(max_length=1000, required=True)
-    date = DateTimeField(required=True)
+    date = DateTimeField(required=True, default=datetime.datetime.now())
     amount = IntField(required=True)
     size = ListField(ReferenceField(ProductSizes))
     color = ListField(ReferenceField(ProductColors))
@@ -93,7 +93,6 @@ class Products(Document):
             description=data['description'],
             price=data['price'],
             picture=data['picture'],
-            date=datetime.datetime.now(),
             amount=data['amount'],
             is_available=data['is_available'],
             is_discount=data['is_discount'],
