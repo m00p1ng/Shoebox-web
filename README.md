@@ -44,17 +44,17 @@
 
 
 ## How to run server
-
-```
-$ source ./shoebox-env/bin/activate
-$ python manage.py runserver
-```
-or
-```
-$ npm start
+* run django server
   ```
+  $ source ./shoebox-env/bin/activate
+  $ python manage.py runserver
+  ```
+  or
+  ```
+  $ npm start
+    ```
 
-*(for FrontEnd)* run webpack for generate new bundle of javascript
+* *(for FrontEnd)* run webpack for generate new bundle of javascript
   ```
   $ npm run watch
   ```
@@ -62,12 +62,12 @@ $ npm start
 
 ## How to run test
 
-API test
-```
-$ npm run test-api
-```
+* API test
+  ```
+  $ npm run test-api
+  ```
 
-UI test
-```
-$
-```
+* UI test
+  ```
+  $
+  ```
