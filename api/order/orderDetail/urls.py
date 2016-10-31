@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.orderDetail),
-    url(r'^id/(?P<oid>.+?)/?$', views.orderDetail_with_id),
+    url(r'^(?P<orderNumber>.+?)/?$', views.orderDetail_with_orderNumber)
 
 ]

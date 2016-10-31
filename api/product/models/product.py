@@ -126,6 +126,8 @@ class Products(Document):
         colors = []
         sizes = []
         supplier = Suppliers.objects(pk=data['supplier']).first().slug
+        brand = ProductBrands.objects(pk=data['brand']).first().name
+        types = ProductTypes.objects(pk=data['types']).first().name
         brand = ProductBrands.objects(pk=data['brand']).first().slug
         types = ProductTypes.objects(pk=data['types']).first().slug
 
@@ -142,6 +144,7 @@ class Products(Document):
             'brand': brand,
             'types': types,
             'color': colors,
+            'supplier': supplier,
             'size': sizes
         }
 

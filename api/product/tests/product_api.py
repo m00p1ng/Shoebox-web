@@ -14,6 +14,7 @@ class product_API_Test(MongoTestCase):
     CREATE_BODY = """
     {
         "name": "shoe",
+        "supplier": "firstname-lastname",
         "brand": "nike",
         "types": "running",
         "description": "product description",
@@ -69,6 +70,30 @@ def create_test_database():
     CREATE_BODY_TYPE = """ { "name": "running" }"""
     CREATE_BODY_SIZE = """{ "name":  "48" }"""
 
+    URL_SUPPLIER = '/api/supplier'
+    URL_COMPANY = '/api/supplier/company'
+    CREATE_BODY_SUPPLIER = """
+        {
+        	"company": "nike",
+        	"contactFirstname": "Firstname",
+            "contactLastname": "Lastname",
+            "contactTitle": "Test",
+            "phone": "080-000-0000",
+            "email": "test@test.com"
+        }
+    """
+    CREATE_BODY_COMPANY = """
+        {
+        	"name": "Nike",
+            "address": {
+                "city": "Test city",
+                "district": "Test district",
+                "street": "Test street",
+                "zipcode": "10000"
+              }
+        }
+    """
+
     c = Client()
     c.post(URL_BRAND, data=CREATE_BODY_BRAND, content_type="application")
     c = Client()
@@ -77,3 +102,7 @@ def create_test_database():
     c.post(URL_TYPE, data=CREATE_BODY_TYPE, content_type="application")
     c = Client()
     c.post(URL_SIZE, data=CREATE_BODY_SIZE, content_type="application")
+    c = Client()
+    c.post(URL_COMPANY, data=CREATE_BODY_COMPANY, content_type="application")
+    c = Client()
+    c.post(URL_SUPPLIER, data=CREATE_BODY_SUPPLIER, content_type="application")
