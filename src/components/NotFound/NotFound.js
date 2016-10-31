@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Grid } from 'react-bootstrap'
 
 export default class NotFound extends Component {
   render() {
     return (
-      <Grid>
+      <div>
         <h1>Not found</h1>
-      </Grid>
+      </div>
     )
   }
 }

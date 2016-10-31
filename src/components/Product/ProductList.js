@@ -1,15 +1,13 @@
 import React, { PropTypes } from 'react'
-import { Grid } from 'react-bootstrap'
-
 const ProductList = ({title, children}) => (
-  <Grid>
+  <div>
     <h1>{title}</h1>
     <div className="container">
       <div className="row">
         {children}
       </div>
     </div>
-  </Grid>
+  </div>
 )
 
 ProductList.propTypes = {

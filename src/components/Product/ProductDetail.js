@@ -1,11 +1,4 @@
 import React, { PropTypes } from 'react'
-import {
-  Grid,
-  Col,
-  Row,
-  Button,
-  Image
-} from 'react-bootstrap'
 
 const ProductDetail = ({product}) => {
   const render_list = (list) => (
@@ -15,13 +8,13 @@ const ProductDetail = ({product}) => {
   )
 
   return (
-    <Grid>
+    <div>
       <h1>{product.name}</h1>
-      <Row  className="show-grid">
-        <Col md={8}>
-          <Image src={product.picture} responsive/>
-        </Col>
-        <Col md={4}>
+      <div>
+        <div>
+          <img src={product.picture} responsive/>
+        </div>
+        <div>
           <p><strong>Type :</strong> {product.types}</p>
           <p><strong>Brand :</strong> {product.brand}</p>
           <p><strong>Description :</strong> {product.description}</p>
@@ -33,10 +26,10 @@ const ProductDetail = ({product}) => {
           <p><strong>Available :</strong> {String(product.is_available)}</p>
           <p><strong>Discount :</strong> {String(product.is_discount)}</p>
           <p><strong>discountPercent :</strong> {product.discountPercent}</p>
-          <Button bsStyle="primary">Add to cart</Button>
-        </Col>
-      </Row>
-    </Grid>
+          <button bsStyle="primary">Add to cart</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
