@@ -17,7 +17,27 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
     </Thumbnail>
   </Col> */
 
-  
+          <div className="col s12 l3" >
+                 <div className="card center" >
+                    <div className="card-image waves-effect waves-block waves-light" >
+                        <img className="activator" src={product.picture} />
+                    </div>
+                    <div className="card-content" >
+                        <span className="brand left" >
+                            {product.brand}
+                        </span> <br />
+                        <div className="product_name" >
+                            <a href={`/app/product/${product.slug}`}>{product.name}</a>
+                        </div>
+                        <div className="price" >
+                            Price: {product.price}
+                        </div>
+                        <div className="add_to_cart" >
+                            <a href="#"><img src="static/images/add_to_cart_red.png" /></a>
+                        </div>
+                     </div>
+                </div>
+           </div>
 )
 
 ProductItem.propTypes = {
