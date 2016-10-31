@@ -11,6 +11,7 @@ class OrderDetails(Document):
     quantity = IntField(required=True)
     promotion = ReferenceField(Promotions)
     totalprice = FloatField(required=True)
+    orderNumber = StringField(max_length=20,required=True,unique=True)
 
 
     def get_id_from_field(data):
@@ -20,6 +21,10 @@ class OrderDetails(Document):
             promotion = Promotions.objects(slug=data['promotion']).first().id
             field_id['promotion'] = promotion
 
+        if 'orderNumber' in data:
+            orderNumber = Orders.objects(orderNumber=data['orderNumber']).first().id
+            field_id['orderID'] = orderNumber
+
         if 'product' in data:
             product = Products.objects(slug=data['product']).first().id
             field_id['product'] = product
@@ -28,10 +33,14 @@ class OrderDetails(Document):
     @staticmethod
     def validation(data):
         err = []
+        if 'orderNumber' not in data:
+            err.append('orderNumber cannot empty')
         if 'quantity' not in data:
             err.append('Quantity cannot empty')
         if 'product' not in data:
             err.append('Product cannot empty')
+        if 'orderNumber' not in data:
+            err.append('orderNumber cannot empty')
         if 'promotion' not in data:
             err.append('Promotion cannot empty')
         return err
@@ -45,11 +54,12 @@ class OrderDetails(Document):
         field_id = cls.get_id_from_field(data)
         orderDetail = cls(
             quantity=data['quantity'],
-            orderID=Orders.objects(pk=data['orderID']).first().id,
+            orderID=field_id['orderID'],
             price=productprice,
-            totalprice = productprice-discount,
+            totalprice = float(data['quantity'])*(productprice-discount),
             product=field_id['product'],
-            promotion=field_id['promotion']
+            promotion=field_id['promotion'],
+            orderNumber = data['orderNumber'],
         )
         orderDetail.save()
         return orderDetail
@@ -79,7 +89,8 @@ class OrderDetails(Document):
             'price' : orderDetail.price,
             'quantity' : orderDetail.quantity,
             'promotion' : real_data['promotion'],
-            'totalprice' : orderDetail.totalprice
+            'totalprice' : orderDetail.totalprice,
+            'orderNumber' : orderDetail.orderNumber
         }
         return obj
 

@@ -20,24 +20,24 @@ def orderDetail(request):
         pass
 
 @csrf_exempt
-def orderDetail_with_id(request,oid):
+def orderDetail_with_orderNumber(request,orderNumber):
     body  = request.body
     if request.method == 'GET':
-        return request_get(OrderDetails,query_by_id(oid))
+        return request_get_real(OrderDetails,query_by_number(orderNumber))
     if request.method == 'POST':
         return HttpResponse('Method not allow', status=405)
     if request.method == 'PUT':
         pass
     if request.method == 'DELETE':
-        return orderDetail_delete(oid)
+        return orderDetail_delete(orderNumber)
 
 
 def query_all():
     return OrderDetails.objects.all()
 
 
-def query_by_id(oid):
-    return OrderDetails.objects(pk=oid).first()
+def query_by_number(orderNumber):
+    return OrderDetails.objects(orderNumber=orderNumber).first()
 
 
 def orderDetail_create(body):
@@ -55,8 +55,8 @@ def orderDetail_create(body):
     except NotUniqueError as e:
         return HttpResponse('OrderDetail already exist', status=400)
 
-def orderDetail_delete(oid):
-    orderDetailDetails = OrderDetails.objects(pk=oid)
+def orderDetail_delete(orderNumber):
+    orderDetailDetails = OrderDetails.objects(orderNumber=orderNumber)
     if not orderDetailDetails:
         return HttpResponse('This OrderDetail not exist', status=404)
 

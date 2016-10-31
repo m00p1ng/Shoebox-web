@@ -1,5 +1,4 @@
 import React from 'react'
-import { Carousel } from 'react-bootstrap'
 
 export const ControlledCarousel = React.createClass({
   getInitialState() {
@@ -9,19 +8,24 @@ export const ControlledCarousel = React.createClass({
     };
   },
 
+/*  handleSelect(selectedIndex, e) {
+    // alert('selected=' + selectedIndex + ', direction=' + e.direction);
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  }, */
+
   render() {
     return (
-      <Carousel interval={3000} pauseOnHover={false} controls={false}>
-        <Carousel.Item>
-          <img width={1500} height={900} alt="900x500" src="http://www.freetrainer3-0.org.uk/images/nike-sneaker-womens-roshe-run-print-light-magenta-purple-z413_2.jpg"/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img width={1500} height={900} alt="900x500" src="http://static.highsnobiety.com/wp-content/uploads/2015/12/03162839/best-sneaker-featured-960x576.jpg"/>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img width={1500} height={900} alt="900x500" src="http://www.hyp-boost.com/images/product/Adidas-Superstar-0623-11_2.jpg"/>
-        </Carousel.Item>
-      </Carousel>
+      <div className="carousel carousel-slider" data-indicators="true">
+        <div className="carousel-fixed-item">
+        </div>
+      <a className="carousel-item" href="#one!"><img src="static/images/feature/01.png"/></a>
+      <a className="carousel-item" href="#two!"><img src="static/images/feature/02.png"/></a>
+      <a className="carousel-item" href="#three!"><img src="static/images/feature/03.png"/></a>
+      <a className="carousel-item" href="#tfour!"><img src="static/images/feature/04.png"/></a>
+    </div>
     );
   }
 });

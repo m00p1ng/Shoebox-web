@@ -9,6 +9,7 @@ class Orders(Document):
     date = DateTimeField(required=True)
     timeStamp = StringField(required=True)
     status = BooleanField(required=True)
+    orderNumber = ListField(StringField(max_length=20))
     username = StringField(max_length=200,required=True)
 
     def get_id_from_field(data):
@@ -25,6 +26,8 @@ class Orders(Document):
         err = []
         if 'status' not in data:
             err.append('Status cannot empty')
+        if 'orderNumber' not in data:
+            err.append('orderNumber cannot empty')
         if 'date' not in data:
             err.append('Date cannot empty')
             err.append('- year cannot empty')
@@ -52,6 +55,7 @@ class Orders(Document):
                 day = data['date']['day']
             ),
             status = data['status'],
+            orderNumber = data['orderNumber'],
             timeStamp = get_Timestamp(),
             username = Customers.objects(username=data['customer']).first().username
         )
@@ -66,7 +70,6 @@ class Orders(Document):
                 month=data['date']['month'],
                 day=data['date']['day']
             )
-
         order = cls.objects(pk=cid)
         order.update(**data)
         return order
