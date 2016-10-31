@@ -8,8 +8,9 @@ export ProductList from './Product/ProductList'
 export ProductItem from './Product/ProductItem'
 export ProductDetail from './Product/ProductDetail'
 
-export Cart from './Cart/Cart'
+export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'
+export CartList from './Cart/CartList'
 
 export FormLogin from './User/FormLogin'
 export FormRegister from './User/FormRegister'

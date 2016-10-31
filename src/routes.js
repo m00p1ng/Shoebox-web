@@ -13,7 +13,7 @@ import {
 import {
   ProductList,
   ProductDetail,
-  Cart,
+  CartApp,
   FormLogin
 } from './containers'
 
@@ -27,7 +27,7 @@ export default (
       </route>
       <Route path='login' component={FormLogin} />
       <Route path='register' component={FormRegister} />
-      <Route path='cart' component={Cart} />
+      <Route path='cart' component={CartApp} />
       <Route path='*' component={NotFound} />
     </Route>
   </Route>

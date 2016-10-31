@@ -1,5 +1,5 @@
 export ProductList from './Product/ProductList'
 export ProductDetail from './Product/ProductDetail'
-export Cart from './Cart/Cart'
+export CartApp from './Cart/CartApp'
 
 export FormLogin from './User/FormLogin'
