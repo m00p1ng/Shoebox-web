@@ -1,10 +1,23 @@
 import React, { PropTypes } from 'react'
-const ProductList = ({title, children}) => (
+
+import ProductItem from './ProductItem'
+import { addToCart } from '../../actions/cart'
+
+const ProductList = ({title, products}) => (
   <div>
     <h1>{title}</h1>
     <div className="container">
       <div className="row">
-        {children}
+        {(products.length > 0) ? (
+          products.map(product =>
+            <ProductItem
+              key={product.slug}
+              product={product}
+            />
+          )
+        ): (
+          <h3>Loading...</h3>
+        )}
       </div>
     </div>
   </div>
