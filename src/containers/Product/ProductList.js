@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadProducts } from '../../actions/product'
 import { bindActionCreators } from 'redux'
 import { ProductList, ProductItem } from '../../components'
+import { loadProducts } from '../../actions/product'
 import { addToCart } from '../../actions/cart'
 
 class ProductListContainer extends Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.products !== nextProps.products;
+  }
+
   componentDidMount() {
     this.props.loadProducts()
   }
@@ -44,10 +48,13 @@ class ProductListContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.products
-  }
-}
+const mapStateToProps = (state) => ({
+  products: state.products
+})
 
-export default connect(mapStateToProps, { loadProducts, addToCart })(ProductListContainer);
+const mapDispatchToProps = ({
+  loadProducts,
+  addToCart
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListContainer);

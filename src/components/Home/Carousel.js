@@ -8,14 +8,6 @@ export const ControlledCarousel = React.createClass({
     };
   },
 
-/*  handleSelect(selectedIndex, e) {
-    // alert('selected=' + selectedIndex + ', direction=' + e.direction);
-    this.setState({
-      index: selectedIndex,
-      direction: e.direction
-    });
-  }, */
-
   render() {
     return (
       <div className="carousel carousel-slider" data-indicators="true">

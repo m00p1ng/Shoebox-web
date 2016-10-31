@@ -5,7 +5,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-          <ControlledCarousel />
+        <h1>Home page</h1>
+        <ControlledCarousel />
       </div>
 
       

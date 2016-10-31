@@ -21,4 +21,8 @@ const mapStateToProps = (state, ownProps) => ({
   product: getProductBySlug(state, ownProps.params.slug)
 })
 
-export default connect(mapStateToProps,{ loadProduct })(ProductDetailContainer)
+const mapDispatchToProps = ({
+  loadProduct
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailContainer)
