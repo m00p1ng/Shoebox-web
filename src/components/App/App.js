@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Navibar from './Navibar'
+import Navbar from './Navbar'
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Navibar />
+        <Navbar />
         {this.props.children}
       </div>
     )

@@ -1,5 +1,5 @@
 export App from './App/App'
-export Navibar from './App/Navibar'
+export Navbar from './App/Navbar'
 
 export Home from './Home/Home'
 
