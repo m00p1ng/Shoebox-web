@@ -88,7 +88,8 @@ DATABASES = {
     }
 }
 
-connect('shoebox')
+connect('shoebox', host="128.199.86.122")
+# connect('shoebox')
 
 AUTHENTICATION_BACKENDS = [
     'mongoengine.django.auth.MongoEngineBackend',

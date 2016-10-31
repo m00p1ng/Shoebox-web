@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
-    <div className="col s12 l4" >
+    <div className="col s12 l3" >
            <div className="card center" >
               <div className="card-image waves-effect waves-block waves-light" >
                   <img className="activator" src={product.picture} />
