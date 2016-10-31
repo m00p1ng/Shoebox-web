@@ -1,4 +1,4 @@
-export const URL_ROOT = '/app'
+export const URL_ROOT = '/shoebox'
 
 const API_ROOT = '/api'
 export const PRODUCT_ENDPOINT = `${API_ROOT}/product`

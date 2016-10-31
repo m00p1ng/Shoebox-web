@@ -24,7 +24,7 @@ urlpatterns = [
 
     # app url
     url(r'^$', home),
-    url(r'^app/?', TemplateView.as_view(template_name="index.html")),
+    url(r'^shoebox/?', TemplateView.as_view(template_name="index.html")),
 
     # api url
     url(r'^api/login/?', login),
