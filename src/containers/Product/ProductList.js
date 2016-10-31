@@ -16,7 +16,8 @@ class ProductListContainer extends Component {
 
   render() {
     return (
-      <ProductList title="Product List">
+      <div>
+      <ProductList title="New Arrival">
         {(this.props.products.length > 0) ? (
           this.props.products.map(product =>
             <ProductItem
@@ -29,6 +30,20 @@ class ProductListContainer extends Component {
           <h3>Loading...</h3>
         )}
       </ProductList>
+      <ProductList title="Best Seller">
+        {(this.props.products.length > 0) ? (
+          this.props.products.map(product =>
+            <ProductItem
+              key={product.slug}
+              product={product}
+              onAddToCartClicked={() => addToCart(product.slug)}
+            />
+          )
+        ): (
+          <h3>Loading...</h3>
+        )}
+      </ProductList>
+      </div>
     )
   }
 }
