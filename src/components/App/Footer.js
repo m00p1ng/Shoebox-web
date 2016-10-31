@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-export default class Navbar extends Component {
+export default class Footer extends Component {
   render() {
     return (
 <div>
@@ -41,5 +41,5 @@ export default class Navbar extends Component {
     </div>
 </div>
     )
-  }
+}
 }
