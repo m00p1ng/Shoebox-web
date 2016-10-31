@@ -37,9 +37,9 @@
   $ npm install
   ```
 
-7. generate bundle javascript file
+7. start project
   ```
-  $ npm run build
+  $ npm start
   ```
 
 
@@ -51,7 +51,7 @@
   ```
   or
   ```
-  $ npm start
+  $ npm run server
     ```
 
 * *(for FrontEnd)* run webpack for generate new bundle of javascript
@@ -69,5 +69,5 @@
 
 * UI test
   ```
-  $
+  $ npm run test-ui
   ```

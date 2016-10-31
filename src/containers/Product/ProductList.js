@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { loadProducts } from '../../actions/product'
 import { bindActionCreators } from 'redux'
 import { ProductList, ProductItem } from '../../components'
+import { addToCart } from '../../actions/cart'
 
 class ProductListContainer extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class ProductListContainer extends Component {
             <ProductItem
               key={product.slug}
               product={product}
+              onAddToCartClicked={() => addToCart(product.slug)}
             />
           )
         ): (
@@ -33,4 +35,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { loadProducts })(ProductListContainer);
+export default connect(mapStateToProps, { loadProducts, addToCart })(ProductListContainer);

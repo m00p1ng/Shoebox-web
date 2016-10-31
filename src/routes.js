@@ -6,7 +6,6 @@ import {
   App,
   Home,
   FormRegister,
-  Cart,
   NotFound,
   ProductNotFound
 } from './components'
@@ -14,6 +13,7 @@ import {
 import {
   ProductList,
   ProductDetail,
+  Cart,
   FormLogin
 } from './containers'
 
