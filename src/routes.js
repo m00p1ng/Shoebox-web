@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
+import NotFound from './constants/404/NotFound'
+
 import {
   App,
   Home,
   FormRegister,
-  NotFound,
-  ProductNotFound
 } from './components'
 
 import {
