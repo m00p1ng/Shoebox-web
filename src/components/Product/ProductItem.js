@@ -17,7 +17,10 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
       <ButtonGroup>
         <Button
           bsStyle="primary"
-          onClick={console.log('click mooping')}>
+          onClick={(e) => {
+            console.log(product.slug)
+            onAddToCartClicked
+          }}>
             Add to Cart
         </Button>
       </ButtonGroup>

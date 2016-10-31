@@ -5,12 +5,9 @@ import {
   LOAD_PRODUCT_FAILURE
 } from 'actionTypes'
 
-const initialState = {
-  products: [],
-  error: null
-}
+const initialState = []
 
-const products = (state = initialState.products, action) => {
+const products = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_SUCCESS:
       return action.payload
