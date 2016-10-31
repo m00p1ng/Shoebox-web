@@ -1,6 +1,6 @@
 # Shoebox Web
 
-## Requirement
+## Requirements
 - Python 3
   - virturalenv
 - Node.js
@@ -9,14 +9,14 @@
 
 ## How to install
 
-1. install all requirements
+1. install requirements
 
 2. clone this project
   ```
   $ git clone https://github.com/moopings/Shoebox-web
   ```
 
-3. create virturalenv
+3. create project virtual environment
   ```
   $ cd Shoebox-web
   $ virtualenv -p python3 shoebox-env
@@ -51,7 +51,7 @@
   ```
   or
   ```
-  $ npm run server
+  $ npm run api-server
     ```
 
 * *(for FrontEnd)* run webpack for generate new bundle of javascript
@@ -64,10 +64,10 @@
 
 * API test
   ```
-  $ npm run test-api
+  $ npm run api-test
   ```
 
 * UI test
   ```
-  $ npm run test-ui
+  $ npm run ui-test
   ```

@@ -4,13 +4,12 @@
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js && . ./shoebox-env/bin/activate && python manage.py runserver",
+    "start": "npm run build && npm run api-server",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
-    "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
-    "test-api": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
-    "test-ui": "echo non set now",
-    "production": ". ./shoebox-env/bin/activate && python manage.py runserver 0.0.0.0:8000"
+    "api-test": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
+    "api-server": ". ./shoebox-env/bin/activate && python manage.py runserver 0.0.0.0:8000",
+    "ui-test": "echo non set now"
   },
   "repository": {
     "type": "git",
