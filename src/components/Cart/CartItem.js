@@ -1,11 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 
-export default class CartItem extends Component {
-  render() {
-    return (
-      <div>
-        <p>Cart Item</p>
-      </div>
-    )
-  }
-}
+const CartItem = () => (
+    <h1>UserProfile</h1>
+)
+
+export default CartItem

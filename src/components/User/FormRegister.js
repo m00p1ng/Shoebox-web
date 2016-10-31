@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
+import React from 'react'
 
-export default class FormRegister extends Component {
-  render() {
-    return (
-      <h1>Register</h1>
-    )
-  }
-};
+const FormRegister = () => (
+  <h1>Register</h1>
+)
+
+export default FormRegister

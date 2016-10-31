@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class CartSummary extends Component {
-  render() {
-    return (
-      <div>
-        <h1>CartSummary</h1>
-      </div>
-    )
-  }
-}
+const CartSummary = () => (
+  <h1>CartSummary</h1>
+)
+
+export default CartSummary

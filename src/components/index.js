@@ -14,3 +14,6 @@ export CartList from './Cart/CartList'
 
 export FormLogin from './User/FormLogin'
 export FormRegister from './User/FormRegister'
+export UserProfile from './User/UserProfile'
+
+export SearchApp from './Search/SearchApp'

@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
-const ProductItem = ({ product, onAddToCartClicked }) => (
+import { URL_ROOT } from 'endpoint'
+
+const ProductItem = ({ product }) => (
   <div className="col s12 l3" >
     <div className="card center" >
       <div className="card-image waves-effect waves-block waves-light" >
@@ -12,7 +14,7 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
           {product.brand}
         </span> <br />
         <div className="product_name" >
-          <a href={`/app/product/${product.slug}`}>{product.name}</a>
+          <a href={`${URL_ROOT}/product/${product.slug}`}>{product.name}</a>
         </div>
         <div className="price" >
             Price: {product.price}
@@ -45,7 +47,6 @@ ProductItem.propTypes = {
     is_discount: PropTypes.bool.isRequired,
     discountPercent : PropTypes.number.isRequired
   }).isRequired,
-  onAddToCartClicked: PropTypes.func.isRequired
 }
 
 export default ProductItem

@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react'
-
 import ProductItem from './ProductItem'
-import { addToCart } from '../../actions/cart'
 
 const ProductList = ({title, products}) => (
   <div>

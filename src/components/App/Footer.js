@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-export default class Footer extends Component {
-  render() {
-    return (
+const Footer = () => (
 <div>
   <ul id="dropdown1" className="dropdown-content">
     <li><a href="#!">Nike</a></li>
@@ -41,5 +39,5 @@ export default class Footer extends Component {
     </div>
 </div>
     )
-}
-}
+
+export default Footer

@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        {this.props.children}
-        <Footer />
-      </div>
-    )
-  }
-}
+const App = ({children}) => (
+  <div>
+    <Navbar />
+    {children}
+    <Footer />
+  </div>
+)
+
+export default App

@@ -1,12 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { ControlledCarousel } from './Carousel'
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div>
-        <ControlledCarousel />
-      </div>
-    )
-  }
-}
+const Home = () => (
+  <ControlledCarousel />
+)
+
+export default Home

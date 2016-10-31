@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-export default class Navbar extends Component {
-  render() {
-    return (
+const Navbar = () => (
 <div>
   <ul id="dropdown1" className="dropdown-content">
     <li><a href="#!">Nike</a></li>
@@ -25,7 +23,7 @@ export default class Navbar extends Component {
         <li><Link to={`${URL_ROOT}/product`}>Feature Item</Link></li>
         <li><a href="#">Best Seller</a></li>
         <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Brand<i className="material-icons right">arrow_drop_down</i></a></li>
-        <li><a href="badges.html">Search</a></li>
+        <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
         <li><Link to={`${URL_ROOT}/cart`}>Cart</Link></li>
         <li><a href="mobile.html">My Account</a></li>
       </ul>
@@ -41,5 +39,5 @@ export default class Navbar extends Component {
     </div>
 </div>
     )
-  }
-}
+
+    export default Navbar

@@ -8,6 +8,8 @@ import {
   App,
   Home,
   FormRegister,
+  UserProfile,
+  SearchApp
 } from './components'
 
 import {
@@ -28,6 +30,8 @@ export default (
       <Route path='login' component={FormLogin} />
       <Route path='register' component={FormRegister} />
       <Route path='cart' component={CartApp} />
+      <Route path='profile' component={UserProfile} />
+      <Route path='search' component={SearchApp} />
       <Route path='*' component={NotFound} />
     </Route>
   </Route>

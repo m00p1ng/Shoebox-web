@@ -1,10 +1,13 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import CartList from './CartList'
+import CartSummary from './CartSummary'
 
-export default class CartApp extends Component {
-  render() {
-    return (
-      <CartList />
-    )
-  }
-}
+const CartApp = () => (
+  <div>
+    <h1>CartApp</h1>
+    <CartList />
+    <CartSummary />
+  </div>
+)
+
+export default CartApp
