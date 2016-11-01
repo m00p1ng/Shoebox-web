@@ -4,18 +4,18 @@
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run api-server",
+    "start": "npm run build && npm run server",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js --watch",
+    "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
     "api-test": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
-    "api-server": ". ./shoebox-env/bin/activate && python manage.py runserver 0.0.0.0:8000",
     "ui-test": "echo non set now"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/moopings/Shoebox-web.git"
   },
-  "author": "Mongkonchai Priyachiwa",
+  "author": "EZ-dev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/moopings/Shoebox-web/issues"

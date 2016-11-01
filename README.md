@@ -51,7 +51,7 @@
   ```
   or
   ```
-  $ npm run api-server
+  $ npm run server
     ```
 
 * *(for FrontEnd)* run webpack for generate new bundle of javascript
