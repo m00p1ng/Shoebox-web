@@ -28,7 +28,7 @@ class ProductListContainer extends Component {
           ) : ( <h3>Error</h3> )
         }
         </ProductList>
-        {/* <ProductList title="Best Seller" products={this.props.products} >
+        <ProductList title="Best Seller" products={this.props.products} >
         {
           not_hasError ? (
             hasProducts ? (
@@ -42,7 +42,7 @@ class ProductListContainer extends Component {
             ): ( <h3>Loading...</h3> )
           ) : ( <h3>Error</h3> )
         }
-        </ProductList> */}
+        </ProductList>
       </div>
     )
   }

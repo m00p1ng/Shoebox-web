@@ -32,8 +32,8 @@ export default (
       <Route path='cart' component={CartApp} />
       <Route path='profile' component={UserProfile} />
       <Route path='search' component={SearchApp} />
-      <Route path='/404' component={NotFound} />
-      <Redirect from='*' to='/404' />
+      <Route path='404' component={NotFound} />
+      <Redirect from='*' to={`${URL_ROOT}/404`} />
     </Route>
   </Route>
 )

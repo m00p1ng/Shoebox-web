@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const ProductDetail = ({product}) => {
+const ProductDetail = ({product, onClickedAddToCart}) => {
   const render_list = (list) => (
     list.map(item => {
       return <li key={item}>{item}</li>
@@ -12,7 +12,7 @@ const ProductDetail = ({product}) => {
       <h1>{product.name}</h1>
       <div>
         <div>
-          <img src={product.picture} responsive/>
+          <img src={product.picture} />
         </div>
         <div>
           <p><strong>Type :</strong> {product.types}</p>
@@ -26,7 +26,7 @@ const ProductDetail = ({product}) => {
           <p><strong>Available :</strong> {String(product.is_available)}</p>
           <p><strong>Discount :</strong> {String(product.is_discount)}</p>
           <p><strong>discountPercent :</strong> {product.discountPercent}</p>
-          <button bsStyle="primary">Add to cart</button>
+          <button onClick={onClickedAddToCart}>Add to cart</button>
         </div>
       </div>
     </div>
