@@ -24,7 +24,7 @@ const Navbar = () => (
         <li><a href="#">Best Seller</a></li>
         <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Brand<i className="material-icons right">arrow_drop_down</i></a></li>
         <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
-        <li><Link to={`${URL_ROOT}/cart`}>Cart</Link></li>
+        <li><Link to={`${URL_ROOT}/cart`}>Cart <span className="badge red white-text">1</span></Link></li>
         <li><a href="mobile.html">My Account</a></li>
       </ul>
       <ul className="side-nav" id="mobile-demo">
