@@ -8,7 +8,9 @@ import {
 
   LOAD_PRODUCT_REQUEST,
   LOAD_PRODUCT_SUCCESS,
-  LOAD_PRODUCT_FAILURE
+  LOAD_PRODUCT_FAILURE,
+
+  ADD_TO_CART
 } from 'actionTypes'
 
 export const loadProducts = () => ({
@@ -26,3 +28,12 @@ export const loadProduct = (slug) => ({
     types: [LOAD_PRODUCT_REQUEST, LOAD_PRODUCT_SUCCESS, LOAD_PRODUCT_FAILURE]
   }
 })
+
+const addToCart = (productId) => ({
+  type: ADD_TO_CART,
+  productId
+})
+
+export const clickAddToCart = productId => (
+  dispatch => dispatch(addToCart(productId))
+)

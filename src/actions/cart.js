@@ -1,8 +1,14 @@
 import {
-  ADD_TO_CART
+  LOAD_CART_SUCCESS,
+  LOAD_CART_FAILURE,
+  LOAD_CART_REQUEST
 } from 'actionTypes'
 
-export const addToCart = productId => (
-    type: ADD_TO_CART,
-    productId
-)
+const receiveCart = (cart) => ({
+  type: LOAD_CART_SUCCESS,
+  cart
+})
+
+export const getCartProduct = () => (dispatch, getState) => {
+    dispatch(receiveCart(getState().cart))
+}

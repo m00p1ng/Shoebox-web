@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-const ProductItem = ({ product }) => (
+const ProductItem = ({ product, onClickedAddToCart }) => (
   <div className="col s12 l3" >
     <div className="card center" >
       <div className="card-image waves-effect waves-block waves-light" >
@@ -14,13 +14,13 @@ const ProductItem = ({ product }) => (
           {product.brand}
         </span> <br />
         <div className="product_name" >
-          <a href={`${URL_ROOT}/product/${product.slug}`}>{product.name}</a>
+          <Link to={`${URL_ROOT}/product/${product.slug}`}>{product.name}</Link>
         </div>
         <div className="price" >
             Price: {product.price}
         </div>
         <div className="add_to_cart" >
-            <a href="#"><img src="/static/images/add_to_cart_red.png" /></a>
+            <a onClick={onClickedAddToCart}><img src="/static/images/add_to_cart_red.png" /></a>
         </div>
       </div>
     </div>

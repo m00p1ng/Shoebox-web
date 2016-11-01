@@ -1,7 +1,7 @@
 import React from 'react'
 
-const CartItem = () => (
-    <h1>UserProfile</h1>
+const CartItem = ({product}) => (
+  <h1>{product}</h1>
 )
 
 export default CartItem

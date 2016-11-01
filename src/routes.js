@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 import NotFound from './constants/404/NotFound'
@@ -32,7 +32,8 @@ export default (
       <Route path='cart' component={CartApp} />
       <Route path='profile' component={UserProfile} />
       <Route path='search' component={SearchApp} />
-      <Route path='*' component={NotFound} />
+      <Route path='/404' component={NotFound} />
+      <Redirect from='*' to='/404' />
     </Route>
   </Route>
 )

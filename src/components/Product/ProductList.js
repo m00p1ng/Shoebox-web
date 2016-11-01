@@ -1,21 +1,12 @@
 import React, { PropTypes } from 'react'
 import ProductItem from './ProductItem'
 
-const ProductList = ({title, products}) => (
+const ProductList = ({title, children}) => (
   <div>
     <h1>{title}</h1>
     <div className="container">
       <div className="row">
-        {(products.length > 0) ? (
-          products.map(product =>
-            <ProductItem
-              key={product.slug}
-              product={product}
-            />
-          )
-        ): (
-          <h3>Loading...</h3>
-        )}
+        {children}
       </div>
     </div>
   </div>

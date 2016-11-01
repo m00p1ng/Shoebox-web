@@ -11,6 +11,7 @@ export ProductDetail from './Product/ProductDetail'
 export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'
 export CartList from './Cart/CartList'
+export CartSummary from './Cart/CartSummary'
 
 export FormLogin from './User/FormLogin'
 export FormRegister from './User/FormRegister'

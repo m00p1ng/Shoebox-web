@@ -5,14 +5,26 @@ import {
   LOAD_PRODUCT_FAILURE
 } from 'actionTypes'
 
-const initialState = []
+const initialState = {
+  products: [],
+  error: false
+}
 
 const products = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_SUCCESS:
-      return action.payload
-    case LOAD_PRODUCT_SUCCESS:
-      return [action.payload]
+      return ({
+        products: action.payload
+      })
+    case LOAD_PRODUCTS_FAILURE:
+    return ({
+      products: [],
+      error: true
+    })
+    // case LOAD_PRODUCT_SUCCESS:
+    //   return ({
+    //     products: [action.payload]
+    //   })
     default:
       return state
   }
