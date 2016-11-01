@@ -13,35 +13,45 @@ class ProductListContainer extends Component {
     let hasProducts = this.props.products.length > 0
     return (
       <div>
-        <ProductList title="New Arrival" products={this.props.products} >
-        {
-          not_hasError ? (
-            hasProducts ? (
-              this.props.products.map(product =>
-                <ProductItem
-                  key={product.slug}
-                  product={product}
-                  onClickedAddToCart={() => this.props.clickAddToCart(product.slug)}
-                />
-              )
-            ): ( <h3>Loading...</h3> )
-          ) : ( <h3>Error</h3> )
-        }
+        <ProductList
+          title="New Arrival"
+          products={this.props.products} >
+          {
+            not_hasError ? (
+              hasProducts ? (
+                this.props.products.map(product =>
+                  <ProductItem
+                    key={product.slug}
+                    product={product}
+                    onClickedAddToCart={() => {
+                      Materialize.toast(`Add&nbsp;&nbsp;<strong>${product.name}</strong>&nbsp;&nbsp;to cart`, 2000)
+                      return this.props.clickAddToCart(product.slug)
+                    }}
+                  />
+                )
+              ): ( <h3>Loading...</h3> )
+            ) : ( <h3>Can't Fetch data</h3> )
+          }
         </ProductList>
-        <ProductList title="Best Seller" products={this.props.products} >
-        {
-          not_hasError ? (
-            hasProducts ? (
-              this.props.products.map(product =>
-                <ProductItem
-                  key={product.slug}
-                  product={product}
-                  onClickedAddToCart={() => this.props.clickAddToCart(product.slug)}
-                />
-              )
-            ): ( <h3>Loading...</h3> )
-          ) : ( <h3>Error</h3> )
-        }
+        <ProductList
+          title="New Arrival"
+          products={this.props.products} >
+          {
+            not_hasError ? (
+              hasProducts ? (
+                this.props.products.map(product =>
+                  <ProductItem
+                    key={product.slug}
+                    product={product}
+                    onClickedAddToCart={() => {
+                      Materialize.toast(`Add ${product.name} to cart`, 2000)
+                      return this.props.clickAddToCart(product.slug)
+                    }}
+                  />
+                )
+              ): ( <h3>Loading...</h3> )
+            ) : ( <h3>Can't Fetch data</h3> )
+          }
         </ProductList>
       </div>
     )

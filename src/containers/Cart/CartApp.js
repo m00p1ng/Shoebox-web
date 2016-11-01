@@ -23,8 +23,7 @@ class CartAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart.addedIds
 })
-
 
 export default connect(mapStateToProps, { getCartProduct })(CartAppContainer)

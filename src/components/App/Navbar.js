@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-const Navbar = () => (
+const Navbar = ({cartItem}) => (
 <div>
   <ul id="dropdown1" className="dropdown-content">
     <li><a href="#!">Nike</a></li>
@@ -12,7 +12,7 @@ const Navbar = () => (
     <li><a href="#!">Allen Edmonds</a></li>
   </ul>
 
-    <div className="navbar-fixed">
+  <div className="navbar-fixed">
     <nav>
     <div className="nav-wrapper white_nav">
       <Link to={`${URL_ROOT}`} className="brand-logo">
@@ -21,22 +21,22 @@ const Navbar = () => (
       <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
       <ul className="right hide-on-med-and-down">
         <li><Link to={`${URL_ROOT}/product`}>Feature Item</Link></li>
-        <li><a href="#">Best Seller</a></li>
+        <li><Link to={`${URL_ROOT}/product`}>Best Seller</Link></li>
         <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Brand<i className="material-icons right">arrow_drop_down</i></a></li>
         <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
-        <li><Link to={`${URL_ROOT}/cart`}>Cart <span className="badge red white-text">1</span></Link></li>
-        <li><a href="mobile.html">My Account</a></li>
+        <li><Link to={`${URL_ROOT}/cart`}>Cart <span className="badge red white-text">20</span></Link></li>
+        <li><Link to={`${URL_ROOT}/profile`}>My Account</Link></li>
       </ul>
       <ul className="side-nav" id="mobile-demo">
-        <li><a href="#">Feature Item</a></li>
-        <li><a href="#">Best Seller</a></li>
-        <li><a href="badges.html">Search</a></li>
-        <li><a href="collapsible.html">Cart</a></li>
-        <li><a href="mobile.html">My Account</a></li>
+        <li><Link to={`${URL_ROOT}/product`}>Feature Item</Link></li>
+        <li><Link to={`${URL_ROOT}/product`}>Best Seller</Link></li>
+        <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
+        <li><Link to={`${URL_ROOT}/cart`}>Cart</Link></li>
+        <li><Link to={`${URL_ROOT}/profile`}>My Account</Link></li>
       </ul>
     </div>
     </nav>
-    </div>
+  </div>
 </div>
     )
 
