@@ -5,7 +5,7 @@ const CartItem = ({product}) => (
 						<div className="row">
 							<div className="col s12 l4">
 								<div>
-									<img className="responsive-img" src="{product.picture}" alt="cart_img" />
+									<img className="responsive-img" src="http://watcharaphat.com/static/images/nike/01.jpg" alt="cart_img" />
 								</div>
 							</div>
 

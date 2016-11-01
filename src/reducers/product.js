@@ -9,8 +9,7 @@ import {
 
 const initialState = {
   products: [],
-  error: false,
-  isLoaded: false,
+  error: false
 }
 
 const products = (state = initialState, action) => {
