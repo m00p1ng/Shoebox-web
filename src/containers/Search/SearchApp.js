@@ -5,7 +5,7 @@ import { SearchApp } from '../../components'
 class SearchAppContainer extends Component {
   render() {
     return (
-      <LogoutApp />
+      <SearchApp />
     )
   }
 }
