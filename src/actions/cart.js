@@ -17,6 +17,10 @@ export const getCartProduct = () => (dispatch, getState) => {
     dispatch(receiveCart(getState().cart))
 }
 
+export const getNumberOfCartProduct = () => (dispatch, getState) => {
+    dispatch(receiveCart(getState().cart.addedIds.length))
+}
+
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 
