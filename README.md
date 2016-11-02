@@ -1,5 +1,7 @@
 # Shoebox Web
 
+![Shoebox logo image](https://raw.githubusercontent.com/moopings/Shoebox-web/master/static/images/navigation_bar/logo_with_name.png)
+
 ## Requirements
 - Python 3
   - virturalenv
@@ -49,7 +51,7 @@
   $ source ./shoebox-env/bin/activate
   $ python manage.py runserver
   ```
-  or
+  or (use Node package manager script)
   ```
   $ npm run server
     ```
