@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run server",
-    "build": "webpack --config webpack.config.js",
-    "watch": "webpack --config webpack.config.js --watch",
+    "build": "webpack",
+    "watch": "webpack --watch",
     "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
+    "mooping": ". ./shoebox-env/bin/activate && python manage-mooping.py runserver",
     "api-test": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
     "ui-test": "echo non set now"
   },
