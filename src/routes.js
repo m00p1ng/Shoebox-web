@@ -10,7 +10,10 @@ import {
   FormRegister,
   UserProfile,
   SearchApp,
-  Logout
+  Logout,
+  CheckoutApp,
+  ProductCreate,
+  ProductUpdate
 } from './components'
 
 import {
@@ -25,12 +28,17 @@ export default (
     <Route path={`${URL_ROOT}`} component={App}>
       <IndexRoute component={Home} />
 
-      
+
       <route path='product'>
         <IndexRoute component={ProductList} />
-        <route path=':slug' component={ProductDetail} />
+        <route path='create' component={ProductCreate} />
+        <route path=':slug' >
+          <IndexRoute component={ProductDetail} />
+          <route path='edit' component={ProductUpdate} />
+        </route>
       </route>
       <Route path='cart' component={CartApp} />
+      <Route path='checkout' component={CheckoutApp} />
       <Route path='search' component={SearchApp} />
 
 

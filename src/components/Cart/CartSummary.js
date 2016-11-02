@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router'
+import { URL_ROOT } from 'endpoint'
 
 const CartSummary = () => (
   <div className="col s12 l4 offset-l1">
@@ -39,14 +41,15 @@ const CartSummary = () => (
       </div>
     </div>
 
-  <div className="row">
-    <div className="card orange darken-3">
-      <a href="index.html"><div className="card-content white-text">
-        <p className="checkout_button">CHECKOUT</p>
-      </div></a>
+    <div className="row">
+      <div className="card orange darken-3">
+        <Link to={`${URL_ROOT}/checkout`}>
+          <div className="card-content white-text">
+            <p className="checkout_button">CHECKOUT</p>
+          </div>
+        </Link>
+      </div>
     </div>
-  </div>
-
   </div>
 )
 

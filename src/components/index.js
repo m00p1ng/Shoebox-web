@@ -7,11 +7,15 @@ export Home from './Home/Home'
 export ProductList from './Product/ProductList'
 export ProductItem from './Product/ProductItem'
 export ProductDetail from './Product/ProductDetail'
+export ProductCreate from './Product/ProductCreate'
+export ProductUpdate from './Product/ProductUpdate'
 
 export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'
 export CartList from './Cart/CartList'
 export CartSummary from './Cart/CartSummary'
+
+export CheckoutApp from './Checkout/CheckoutApp'
 
 export Logout from './User/Logout'
 export FormLogin from './User/FormLogin'
