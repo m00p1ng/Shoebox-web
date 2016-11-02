@@ -36,6 +36,10 @@ def query_all():
     return ProductBrands.objects.all()
 
 
+def query_by_brand(slug):
+    return ProductBrands.objects(slug=slug).first()
+
+
 def productBrand_name(slug):
     return ProductBrands.objects(slug=slug).first()
 
