@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FormLogin } from '../../components'
+import { LoginApp } from '../../components'
 
-export default class FormLoginContainer extends Component {
+export default class LoginAppContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -36,7 +36,7 @@ export default class FormLoginContainer extends Component {
 
   render() {
     return(
-      <FormLogin
+      <LoginApp
         onUsernameChange={this.onUsernameChange}
         onPasswordChange={this.onPasswordChange}
         onLogin={this.onLogin}

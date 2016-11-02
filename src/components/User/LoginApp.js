@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormLogin = ({onUsernameChange, onPasswordChange, onLogin}) => (
+const LoginApp = ({onUsernameChange, onPasswordChange, onLogin}) => (
   <div className="row">
     <h1>Login</h1>
     <div className="col s6 offset-s3">
@@ -29,4 +29,4 @@ const FormLogin = ({onUsernameChange, onPasswordChange, onLogin}) => (
   </div>
 )
 
-export default FormLogin
+export default LoginApp

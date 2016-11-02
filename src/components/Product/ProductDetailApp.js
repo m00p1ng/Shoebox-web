@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const ProductDetail = ({product, onClickedAddToCart}) => {
+const ProductDetailApp = ({product, onClickedAddToCart}) => {
   const render_list = (list) => (
     list.map(item => {
       return <li key={item}>{item}</li>
@@ -33,7 +33,7 @@ const ProductDetail = ({product, onClickedAddToCart}) => {
   )
 }
 
-ProductDetail.propTypes = {
+ProductDetailApp.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
@@ -55,4 +55,4 @@ ProductDetail.propTypes = {
   }).isRequired
 }
 
-export default ProductDetail
+export default ProductDetailApp

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ProductDetail } from '../../components'
+import { ProductDetailApp } from '../../components'
 import { getProductBySlug } from '../../reducers/product'
 import { loadProduct, clickAddToCart } from '../../actions/product'
 import { browserHistory } from 'react-router';
 import { URL_ROOT } from 'endpoint'
 
-class ProductDetailContainer extends Component {
+class ProductDetailAppContainer extends Component {
   componentDidMount() {
     this.props.loadProduct(this.props.params.slug)
   }
@@ -17,7 +17,7 @@ class ProductDetailContainer extends Component {
       <div>
         {
           not_hasError ? (
-            <ProductDetail
+            <ProductDetailApp
               product={this.props.product}
               onClickedAddToCart={() => {
                 Materialize.toast(
@@ -44,4 +44,4 @@ const mapDispatchToProps = ({
   clickAddToCart
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailAppContainer);

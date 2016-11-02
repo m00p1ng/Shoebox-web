@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Logout = () => (
+const LogoutApp = () => (
   <h1>Logging out</h1>
 )
 
-export default Logout
+export default LogoutApp

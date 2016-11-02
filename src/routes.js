@@ -7,20 +7,22 @@ import NotFound from './constants/404/NotFound'
 import {
   App,
   Home,
-  FormRegister,
-  UserProfile,
-  SearchApp,
-  Logout,
-  CheckoutApp,
-  ProductCreate,
-  ProductUpdate
 } from './components'
 
 import {
-  ProductList,
-  ProductDetail,
-  FormLogin,
-  CartApp
+  ProductListApp,
+  ProductDetailApp,
+  ProductCreateApp,
+  ProductUpdateApp,
+  SearchApp,
+
+  LoginApp,
+  LogoutApp,
+  RegisterApp,
+  ProfileApp,
+  
+  CartApp,
+  CheckoutApp,
 } from './containers'
 
 export default (
@@ -30,11 +32,11 @@ export default (
 
 
       <route path='product'>
-        <IndexRoute component={ProductList} />
-        <route path='create' component={ProductCreate} />
+        <IndexRoute component={ProductListApp} />
+        <route path='create' component={ProductCreateApp} />
         <route path=':slug' >
-          <IndexRoute component={ProductDetail} />
-          <route path='edit' component={ProductUpdate} />
+          <IndexRoute component={ProductDetailApp} />
+          <route path='edit' component={ProductUpdateApp} />
         </route>
       </route>
       <Route path='cart' component={CartApp} />
@@ -42,10 +44,10 @@ export default (
       <Route path='search' component={SearchApp} />
 
 
-      <Route path='login' component={FormLogin} />
-      <Route path='logout' component={Logout} />
-      <Route path='register' component={FormRegister} />
-      <Route path='profile' component={UserProfile} />
+      <Route path='login' component={LoginApp} />
+      <Route path='logout' component={LogoutApp} />
+      <Route path='register' component={RegisterApp} />
+      <Route path='profile' component={ProfileApp} />
 
 
       <Route path='404' component={NotFound} />

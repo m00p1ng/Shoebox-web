@@ -4,11 +4,11 @@ export Footer from './App/Footer'
 
 export Home from './Home/Home'
 
-export ProductList from './Product/ProductList'
+export ProductListApp from './Product/ProductListApp'
 export ProductItem from './Product/ProductItem'
-export ProductDetail from './Product/ProductDetail'
-export ProductCreate from './Product/ProductCreate'
-export ProductUpdate from './Product/ProductUpdate'
+export ProductDetailApp from './Product/ProductDetailApp'
+export ProductCreateApp from './Product/ProductCreateApp'
+export ProductUpdateApp from './Product/ProductUpdateApp'
 
 export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'
@@ -17,9 +17,9 @@ export CartSummary from './Cart/CartSummary'
 
 export CheckoutApp from './Checkout/CheckoutApp'
 
-export Logout from './User/Logout'
-export FormLogin from './User/FormLogin'
-export FormRegister from './User/FormRegister'
-export UserProfile from './User/UserProfile'
+export LogoutApp from './User/LogoutApp'
+export LoginApp from './User/LoginApp'
+export RegisterApp from './User/RegisterApp'
+export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'

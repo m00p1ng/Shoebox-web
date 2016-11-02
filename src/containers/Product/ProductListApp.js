@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ProductList, ProductItem } from '../../components'
+import { ProductListApp, ProductItem } from '../../components'
 import { loadProducts, clickAddToCart } from '../../actions/product'
 
-class ProductListContainer extends Component {
+class ProductListAppContainer extends Component {
   componentDidMount() {
     this.props.loadProducts()
   }
@@ -13,7 +13,7 @@ class ProductListContainer extends Component {
     let hasProducts = this.props.products.length > 0
     return (
       <div>
-        <ProductList
+        <ProductListApp
           title="New Arrival"
           products={this.props.products} >
           {
@@ -36,8 +36,8 @@ class ProductListContainer extends Component {
               ): ( <h3>Loading...</h3> )
             ) : ( <h3>Can't Fetch data</h3> )
           }
-        </ProductList>
-        <ProductList
+        </ProductListApp>
+        <ProductListApp
           title="New Arrival"
           products={this.props.products} >
           {
@@ -56,7 +56,7 @@ class ProductListContainer extends Component {
               ): ( <h3>Loading...</h3> )
             ) : ( <h3>Can't Fetch data</h3> )
           }
-        </ProductList>
+        </ProductListApp>
       </div>
     )
   }
@@ -72,4 +72,4 @@ const mapDispatchToProps = ({
   clickAddToCart
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListAppContainer);
