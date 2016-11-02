@@ -13,6 +13,7 @@ export CartItem from './Cart/CartItem'
 export CartList from './Cart/CartList'
 export CartSummary from './Cart/CartSummary'
 
+export Logout from './User/Logout'
 export FormLogin from './User/FormLogin'
 export FormRegister from './User/FormRegister'
 export UserProfile from './User/UserProfile'

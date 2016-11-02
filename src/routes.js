@@ -9,29 +9,37 @@ import {
   Home,
   FormRegister,
   UserProfile,
-  SearchApp
+  SearchApp,
+  Logout
 } from './components'
 
 import {
   ProductList,
   ProductDetail,
-  CartApp,
-  FormLogin
+  FormLogin,
+  CartApp
 } from './containers'
 
 export default (
   <Route path='/'>
     <Route path={`${URL_ROOT}`} component={App}>
       <IndexRoute component={Home} />
+
+      
       <route path='product'>
         <IndexRoute component={ProductList} />
         <route path=':slug' component={ProductDetail} />
       </route>
-      <Route path='login' component={FormLogin} />
-      <Route path='register' component={FormRegister} />
       <Route path='cart' component={CartApp} />
-      <Route path='profile' component={UserProfile} />
       <Route path='search' component={SearchApp} />
+
+
+      <Route path='login' component={FormLogin} />
+      <Route path='logout' component={Logout} />
+      <Route path='register' component={FormRegister} />
+      <Route path='profile' component={UserProfile} />
+
+
       <Route path='404' component={NotFound} />
       <Redirect from='*' to={`${URL_ROOT}/404`} />
     </Route>

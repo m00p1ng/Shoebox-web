@@ -29,7 +29,7 @@ export default class FormLoginContainer extends Component {
       username : this.state.username,
       password : this.state.password
     }).then(res => {
-      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('sb_token', res.data.token);
       console.log(res.data.token)
     })
   }

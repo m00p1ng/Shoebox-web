@@ -7,8 +7,6 @@ import { browserHistory } from 'react-router';
 import { URL_ROOT } from 'endpoint'
 
 class ProductDetailContainer extends Component {
-
-
   componentDidMount() {
     this.props.loadProduct(this.props.params.slug)
   }
@@ -21,9 +19,14 @@ class ProductDetailContainer extends Component {
           not_hasError ? (
             <ProductDetail
               product={this.props.product}
-              onClickedAddToCart={
-                () => this.props.clickAddToCart(this.props.product.slug)
-            }/>
+              onClickedAddToCart={() => {
+                Materialize.toast(
+                  `Add&nbsp;&nbsp;
+                    <strong>${this.props.product.name}</strong>
+                  &nbsp;&nbsp;to cart`,
+                  2000, 'rounded amber darken-1')
+                return this.props.clickAddToCart(this.props.product.slug)
+              }} />
           ): ( browserHistory.push(`${URL_ROOT}/404`) )
         }
       </div>
