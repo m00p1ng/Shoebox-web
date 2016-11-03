@@ -78,6 +78,7 @@ class Products(Document):
             err.append('Color cannot empty')
         if 'is_available' not in data:
             err.append('is_available cannot empty')
+
         if 'is_discount' not in data:
             err.append('is_discount cannot empty')
         if 'discountPercent' not in data:
@@ -170,6 +171,8 @@ class Products(Document):
             'is_available' : product.is_available,
             'is_discount' : product.is_discount,
             'discountPercent' : product.discountPercent,
+            'sold_unit' : product.sold_unit,
+            'number_of_views' : product.number_of_views,
             'slug' : product.slug,
             'date' : timestamp_date(product.date),
             'brand' : real_data['brand'],
