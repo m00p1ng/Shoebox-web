@@ -2,14 +2,14 @@
 
 ![Shoebox logo image](https://raw.githubusercontent.com/moopings/Shoebox-web/master/static/images/navigation_bar/logo_with_name.png)
 
-## Requirements
+## Pre Requirements
 - Python 3
   - virturalenv
 - Node.js
 - MongoDB
 
 
-## How to install
+## installation
 
 1. install requirements
 
@@ -45,7 +45,7 @@
   ```
 
 
-## How to run server
+## Server
 * run django server
   ```
   $ source ./shoebox-env/bin/activate
@@ -56,13 +56,8 @@
   $ npm run server
     ```
 
-* *(for FrontEnd)* run webpack for generate new bundle of javascript
-  ```
-  $ npm run watch
-  ```
 
-
-## How to run test
+## Testing
 
 * API test
   ```
