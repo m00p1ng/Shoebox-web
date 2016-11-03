@@ -101,6 +101,7 @@ margin-60 {
 .add_to_cart {
     position: relative;
     top: 10px;
+    cursor: pointer; cursor: hand; 
 }
 
 .margin-l-r-90 {
