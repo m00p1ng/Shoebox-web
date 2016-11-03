@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 import { LoginApp } from '../../components'
 import { onLogin } from '../../actions/user'
+import { URL_ROOT } from 'endpoint'
 
 class LoginAppContainer extends Component {
   constructor(props) {
@@ -29,7 +31,12 @@ class LoginAppContainer extends Component {
     this.props.onLogin({
       username: this.state.username,
       password: this.state.password
-    })
+    }).then(() =>{
+        if(this.props.isLoggedIn === true) {
+          browserHistory.push(`${URL_ROOT}`)
+        }
+      }
+    )
   }
 
   render() {
@@ -45,7 +52,8 @@ class LoginAppContainer extends Component {
 }
 
 const mapStatetoProps = (state) => ({
-  errorMsg: state.user.errorMsg
+  errorMsg: state.user.errorMsg,
+  isLoggedIn: state.user.isLoggedIn
 })
 
 const mapDispatchToProps = ({
