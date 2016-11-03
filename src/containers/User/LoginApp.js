@@ -13,6 +13,7 @@ class LoginAppContainer extends Component {
 
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   onUsernameChange(event) {
@@ -23,15 +24,20 @@ class LoginAppContainer extends Component {
     this.setState({password: event.target.value})
   }
 
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.onLogin({
+      username: this.state.username,
+      password: this.state.password
+    })
+  }
+
   render() {
     return(
       <LoginApp
         onUsernameChange={this.onUsernameChange}
         onPasswordChange={this.onPasswordChange}
-        onLogin={() => this.props.onLogin({
-          username: this.state.username,
-          password: this.state.password
-        })}
+        handleSubmit={this.handleSubmit}
         errorMsg={this.props.errorMsg}
       />
     )
