@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
 import { LoginApp } from '../../components'
+import { onLogin, onLogout } from '../../actions/user'
 
-export default class LoginAppContainer extends Component {
+class LoginAppContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,7 +13,6 @@ export default class LoginAppContainer extends Component {
 
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
-    this.onLogin = this.onLogin.bind(this)
   }
 
   onUsernameChange(event) {
@@ -23,24 +23,26 @@ export default class LoginAppContainer extends Component {
     this.setState({password: event.target.value})
   }
 
-  onLogin() {
-    const API_URL = '/api/login'
-    axios.post(API_URL, {
-      username : this.state.username,
-      password : this.state.password
-    }).then(res => {
-      localStorage.setItem('sb_token', res.data.token);
-      console.log(res.data.token)
-    })
-  }
-
   render() {
     return(
       <LoginApp
         onUsernameChange={this.onUsernameChange}
         onPasswordChange={this.onPasswordChange}
-        onLogin={this.onLogin}
+        onLogin={() => this.props.onLogin({
+          username: this.state.username,
+          password: this.state.password
+        })}
       />
     )
   }
 }
+
+const mapStatetoProps = (state) => ({
+
+})
+
+const mapDispatchToProps = ({
+  onLogin
+})
+
+export default connect(null, mapDispatchToProps)(LoginAppContainer)

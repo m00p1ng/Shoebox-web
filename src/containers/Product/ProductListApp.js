@@ -37,26 +37,6 @@ class ProductListAppContainer extends Component {
             ) : ( <h3>Can't Fetch data</h3> )
           }
         </ProductListApp>
-        <ProductListApp
-          title="New Arrival"
-          products={this.props.products} >
-          {
-            not_hasError ? (
-              hasProducts ? (
-                this.props.products.map(product =>
-                  <ProductItem
-                    key={product.slug}
-                    product={product}
-                    onClickedAddToCart={() => {
-                      Materialize.toast(`Add ${product.name} to cart`, 2000)
-                      return this.props.clickAddToCart(product.slug)
-                    }}
-                  />
-                )
-              ): ( <h3>Loading...</h3> )
-            ) : ( <h3>Can't Fetch data</h3> )
-          }
-        </ProductListApp>
       </div>
     )
   }

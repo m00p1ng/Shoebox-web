@@ -5,27 +5,32 @@ import {
 } from 'endpoint'
 
 import {
-  LOGIN_REQUEST
-  LOGIN_SUCCESS
-  LOGIN_FAILURE
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
 
-  LOGOUT_REQUEST
-  LOGOUT_SUCCESS
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
   LOGOUT_FAILURE
 } from 'actionTypes'
 
-export const login = () =>({
+export const onLogin = (values) =>({
   [CALL_API]: {
     endpoint: LOGIN_ENDPOINT,
     method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(values),
     types: [LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE]
   }
 })
 
-export const logout = () => ({
+export const onLogout = () => ({
   [CALL_API]: {
     endpoint: LOGOUT_ENDPOINT,
-    method: 'POST',
+    method: 'GET',
     types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE]
   }
 })

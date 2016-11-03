@@ -1,7 +1,7 @@
 import {
-  LOAD_CART_SUCCESS,
-  LOAD_CART_FAILURE,
-  LOAD_CART_REQUEST,
+  LOAD_CART_ITEM_REQUEST,
+  LOAD_CART_ITEM_SUCCESS,
+  LOAD_CART_ITEM_FAILURE,
 
   CHECKOUT_REQUEST,
   CHECKOUT_SUCCESS,
@@ -9,8 +9,10 @@ import {
 } from 'actionTypes'
 
 const receiveCart = (cart) => ({
-  type: LOAD_CART_SUCCESS,
-  cart: cart.addedIds
+  type: LOAD_CART_ITEM_SUCCESS,
+  cart: {
+    addedIds: cart.addedIds
+  }
 })
 
 export const getCartProduct = () => (dispatch, getState) => {
