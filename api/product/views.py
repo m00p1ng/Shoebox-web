@@ -96,10 +96,10 @@ def query_by_name(slug):
     return Products.objects(slug=slug).first()
 
 def query_by_sold_unit():
-    return Products.objects().order_by("-sold_unit").limit(-1).first()
+    return Products.objects().order_by("-sold_unit")
 
 def query_by_view():
-    return Products.objects().order_by("-number_of_views").limit(-1).first()
+    return Products.objects().order_by("-number_of_views")
 
 
 def product_type(slug):
