@@ -57,13 +57,19 @@ def login(request):
                 request.session.save()
                 token = {"token": request.session.session_key}
                 return HttpResponse(json.dumps(token), content_type="application/json")
+            elif username == '' or password == '':
+                errmsg = '{"errorMsg": "Username or password cannot empty"}'
+                return HttpResponse(errmsg, content_type="application/json", status=401)
             else:
-                return HttpResponse('Unauthorized', status=401)
+                errmsg = '{"errorMsg": "Username or password incorrect"}'
+                return HttpResponse(errmsg, content_type="application/json", status=401)
 
         except ValueError as e:
-            return HttpResponse('JSON Decode error', status=400)
+            errmsg = '{"errorMsg": "JSON Decode error"}'
+            return HttpResponse(errmsg, status=400)
         except KeyError as e:
-            return HttpResponse('Username or password cannot empty', status=400)
+            eerrmsg = '{"errorMsg": "Username or password cannot empty"}'
+            return HttpResponse(errmsg, status=400)
 
     if request.method == 'GET':
         return HttpResponse('Method not allowed', status=405)
