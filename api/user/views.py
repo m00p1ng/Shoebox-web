@@ -58,11 +58,16 @@ def login(request):
                 token = {"token": request.session.session_key}
                 return HttpResponse(json.dumps(token), content_type="application/json")
             elif username == '' or password == '':
-                errmsg = '{"errorMsg": "Username or password cannot empty"}'
+                if username == '' and password == '':
+                    errmsg = '{"errorMsg": "Username and password cannot empty"}'
+                elif username == '':
+                    errmsg = '{"errorMsg": "Username cannot empty"}'
+                elif password == '':
+                    errmsg = '{"errorMsg": "Password cannot empty"}'
                 return HttpResponse(errmsg, content_type="application/json", status=401)
             else:
                 errmsg = '{"errorMsg": "Username or password incorrect"}'
-                return HttpResponse(errmsg, content_type="application/json", status=401)
+            return HttpResponse(errmsg, content_type="application/json", status=401)
 
         except ValueError as e:
             errmsg = '{"errorMsg": "JSON Decode error"}'
