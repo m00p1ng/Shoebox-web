@@ -3,10 +3,16 @@ import { Navbar } from '../../containers'
 import Footer from './Footer'
 
 const App = ({children}) => (
-  <div>
-    <Navbar />
-    {children}
-    <Footer />
+  <div className="page-flexbox-wrapper">
+    <header>
+      <Navbar />
+    </header>
+    <main>
+      {children}
+    </main>
+    <footer className="page-footer black">
+      <Footer />
+    </footer>
   </div>
 )
 
