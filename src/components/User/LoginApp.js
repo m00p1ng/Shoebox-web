@@ -1,13 +1,13 @@
 import React from 'react'
 
 const LoginApp = ({onUsernameChange, onPasswordChange, onLogin}) => (
+  // <form>
   <div className="row">
     <h1>Login</h1>
     <div className="col s6 offset-s3">
       <div className="input-field">
         <label>Username</label>
         <input
-        placeholder="Enter username"
         id="sb_username"
         type="text"
         className="validate"
@@ -16,7 +16,6 @@ const LoginApp = ({onUsernameChange, onPasswordChange, onLogin}) => (
       <div className="input-field">
         <label>Password</label>
         <input
-          placeholder="Enter password"
           id="sb_password"
           type="password"
           className="validate"
@@ -24,9 +23,11 @@ const LoginApp = ({onUsernameChange, onPasswordChange, onLogin}) => (
       </div>
       <button
         className="waves-effect waves-light btn"
+        type="submits"
         onClick={onLogin}>Login</button>
     </div>
   </div>
+  // </form>
 )
 
 export default LoginApp

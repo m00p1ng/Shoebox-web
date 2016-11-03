@@ -20,7 +20,7 @@ import {
   LogoutApp,
   RegisterApp,
   ProfileApp,
-  
+
   CartApp,
   CheckoutApp,
 } from './containers'
@@ -34,10 +34,8 @@ export default (
       <route path='product'>
         <IndexRoute component={ProductListApp} />
         <route path='create' component={ProductCreateApp} />
-        <route path=':slug' >
-          <IndexRoute component={ProductDetailApp} />
-          <route path='edit' component={ProductUpdateApp} />
-        </route>
+        <route path='edit' component={ProductUpdateApp} />
+        <route path=':slug' component={ProductDetailApp} />
       </route>
       <Route path='cart' component={CartApp} />
       <Route path='checkout' component={CheckoutApp} />

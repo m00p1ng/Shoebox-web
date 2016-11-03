@@ -4,7 +4,7 @@ import { LogoutApp } from '../../components'
 import { onLogout } from '../../actions/user'
 
 class LogoutAppContainer extends Component {
-  componentsDidMount() {
+  componentDidMount() {
     this.props.onLogout()
   }
 
