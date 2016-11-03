@@ -46,15 +46,17 @@
 
 
 ## Server
-run django server
+* run django server
   ```
   $ source ./shoebox-env/bin/activate
   $ python manage.py runserver
   ```
+
   or (use Node package manager script)
+
   ```
   $ npm run server
-    ```
+  ```
 
 
 ## Testing
