@@ -46,7 +46,7 @@
 
 
 ## Server
-* run django server
+run django server
   ```
   $ source ./shoebox-env/bin/activate
   $ python manage.py runserver
