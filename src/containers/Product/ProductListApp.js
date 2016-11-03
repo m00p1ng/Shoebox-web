@@ -13,30 +13,32 @@ class ProductListAppContainer extends Component {
     let hasProducts = this.props.products.length > 0
     return (
       <div>
-        <ProductListApp
-          title="New Arrival"
-          products={this.props.products} >
-          {
-            not_hasError ? (
-              hasProducts ? (
-                this.props.products.map(product =>
-                  <ProductItem
-                    key={product.slug}
-                    product={product}
-                    onClickedAddToCart={() => {
-                      Materialize.toast(
-                        `Add&nbsp;&nbsp;
-                          <strong>${product.name}</strong>
-                        &nbsp;&nbsp;to cart`,
-                        2000, 'rounded amber darken-1')
-                      return this.props.clickAddToCart(product.slug)
-                    }}
-                  />
-                )
-              ): ( <h3>Loading...</h3> )
-            ) : ( <h3>Can't Fetch data</h3> )
-          }
-        </ProductListApp>
+        {
+        not_hasError ? (
+          hasProducts ? (
+            <ProductListApp
+              title="New Arrival"
+              products={this.props.products} >
+              {
+                    this.props.products.map(product =>
+                      <ProductItem
+                        key={product.slug}
+                        product={product}
+                        onClickedAddToCart={() => {
+                          Materialize.toast(
+                            `Add&nbsp;&nbsp;
+                              <strong>${product.name}</strong>
+                            &nbsp;&nbsp;to cart`,
+                            2000, 'rounded amber darken-1')
+                          return this.props.clickAddToCart(product.slug)
+                        }}
+                      />
+                    )
+              }
+            </ProductListApp>
+          ): ( <h1>Loading...</h1> )
+        ) : ( <h1>Can't Fetch data</h1> )
+      }
       </div>
     )
   }
