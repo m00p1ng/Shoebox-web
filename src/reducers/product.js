@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   products: [],
+  detail: [],
   error: false
 }
 
@@ -16,21 +17,25 @@ const products = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_SUCCESS:
       return ({
+        ...state,
         products: action.payload,
       })
     case LOAD_PRODUCTS_FAILURE:
     return ({
+      ...state,
       products: [],
       error: true
     })
 
     case LOAD_PRODUCT_SUCCESS:
       return ({
-        products: [action.payload]
+        ...state,
+        detail: [action.payload]
       })
     case LOAD_PRODUCT_FAILURE:
     return ({
-      products: [],
+      ...state,
+      detail: [],
       error: true
     })
     default:
@@ -59,7 +64,7 @@ const productNull = {
 }
 
 export const getProductBySlug = (state, slug) => (
-  state.products['products'].find((product) => product.slug === slug) || productNull
+  state.products['detail'].find((product) => product.slug === slug) || productNull
 )
 
 export default products
