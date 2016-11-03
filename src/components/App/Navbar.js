@@ -13,6 +13,7 @@ const Navbar = ({NumberOfCartItem}) => (
 
     <ul id="user-dropdown" className="dropdown-content">
       <li><Link to={`${URL_ROOT}/login`}>Login</Link></li>
+      <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
       <li><Link to={`${URL_ROOT}/register`}>Register</Link></li>
       <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
     </ul>

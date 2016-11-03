@@ -1,10 +1,19 @@
 import React from 'react'
 
-const LoginApp = ({onUsernameChange, onPasswordChange, onLogin}) => (
+const LoginApp = ({onUsernameChange, onPasswordChange, onLogin , errorMsg}) => (
   // <form>
   <div className="row">
     <h1>Login</h1>
     <div className="col s6 offset-s3">
+      {
+        (errorMsg !== '') ? (
+        <div className="card-panel teal">
+          <span className="white-text">
+            {errorMsg}
+          </span>
+        </div>
+        ): (<span></span>)
+      }
       <div className="input-field">
         <label>Username</label>
         <input

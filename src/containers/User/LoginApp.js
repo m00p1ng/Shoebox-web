@@ -32,17 +32,18 @@ class LoginAppContainer extends Component {
           username: this.state.username,
           password: this.state.password
         })}
+        errorMsg={this.props.errorMsg}
       />
     )
   }
 }
 
 const mapStatetoProps = (state) => ({
-
+  errorMsg: state.user.errorMsg
 })
 
 const mapDispatchToProps = ({
   onLogin
 })
 
-export default connect(null, mapDispatchToProps)(LoginAppContainer)
+export default connect(mapStatetoProps, mapDispatchToProps)(LoginAppContainer)
