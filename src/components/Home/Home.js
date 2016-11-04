@@ -1,8 +1,12 @@
 import React from 'react'
-import { ControlledCarousel } from './Carousel'
+import Carousel from './Carousel'
+import { ProductListApp } from '../../containers'
 
 const Home = () => (
-  <ControlledCarousel />
+  <div>
+    <Carousel />
+    <ProductListApp title="New Arrival"/>
+  </div>
 )
 
 export default Home

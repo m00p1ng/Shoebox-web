@@ -1,5 +1,7 @@
 export Navbar from './App/Navbar'
 
+export ProductFeatureApp from './Product/ProductFeatureApp'
+export ProductBestSellerApp from './Product/ProductBestSellerApp'
 export ProductListApp from './Product/ProductListApp'
 export ProductDetailApp from './Product/ProductDetailApp'
 export ProductCreateApp from './Product/ProductCreateApp'

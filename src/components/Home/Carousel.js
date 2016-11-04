@@ -1,15 +1,6 @@
 import React from 'react'
 
-export const ControlledCarousel = React.createClass({
-  getInitialState() {
-    return {
-      index: 0,
-      direction: null
-    };
-  },
-
-  render() {
-    return (
+const Carousel = () => (
       <div className="carousel carousel-slider" data-indicators="true">
         <div className="carousel-fixed-item">
         </div>
@@ -18,6 +9,6 @@ export const ControlledCarousel = React.createClass({
       <a className="carousel-item" href="#three!"><img src="static/images/feature/03.png"/></a>
       <a className="carousel-item" href="#tfour!"><img src="static/images/feature/04.png"/></a>
     </div>
-    );
-  }
-});
+);
+
+export default Carousel

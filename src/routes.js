@@ -10,6 +10,8 @@ import {
 } from './components'
 
 import {
+  ProductFeatureApp,
+  ProductBestSellerApp,
   ProductListApp,
   ProductDetailApp,
   ProductCreateApp,
@@ -33,6 +35,8 @@ export default (
 
       <route path='product'>
         <IndexRoute component={ProductListApp} />
+        <route path='feature' component={ProductFeatureApp} />
+        <route path='bestseller' component={ProductBestSellerApp} />
         <route path='create' component={ProductCreateApp} />
         <route path='edit' component={ProductUpdateApp} />
         <route path=':slug' component={ProductDetailApp} />

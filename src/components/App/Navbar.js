@@ -28,8 +28,8 @@ const Navbar = ({NumberOfCartItem}) => (
           <i className="material-icons">menu</i>
         </a>
         <ul className="right hide-on-med-and-down">
-          <li><Link to={`${URL_ROOT}/product`}>Feature Item</Link></li>
-          <li><Link to={`${URL_ROOT}/product`}>Best Seller</Link></li>
+          <li><Link to={`${URL_ROOT}/product/feature`}>Feature Item</Link></li>
+          <li><Link to={`${URL_ROOT}/product/bestseller`}>Best Seller</Link></li>
           <li>
             <a
               className="dropdown-button"
