@@ -1,7 +1,11 @@
 import React from 'react'
+import SearchBar from './SearchBar'
 
 const SearchApp = () => (
-  <h1>Search</h1>
+  <div>
+    <h1>Search</h1>
+    <SearchBar />
+  </div>
 )
 
 export default SearchApp
