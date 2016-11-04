@@ -10,16 +10,16 @@ const ProductItem = ({ product, onClickedAddToCart }) => (
         <img className="activator" src={product.picture} />
       </div>
       <div className="card-content" >
-        <span className="brand left" >
+        <span className="sb-brand left" >
           {product.brand}
         </span> <br />
-        <div className="product_name" >
+        <div className="sb-product-name" >
           <Link to={`${URL_ROOT}/product/${product.slug}`}>{product.name}</Link>
         </div>
-        <div className="price" >
+        <div className="sb-price" >
             Price: {product.price}
         </div>
-        <div className="add_to_cart" >
+        <div className="sb-add-to-cart" >
             <a onClick={onClickedAddToCart}><img src="/static/images/add_to_cart_red.png" /></a>
         </div>
       </div>
@@ -32,20 +32,9 @@ ProductItem.propTypes = {
     name: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
     types: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     picture: PropTypes.string.isRequired,
-    date : PropTypes.shape({
-      year: PropTypes.number.isRequired,
-      month: PropTypes.number.isRequired,
-      day: PropTypes.number.isRequired
-    }).isRequired,
-    amount: PropTypes.number.isRequired,
-    size: PropTypes.array.isRequired,
-    color: PropTypes.array.isRequired,
-    is_available: PropTypes.bool.isRequired,
-    is_discount: PropTypes.bool.isRequired,
-    discountPercent : PropTypes.number.isRequired
+    slug: PropTypes.string.isRequired
   }).isRequired,
 }
 

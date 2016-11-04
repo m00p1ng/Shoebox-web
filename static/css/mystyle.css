@@ -2,12 +2,6 @@ body {
     background: #EEEEEE;
 }
 
-.page-flexbox-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
 main {
     flex: 1 0 auto;
 }
@@ -21,23 +15,12 @@ nav ul li a {
     color: black;
 }
 
-.white_nav {
-    background: #FAFAFA;
-}
-
 .button-collapse {
     color: #979797;
 }
 
 .material-icons {
     color: black;
-}
-
-#nav_logo {
-    height: 52px;
-    position: relative;
-    top: 6px;
-    left: 30px;
 }
 
 .hide-on-med-and-down {
@@ -78,47 +61,9 @@ margin-60 {
     position: relative;
 }
 
-.brand {
-    font-size: 12px;
-    color: #9B9B9B;
-    position: relative;
-    top: -12px;
-    left: -10px;
-}
-
-.product_name {
-    font-size: 18px;
-    position: relative;
-    top: -7px;
-}
-
-.price {
-    position: relative;
-    font-size: 14px;
-    top: -3px;
-}
-
-.add_to_cart {
-    position: relative;
-    top: 10px;
-    cursor: pointer; cursor: hand; 
-}
-
 .margin-l-r-90 {
     margin-left: 90px;
     margin-right: 90px;
-}
-
-.brand_in_cart {
-    font-size: 20px;
-    color: #000000;
-    margin: 0 auto;
-}
-
-.name_in_cart {
-    font-size: 20px;
-    color: #000000;
-    padding-bottom: 18px;
 }
 
 .cart_img {
@@ -128,63 +73,6 @@ margin-60 {
     width: auto;
 }
 
-.price_in_cart {
-    padding-top: 7px;
-    font-size: 14px;
-    font-weight: 100;
-    color: #000000;
-}
-
-.quantity_in_cart {
-    font-size: 14px;
-    font-weight: 100;
-    color: #000000;
-}
-
-.summary_header {
-    font-size: 17px;
-    color: #000000;
-}
-
-.cart-content_detail {
-    margin-top: 20px;
-}
-
-.cart_subtotal {
-    padding-top: 30px;
-    font-size: 16px;
-    font-weight: 200;
-}
-
-.cart_shipping {
-    font-size: 16px;
-    font-weight: 200;
-}
-
-.row_order {
-    padding-top: 3px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
 .padding-bottom-10 {
     padding-bottom: 10px;
-}
-
-.cart_total {
-    padding-top: 30px;
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.checkout_button {
-    font-size: 25px;
-    text-align: center;
-}
-
-.cart_bin {
-    float: right;
-    padding-right: 25px;
-    padding-top: 25px;
 }

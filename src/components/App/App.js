@@ -3,7 +3,7 @@ import { Navbar } from '../../containers'
 import Footer from './Footer'
 
 const App = ({children}) => (
-  <div className="page-flexbox-wrapper">
+  <div className="sb-page-wrapper">
     <header>
       <Navbar />
     </header>
