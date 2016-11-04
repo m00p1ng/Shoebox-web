@@ -8,7 +8,7 @@ import { URL_ROOT } from 'endpoint'
 class LogoutAppContainer extends Component {
   componentDidMount() {
     this.props.onLogout()
-    browserHistory.push(`${URL_ROOT}`)
+    setTimeout(() => browserHistory.push(`${URL_ROOT}`), 500)
   }
 
   render() {

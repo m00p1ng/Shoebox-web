@@ -31,12 +31,12 @@ class LoginAppContainer extends Component {
     this.props.onLogin({
       username: this.state.username,
       password: this.state.password
-    }).then(() =>{
+    })
+      .then(() =>{
         if(this.props.isLoggedIn === true) {
           browserHistory.push(`${URL_ROOT}`)
         }
-      }
-    )
+      })
   }
 
   render() {

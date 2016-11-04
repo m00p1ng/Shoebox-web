@@ -31,12 +31,14 @@ export default (
   <Route path='/'>
     <Route path={`${URL_ROOT}`} component={App}>
       <IndexRoute component={Home} />
+            
 
-
-      <route path='product'>
+      <route path='shop'>
         <IndexRoute component={ProductListApp} />
         <route path='feature' component={ProductFeatureApp} />
         <route path='bestseller' component={ProductBestSellerApp} />
+      </route>
+      <route path='product'>
         <route path='create' component={ProductCreateApp} />
         <route path='edit' component={ProductUpdateApp} />
         <route path=':slug' component={ProductDetailApp} />
