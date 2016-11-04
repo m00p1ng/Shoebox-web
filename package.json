@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run server",
-    "build": "webpack -p",
+    "build": "webpack -p --config webpack.production.config.js",
     "watch": "webpack --watch",
     "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
     "mooping": ". ./shoebox-env/bin/activate && python manage-mooping.py runserver",
