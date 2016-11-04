@@ -32,4 +32,11 @@ module.exports = {
       actionTypes: 'src/constants/actionTypes'
     },
   },
+  plugins: [
+       new webpack.optimize.UglifyJsPlugin({
+           compress: {
+               warnings: false
+           }
+       })
+   ]
 }
