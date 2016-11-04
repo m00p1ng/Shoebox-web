@@ -1,18 +1,18 @@
 /* Shoebox Navbar */
 
-#sb-nav-logo {
+#sbox-nav-logo {
     height: 52px;
     position: relative;
     top: 6px;
     left: 30px;
 }
 
-.sb-white-nav {
+.sbox-white-nav {
     background: #FAFAFA;
 }
 
 /* Shoebox Sticky footer Style */
-.sb-page-wrapper {
+.sbox-page-wrapper {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -20,7 +20,7 @@
 
 /* Shoebox Product Styles*/
 
-.sb-brand {
+.sbox-brand {
     font-size: 12px;
     color: #9B9B9B;
     position: relative;
@@ -28,19 +28,19 @@
     left: -10px;
 }
 
-.sb-product-name {
+.sbox-product-name {
     font-size: 18px;
     position: relative;
     top: -7px;
 }
 
-.sb-price {
+.sbox-price {
     position: relative;
     font-size: 14px;
     top: -3px;
 }
 
-.sb-add-to-cart {
+.sbox-add-to-cart {
     position: relative;
     top: 10px;
     cursor: pointer; cursor: hand;
@@ -48,70 +48,70 @@
 
 /* Shoebox Cart Styles*/
 
-.sb-brand-in-cart {
+.sbox-brand-in-cart {
     font-size: 20px;
     color: #000000;
     margin: 0 auto;
 }
 
-.sb-name-in-cart {
+.sbox-name-in-cart {
     font-size: 20px;
     color: #000000;
     padding-bottom: 18px;
 }
 
-.sb-price-in-cart {
+.sbox-price-in-cart {
     padding-top: 7px;
     font-size: 14px;
     font-weight: 100;
     color: #000000;
 }
 
-.sb-quantity-in-cart {
+.sbox-quantity-in-cart {
     font-size: 14px;
     font-weight: 100;
     color: #000000;
 }
 
-.sb-summary-header {
+.sbox-summary-header {
     font-size: 17px;
     color: #000000;
 }
 
-.sb-cart-content-detail {
+.sbox-cart-content-detail {
     margin-top: 20px;
 }
 
-.sb-cart-subtotal {
+.sbox-cart-subtotal {
     padding-top: 30px;
     font-size: 16px;
     font-weight: 200;
 }
 
-.sb-cart-shipping {
+.sbox-cart-shipping {
     font-size: 16px;
     font-weight: 200;
 }
 
-.sb-row-order {
+.sbox-row-order {
     padding-top: 3px;
     padding-bottom: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.sb-cart-total {
+.sbox-cart-total {
     padding-top: 30px;
     font-size: 18px;
     font-weight: 400;
 }
 
-.sb-checkout-button {
+.sbox-checkout-button {
     font-size: 25px;
     text-align: center;
 }
 
-.sb-cart-bin {
+.sbox-cart-bin {
     float: right;
     padding-right: 25px;
     padding-top: 25px;
