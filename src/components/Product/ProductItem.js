@@ -10,16 +10,16 @@ const ProductItem = ({ product, onClickedAddToCart }) => (
         <img className="activator" src={product.picture} />
       </div>
       <div className="card-content" >
-        <span className="sb-brand left" >
+        <span className="sbox-brand left" >
           {product.brand}
         </span> <br />
-        <div className="sb-product-name" >
+        <div className="sbox-product-name" >
           <Link to={`${URL_ROOT}/product/${product.slug}`}>{product.name}</Link>
         </div>
-        <div className="sb-price" >
+        <div className="sbox-price" >
             Price: {product.price}
         </div>
-        <div className="sb-add-to-cart" >
+        <div className="sbox-add-to-cart" >
             <a onClick={onClickedAddToCart}><img src="/static/images/add_to_cart_red.png" /></a>
         </div>
       </div>
