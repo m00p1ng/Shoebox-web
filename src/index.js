@@ -10,7 +10,8 @@ import rootReducer from './reducers'
 import createLogger from 'redux-logger'
 
 const middlewares = [thunk, apiMiddleware]
-middlewares.push(createLogger())
+if(process.env.NODE_ENV !== 'production')
+  middlewares.push(createLogger())
 const store = createStore(
   rootReducer,
   applyMiddleware(...middlewares)
