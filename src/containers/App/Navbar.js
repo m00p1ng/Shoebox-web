@@ -10,7 +10,8 @@ class NavbarContainer extends Component {
   render() {
     return (
       <Navbar
-        NumberOfCartItem={this.props.numberOfcartItem}/>
+        NumberOfCartItem={this.props.numberOfcartItem}
+        Username="mooping"/>
     )
   }
 }

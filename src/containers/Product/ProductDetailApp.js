@@ -12,7 +12,7 @@ class ProductDetailAppContainer extends Component {
     error: PropTypes.bool.isRequired
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadProduct(this.props.params.slug)
     this.props.updateViews(this.props.params.slug)
   }
@@ -37,7 +37,8 @@ class ProductDetailAppContainer extends Component {
               <ProductDetailApp
                 product={this.props.product[0]}
                 onClickedAddToCart={() => this.onClickedAddToCart(this.props.product[0])} />
-            ): ( <Loading /> )
+            // ): ( <Loading /> )
+            ): ( <span></span> )
           ): ( browserHistory.push(`${URL_ROOT}/404`) )
         }
       </div>

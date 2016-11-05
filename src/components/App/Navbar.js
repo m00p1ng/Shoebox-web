@@ -38,7 +38,7 @@ const NavbarMobile = () => (
 )
 
 
-const NavbarDesktop = ({NumberOfCartItem}) => (
+const NavbarDesktop = ({NumberOfCartItem, Username}) => (
   <ul className="right hide-on-med-and-down">
     <li>
       <a
@@ -75,14 +75,14 @@ const NavbarDesktop = ({NumberOfCartItem}) => (
         data-activates="sbox-user-dropdown"
         data-beloworigin="true"
         data-hover="true">
-        <strong>Guest</strong><i className="material-icons right">arrow_drop_down</i>
+        <strong>{Username}</strong><i className="material-icons right">arrow_drop_down</i>
       </a>
     </li>
   </ul>
 )
 
 
-const Navbar = ({NumberOfCartItem}) => (
+const Navbar = ({NumberOfCartItem, Username}) => (
   <div>
     <NavbarDropdown />
     <div className="navbar-fixed">
@@ -94,7 +94,9 @@ const Navbar = ({NumberOfCartItem}) => (
           <a href="#" data-activates="mobile-demo" className="button-collapse">
             <i className="material-icons">menu</i>
           </a>
-          <NavbarDesktop NumberOfCartItem={NumberOfCartItem}/>
+          <NavbarDesktop
+            NumberOfCartItem={NumberOfCartItem}
+            Username={Username}/>
           <NavbarMobile />
         </div>
       </nav>
