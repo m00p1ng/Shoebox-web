@@ -26,6 +26,8 @@ const ProductDetailApp = ({product, onClickedAddToCart}) => {
           <p><strong>Available :</strong> {String(product.is_available)}</p>
           <p><strong>Discount :</strong> {String(product.is_discount)}</p>
           <p><strong>discountPercent :</strong> {product.discountPercent}</p>
+          <p><strong>view</strong> : {product.number_of_views}</p>
+          <p><strong>sold_unit</strong> : {product.sold_unit}</p>
           <button onClick={onClickedAddToCart}>Add to cart</button>
         </div>
       </div>

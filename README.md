@@ -65,7 +65,7 @@
   ```
   $ python manage.py test api.tests
   ```
-  or user NPM script
+  or use NPM script
   ```
   $ npm run api-test
   ```
