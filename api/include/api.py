@@ -13,8 +13,9 @@ def request_get_real(model, queryset):
     return HttpResponse(model.map_referenceID(queryset), content_type="application/json")
 
 
-def errors_to_json(err):
+def errors_to_json(err, action):
     out = {}
+    out[action] = False
     out['errorMsg'] = err
     return HttpResponse(dumps(out), content_type='application/json', status=400)
 
