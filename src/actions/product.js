@@ -29,11 +29,12 @@ export const loadProduct = (slug) => ({
   }
 })
 
-const addToCart = (productId) => ({
+const addToCart = (productId, productDetail) => ({
   type: ADD_TO_CART,
-  productId
+  productId,
+  productDetail
 })
 
-export const clickAddToCart = productId => (
-  dispatch => dispatch(addToCart(productId))
+export const clickAddToCart = (productId, productDetail) => (
+  dispatch => dispatch(addToCart(productId, productDetail))
 )

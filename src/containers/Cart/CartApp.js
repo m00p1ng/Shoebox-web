@@ -5,17 +5,17 @@ import {
   CartList,
   CartSummary
 } from '../../components'
-import { getCartProduct } from '../../actions/cart'
+import { getCartItem } from '../../actions/cart'
 
 class CartAppContainer extends Component {
   componentDidMount() {
-      this.props.getCartProduct()
+      this.props.getCartItem()
   }
 
   render() {
     return (
       <CartApp>
-        <CartList products={this.props.cart} />
+        <CartList products={this.props.cart} qty={this.props.qty}/>
         <CartSummary />
       </CartApp>
     )
@@ -23,7 +23,15 @@ class CartAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.addedIds
+  cart: state.cart.productDetail,
+  qty: state.cart.quantityById
 })
 
-export default connect(mapStateToProps, { getCartProduct })(CartAppContainer)
+const mapDispatchToProps = ({
+  getCartItem
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartAppContainer)

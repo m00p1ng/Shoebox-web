@@ -10,7 +10,38 @@ import {
 
 const initialState = {
   addedIds: [],
+  productDetail: [],
   quantityById: {}
+}
+
+const productExist = (state, action) => {
+  let hasProduct = false
+  for(let i = 0; i < state.length; i++){
+    if(state[i].slug === action.productDetail.slug){
+      hasProduct = true
+    }
+  }
+  return hasProduct
+}
+
+const getProductDetail = (productId) => {
+}
+
+const productDetail = (state = initialState.productDetail, action) => {
+  switch (action.type) {
+    case ADD_TO_CART:
+      // if (state.indexOf(action.productDetail.slug) !== -1) {
+      //   return state
+      // }
+      if(productExist(state, action) === false) {
+        return [ ...state, action.productDetail ]
+      }
+      else {
+        return state
+      }
+    default:
+      return state
+  }
 }
 
 const addedIds = (state = initialState.addedIds, action) => {
@@ -50,6 +81,7 @@ const cart = (state = initialState, action) => {
       return action.cart
     default:
       return {
+        productDetail: productDetail(state.productDetail, action),
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action)
       }

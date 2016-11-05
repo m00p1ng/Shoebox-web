@@ -116,3 +116,10 @@
     padding-right: 25px;
     padding-top: 25px;
 }
+
+.sbox-cart-img {
+    padding-left: 54px;
+    padding-right: 50px;
+    height: 180px;
+    width: auto;
+}
