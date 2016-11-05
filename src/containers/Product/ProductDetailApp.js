@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductDetailApp } from '../../components'
-import { loadProduct, clickAddToCart } from '../../actions/product'
+import { loadProduct, clickAddToCart, updateViews } from '../../actions/product'
 import { browserHistory } from 'react-router';
 import Loading from '../../constants/Loading/Loading'
 import { URL_ROOT } from 'endpoint'
@@ -14,6 +14,7 @@ class ProductDetailAppContainer extends Component {
 
   componentDidMount() {
     this.props.loadProduct(this.props.params.slug)
+    this.props.updateViews(this.props.params.slug)
   }
 
   onClickedAddToCart(product) {
@@ -51,6 +52,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = ({
   loadProduct,
+  updateViews,
   clickAddToCart
 })
 

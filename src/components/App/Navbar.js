@@ -19,10 +19,10 @@ const NavbarDropdown = () => (
     </ul>
 
     <ul id="sbox-shop-dropdown" className="dropdown-content">
-      <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
-      <li className="divider"></li>
       <li><Link to={`${URL_ROOT}/shop/feature`}>Feature</Link></li>
       <li><Link to={`${URL_ROOT}/shop/bestseller`}>Best Seller</Link></li>
+      <li className="divider"></li>
+      <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
     </ul>
   </div>
 )
