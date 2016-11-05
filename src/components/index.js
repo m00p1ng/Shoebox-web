@@ -4,8 +4,10 @@ export Footer from './App/Footer'
 
 export Home from './Home/Home'
 
-export ProductFeatureApp from './Product/ProductFeatureApp'
-export ProductBestSellerApp from './Product/ProductBestSellerApp'
+export ShopApp from './Shop/ShopApp'
+export ShopFeatureApp from './Shop/ShopFeatureApp'
+export ShopBestSellerApp from './Shop/ShopBestSellerApp'
+
 export ProductListApp from './Product/ProductListApp'
 export ProductItem from './Product/ProductItem'
 export ProductDetailApp from './Product/ProductDetailApp'
