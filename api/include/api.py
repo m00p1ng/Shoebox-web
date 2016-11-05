@@ -14,7 +14,9 @@ def request_get_real(model, queryset):
 
 
 def errors_to_json(err):
-    return HttpResponse(dumps(err), content_type='application/json', status=400)
+    out = {}
+    out['errorMsg'] = err
+    return HttpResponse(dumps(out), content_type='application/json', status=400)
 
 
 def request_get_to_json(model, queryset):

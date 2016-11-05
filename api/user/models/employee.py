@@ -1,7 +1,6 @@
 from mongoengine import *
 from mongoengine.django.auth import User
 from api.include.model import timestamp_date, timestamp_fulldate
-from collections import defaultdict
 import datetime
 import json
 
@@ -18,57 +17,57 @@ class Employees(User):
     role = StringField(max_length=20, required=True, default="employee")
 
     def validation(data):
-        err = defaultdict(list)
+        err = []
         if 'username' not in data:
-            err['username'].append('Username cannot empty')
+            err.append('Username cannot empty')
         if 'password' not in data:
-            err['password'].append('Password cannot empty')
+            err.append('Password cannot empty')
         if 'repassword' not in data:
-            err['password'].append('Re password cannot empty')
+            err.append('Re password cannot empty')
         if 'password' in data and 'repassword' in data:
             if not data['password'] == data['repassword']:
-                err['password'].append('Password didn\'t match')
+                err.append('Password didn\'t match')
         if 'email' not in data:
-            err['email'].append('Email cannot empty')
+            err.append('Email cannot empty')
         if 'firstname' not in data:
-            err['firstname'].append('Firstname cannot empyty')
+            err.append('Firstname cannot empyty')
         if 'lastname' not in data:
-            err['lastname'].append('Lastname cannot empty')
+            err.append('Lastname cannot empty')
         if 'gender' not in data:
-            err['gender'].append('Gender cannot empty')
+            err.append('Gender cannot empty')
         if 'birthday' not in data:
-            err['birthday'].append('Birthday cannot empty')
-            err['birthday'].append('Year cannot empty')
-            err['birthday'].append('Month cannot empty')
-            err['birthday'].append('Day cannot empty')
+            err.append('Birthday cannot empty')
+            err.append('Year cannot empty')
+            err.append('Month cannot empty')
+            err.append('Day cannot empty')
         else:
             if not {'year', 'month', 'day'} <= set(data['birthday']):
-                err['birthday'].append('Birthday cannot empty')
+                err.append('Birthday cannot empty')
                 if 'year' not in data['birthday']:
-                    err['birthday'].append('Year cannot empty')
+                    err.append('Year cannot empty')
                 if 'month' not in data['birthday']:
-                    err['birthday'].append('Month cannot empty')
+                    err.append('Month cannot empty')
                 if 'day' not in data['birthday']:
-                    err['birthday'].append('Day cannot empty')
+                    err.append('Day cannot empty')
         if 'address' not in data:
-            err['address'].append('Address cannot empty')
-            err['address'].append('City cannot empty')
-            err['address'].append('District cannot empty')
-            err['address'].append('Street cannot empty')
-            err['address'].append('Zipcode cannot empty')
+            err.append('Address cannot empty')
+            err.append('City cannot empty')
+            err.append('District cannot empty')
+            err.append('Street cannot empty')
+            err.append('Zipcode cannot empty')
         else:
             if not {'city', 'district', 'street', 'zipcode'} <= set(data['address']):
                 err.append('Address cannot empty')
                 if 'city' not in data['address']:
-                    err['address'].append('City cannot empty')
+                    err.append('City cannot empty')
                 if 'district' not in data['address']:
-                    err['address'].append('District cannot empty')
+                    err.append('District cannot empty')
                 if 'street' not in data['address']:
-                    err['address'].append('Street cannot empty')
+                    err.append('Street cannot empty')
                 if 'zipcode' not in data['address']:
-                    err['address'].append('Zipcode cannot empty')
+                    err.append('Zipcode cannot empty')
         if 'phone' not in data:
-            err['address'].append('Phone cannot empty')
+            err.append('Phone cannot empty')
         return err
 
     @classmethod
