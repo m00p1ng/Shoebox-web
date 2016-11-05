@@ -11,6 +11,7 @@ export ProductItem from './Product/ProductItem'
 export ProductDetailApp from './Product/ProductDetailApp'
 export ProductCreateApp from './Product/ProductCreateApp'
 export ProductUpdateApp from './Product/ProductUpdateApp'
+export ProductForm from './Product/ProductForm'
 
 export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'

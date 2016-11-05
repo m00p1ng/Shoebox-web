@@ -1,7 +1,11 @@
 import React from 'react'
+import ProductForm from './ProductForm'
 
 const ProductCreateApp = () => (
-  <h1>Product Create</h1>
+  <div>
+    <h1>Product Create</h1>
+    <ProductForm />
+  </div>
 )
 
 export default ProductCreateApp
