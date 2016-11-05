@@ -7,7 +7,7 @@ const LoginApp = ({onUsernameChange, onPasswordChange, handleSubmit, errorMsg}) 
       <div className="col s6 offset-s3">
         {
           (errorMsg !== '') ? (
-          <div className="card-panel teal">
+          <div className="card-panel red lighten-3">
             <span className="white-text">
               {errorMsg}
             </span>
