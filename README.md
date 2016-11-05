@@ -52,7 +52,7 @@
   $ python manage.py runserver
   ```
 
-  or (use Node package manager script)
+  or use NPM script
 
   ```
   $ npm run server
@@ -62,6 +62,10 @@
 ## Testing
 
 * API test
+  ```
+  $ python manage.py test api.test
+  ```
+  or user NPM script
   ```
   $ npm run api-test
   ```
