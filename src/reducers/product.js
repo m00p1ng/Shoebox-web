@@ -13,24 +13,33 @@ const initialState = {
   error: false
 }
 
+const setProductState = (state, action) => {
+  if(state.products.length === 0){
+    return [action.payload]
+  }
+  else {
+    return state.products
+  }
+}
+
 const products = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_SUCCESS:
       return ({
-        ...state,
+        detail: [],
         error: false,
         products: action.payload,
       })
     case LOAD_PRODUCTS_FAILURE:
     return ({
-      ...state,
+      detail: [],
       products: [],
       error: true
     })
 
     case LOAD_PRODUCT_SUCCESS:
       return ({
-        ...state,
+        products: setProductState(state, action),
         error: false,
         detail: [action.payload]
       })
