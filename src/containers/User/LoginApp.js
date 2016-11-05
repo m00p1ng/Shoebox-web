@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { LoginApp } from '../../components'
@@ -6,6 +6,12 @@ import { onLogin } from '../../actions/user'
 import { URL_ROOT } from 'endpoint'
 
 class LoginAppContainer extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    errorMsg: PropTypes.string
+  }
+
   constructor(props) {
     super(props)
     this.state = {

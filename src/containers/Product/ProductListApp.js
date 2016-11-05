@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
 import { loadProducts, clickAddToCart } from '../../actions/product'
 
 class ProductListAppContainer extends Component {
+  static propTypes = {
+    products: PropTypes.array.isRequired,
+    error: PropTypes.bool.isRequired
+  }
+
   componentDidMount() {
     this.props.loadProducts()
   }

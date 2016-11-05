@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes} from 'react'
 import CartItem from './CartItem'
 
 const CartList = ({products, qty}) => (
@@ -17,5 +17,10 @@ const CartList = ({products, qty}) => (
       }
     </div>
 )
+
+CartList.propTypes = {
+  products: PropTypes.array.isRequired,
+  qty: PropTypes.object.isRequired
+}
 
 export default CartList

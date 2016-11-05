@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const CartItem = ({product, qty}) => (
   <div className="card horizontal">
 		<div className="row">
 			<div className="col s12 l4">
 				<div>
-					{/* <img className="responsive-img" src="http://watcharaphat.com/static/images/nike/01.jpg" alt="cart_img" /> */}
           <img className="responsive-img" src={`${product.picture}`} alt="" />
 				</div>
 			</div>
@@ -24,5 +23,10 @@ const CartItem = ({product, qty}) => (
 		</div>
 	</div>
 )
+
+CartItem.propTypes = {
+  product: PropTypes.object.isRequired,
+  qty: PropTypes.number.isRequired
+}
 
 export default CartItem

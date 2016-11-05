@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const LoginApp = ({onUsernameChange, onPasswordChange, handleSubmit, errorMsg}) => (
   <form onSubmit={handleSubmit}>
@@ -38,5 +38,12 @@ const LoginApp = ({onUsernameChange, onPasswordChange, handleSubmit, errorMsg}) 
     </div>
   </form>
 )
+
+LoginApp.propTypes = {
+  onUsernameChange: PropTypes.func.isRequired,
+  onPasswordChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  errorMsg: PropTypes.string
+}
 
 export default LoginApp
