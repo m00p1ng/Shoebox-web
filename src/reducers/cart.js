@@ -24,15 +24,9 @@ const productExist = (state, action) => {
   return hasProduct
 }
 
-const getProductDetail = (productId) => {
-}
-
 const productDetail = (state = initialState.productDetail, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      // if (state.indexOf(action.productDetail.slug) !== -1) {
-      //   return state
-      // }
       if(productExist(state, action) === false) {
         return [ ...state, action.productDetail ]
       }
