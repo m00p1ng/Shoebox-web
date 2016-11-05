@@ -63,7 +63,7 @@
 
 * API test
   ```
-  $ python manage.py test api.test
+  $ python manage.py test api.tests
   ```
   or user NPM script
   ```
