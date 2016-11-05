@@ -31,11 +31,11 @@ const products = (state = initialState, action) => {
         products: action.payload,
       })
     case LOAD_PRODUCTS_FAILURE:
-    return ({
-      detail: [],
-      products: [],
-      error: true
-    })
+      return ({
+        detail: [],
+        products: [],
+        error: true
+      })
 
     case LOAD_PRODUCT_SUCCESS:
       return ({
@@ -44,11 +44,11 @@ const products = (state = initialState, action) => {
         detail: [action.payload]
       })
     case LOAD_PRODUCT_FAILURE:
-    return ({
-      ...state,
-      detail: [],
-      error: true
-    })
+      return ({
+        ...state,
+        detail: [],
+        error: true
+      })
     default:
       return state
   }

@@ -10,6 +10,10 @@ import {
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
 
+  UPDATE_VIEWS_REQUEST,
+  UPDATE_VIEWS_SUCCESS,
+  UPDATE_VIEWS_FAILURE,
+
   ADD_TO_CART
 } from 'actionTypes'
 
@@ -26,6 +30,19 @@ export const loadProduct = (slug) => ({
     endpoint: `${PRODUCT_ENDPOINT}/name/${slug}`,
     method: 'GET',
     types: [LOAD_PRODUCT_REQUEST, LOAD_PRODUCT_SUCCESS, LOAD_PRODUCT_FAILURE]
+  }
+})
+
+export const updateViews = (slug) => ({
+  [CALL_API]: {
+    endpoint: `${PRODUCT_ENDPOINT}/name/${slug}`,
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: '{"number_of_views": 1}',
+    types: [UPDATE_VIEWS_REQUEST, UPDATE_VIEWS_SUCCESS, UPDATE_VIEWS_FAILURE]
   }
 })
 
