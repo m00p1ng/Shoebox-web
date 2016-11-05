@@ -34,3 +34,8 @@ export const onLogout = () => ({
     types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE]
   }
 })
+
+export const resetErrorMsg = () =>
+  (dispatch) => dispatch({
+      type: LOGOUT_SUCCESS
+  })

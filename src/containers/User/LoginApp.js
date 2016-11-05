@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { LoginApp } from '../../components'
-import { onLogin } from '../../actions/user'
+import { onLogin, resetErrorMsg } from '../../actions/user'
 import { URL_ROOT } from 'endpoint'
 
 class LoginAppContainer extends Component {
@@ -22,6 +22,10 @@ class LoginAppContainer extends Component {
     this.onUsernameChange = this.onUsernameChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.resetErrorMsg()
   }
 
   onUsernameChange(event) {
@@ -63,7 +67,8 @@ const mapStatetoProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  onLogin
+  onLogin,
+  resetErrorMsg
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(LoginAppContainer)
