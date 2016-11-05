@@ -8,6 +8,27 @@ class ProductListAppContainer extends Component {
     this.props.loadProducts()
   }
 
+  onClickedAddToCart(name, slug) {
+    Materialize.toast(
+      `Add&nbsp;&nbsp;
+        <strong>${name}</strong>
+      &nbsp;&nbsp;to cart`,
+      2000, 'rounded amber darken-1')
+    return this.props.clickAddToCart(slug)
+  }
+
+  renderProducts(products) {
+    return products.map(product =>
+      <ProductItem
+        key={product.slug}
+        product={product}
+        onClickedAddToCart={
+          () => this.onClickedAddToCart(product.name, product.slug)
+        }
+      />
+    )
+  }
+
   render() {
     let not_hasError = this.props.error !== true
     let hasProducts = this.props.products.length > 0
@@ -19,22 +40,7 @@ class ProductListAppContainer extends Component {
             <ProductListApp
               title="New Arrival"
               products={this.props.products} >
-              {
-                    this.props.products.map(product =>
-                      <ProductItem
-                        key={product.slug}
-                        product={product}
-                        onClickedAddToCart={() => {
-                          Materialize.toast(
-                            `Add&nbsp;&nbsp;
-                              <strong>${product.name}</strong>
-                            &nbsp;&nbsp;to cart`,
-                            2000, 'rounded amber darken-1')
-                          return this.props.clickAddToCart(product.slug)
-                        }}
-                      />
-                    )
-              }
+              {this.renderProducts(this.props.products)}
             </ProductListApp>
           ): ( <h1>Loading...</h1> )
         ) : ( <h1>Can't Fetch data</h1> )
@@ -54,4 +60,7 @@ const mapDispatchToProps = ({
   clickAddToCart
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListAppContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductListAppContainer);

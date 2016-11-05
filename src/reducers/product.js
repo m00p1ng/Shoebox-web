@@ -18,6 +18,7 @@ const products = (state = initialState, action) => {
     case LOAD_PRODUCTS_SUCCESS:
       return ({
         ...state,
+        error: false,
         products: action.payload,
       })
     case LOAD_PRODUCTS_FAILURE:
@@ -30,6 +31,7 @@ const products = (state = initialState, action) => {
     case LOAD_PRODUCT_SUCCESS:
       return ({
         ...state,
+        error: false,
         detail: [action.payload]
       })
     case LOAD_PRODUCT_FAILURE:
@@ -42,29 +44,5 @@ const products = (state = initialState, action) => {
       return state
   }
 }
-
-const productNull = {
-	name: '',
-	brand: '',
-	types: '',
-	description: '',
-	price: null,
-	picture: '',
-	date : {
-		year: null,
-		month: null,
-		day: null
-	},
-	amount: null,
-	size: [],
-	color: [],
-	is_available: null,
-	is_discount: null,
-	discountPercent : null
-}
-
-export const getProductBySlug = (state, slug) => (
-  state.products['detail'].find((product) => product.slug === slug) || productNull
-)
 
 export default products
