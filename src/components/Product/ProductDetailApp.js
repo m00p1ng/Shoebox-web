@@ -26,6 +26,8 @@ const ProductDetailApp = ({product, onClickedAddToCart}) => {
           <p><strong>Available :</strong> {String(product.is_available)}</p>
           <p><strong>Discount :</strong> {String(product.is_discount)}</p>
           <p><strong>discountPercent :</strong> {product.discountPercent}</p>
+          <p><strong>view</strong> : {product.number_of_views}</p>
+          <p><strong>sold_unit</strong> : {product.sold_unit}</p>
           <button onClick={onClickedAddToCart}>Add to cart</button>
         </div>
       </div>
@@ -39,19 +41,19 @@ ProductDetailApp.propTypes = {
     brand: PropTypes.string.isRequired,
     types: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    // price: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
     picture: PropTypes.string.isRequired,
-    // date : PropTypes.shape({
-    //   year: PropTypes.number.isRequired,
-    //   month: PropTypes.number.isRequired,
-    //   day: PropTypes.number.isRequired
-    // }).isRequired,
-    // amount: PropTypes.number.isRequired,
+    date : PropTypes.shape({
+      year: PropTypes.number.isRequired,
+      month: PropTypes.number.isRequired,
+      day: PropTypes.number.isRequired
+    }).isRequired,
+    amount: PropTypes.number.isRequired,
     size: PropTypes.array.isRequired,
     color: PropTypes.array.isRequired,
-    // is_available: PropTypes.bool.isRequired,
-    // is_discount: PropTypes.bool.isRequired,
-    // discountPercent : PropTypes.number.isRequired
+    is_available: PropTypes.bool.isRequired,
+    is_discount: PropTypes.bool.isRequired,
+    discountPercent : PropTypes.number.isRequired
   }).isRequired
 }
 

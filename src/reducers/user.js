@@ -22,7 +22,7 @@ const user = (state = initialState, action) => {
       })
     case LOGIN_FAILURE:
       return ({
-        username: ''
+        username: '',
         errorMsg: action.payload.response.errorMsg,
         isLoggedIn: false
       })

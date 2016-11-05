@@ -9,4 +9,8 @@ const CartApp = ({children}) => (
   </div>
 )
 
+CartApp.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
 export default CartApp
