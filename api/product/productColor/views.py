@@ -5,6 +5,7 @@ from api.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
+json_type = "application/json"
 
 @csrf_exempt
 def productColor(request):
@@ -20,10 +21,10 @@ def productColor(request):
 
 
 @csrf_exempt
-def productColor_with_name(request, slug):
+def productColor_with_color(request, slug):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_by_name(slug))
+        return request_get(query_by_color(slug))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':
@@ -36,7 +37,11 @@ def query_all():
     return ProductColors.objects.all()
 
 
-def query_by_name(slug):
+def query_by_color(slug):
+    return ProductColors.objects(slug=slug).first()
+
+
+def productColor_name(slug):
     return ProductColors.objects(slug=slug).first()
 
 
@@ -46,37 +51,57 @@ def productColor_create(body):
         err = ProductColors.validation(data)
         if len(err) == 0:
             ProductColors.create_obj(data)
-            return HttpResponse('productColor created', status=201)
+            message = {'created': True}
+            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
-            return errors_to_json(err)
+            return errors_to_json(err, 'created')
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('Product color already exist', status=400)
+        err = {}
+        err['errorMsg'] = ['Color already exist']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def productColor_delete(slug):
     item = ProductColors.objects(slug=slug)
+    err = {}
     if not item:
-        return HttpResponse('This productColor not exist', status=404)
+        err['errorMsg'] = ['This productColor not exist']
+        err['deleted'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
     item.delete()
-    return HttpResponse('productColor removed')
+    message = {'deleted': True}
+    return HttpResponse(json.dumps(message), content_type=json_type)
 
 
 def productColor_update(body, slug):
     try:
         item = ProductColors.objects(slug=slug)
+        err = {}
         if not item:
-            return HttpResponse('This productColor not exist', status=404)
+            err['errorMsg'] = ['This productColor not exist']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            err['errorMsg'] = ['Data cannot empty']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         ProductColors.update_obj(slug, data)
-        return HttpResponse('productColor updated')
+
+        message = {'updated': True}
+        return HttpResponse(json.dumps(message), content_type=json_type)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err['errorMsg'] = ['JSON Decode error']
+        err['updated'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)

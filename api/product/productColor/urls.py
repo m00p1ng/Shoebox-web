@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.productColor),
-    url(r'^(?P<slug>.+?)/?$', views.productColor_with_name),
+    url(r'^(?P<slug>.+?)/?$', views.productColor_with_color),
 ]

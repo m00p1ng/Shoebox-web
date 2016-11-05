@@ -50,20 +50,3 @@ class productBrand_Create_Fail_API_Test(MongoTestCase):
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'], ['Brand already exist'])
         self.assertEqual(data['created'], False)
-
-    def test_create_no_size_api(self):
-        CREATE_BODY = """{"size" : "0101"}"""
-        c = Client()
-        res = c.post(self.URL, data=CREATE_BODY, content_type=json_type)
-        data = json.loads(res.content.decode())
-        self.assertEqual(data['errorMsg'], ['Size Doesnot exist'])
-        self.assertEqual(data['created'], False)  
-
-    def test_case_no_color_api(self):
-        CREATE_BODY = """{"color" : "bobo"}"""
-        c = Client()
-        res = c.post(self.URL, data=CREATE_BODY, content_type=json_type)
-        data = json.loads(res.content.decode())
-        self.assertEqual(data['errorMsg'], ['Color Doesnot exist'])
-        self.assertEqual(data['created'], False)  
-
