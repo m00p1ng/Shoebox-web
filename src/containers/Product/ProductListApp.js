@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
 import { loadProducts, clickAddToCart } from '../../actions/product'
+import Loading from '../../constants/Loading/Loading'
 
 class ProductListAppContainer extends Component {
   static propTypes = {
@@ -47,7 +48,7 @@ class ProductListAppContainer extends Component {
               products={this.props.products} >
               {this.renderProducts(this.props.products)}
             </ProductListApp>
-          ): ( <h1>Loading...</h1> )
+          ): ( <Loading /> )
         ) : ( <h1>Can't Fetch data</h1> )
       }
       </div>
