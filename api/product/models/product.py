@@ -112,6 +112,8 @@ class Products(Document):
 
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
+        if 'number_of_views' in data:
+            data['number_of_views'] += 1
 
         field_id = cls.get_id_from_field(data)
 
