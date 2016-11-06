@@ -1,6 +1,6 @@
 import React from 'react'
 import ErrorMsg from './ErrorMsg'
-import RegisterForm from './RegisterForm'
+import RegisterForm from './Form/RegisterForm'
 
 const RegisterApp = ({
   handleSubmit,

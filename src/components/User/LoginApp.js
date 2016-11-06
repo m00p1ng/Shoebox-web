@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import LoginForm from './LoginForm'
+import LoginForm from './Form/LoginForm'
 import ErrorMsg from './ErrorMsg'
 
 const LoginApp = ({
