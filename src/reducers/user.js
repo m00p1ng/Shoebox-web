@@ -13,7 +13,7 @@ const initialState = {
   username: '',
   isLoggedIn: false,
   errorMsg: '',
-  role: ''
+  role: 'guest'
 }
 
 const user = (state = initialState, action) => {
@@ -28,14 +28,14 @@ const user = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return ({
         username: '',
-        role: '',
+        role: 'guest',
         errorMsg: action.payload.response.errorMsg,
         isLoggedIn: false
       })
     case LOGOUT_SUCCESS:
       return ({
         username: '',
-        role: '',
+        role: 'guest',
         errorMsg: '',
         isLoggedIn: false
       })
