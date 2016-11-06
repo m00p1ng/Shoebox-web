@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorMsg from './ErrorMsg'
+import ErrorMsg from './Form/ErrorMsg'
 import RegisterForm from './Form/RegisterForm'
 
 const RegisterApp = ({

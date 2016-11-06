@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import LoginForm from './Form/LoginForm'
-import ErrorMsg from './ErrorMsg'
+import ErrorMsg from './Form/ErrorMsg'
 
 const LoginApp = ({
   onUsernameChange,

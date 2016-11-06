@@ -3,7 +3,7 @@ import React from 'react'
 const RegisterAccountInfo = () => (
   <div>
     Account Info:
-    
+
     <div className="row">
       <div className="input-field col s6">
        <input
@@ -33,17 +33,6 @@ const RegisterAccountInfo = () => (
        <label htmlFor="password">Re password</label>
      </div>
     </div>
-
-    <div className="row">
-      <div className="input-field col s6">
-       <input
-          id="email"
-          type="email"
-          className="validate" />
-       <label htmlFor="email">E-mail</label>
-     </div>
-    </div>
-
   </div>
 )
 

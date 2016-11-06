@@ -23,15 +23,20 @@ const RegisterPersonalInfo = () => (
     </div>
 
     <div className="row">
-      <label>Browser Select</label>
-      <select className="browser-default">
-        <option value="" disabled>Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
+      <div className="input-field col s6">
+       <input
+          id="email"
+          type="email"
+          className="validate" />
+       <label htmlFor="email">E-mail</label>
+     </div>
     </div>
- </div>
+  </div>
 )
+
+//gender
+//birthday
+//phone
+
 
 export default RegisterPersonalInfo
