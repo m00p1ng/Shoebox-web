@@ -1,7 +1,8 @@
 import { CALL_API } from 'redux-api-middleware'
 import {
   LOGIN_ENDPOINT,
-  LOGOUT_ENDPOINT
+  LOGOUT_ENDPOINT,
+  REGISTER_CUSTOMER_ENDPOINT
 } from 'endpoint'
 
 import {
@@ -15,7 +16,11 @@ import {
 
   GET_USERNAME_REQUEST,
   GET_USERNAME_SUCCESS,
-  GET_USERNAME_FAILURE
+  GET_USERNAME_FAILURE,
+
+  REGISTER_CUSTOMER_REQUEST,
+  REGISTER_CUSTOMER_SUCCESS,
+  REGISTER_CUSTOMER_FAILURE
 } from 'actionTypes'
 
 export const onLogin = (values) =>({
@@ -28,7 +33,10 @@ export const onLogin = (values) =>({
     },
     body: JSON.stringify(values),
     types: [
-      LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE]
+      LOGIN_REQUEST,
+      LOGIN_SUCCESS,
+      LOGIN_FAILURE
+    ]
   }
 })
 
@@ -36,7 +44,11 @@ export const onLogout = () => ({
   [CALL_API]: {
     endpoint: LOGOUT_ENDPOINT,
     method: 'GET',
-    types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE]
+    types: [
+      LOGOUT_REQUEST,
+      LOGOUT_SUCCESS,
+      LOGOUT_FAILURE
+    ]
   }
 })
 
@@ -54,6 +66,27 @@ export const getUsername = () => ({
       'Content-Type': 'application/json'
     },
     body: '{"username": "", "password": ""}',
-    types: [GET_USERNAME_REQUEST, GET_USERNAME_SUCCESS, GET_USERNAME_FAILURE]
+    types: [
+      GET_USERNAME_REQUEST,
+      GET_USERNAME_SUCCESS,
+      GET_USERNAME_FAILURE
+    ]
+  }
+})
+
+export const registerCustomer = (values) => ({
+  [CALL_API]: {
+    endpoint: REGISTER_CUSTOMER_ENDPOINT,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(values),
+    types: [
+      REGISTER_CUSTOMER_REQUEST,
+      REGISTER_CUSTOMER_SUCCESS,
+      REGISTER_CUSTOMER_FAILURE
+    ]
   }
 })

@@ -4,3 +4,4 @@ const API_ROOT = '/api'
 export const PRODUCT_ENDPOINT = `${API_ROOT}/product`
 export const LOGIN_ENDPOINT = `${API_ROOT}/login`
 export const LOGOUT_ENDPOINT = `${API_ROOT}/logout`
+export const REGISTER_CUSTOMER_ENDPOINT = `${API_ROOT}/user/customer`
