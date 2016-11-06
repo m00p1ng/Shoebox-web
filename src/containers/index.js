@@ -1,4 +1,4 @@
-export Navbar from './App/Navbar'
+export NavbarApp from './App/NavbarApp'
 
 export ShopApp from './Shop/ShopApp'
 export ShopFeatureApp from './Shop/ShopFeatureApp'

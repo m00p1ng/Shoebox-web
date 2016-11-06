@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { URL_ROOT } from 'endpoint'
 
-const Footer = () => (
+const FooterApp = () => (
   <div>
     <div className="container">
       <div className="row">
@@ -28,4 +28,4 @@ const Footer = () => (
   </div>
 )
 
-export default Footer
+export default FooterApp

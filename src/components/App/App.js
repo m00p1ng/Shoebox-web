@@ -1,17 +1,17 @@
 import React from 'react'
-import { Navbar } from '../../containers'
-import Footer from './Footer'
+import { NavbarApp } from '../../containers'
+import FooterApp from './FooterApp'
 
 const App = ({children}) => (
   <div className="sbox-page-wrapper">
     <header>
-      <Navbar />
+      <NavbarApp />
     </header>
     <main>
       {children}
     </main>
     <footer className="page-footer black">
-      <Footer />
+      <FooterApp />
     </footer>
   </div>
 )

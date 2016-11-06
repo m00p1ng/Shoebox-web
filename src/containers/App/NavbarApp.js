@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Navbar } from '../../components'
+import { NavbarApp } from '../../components'
 import { getUsername } from '../../actions/user'
 
-class NavbarContainer extends Component {
+class NavbarAppContainer extends Component {
   static propTypes = {
     numberOfcartItem: PropTypes.number.isRequired
   }
@@ -22,7 +22,7 @@ class NavbarContainer extends Component {
 
   render() {
     return (
-      <Navbar
+      <NavbarApp
         NumberOfCartItem={this.props.numberOfcartItem}
         Username={this.showUsername()}/>
     )
@@ -41,4 +41,4 @@ const mapDispatchToProps = ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavbarContainer)
+)(NavbarAppContainer)
