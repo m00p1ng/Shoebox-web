@@ -1,42 +1,24 @@
 import React, { PropTypes } from 'react'
+import LoginForm from './LoginForm'
+import ErrorMsg from './ErrorMsg'
 
-const LoginApp = ({onUsernameChange, onPasswordChange, handleSubmit, errorMsg}) => (
-  <form onSubmit={handleSubmit}>
-    <div className="row">
-      <h1>Login</h1>
-      <div className="col s6 offset-s3">
-        {
-          (errorMsg !== '') ? (
-          <div className="card-panel red lighten-3">
-            <span className="white-text">
-              {errorMsg}
-            </span>
-          </div>
-          ): (<span></span>)
-        }
-        <div className="input-field">
-          <label>Username</label>
-          <input
-          id="sb_username"
-          type="text"
-          className="validate"
-          onChange={onUsernameChange} />
-        </div>
-        <div className="input-field">
-          <label>Password</label>
-          <input
-            id="sb_password"
-            type="password"
-            className="validate"
-            onChange={onPasswordChange}/>
-        </div>
-        <button
-          className="waves-effect waves-light btn"
-          type="submit"
-          onClick={handleSubmit}>Login</button>
-      </div>
+const LoginApp = ({
+  onUsernameChange,
+  onPasswordChange,
+  handleSubmit,
+  errorMsg
+}) => (
+  <div className="row">
+    <h1>Login</h1>
+    <div className="col s6 offset-s3">
+      <ErrorMsg errorMsg={errorMsg} />
+      <LoginForm
+        onUsernameChange={onUsernameChange}
+        onPasswordChange={onPasswordChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
-  </form>
+  </div>
 )
 
 LoginApp.propTypes = {
