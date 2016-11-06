@@ -2,12 +2,12 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
-class productColor_Create_API_Test(MongoTestCase):
+class productType_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/color'
-    URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = """{ "name": "white" }"""
+    URL = '/api/product/type'
+    URL_TYPE = '/api/product/type/running'
+    CREATE_BODY = """{ "name": "running" }"""
 
     def test_create_api(self):
         res = create_request(self.URL, self.CREATE_BODY)
@@ -16,10 +16,10 @@ class productColor_Create_API_Test(MongoTestCase):
         self.assertEqual(data['created'], True)
 
 
-class productColor_Create_Fail_API_Test(MongoTestCase):
+class productType_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/color'
+    URL = '/api/product/type'
 
     def test_create_no_name(self):
         CREATE_BODY = """{}"""
@@ -41,12 +41,12 @@ class productColor_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['created'], False)
 
 
-    def test_create_color_dubplicated(self):
-        CREATE_BODY = """{"name": "White"}"""
+    def test_create_type_dubplicated(self):
+        CREATE_BODY = """{"name": "Running"}"""
 
         create_request(self.URL, CREATE_BODY)
         res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())
 
-        self.assertEqual(data['errorMsg'], ['Color already exist'])
+        self.assertEqual(data['errorMsg'], ['Type already exist'])
         self.assertEqual(data['created'], False)

@@ -5,6 +5,7 @@ from api.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
+json_type = "application/json"
 
 @csrf_exempt
 def productType(request):
@@ -46,37 +47,57 @@ def productType_create(body):
         err = ProductTypes.validation(data)
         if len(err) == 0:
             ProductTypes.create_obj(data)
-            return HttpResponse('productType created', status=201)
+            message = {'created': True}
+            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
-            return errors_to_json(err)
+            return errors_to_json(err, 'created')
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('product type already exist', status=400)
+        err = {}
+        err['errorMsg'] = ['Type already exist']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def productType_delete(slug):
     item = ProductTypes.objects(slug=slug)
+    err = {}
     if not item:
-        return HttpResponse('This productType not exist', status=404)
+        err['errorMsg'] = ['This productType not exist']
+        err['deleted'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
     item.delete()
-    return HttpResponse('productType removed')
+    message = {'deleted': True}
+    return HttpResponse(json.dumps(message), content_type=json_type)
 
 
 def productType_update(body, slug):
     try:
         item = ProductTypes.objects(slug=slug)
+        err = {}
         if not item:
-            return HttpResponse('This productType not exist', status=404)
+            err['errorMsg'] = ['This productType not exist']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            err['errorMsg'] = ['Data cannot empty']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         ProductTypes.update_obj(slug, data)
-        return HttpResponse('productType updated')
+
+        message = {'updated': True}
+        return HttpResponse(json.dumps(message), content_type=json_type)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err['errorMsg'] = ['JSON Decode error']
+        err['updated'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
