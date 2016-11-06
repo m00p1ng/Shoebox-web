@@ -20,34 +20,51 @@ const NavbarShopDropdown = () => (
   </ul>
 )
 
-const NavbarGuestDropdown = () => (
-  <ul id="sbox-guest-dropdown" className="dropdown-content">
-    <li><Link to={`${URL_ROOT}/login`}>Login</Link></li>
-    <li><Link to={`${URL_ROOT}/register`}>Register</Link></li>
+
+const showDropdownByRole = (Role) => {
+  if(Role === 'employee') {
+    return (
+      <div>
+        <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
+        <li><Link to={`${URL_ROOT}/manage`}>Manage Shop</Link></li>
+        <li className="divider"></li>
+        <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
+      </div>
+    )
+  }
+  else if(Role === 'customer') {
+    return (
+      <div>
+        <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
+        <li className="divider"></li>
+        <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <li><Link to={`${URL_ROOT}/login`}>Login</Link></li>
+        <li><Link to={`${URL_ROOT}/register`}>Register</Link></li>
+      </div>
+    )
+  }
+}
+
+const NavbarUserDropdown = ({Role}) => (
+  <ul id="sbox-user-dropdown" className="dropdown-content">
+    {showDropdownByRole(Role)}
   </ul>
 )
 
-const NavbarCustomerDropdown = () => (
-  <ul id="sbox-customer-dropdown" className="dropdown-content">
-    <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
-    <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
-  </ul>
-)
-
-const NavbarEmployeeDropdown = () => (
-  <ul id="sbox-employee-dropdown" className="dropdown-content">
-    <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
-    <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
-  </ul>
-)
-
-const NavbarDropdown = () => (
+const NavbarDropdown = ({Role}) => (
   <div>
     <NavbarBrandDropdown />
     <NavbarShopDropdown />
-    <NavbarGuestDropdown />
-    <NavbarCustomerDropdown />
-    <NavbarEmployeeDropdown />
+    <NavbarUserDropdown
+      Role={Role}/>
+    {/* <NavbarCustomerDropdown />
+    <NavbarEmployeeDropdown /> */}
   </div>
 )
 

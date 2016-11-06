@@ -37,8 +37,8 @@ class ProductDetailAppContainer extends Component {
               <ProductDetailApp
                 product={this.props.product[0]}
                 onClickedAddToCart={() => this.onClickedAddToCart(this.props.product[0])} />
-            // ): ( <Loading /> )
-            ): ( <span></span> )
+            ): ( <Loading /> )
+            // ): ( <span></span> )
           ): ( browserHistory.push(`${URL_ROOT}/404`) )
         }
       </div>

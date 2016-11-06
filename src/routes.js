@@ -28,6 +28,8 @@ import {
   CartApp,
   CheckoutApp,
 
+  ManageApp,
+
   TestRegis
 } from './containers'
 
@@ -57,6 +59,9 @@ export default (
       <Route path='register' component={RegisterApp} />
       <Route path='profile' component={ProfileApp} />
       <Route path='test' component={TestRegis} />
+
+
+      <Route path='manage' component={ManageApp} />
 
 
       <Route path='404' component={NotFound} />
