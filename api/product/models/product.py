@@ -112,16 +112,14 @@ class Products(Document):
 
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
-        if 'number_of_views' in data:
-            data['number_of_views'] += 1
 
         field_id = cls.get_id_from_field(data)
 
         if field_id:
             for key in field_id:
                 data[key] = field_id[key]
-
         product = cls.objects(slug=slug)
+        data['number_of_views'] = product.first().number_of_views+1
         product.update(**data)
         return product
 
