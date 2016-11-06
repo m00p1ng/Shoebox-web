@@ -61,7 +61,7 @@ def employee_create(body):
     except NotUniqueError as e:
         err['errorMsg'] = ['Username already exist']
         err['created'] = False
-        return HttpResponse(json.dump(err), content_type=json_type, status=400)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def employee_delete(username):
@@ -69,11 +69,11 @@ def employee_delete(username):
     err = {}
     if not user:
         err['errorMsg'] = ['This employee not exist']
-        err['created'] = False
-        return HttpResponse(json.dump(err), content_type=json_type, status=404)
+        err['deleted'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
     user.delete()
     message = {'deleted' : True}
-    return HttpResponse(json.dump(message), content_type=json_type)
+    return HttpResponse(json.dumps(message), content_type=json_type)
 
 
 def employee_update(body, username):
@@ -82,21 +82,21 @@ def employee_update(body, username):
         err = {}
         if not user:
             err['errorMsg'] = ['This employee not exist']
-            err['created'] = False
-            return HttpResponse(json.dump(err), content_type=json_type, status=404)
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
             err['errorMsg'] = ['Data cannot empty']
-            err['created'] = False
-            return HttpResponse(json.dump(err), content_type=json_type, status=400)
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         Employees.update_obj(username, data)
 
         message = {'updated' : True}
-        return HttpResponse(json.dump(message), content_type=json_type)
+        return HttpResponse(json.dumps(message), content_type=json_type)
 
     except ValueError as e:
         err['errorMsg'] = ['JSON Decode error']
-        err['created'] = False
-        return HttpResponse(json.dump(err), content_type=json_type, status=400)
+        err['updated'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
