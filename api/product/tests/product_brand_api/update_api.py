@@ -1,4 +1,3 @@
-from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
 import json
