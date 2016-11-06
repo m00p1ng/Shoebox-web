@@ -15,6 +15,7 @@ class Employees(User):
     zipcode = StringField(max_length=10, required=True)
     phone = StringField(max_length=20, required=True)
     role = StringField(max_length=20, required=True, default="employee")
+    picture = StringField(max_length=1000)
 
     def validation(data):
         err = []
@@ -87,6 +88,7 @@ class Employees(User):
             firstname = data['firstname'],
             lastname = data['lastname'],
             gender = data['gender'],
+            picture=data['picture'],
             birthday = datetime.datetime(
                 year = data['birthday']['year'],
                 month = data['birthday']['month'],
@@ -138,6 +140,7 @@ class Employees(User):
             'lastname': employee.lastname,
             'gender': employee.gender,
             'birthday': timestamp_date(employee.birthday),
+            'picture': employee.picture,
             'address': {
                 'city': employee.city,
                 'district': employee.district,

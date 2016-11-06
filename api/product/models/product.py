@@ -118,6 +118,7 @@ class Products(Document):
         if field_id:
             for key in field_id:
                 data[key] = field_id[key]
+
         product = cls.objects(slug=slug)
         data['number_of_views'] = product.first().number_of_views+1
         product.update(**data)
