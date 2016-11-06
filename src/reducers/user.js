@@ -12,7 +12,8 @@ import {
 const initialState = {
   username: '',
   isLoggedIn: false,
-  errorMsg: ''
+  errorMsg: '',
+  role: ''
 }
 
 const user = (state = initialState, action) => {
@@ -20,18 +21,21 @@ const user = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return ({
         username: action.payload.username,
+        role: action.payload.role,
         errorMsg: '',
         isLoggedIn: true
       })
     case LOGIN_FAILURE:
       return ({
         username: '',
+        role: '',
         errorMsg: action.payload.response.errorMsg,
         isLoggedIn: false
       })
     case LOGOUT_SUCCESS:
       return ({
         username: '',
+        role: '',
         errorMsg: '',
         isLoggedIn: false
       })
@@ -39,6 +43,7 @@ const user = (state = initialState, action) => {
     case GET_USERNAME_SUCCESS:
       return ({
         username: action.payload.username,
+        role: action.payload.role,
         errorMsg: '',
         isLoggedIn: true
       })
