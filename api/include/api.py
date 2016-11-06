@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from json import dumps
+from django.test import Client
 
 def request_get(queryset):
     if not queryset:
@@ -24,3 +25,9 @@ def request_get_to_json(model, queryset):
     if not queryset:
         return HttpResponse('Not found', status=404)
     return HttpResponse(model.map_to_json(queryset), content_type="application/json")
+
+
+def create_request(link, json_string):
+    c = Client()
+    res = c.post(link, data=json_string, content_type="application/json")
+    return res
