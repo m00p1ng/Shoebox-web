@@ -65,22 +65,22 @@ class employee_Create_Fail_API_Test(MongoTestCase):
         	"phone": "080-000-0000"
         }
     """
-        res = create_request(self.URL, CREATE BODY)
+        res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'], ['Username cannot empty'])
         self.assertEqual(data['created'], False)
 
     def test_create_no_data(self):
         CREATE_BODY = ""
-        res = create_request(self.URL, CREATE BODY)
+        res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
         self.assertEqual(data['created'], False)
 
      def test_create_username_duplicated(self):
         CREATE_BODY = """{"username" : "mooping12345"}"""
-        create_request(self.URL, CREATE BODY)
-        res = create_request(self.URL, CREATE BODY)
+        create_request(self.URL, CREATE_BODY)
+        res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'], ['Username already exist'])
         self.assertEqual(data['created'], False)
