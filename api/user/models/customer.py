@@ -36,7 +36,7 @@ class Customers(User):
         if 'email' not in data:
             err.append('Email cannot empty')
         if 'firstname' not in data:
-            err.append('Firstname cannot empyty')
+            err.append('Firstname cannot empty')
         if 'lastname' not in data:
             err.append('Lastname cannot empty')
         if 'gender' not in data:
@@ -140,6 +140,100 @@ class Customers(User):
 
         return customer
 
-        @classmethod
-        def update_obj(cls, username, data):
-            pass
+
+    @classmethod
+    def update_obj(cls, username, data):
+        if 'birthday' in data:
+            data['birthday'] = datetime.datetime(
+                year=data['birthday']['year'],
+                month=data['birthday']['month'],
+                day=data['birthday']['day']
+            )
+            print(data['birthday'])
+
+        if 'address' in data:
+            if 'city' in data['address']:
+                data['city'] = data['address']['city']
+            if 'district' in data['address']:
+                data['district'] = data['address']['district']
+            if 'street' in data['address']:
+                data['street'] = data['address']['street']
+            if 'zipcode' in data['address']:
+                data['zipcode'] = data['address']['zipcode']
+            data.pop('address')
+
+        if 'ship' in data:
+            if 'city' in data['ship']:
+                data['city'] = data['ship']['city']
+            if 'district' in data['ship']:
+                data['district'] = data['ship']['district']
+            if 'street' in data['ship']:
+                data['street'] = data['ship']['street']
+            if 'zipcode' in data['ship']:
+                data['zipcode'] = data['ship']['zipcode']
+            data.pop('ship')
+
+        if 'credit' in data:
+            if 'id' in data['credit']:
+                data['creditID'] = data['credit']['id']
+            if 'type' in data['credit']:
+                data['creditType'] = data['credit']['type']
+            if 'exp' in data['credit']:
+                data['creditEXP'] = datetime.datetime(
+                    year=data['credit']['exp']['year'],
+                    month=data['credit']['exp']['month'],
+                    day=1
+                )
+            data.pop('credit')
+
+
+        customer = cls.objects(username=username)
+        customer.update(**data)
+        return customer
+
+
+    def map_data_to_dict(customer):
+        obj = {
+            'username': customer.username,
+            'email': customer.email,
+            'firstname': customer.firstname,
+            'lastname': customer.lastname,
+            'gender': customer.gender,
+            'birthday': timestamp_date(customer.birthday),
+            'picture': customer.picture,
+            'address': {
+                'city': customer.city,
+                'district': customer.district,
+                'street': customer.street,
+                'zipcode': customer.zipcode
+            },
+            'ship': {
+                'city': customer.shipCity,
+                'district': customer.shipDistrict,
+                'street': customer.shipStreet,
+                'zipcode': customer.shipZipcode
+            },
+            'credit':{
+                'id': customer.creditID,
+                'type': customer.creditType,
+                'exp': timestamp_date(customer.creditEXP)
+            },
+            'phone': customer.phone,
+            'date_joined': timestamp_fulldate(customer.date_joined),
+            'role': customer.role,
+            'is_active': customer.is_active,
+            'last_login': timestamp_fulldate(customer.last_login)
+        }
+        return obj
+
+    @classmethod
+    def map_to_json(cls, customers):
+        output = []
+        if not hasattr(customers, 'count'):
+            obj = cls.map_data_to_dict(customers)
+            return json.dumps(obj)
+        else:
+            for customer in customers:
+                obj = cls.map_data_to_dict(customer)
+                output.append(obj)
+                return json.dumps(output)

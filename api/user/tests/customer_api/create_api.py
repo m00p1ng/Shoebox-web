@@ -2,11 +2,11 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
-class employee_Create_API_Test(MongoTestCase):
+class customer_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/employee'
-    URL_USERNAME = '/api/user/employee/mooping12345'
+    URL = '/api/user/customer'
+    URL_CUSTOMER = '/api/user/customer/mooping12345'
     CREATE_BODY = """
         {
         	"username": "mooping12345",
@@ -15,7 +15,7 @@ class employee_Create_API_Test(MongoTestCase):
         	"email": "mail@gmail.com",
         	"firstname": "kaoneaw",
         	"lastname": "mooping",
-            "picture": "picture URL",
+            "picture" : "picture url",
         	"gender": "male",
         	"birthday": {
         		"year": 2000,
@@ -28,7 +28,21 @@ class employee_Create_API_Test(MongoTestCase):
         		"street": "my-street",
         		"zipcode": "99999"
         	},
-        	"phone": "080-000-0000"
+        	"phone": "080-000-0000",
+            "credit" : {
+                "type" : "XXX",
+                "id" : "6625526",
+                "exp" : {
+                    "year": 2000,
+        		    "month": 10,
+        		    "day": 10}
+            },
+            "ship": {
+        		"city": "my-city",
+        		"district": "my-district",
+        		"street": "my-street",
+        		"zipcode": "99999"
+        	}
         }
     """
 
@@ -38,10 +52,10 @@ class employee_Create_API_Test(MongoTestCase):
 
         self.assertEqual(data['created'], True)
 
-class employee_Create_Fail_API_Test(MongoTestCase):
+class customer_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/employee' 
+    URL = '/api/user/customer'
 
     def test_create_no_firstname(self):
         CREATE_BODY = """{}"""
@@ -63,6 +77,12 @@ class employee_Create_Fail_API_Test(MongoTestCase):
                                            "District cannot empty",
                                            "Street cannot empty",
                                            "Zipcode cannot empty",
+                                           "Ship address cannot empty",
+                                           "City cannot empty",
+                                           "District cannot empty",
+                                           "Street cannot empty",
+                                           "Zipcode cannot empty",
+                                           "Credit card cannot empty",
                                            "Phone cannot empty"
         ])
         self.assertEqual(data['created'], False)
@@ -77,6 +97,7 @@ class employee_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['created'], False)
 
     def test_create_username_duplicated(self):
+
         CREATE_BODY = """
         {
         	"username": "mooping12345",
@@ -85,7 +106,7 @@ class employee_Create_Fail_API_Test(MongoTestCase):
         	"email": "mail@gmail.com",
         	"firstname": "kaoneaw",
         	"lastname": "mooping",
-            "picture": "picture URL",
+            "picture" : "picture url",
         	"gender": "male",
         	"birthday": {
         		"year": 2000,
@@ -98,9 +119,24 @@ class employee_Create_Fail_API_Test(MongoTestCase):
         		"street": "my-street",
         		"zipcode": "99999"
         	},
-        	"phone": "080-000-0000"
+        	"phone": "080-000-0000",
+            "credit" : {
+                "type" : "XXX",
+                "id" : "6625526",
+                "exp" : {
+                    "year": 2000,
+        		    "month": 10,
+        		    "day": 10}
+            },
+            "ship": {
+        		"city": "my-city",
+        		"district": "my-district",
+        		"street": "my-street",
+        		"zipcode": "99999"
+        	}
         }
         """
+
         create_request(self.URL, CREATE_BODY)
         res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())

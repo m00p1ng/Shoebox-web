@@ -31,7 +31,7 @@ class Employees(User):
         if 'email' not in data:
             err.append('Email cannot empty')
         if 'firstname' not in data:
-            err.append('Firstname cannot empyty')
+            err.append('Firstname cannot empty')
         if 'lastname' not in data:
             err.append('Lastname cannot empty')
         if 'gender' not in data:
@@ -165,4 +165,4 @@ class Employees(User):
             for employee in employees:
                 obj = cls.map_data_to_dict(employee)
                 output.append(obj)
-            return json.dumps(output)
+                return json.dumps(output)

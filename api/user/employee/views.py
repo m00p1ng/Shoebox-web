@@ -47,7 +47,7 @@ def employee_create(body):
         err = Employees.validation(data)
         if len(err) == 0:
             Employees.create_obj(data)
-            message = {'Employee created' : True}
+            message = {'created' : True}
             return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
             return errors_to_json(err, 'created')
@@ -56,13 +56,13 @@ def employee_create(body):
         err = {}
         err['errorMsg'] = ['JSON Decode error']
         err['created'] = False
-        return HttpResponse(json.dump(err), content_type=json_type, status=400)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
-    except NotUniqueError as e:
+    except NotUniqueError:
+        err = {}
         err['errorMsg'] = ['Username already exist']
         err['created'] = False
         return HttpResponse(json.dumps(err), content_type=json_type, status=400)
-
 
 def employee_delete(username):
     user = Employees.objects(username=username)

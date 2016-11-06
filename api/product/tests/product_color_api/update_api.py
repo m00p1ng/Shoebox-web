@@ -20,6 +20,7 @@ class productColor_Update_API_Test(MongoTestCase):
 
         self.assertEqual(data['updated'], True)
 
+
 class productColor_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
@@ -37,7 +38,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['updated'], False)
 
 
-    def test_create_no_data(self):
+    def test_update_no_data(self):
         UPDATE_BODY = "{}"
 
         create_request(self.URL, self.CREATE_BODY)
@@ -48,7 +49,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['updated'], False)
 
 
-    def test_create_JSON_error(self):
+    def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
         create_request(self.URL, self.CREATE_BODY)

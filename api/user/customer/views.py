@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.user.models import Customers
-from api.include.api import request_get, errors_to_json
+from api.include.api import request_get, errors_to_json, request_get_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -11,7 +11,7 @@ json_type = "application/json"
 def customer(request):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_all())
+        return request_get_to_json(Customers, query_all())
     if request.method == 'POST':
         return customer_create(body)
     if request.method == 'PUT':
@@ -24,7 +24,7 @@ def customer(request):
 def customer_with_username(request, username):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_by_username(username))
+        return request_get_to_json(Customers, query_by_username(username))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':
@@ -78,6 +78,7 @@ def customer_delete(username):
 def customer_update(body, username):
     try:
         user = Customers.objects(username=username)
+        err = {}
         if not user:
             err['errorMsg'] = ['This customer not exist']
             err['updated'] = False
