@@ -5,6 +5,7 @@ from api.include.api import request_get, errors_to_json, request_get_to_json
 from mongoengine import NotUniqueError
 import json
 
+json_type = "application/json"
 
 @csrf_exempt
 def employee(request):
@@ -46,36 +47,56 @@ def employee_create(body):
         err = Employees.validation(data)
         if len(err) == 0:
             Employees.create_obj(data)
-            return HttpResponse('Employee created', status=201)
+            message = {'Employee created' : True}
+            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
-            return errors_to_json(err)
+            return errors_to_json(err, 'created')
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dump(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('Username already exist', status=400)
+        err['errorMsg'] = ['Username already exist']
+        err['created'] = False
+        return HttpResponse(json.dump(err), content_type=json_type, status=400)
 
 
 def employee_delete(username):
     user = Employees.objects(username=username)
+    err = {}
     if not user:
-        return HttpResponse('This employee not exist', status=404)
-    return HttpResponse('Employee removed')
+        err['errorMsg'] = ['This employee not exist']
+        err['created'] = False
+        return HttpResponse(json.dump(err), content_type=json_type, status=404)
+    user.delete()
+    message = {'deleted' : True}
+    return HttpResponse(json.dump(message), content_type=json_type)
 
 
 def employee_update(body, username):
     try:
         user = Employees.objects(username=username)
+        err = {}
         if not user:
-            return HttpResponse('This employee not exist', status=404)
+            err['errorMsg'] = ['This employee not exist']
+            err['created'] = False
+            return HttpResponse(json.dump(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            err['errorMsg'] = ['Data cannot empty']
+            err['created'] = False
+            return HttpResponse(json.dump(err), content_type=json_type, status=400)
 
         Employees.update_obj(username, data)
-        return HttpResponse('Employee updated')
+
+        message = {'updated' : True}
+        return HttpResponse(json.dump(message), content_type=json_type)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dump(err), content_type=json_type, status=400)
