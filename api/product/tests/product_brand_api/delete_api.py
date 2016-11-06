@@ -1,6 +1,6 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from api.include.api import create_request
+from api.include.test import create_request
 import json
 
 class productBrand_Delete_API_Test(MongoTestCase):

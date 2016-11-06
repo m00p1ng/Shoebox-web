@@ -1,9 +1,7 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from api.include.api import create_request
+from api.include.test import create_request, update_request
 import json
-
-json_type = "application/json"
 
 class productBrand_Update_API_Test(MongoTestCase):
     CLEAR_CACHE = True
@@ -18,8 +16,7 @@ class productBrand_Update_API_Test(MongoTestCase):
 
         UPDATE_BODY = """{"name": "nike2"}"""
 
-        c = Client()
-        res = c.put(self.URL_BRAND, data=UPDATE_BODY, content_type=json_type)
+        res = update_request(self.URL_BRAND, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['updated'], True)
