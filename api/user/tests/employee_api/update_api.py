@@ -39,7 +39,6 @@ class employee_Updated_API_Test(MongoTestCase):
 
         res = update_request(self.URL_EMPLOYEE, UPDATE_BODY)
         data = json.loads(res.content.decode())
-
         self.assertEqual(data['updated'], True)
 
 class employee_Update_Fail_API_Test(MongoTestCase):
@@ -71,6 +70,7 @@ class employee_Update_Fail_API_Test(MongoTestCase):
         	"phone": "080-000-0000"
         }
     """
+
     def test_update_no_item(self):
 
         UPDATE_BODY = """{"phone" : "087-777-7777"}"""

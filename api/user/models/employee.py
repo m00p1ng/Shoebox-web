@@ -24,7 +24,7 @@ class Employees(User):
         if 'password' not in data:
             err.append('Password cannot empty')
         if 'repassword' not in data:
-            err.append('Re password cannot empty')
+            err.append('Repassword cannot empty')
         if 'password' in data and 'repassword' in data:
             if not data['password'] == data['repassword']:
                 err.append('Password didn\'t match')

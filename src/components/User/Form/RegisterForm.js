@@ -1,12 +1,12 @@
 import React from 'react'
-import RegisterAccountInfo from './RegisterAccountInfo'
+import RegisterAccount from './RegisterAccount'
 import RegisterPersonalInfo from './RegisterPersonalInfo'
 
 const RegisterForm = ({
   handleSubmit
 }) => (
   <form onSubmit={handleSubmit}>
-    <RegisterAccountInfo />
+    <RegisterAccount />
     <RegisterPersonalInfo />
     <div className="row">
       <button

@@ -34,8 +34,8 @@ class TestRegisContainer extends Component {
           id : "6625526",
           exp : {
               year: 2000,
-          month: 10,
-          day: 10},
+              month: 10
+          },
       },
       phone: "080-000-0000"
     })

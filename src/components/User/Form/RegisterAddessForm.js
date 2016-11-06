@@ -1,4 +1,0 @@
-//City
-//District
-//Street
-//Zipcode

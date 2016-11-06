@@ -9,9 +9,9 @@
 - MongoDB
 
 
-## installation
+## Installation
 
-1. install requirements
+1. install pre requirements
 
 2. clone this project
   ```
@@ -46,7 +46,7 @@
 
 
 ## Server
-* run django server
+* run Django server
   ```
   $ source ./shoebox-env/bin/activate
   $ python manage.py runserver

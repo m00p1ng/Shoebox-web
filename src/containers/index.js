@@ -19,4 +19,6 @@ export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'
 
+export ManageApp from './Manage/ManageApp'
+
 export TestRegis from './User/TestRegis'

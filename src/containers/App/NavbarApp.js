@@ -24,7 +24,8 @@ class NavbarAppContainer extends Component {
     return (
       <NavbarApp
         NumberOfCartItem={this.props.numberOfcartItem}
-        Username={this.showUsername()}/>
+        Username={this.showUsername()}
+        Role={this.props.role}/>
     )
   }
 }

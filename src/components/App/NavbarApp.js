@@ -6,9 +6,10 @@ import NavbarLogo from './NavbarLogo'
 import NavbarMobileMenu from './NavbarMobileMenu'
 import NavbarDesktopMenu from './NavbarDesktopMenu'
 
-const NavbarApp = ({NumberOfCartItem, Username}) => (
+const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
   <div>
-    <NavbarDropdown />
+    <NavbarDropdown
+      Role={Role}/>
     <div className="navbar-fixed">
       <nav>
         <div className="nav-wrapper sbox-white-nav">
