@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RegisterAccountInfo = ({
+const RegisterAccount = ({
   onUsernameChange,
   onPasswordChange,
   onRePasswordChange
@@ -25,4 +25,4 @@ const RegisterAccountInfo = ({
   </div>
 )
 
-export default RegisterAccountInfo
+export default RegisterAccount
