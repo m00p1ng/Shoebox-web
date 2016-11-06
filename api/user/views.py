@@ -44,7 +44,10 @@ def login(request):
     if request.method == 'POST':
         try:
             if 'username' in request.session:
-                res = {"username": request.session['username']}
+                res = {
+                    "username": request.session['username'],
+                    "role": request.session['role']
+                }
                 return HttpResponse(json.dumps(res), content_type="application/json")
 
             data = json.loads(request.body.decode())
@@ -55,7 +58,10 @@ def login(request):
                 request.session['username'] = username
                 request.session['role'] = user.role
                 request.session.save()
-                res = {"username": request.session['username']}
+                res = {
+                    "username": request.session['username'],
+                    "role": request.session['role']
+                }
                 return HttpResponse(json.dumps(res), content_type="application/json")
             elif username == '' or password == '':
                 if username == '' and password == '':

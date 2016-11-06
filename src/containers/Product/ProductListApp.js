@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
-import { loadProducts, clickAddToCart } from '../../actions/product'
+import { loadProducts, clickAddToCart, clearError } from '../../actions/product'
 import Loading from '../../constants/Loading/Loading'
 
 class ProductListAppContainer extends Component {
@@ -11,6 +11,7 @@ class ProductListAppContainer extends Component {
   }
 
   componentDidMount() {
+    this.props.clearError()
     this.props.loadProducts()
   }
 
@@ -63,7 +64,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = ({
   loadProducts,
-  clickAddToCart
+  clickAddToCart,
+  clearError
 })
 
 export default connect(

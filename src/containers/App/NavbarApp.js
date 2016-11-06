@@ -31,7 +31,8 @@ class NavbarAppContainer extends Component {
 
 const mapStateToProps = (state) => ({
   numberOfcartItem: state.cart.addedIds.length,
-  username: state.user.username
+  username: state.user.username,
+  role: state.user.role
 })
 
 const mapDispatchToProps = ({

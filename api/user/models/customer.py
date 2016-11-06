@@ -20,6 +20,7 @@ class Customers(User):
     shipDistrict = StringField(max_length=50, required=True)
     shipStreet = StringField(max_length=50, required=True)
     shipZipcode = StringField(max_length=10, required=True)
+    picture = StringField(max_length=1000)
 
     def validation(data):
         err = []
@@ -111,6 +112,7 @@ class Customers(User):
             firstname = data['firstname'],
             lastname = data['lastname'],
             gender = data['gender'],
+            picture=data['picture'],
             birthday = datetime.datetime(
                 year = data['birthday']['year'],
                 month = data['birthday']['month'],

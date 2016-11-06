@@ -18,3 +18,5 @@ export RegisterApp from './User/RegisterApp'
 export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'
+
+export TestRegis from './User/TestRegis'
