@@ -2,37 +2,16 @@ import React from 'react'
 
 const RegisterAccountInfo = () => (
   <div>
-    Account Info:
+    <p>Account Info:</p>
 
-    <div className="row">
-      <div className="input-field col s6">
-       <input
-          id="username"
-          type="text"
-          className="validate" />
-       <label htmlFor="username">Username</label>
-     </div>
-    </div>
+   <input id="username" type="text"/>
+   <label>Username</label>
 
-    <div className="row">
-      <div className="input-field col s6">
-       <input
-          id="password"
-          type="password"
-          className="validate" />
-       <label htmlFor="password">Password</label>
-     </div>
-    </div>
+   <input id="password" type="password"/>
+   <label>Password</label>
 
-    <div className="row">
-      <div className="input-field col s6">
-       <input
-          id="re-password"
-          type="text"
-          className="validate" />
-       <label htmlFor="password">Re password</label>
-     </div>
-    </div>
+   <input id="re-password" type="text"/>
+   <label>Re password</label>
   </div>
 )
 

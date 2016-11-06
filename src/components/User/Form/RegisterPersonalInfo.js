@@ -2,41 +2,31 @@ import React from 'react'
 
 const RegisterPersonalInfo = () => (
   <div>
-    PersonalInfo:
+    <p>PersonalInfo:</p>
 
-    <div className="row">
-      <div className="input-field col s6">
-        <input
-          id="firstname"
-          type="text"
-          className="validate" />
-        <label htmlFor="firstname">First Name</label>
-      </div>
+    <input id="firstname" type="text"/>
+    <label>First Name</label>
 
-      <div className="input-field col s6">
-        <input
-          id="lastname"
-          type="text"
-          className="validate" />
-        <label htmlFor="lastname">Last Name</label>
-      </div>
-    </div>
+    <input id="lastname" type="text"/>
+    <label>Last Name</label>
 
-    <div className="row">
-      <div className="input-field col s6">
-       <input
-          id="email"
-          type="email"
-          className="validate" />
-       <label htmlFor="email">E-mail</label>
-     </div>
-    </div>
+    <input id="email" type="email"/>
+    <label>E-mail</label>
+
+    <input id="phone" type="text"/>
+    <label>Phone</label>
+
+    <select className="browser-default">
+      <option defaultValue="" disabled>---</option>
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+    <label>Gender</label>
+
+
+    <input type="date" className="datepicker"/>
+    <label>Birthday</label>
   </div>
 )
-
-//gender
-//birthday
-//phone
-
 
 export default RegisterPersonalInfo

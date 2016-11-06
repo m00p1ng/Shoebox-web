@@ -8,10 +8,12 @@ const RegisterForm = ({
   <form onSubmit={handleSubmit}>
     <RegisterAccountInfo />
     <RegisterPersonalInfo />
-    <button
-      className="waves-effect waves-light btn"
-      type="submit"
-      onClick={handleSubmit}>Login</button>
+    <div className="row">
+      <button
+        className="waves-effect waves-light btn"
+        type="submit"
+        onClick={handleSubmit}>Login</button>
+    </div>
   </form>
 )
 
