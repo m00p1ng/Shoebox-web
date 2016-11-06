@@ -44,8 +44,8 @@ def login(request):
     if request.method == 'POST':
         try:
             if 'username' in request.session:
-                token = {"token": request.session.session_key}
-                return HttpResponse(json.dumps(token), content_type="application/json")
+                res = {"username": request.session['username']}
+                return HttpResponse(json.dumps(res), content_type="application/json")
 
             data = json.loads(request.body.decode())
             username = data['username']
@@ -55,8 +55,8 @@ def login(request):
                 request.session['username'] = username
                 request.session['role'] = user.role
                 request.session.save()
-                token = {"token": request.session.session_key}
-                return HttpResponse(json.dumps(token), content_type="application/json")
+                res = {"username": request.session['username']}
+                return HttpResponse(json.dumps(res), content_type="application/json")
             elif username == '' or password == '':
                 if username == '' and password == '':
                     errmsg = '{"errorMsg": "Username and password cannot empty"}'
@@ -73,7 +73,7 @@ def login(request):
             errmsg = '{"errorMsg": "JSON Decode error"}'
             return HttpResponse(errmsg, status=400)
         except KeyError as e:
-            eerrmsg = '{"errorMsg": "Username or password cannot empty"}'
+            errmsg = '{"errorMsg": "Username or password cannot empty"}'
             return HttpResponse(errmsg, status=400)
 
     if request.method == 'GET':

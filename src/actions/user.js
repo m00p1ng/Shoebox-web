@@ -11,7 +11,11 @@ import {
 
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+
+  GET_USERNAME_REQUEST,
+  GET_USERNAME_SUCCESS,
+  GET_USERNAME_FAILURE
 } from 'actionTypes'
 
 export const onLogin = (values) =>({
@@ -23,7 +27,8 @@ export const onLogin = (values) =>({
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(values),
-    types: [LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE]
+    types: [
+      LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE]
   }
 })
 
@@ -39,3 +44,16 @@ export const resetErrorMsg = () =>
   (dispatch) => dispatch({
       type: LOGOUT_SUCCESS
   })
+
+export const getUsername = () => ({
+  [CALL_API]: {
+    endpoint: LOGIN_ENDPOINT,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: '{"username": "", "password": ""}',
+    types: [GET_USERNAME_REQUEST, GET_USERNAME_SUCCESS, GET_USERNAME_FAILURE]
+  }
+})
