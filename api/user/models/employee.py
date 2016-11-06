@@ -164,5 +164,5 @@ class Employees(User):
         else:
             for employee in employees:
                 obj = cls.map_data_to_dict(employee)
-                output.append(data)
+                output.append(obj)
             return json.dumps(output)
