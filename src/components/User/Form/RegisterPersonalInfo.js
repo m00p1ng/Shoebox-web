@@ -4,28 +4,39 @@ const RegisterPersonalInfo = () => (
   <div>
     <p>PersonalInfo:</p>
 
-    <input id="firstname" type="text"/>
-    <label>First Name</label>
+    <div className="row">
+      <label>First Name</label>
+      <input id="firstname" type="text"/>
+    </div>
 
-    <input id="lastname" type="text"/>
-    <label>Last Name</label>
+    <div className="row">
+      <label>Last Name</label>
+      <input id="lastname" type="text"/>
+    </div>
 
-    <input id="email" type="email"/>
-    <label>E-mail</label>
+    <div className="row">
+      <label>Gender</label>
+      <select className="browser-default">
+        <option defaultValue="" disabled>---</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+      </select>
+    </div>
 
-    <input id="phone" type="text"/>
-    <label>Phone</label>
+    <div className="row">
+      <label>Birthday</label>
+      <input type="date" className="datepicker"/>
+    </div>
 
-    <select className="browser-default">
-      <option defaultValue="" disabled>---</option>
-      <option value="1">Male</option>
-      <option value="2">Female</option>
-    </select>
-    <label>Gender</label>
+    <div className="row">
+      <label>E-mail</label>
+      <input id="email" type="email"/>
+    </div>
 
-
-    <input type="date" className="datepicker"/>
-    <label>Birthday</label>
+    <div className="row">
+      <label>Phone</label>
+      <input id="phone" type="text"/>
+    </div>
   </div>
 )
 

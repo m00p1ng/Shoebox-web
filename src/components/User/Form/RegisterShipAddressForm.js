@@ -1,4 +1,0 @@
-//shipCity
-//shipDistrict
-//shipStreet
-//shipZipcode
