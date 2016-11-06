@@ -2,6 +2,8 @@ import { CALL_API } from 'redux-api-middleware'
 import { PRODUCT_ENDPOINT } from 'endpoint'
 
 import {
+  CLEAR_ERROR,
+
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
   LOAD_PRODUCTS_FAILURE,
@@ -44,6 +46,11 @@ export const updateViews = (slug) => ({
     body: '{"number_of_views": 1}',
     types: [UPDATE_VIEWS_REQUEST, UPDATE_VIEWS_SUCCESS, UPDATE_VIEWS_FAILURE]
   }
+})
+
+export const clearError = () =>
+  (dispatch) => dispatch({
+  type: CLEAR_ERROR
 })
 
 const addToCart = (productId, productDetail) => ({
