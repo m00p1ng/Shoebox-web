@@ -7,7 +7,8 @@ import {
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
 
-  CLEAR_ERROR
+  CLEAR_ERROR,
+  CLEAR_DETAIL
 } from 'actionTypes'
 
 const initialState = {
@@ -33,9 +34,15 @@ const products = (state = initialState, action) => {
         error: false
       })
 
+    case CLEAR_DETAIL:
+      return ({
+        ...state,
+        detail: []
+      })
+
     case LOAD_PRODUCTS_SUCCESS:
       return ({
-        detail: [],
+        ...state,
         error: false,
         products: action.payload,
       })

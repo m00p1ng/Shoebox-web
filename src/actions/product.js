@@ -3,6 +3,7 @@ import { PRODUCT_ENDPOINT } from 'endpoint'
 
 import {
   CLEAR_ERROR,
+  CLEAR_DETAIL,
 
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
@@ -62,8 +63,13 @@ export const updateViews = (slug) => ({
 
 export const clearError = () =>
   (dispatch) => dispatch({
-  type: CLEAR_ERROR
-})
+    type: CLEAR_ERROR
+  })
+
+export const clearDetail = () =>
+  (dispatch) => dispatch({
+    type: CLEAR_DETAIL
+  })
 
 const addToCart = (productId, productDetail) => ({
   type: ADD_TO_CART,

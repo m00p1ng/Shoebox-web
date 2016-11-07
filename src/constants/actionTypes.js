@@ -25,6 +25,8 @@ export const UPDATE_PRODUCT_VIEWS_FAILURE = 'UPDATE_VIEWS_FAILURE'
 
 export const CLEAR_ERROR = 'CLEAR_ERROR'
 
+export const CLEAR_DETAIL = 'CLEAR_DETAIL'
+
 // action User
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
-import { loadProducts, clickAddToCart, clearError } from '../../actions/product'
+import { loadProducts, clickAddToCart, clearError, clearDetail } from '../../actions/product'
 import Loading from '../../constants/Loading/Loading'
 
 class ProductListAppContainer extends Component {
@@ -11,6 +11,7 @@ class ProductListAppContainer extends Component {
   }
 
   componentDidMount() {
+    this.props.clearDetail()
     this.props.clearError()
     this.props.loadProducts()
   }
@@ -38,7 +39,7 @@ class ProductListAppContainer extends Component {
 
   render() {
     let not_hasError = this.props.error !== true
-    let hasProducts = this.props.products.length > 0
+    let hasProducts = this.props.products.length > 1
     return (
       <div>
         {
@@ -65,6 +66,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = ({
   loadProducts,
   clickAddToCart,
+  clearDetail,
   clearError
 })
 
