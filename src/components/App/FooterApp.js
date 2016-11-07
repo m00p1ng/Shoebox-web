@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const FooterApp = () => (
-  <div>
+  <footer className="page-footer black">
     <div className="container">
       <div className="row">
         <div className="col l6 s12">
@@ -28,7 +28,7 @@ const FooterApp = () => (
       Shoebox &copy; 2016 Copyright.
       </div>
     </div>
-  </div>
+  </footer>
 )
 
 export default FooterApp

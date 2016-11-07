@@ -4,15 +4,9 @@ import FooterApp from './FooterApp'
 
 const App = ({children}) => (
   <div className="sbox-page-wrapper">
-    <header>
-      <NavbarApp />
-    </header>
-    <main>
-      {children}
-    </main>
-    <footer className="page-footer black">
-      <FooterApp />
-    </footer>
+    <NavbarApp />
+    <main>{children}</main>
+    <FooterApp />
   </div>
 )
 

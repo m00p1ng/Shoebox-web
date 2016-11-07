@@ -7,7 +7,7 @@ import NavbarMobileMenu from './NavbarMobileMenu'
 import NavbarDesktopMenu from './NavbarDesktopMenu'
 
 const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
-  <div>
+  <header>
     <NavbarDropdown
       Role={Role}/>
     <div className="navbar-fixed">
@@ -24,7 +24,7 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
         </div>
       </nav>
     </div>
-  </div>
+  </header>
 )
 
 NavbarApp.propTypes = {
