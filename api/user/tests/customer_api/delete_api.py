@@ -63,7 +63,7 @@ class customer_Delete_Fail_API_Test(MongoTestCase):
     URL = '/api/user/customer'
     URL_CUSTOMER = '/api/user/customer/mooping12345'
 
-    def test_delete_brand_not_exist(self):
+    def test_delete_customer_not_exist(self):
 
         c = Client()
         res = c.delete(self.URL_CUSTOMER)

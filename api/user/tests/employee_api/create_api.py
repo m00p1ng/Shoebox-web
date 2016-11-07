@@ -40,30 +40,31 @@ class employee_Create_API_Test(MongoTestCase):
 class employee_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/employee' 
+    URL = '/api/user/employee'
     URL_USERNAME = '/api/user/employee/mooping12345'
 
     def test_create_no_firstname(self):
         CREATE_BODY = """{}"""
         res = create_request(self.URL, CREATE_BODY)
         data = json.loads(res.content.decode())
-        self.assertEqual(data['errorMsg'],["Username cannot empty",
-                                           "Password cannot empty",
-                                           "Repassword cannot empty",
-                                           "Email cannot empty",
-                                           "Firstname cannot empty",
-                                           "Lastname cannot empty",
-                                           "Gender cannot empty",
-                                           "Birthday cannot empty",
-                                           "Year cannot empty",
-                                           "Month cannot empty",
-                                           "Day cannot empty",
-                                           "Address cannot empty",
-                                           "City cannot empty",
-                                           "District cannot empty",
-                                           "Street cannot empty",
-                                           "Zipcode cannot empty",
-                                           "Phone cannot empty"
+        self.assertEqual(data['errorMsg'],[
+            "Username cannot empty",
+            "Password cannot empty",
+            "Repassword cannot empty",
+            "Email cannot empty",
+            "Firstname cannot empty",
+            "Lastname cannot empty",
+            "Gender cannot empty",
+            "Birthday cannot empty",
+            "Year cannot empty",
+            "Month cannot empty",
+            "Day cannot empty",
+            "Address cannot empty",
+            "City cannot empty",
+            "District cannot empty",
+            "Street cannot empty",
+            "Zipcode cannot empty",
+            "Phone cannot empty"
         ])
         self.assertEqual(data['created'], False)
 
@@ -139,6 +140,3 @@ class employee_Create_Fail_API_Test(MongoTestCase):
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'], ['Username already exist'])
         self.assertEqual(data['created'], False)
-
-
-

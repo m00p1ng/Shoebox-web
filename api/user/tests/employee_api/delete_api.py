@@ -49,7 +49,7 @@ class employee_Delete_Fail_API_Test(MongoTestCase):
     URL = '/api/user/employee'
     URL_EMPLOYEE = '/api/user/employee/mooping12345'
 
-    def test_delete_brand_not_exist(self):
+    def test_delete_employee_not_exist(self):
 
         c = Client()
         res = c.delete(self.URL_EMPLOYEE)
