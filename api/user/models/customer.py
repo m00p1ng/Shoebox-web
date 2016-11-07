@@ -33,15 +33,14 @@ class Customers(User):
                 err.append('Username cannot exceed 20 characters')
         if 'password' not in data:
             err.append('Password cannot empty')
-        if 'repassword' not in data:
-            err.append('Re password cannot empty')
-        if 'password' not in data:
-            err.append('Password cannot empty')
         else:
             if len(data['password'])>20:
                 err.append('Password cannot exceed 20 characters')
         if 'repassword' not in data:
-            err.append('Re password cannot empty')
+            err.append('Repassword cannot empty')
+        if 'password' in data and 'repassword' in data:
+            if not data['password'] == data['repassword']:
+                err.append('Password didn\'t match')
         if 'email' not in data:
             err.append('Email cannot empty')
         if 'firstname' not in data:
