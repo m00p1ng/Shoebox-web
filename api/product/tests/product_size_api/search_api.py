@@ -20,3 +20,18 @@ class productSize_Search_API_Test(MongoTestCase):
 
         self.assertEqual(data['name'], '48')
         self.assertEqual(data['is_active'], True)
+
+
+class productSize_Search_Fail_API_Test(MongoTestCase):
+    CLEAR_CACHE = True
+
+    URL = '/api/product/size'
+    URL_SEARCH = '/api/product/size/213'
+    CREATE_BODY = """{ "name": "213" }"""
+    
+    def test_create_no_name(self):
+        c = Client()
+        res = c.get(self.URL_SEARCH)
+
+        self.assertEqual(res.content.decode(), 'Not found')
+

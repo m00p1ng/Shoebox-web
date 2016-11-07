@@ -7,7 +7,7 @@ class productType_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/product/type'
-    URL_TYPE = '/api/product/type/running'
+    URL_SIZE = '/api/product/type/running'
     CREATE_BODY = """{ "name": "running" }"""
 
 
@@ -15,8 +15,23 @@ class productType_Search_API_Test(MongoTestCase):
         create_request(self.URL, self.CREATE_BODY)
 
         c = Client()
-        res = c.get(self.URL_TYPE)
+        res = c.get(self.URL_SIZE)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'running')
         self.assertEqual(data['is_active'], True)
+
+
+class productType_Search_Fail_API_Test(MongoTestCase):
+    CLEAR_CACHE = True
+
+    URL = '/api/product/type'
+    URL_SEARCH = '/api/product/type/soccer'
+    CREATE_BODY = """{ "name": "soccer" }"""
+    
+    def test_create_no_name(self):
+        c = Client()
+        res = c.get(self.URL_SEARCH)
+
+        self.assertEqual(res.content.decode(), 'Not found')
+
