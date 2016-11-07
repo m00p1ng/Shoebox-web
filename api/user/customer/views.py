@@ -90,6 +90,19 @@ def customer_update(body, username):
             err['updated'] = False
             return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
+        err['errorMsg'] = []
+        if 'username' in data:
+            err['errorMsg'].append('Username cannot change')
+            err['updated'] = False
+
+        if 'password' in data:
+            if len(data['password']) > 20:
+                err['errorMsg'].append('Password cannot exceed 20 characters')
+                err['updated'] = False
+                return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+        if len(err['errorMsg']) > 0:
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+
         Customers.update_obj(username, data)
 
         message = {'updated' :  True}

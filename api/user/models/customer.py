@@ -28,10 +28,16 @@ class Customers(User):
         err = []
         if 'username' not in data:
             err.append('Username cannot empty')
+        else:
+            if len(data['username'])>20:
+                err.append('Username cannot exceed 20 characters')
         if 'password' not in data:
             err.append('Password cannot empty')
+        else:
+            if len(data['password'])>20:
+                err.append('Password cannot exceed 20 characters')
         if 'repassword' not in data:
-            err.append('Re password cannot empty')
+            err.append('Repassword cannot empty')
         if 'password' in data and 'repassword' in data:
             if not data['password'] == data['repassword']:
                 err.append('Password didn\'t match')
@@ -96,6 +102,7 @@ class Customers(User):
         if 'phone' not in data:
             err.append('Phone cannot empty')
         return err
+
 
     @classmethod
     def create_obj(cls, data):
@@ -188,7 +195,6 @@ class Customers(User):
                 )
             data.pop('credit')
 
-
         customer = cls.objects(username=username)
         customer.update(**data)
         return customer
@@ -227,6 +233,7 @@ class Customers(User):
             'last_login': timestamp_fulldate(customer.last_login)
         }
         return obj
+
 
     @classmethod
     def map_to_json(cls, customers):
