@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-route
 import { URL_ROOT } from 'endpoint'
 
 import NotFound from './constants/404/NotFound'
+import AboutUs from './constants/AboutUs/AboutUs'
 
 import {
   App,
@@ -39,11 +40,7 @@ export default (
       <IndexRoute component={Home} />
 
 
-      <route path='shop'>
-        <IndexRoute component={ShopApp} />
-        <route path='feature' component={ShopFeatureApp} />
-        <route path='bestseller' component={ShopBestSellerApp} />
-      </route>
+      <Route path='shop' component={ShopApp} />
       <route path='product'>
         <route path='create' component={ProductCreateApp} />
         <route path='edit' component={ProductUpdateApp} />
@@ -63,7 +60,7 @@ export default (
 
       <Route path='manage' component={ManageApp} />
 
-
+      <Route path='aboutus' component={AboutUs} />
       <Route path='404' component={NotFound} />
       <Redirect from='*' to={`${URL_ROOT}/404`} />
     </Route>
