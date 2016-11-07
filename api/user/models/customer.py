@@ -238,4 +238,4 @@ class Customers(User):
             for customer in customers:
                 obj = cls.map_data_to_dict(customer)
                 output.append(obj)
-                return json.dumps(output)
+            return json.dumps(output)

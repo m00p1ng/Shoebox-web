@@ -19,7 +19,6 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
         data-activates="sbox-brand-dropdown"
         data-beloworigin="true"
         data-hover="true"
-        alignment="right"
         data-constrainwidth="false">
         Brand<i className="material-icons right">arrow_drop_down</i>
       </a>
