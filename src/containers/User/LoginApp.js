@@ -9,7 +9,10 @@ class LoginAppContainer extends Component {
   static propTypes = {
     onLogin: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string
+    errorMsg: PropTypes.string,
+    onLogin: PropTypes.func,
+    onLogout: PropTypes.func,
+    resetErrorMsg: PropTypes.func
   }
 
   constructor(props) {
@@ -73,4 +76,7 @@ const mapDispatchToProps = ({
   resetErrorMsg
 })
 
-export default connect(mapStatetoProps, mapDispatchToProps)(LoginAppContainer)
+export default connect(
+  mapStatetoProps,
+  mapDispatchToProps
+)(LoginAppContainer)

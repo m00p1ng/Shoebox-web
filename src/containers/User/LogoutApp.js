@@ -26,4 +26,7 @@ const mapDispatchToProps = ({
   onLogout
 })
 
-export default connect(null, mapDispatchToProps)(LogoutAppContainer)
+export default connect(
+  null,
+  mapDispatchToProps
+)(LogoutAppContainer)

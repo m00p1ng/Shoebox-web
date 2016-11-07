@@ -64,6 +64,7 @@ def employee_create(body):
         err['created'] = False
         return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
+
 def employee_delete(username):
     user = Employees.objects(username=username)
     err = {}
@@ -89,6 +90,19 @@ def employee_update(body, username):
         if not data:
             err['errorMsg'] = ['Data cannot empty']
             err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+
+        err['errorMsg'] = []
+        if 'username' in data:
+            err['errorMsg'].append('Username cannot change')
+            err['updated'] = False
+
+        if 'password' in data:
+            if len(data['password']) < 6 or len(data['password']) > 20:
+                err['errorMsg'].append('Password must be 6-20 characters')
+                err['updated'] = False
+                return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+        if len(err['errorMsg']) > 0:
             return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         Employees.update_obj(username, data)

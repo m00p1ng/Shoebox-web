@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-
 import { URL_ROOT } from 'endpoint'
 
 const FooterApp = () => (
@@ -14,8 +13,12 @@ const FooterApp = () => (
         <div className="col l4 offset-l2 s12">
           <h5 className="white-text">Get to know us</h5>
           <ul>
-            <li><a className="grey-text text-lighten-3" href="#!">About</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Contact us</a></li>
+            <li>
+              <Link to={`${URL_ROOT}/aboutus`}>
+                <span className="grey-text text-lighten-3">About</span>
+              </Link>
+            </li>
+            <li><span className="grey-text text-lighten-3">Contact us</span></li>
           </ul>
         </div>
       </div>

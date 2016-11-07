@@ -57,6 +57,17 @@ margin-60 {
     padding-top: 60px;
 }
 
+.header_bar {
+  background-color: #EE6E73;
+  height: 120px;
+  margin-bottom: 70px;
+}
+
+.header_text {
+  font-size: 32px;
+  padding-left: 80px;
+}
+
 .price_tag {
     position: relative;
 }

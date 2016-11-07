@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -10,16 +10,6 @@ const NavbarBrandDropdown = () => (
     <li><a href="#!">Allen Edmonds</a></li>
   </ul>
 )
-
-const NavbarShopDropdown = () => (
-  <ul id="sbox-shop-dropdown" className="dropdown-content">
-    <li><Link to={`${URL_ROOT}/shop/feature`}>Feature</Link></li>
-    <li><Link to={`${URL_ROOT}/shop/bestseller`}>Best Seller</Link></li>
-    <li className="divider"></li>
-    <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
-  </ul>
-)
-
 
 const showDropdownByRole = (Role) => {
   if(Role === 'employee') {
@@ -60,12 +50,13 @@ const NavbarUserDropdown = ({Role}) => (
 const NavbarDropdown = ({Role}) => (
   <div>
     <NavbarBrandDropdown />
-    <NavbarShopDropdown />
     <NavbarUserDropdown
       Role={Role}/>
-    {/* <NavbarCustomerDropdown />
-    <NavbarEmployeeDropdown /> */}
   </div>
 )
+
+NavbarDropdown.propTypes = {
+  Role: PropTypes.string.isRequired
+}
 
 export default NavbarDropdown

@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Carousel = () => (
-      <div className="carousel carousel-slider" data-indicators="true">
-        <div className="carousel-fixed-item">
-        </div>
+    <div className="carousel carousel-slider" data-indicators="true">
+      <div className="carousel-fixed-item">
+      </div>
       <a className="carousel-item" href="#one!"><img src="static/images/feature/01.png"/></a>
       <a className="carousel-item" href="#two!"><img src="static/images/feature/02.png"/></a>
       <a className="carousel-item" href="#three!"><img src="static/images/feature/03.png"/></a>

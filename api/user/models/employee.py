@@ -21,8 +21,14 @@ class Employees(User):
         err = []
         if 'username' not in data:
             err.append('Username cannot empty')
+        else:
+            if len(data['username'])<6 or len(data['username'])>20:
+                err.append('Username must be 6-20 characters')
         if 'password' not in data:
             err.append('Password cannot empty')
+        else:
+            if len(data['password'])<6 or len(data['password'])>20:
+                err.append('Password must be 6-20 characters')
         if 'repassword' not in data:
             err.append('Repassword cannot empty')
         if 'password' in data and 'repassword' in data:
@@ -165,4 +171,4 @@ class Employees(User):
             for employee in employees:
                 obj = cls.map_data_to_dict(employee)
                 output.append(obj)
-                return json.dumps(output)
+            return json.dumps(output)

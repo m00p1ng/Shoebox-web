@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 import NavbarDropdown from './NavbarDropdown'
@@ -26,5 +26,11 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
     </div>
   </div>
 )
+
+NavbarApp.propTypes = {
+  NumberOfCartItem: PropTypes.number.isRequired,
+  Username: PropTypes.string.isRequired,
+  Role: PropTypes.string.isRequired
+}
 
 export default NavbarApp

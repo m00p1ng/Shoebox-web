@@ -9,7 +9,10 @@ import { URL_ROOT } from 'endpoint'
 class ProductDetailAppContainer extends Component {
   static propTypes = {
     product: PropTypes.array.isRequired,
-    error: PropTypes.bool.isRequired
+    error: PropTypes.bool.isRequired,
+    loadProduct: PropTypes.func.isRequired,
+    updateViews: PropTypes.func.isRequired,
+    clickAddToCart: PropTypes.func.isRequired
   }
 
   componentWillMount() {

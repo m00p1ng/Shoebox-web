@@ -1,30 +1,21 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
   <ul className="right hide-on-med-and-down">
-    <li>
-      <a
-        className="dropdown-button"
-        data-activates="sbox-shop-dropdown"
-        data-beloworigin="true"
-        data-hover="true">
-        Shop<i className="material-icons right">arrow_drop_down</i>
-      </a>
-    </li>
+    <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
+    <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
     <li>
       <a
         className="dropdown-button"
         data-activates="sbox-brand-dropdown"
         data-beloworigin="true"
         data-hover="true"
-        alignment="right"
         data-constrainwidth="false">
         Brand<i className="material-icons right">arrow_drop_down</i>
       </a>
     </li>
-    <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
     <li>
       <Link to={`${URL_ROOT}/cart`}>Cart
       {
@@ -46,5 +37,10 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
     </li>
   </ul>
 )
+
+NavbarDesktopMenu.propTypes = {
+  NumberOfCartItem: PropTypes.number.isRequired,
+  Username: PropTypes.string.isRequired
+}
 
 export default NavbarDesktopMenu
