@@ -1,19 +1,31 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
-import { loadProducts, clickAddToCart, clearError, clearDetail } from '../../actions/product'
+import {
+  loadProducts,
+  clickAddToCart,
+  clearError,
+  clearDetail
+} from '../../actions/product'
 import Loading from '../../constants/Loading/Loading'
 
 class ProductListAppContainer extends Component {
   static propTypes = {
     products: PropTypes.array.isRequired,
-    error: PropTypes.bool.isRequired
+    error: PropTypes.bool.isRequired,
+    clearDetail: PropTypes.func.isRequired,
+    clearError: PropTypes.func.isRequired,
+    loadProducts: PropTypes.func.isRequired
   }
 
   componentDidMount() {
     this.props.clearDetail()
     this.props.clearError()
     this.props.loadProducts()
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.products !== nextProps.products
   }
 
   onClickedAddToCart(name, slug, product) {

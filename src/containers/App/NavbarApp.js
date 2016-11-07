@@ -5,7 +5,10 @@ import { getUsername } from '../../actions/user'
 
 class NavbarAppContainer extends Component {
   static propTypes = {
-    numberOfcartItem: PropTypes.number.isRequired
+    numberOfcartItem: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    getUsername: PropTypes.func.isRequired
   }
   componentDidMount() {
     this.props.getUsername()

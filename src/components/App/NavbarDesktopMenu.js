@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -45,5 +45,10 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
     </li>
   </ul>
 )
+
+NavbarDesktopMenu.propTypes = {
+  NumberOfCartItem: PropTypes.number.isRequired,
+  Username: PropTypes.string.isRequired
+}
 
 export default NavbarDesktopMenu
