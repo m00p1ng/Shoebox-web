@@ -64,7 +64,7 @@ class customer_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['errorMsg'],[
             "Username cannot empty",
             "Password cannot empty",
-            "Re password cannot empty",
+            "Repassword cannot empty",
             "Email cannot empty",
             "Firstname cannot empty",
             "Lastname cannot empty",
