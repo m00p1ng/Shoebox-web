@@ -1,10 +1,14 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import SearchResult from './SearchResult'
 
-const SearchApp = () => (
+const SearchApp = ({onSearchChange, text}) => (
   <div>
     <h1>Search</h1>
-    <SearchBar />
+    <SearchBar
+      onSearchChange={onSearchChange}/>
+    <SearchResult
+      text={text}/>
   </div>
 )
 

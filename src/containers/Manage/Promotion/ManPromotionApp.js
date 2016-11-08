@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ManPromotionApp } from '../../components'
+import { ManPromotionApp } from '../../../components'
 
 class ManPromotionAppContainer extends Component {
   render() {

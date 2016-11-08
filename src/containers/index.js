@@ -8,8 +8,6 @@ export ShopBestSellerApp from './Shop/ShopBestSellerApp'
 
 export ProductListApp from './Product/ProductListApp'
 export ProductDetailApp from './Product/ProductDetailApp'
-export ProductCreateApp from './Product/ProductCreateApp'
-export ProductUpdateApp from './Product/ProductUpdateApp'
 
 export CartApp from './Cart/CartApp'
 export CheckoutApp from './Checkout/CheckoutApp'
@@ -22,7 +20,11 @@ export ProfileApp from './User/ProfileApp'
 export SearchApp from './Search/SearchApp'
 
 export ManageApp from './Manage/ManageApp'
-export ManOrderApp from './Order/ManOrderApp'
-export ManPromotionApp from './Promotion/ManPromotionApp'
+export ManProductApp from './Manage/Product/ManProductApp'
+export ManProductCreateApp from './Manage/Product/ManProductCreateApp'
+export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'
+export ManOrderApp from './Manage/Order/ManOrderApp'
+export ManPromotionApp from './Manage/Promotion/ManPromotionApp'
+export ManSupplierApp from './Manage/Supplier/ManSupplierApp'
 
 export TestRegis from './User/TestRegis'
