@@ -9,11 +9,6 @@
 
       $(".dropdown-button").dropdown();
 
-      $('.carousel.carousel-slider').carousel({full_width: true,
-                         time_constant: 200});
-      window.setInterval(function(){$('.carousel').carousel('next')},5000)
-
-
       $('.datepicker').pickadate({
          selectMonths: true, // Creates a dropdown to control month
          selectYears: 100 // Creates a dropdown of 15 years to control year

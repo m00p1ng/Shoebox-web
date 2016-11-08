@@ -65,7 +65,7 @@ export const getUsername = () => ({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: '{"username": "", "password": ""}',
+    body: '{}',
     types: [
       GET_USERNAME_REQUEST,
       GET_USERNAME_SUCCESS,

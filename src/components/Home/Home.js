@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Carousel from './Carousel'
 import { ProductListApp } from '../../containers'
-import '../../../static/js/jquery-2.1.1.min.js'
 
 class Home extends Component {
   componentDidMount() {
