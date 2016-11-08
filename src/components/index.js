@@ -31,3 +31,5 @@ export ProfileApp from './User/ProfileApp'
 export SearchApp from './Search/SearchApp'
 
 export ManageApp from './Manage/ManageApp'
+export ManOrderApp from './Order/ManOrderApp'
+export ManPromotionApp from './Promotion/ManPromotionApp'
