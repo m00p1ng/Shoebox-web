@@ -19,6 +19,7 @@ export CartApp from './Cart/CartApp'
 export CartItem from './Cart/CartItem'
 export CartList from './Cart/CartList'
 export CartSummary from './Cart/CartSummary'
+export NoItemInCart from './Cart/NoItemInCart'
 
 export CheckoutApp from './Checkout/CheckoutApp'
 
