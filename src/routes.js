@@ -41,8 +41,6 @@ export default (
 
       <Route path='shop' component={ShopApp} />
       <route path='product'>
-        <route path='create' component={ProductCreateApp} />
-        <route path='edit' component={ProductUpdateApp} />
         <route path=':slug' component={ProductDetailApp} />
       </route>
       <Route path='cart' component={CartApp} />
@@ -57,7 +55,14 @@ export default (
       <Route path='test' component={TestRegis} />
 
 
-      <Route path='manage' component={ManageApp} />
+      <Route path='manage'>
+        <IndexRoute component={ManageApp} />
+        <route path='product'>
+          <route path='create' component={ProductCreateApp} />
+          <route path='edit' component={ProductUpdateApp} />
+          <route path='all' component={ProductDetailApp} />
+        </route>
+      </Route>
 
       <Route path='aboutus' component={AboutUs} />
       <Route path='404' component={NotFound} />
