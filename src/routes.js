@@ -5,12 +5,11 @@ import { URL_ROOT } from 'endpoint'
 import NotFound from './constants/404/NotFound'
 import AboutUs from './constants/AboutUs/AboutUs'
 
-import {
-  App,
-  Home,
-} from './components'
+import { App } from './components'
 
 import {
+  Home,
+
   ShopApp,
   ShopFeatureApp,
   ShopBestSellerApp,

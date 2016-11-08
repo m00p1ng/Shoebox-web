@@ -1,5 +1,7 @@
 export NavbarApp from './App/NavbarApp'
 
+export Home from './Home/Home'
+
 export ShopApp from './Shop/ShopApp'
 export ShopFeatureApp from './Shop/ShopFeatureApp'
 export ShopBestSellerApp from './Shop/ShopBestSellerApp'
