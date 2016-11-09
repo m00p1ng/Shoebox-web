@@ -33,7 +33,7 @@ def product_with_name(request, slug):
 
 
 @csrf_exempt
-def product_search(request, search, slug):
+def product_category(request, category, slug):
     body = request.body
     if request.method == 'GET':
         if search == 'type':
@@ -51,6 +51,7 @@ def product_search(request, search, slug):
     if request.method == 'DELETE':
         pass
 
+
 @csrf_exempt
 def product_latest(request):
     if request.method == 'GET':
@@ -61,6 +62,7 @@ def product_latest(request):
         pass
     if request.method == 'DELETE':
         pass
+
 
 @csrf_exempt
 def product_bestseller(request):
@@ -73,6 +75,7 @@ def product_bestseller(request):
     if request.method == 'DELETE':
         pass
 
+
 @csrf_exempt
 def product_topview(request):
     if request.method == 'GET':
@@ -83,6 +86,31 @@ def product_topview(request):
         pass
     if request.method == 'DELETE':
         pass
+
+
+@csrf_exempt
+def product_search(request,keyword):
+    if request.method == 'GET':
+        return request_get_real(Products, query_by_keyword(keyword))
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
+
+@csrf_exempt
+def product_customer(request):
+    if request.method == 'GET':
+        return request_get_real(Products, query_by_customer_all())
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
 
 def query_all():
     return Products.objects.all()
@@ -95,11 +123,21 @@ def query_latest():
 def query_by_name(slug):
     return Products.objects(slug=slug).first()
 
+
 def query_by_sold_unit():
     return Products.objects().order_by("-sold_unit")
 
+
 def query_by_view():
     return Products.objects().order_by("-number_of_views")
+
+
+def query_by_customer_all():
+    return Products.objects(is_available=True).all()
+
+
+def query_by_keyword(keyword):
+    return Products.objects.filter(name__contains=keyword)
 
 
 def product_type(slug):
