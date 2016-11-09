@@ -65,6 +65,7 @@ const products = (state = initialState, action) => {
         detail: [],
         error: true
       })
+
     default:
       return state
   }

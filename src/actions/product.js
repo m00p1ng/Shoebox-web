@@ -1,5 +1,7 @@
 import { CALL_API } from 'redux-api-middleware'
-import { PRODUCT_ENDPOINT } from 'endpoint'
+import {
+  PRODUCT_ENDPOINT
+} from 'endpoint'
 
 import {
   CLEAR_ERROR,
@@ -60,6 +62,7 @@ export const updateViews = (slug) => ({
     ]
   }
 })
+
 
 export const clearError = () =>
   (dispatch) => dispatch({
