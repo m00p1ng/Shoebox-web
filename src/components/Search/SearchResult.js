@@ -2,7 +2,7 @@ import React from 'react'
 import SearchItem from './SearchItem'
 
 
-const SearchResult = ({result}) => {
+const SearchResult = ({result, hasError}) => {
   const render_list = (list) => (
     list.map(item => {
       return (
@@ -13,9 +13,27 @@ const SearchResult = ({result}) => {
     })
   )
 
+  const renderResult = (result, hasError) => {
+    if (!hasError) {
+      if (result.length > 0) {
+        return render_list(result)
+      }
+      else {
+        return (
+          <h3>What are you looking for..</h3>
+        )
+      }
+    }
+    else {
+      return (
+        <h3>Oh sorry, Not found</h3>
+      )
+    }
+  }
+
   return (
     <div>
-      {render_list(result)}
+      {renderResult(result, hasError)}
     </div>
   )
 }

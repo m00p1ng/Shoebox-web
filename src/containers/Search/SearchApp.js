@@ -7,6 +7,10 @@ import {
 } from '../../actions/search'
 
 class SearchAppContainer extends Component {
+  componentDidMount() {
+    this.props.clearSearch()
+  }
+
   onSearchChange(event) {
     const value = event.target.value
     if (value.length > 0)
@@ -20,13 +24,15 @@ class SearchAppContainer extends Component {
     return (
       <SearchApp
         onSearchChange={this.onSearchChange.bind(this)}
-        result={this.props.searchResult}/>
+        result={this.props.searchResult}
+        hasError={this.props.error}/>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  searchResult: state.search['result']
+  searchResult: state.search['result'],
+  error: state.search['error']
 })
 
 const mapDispatchToProps = ({
