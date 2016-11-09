@@ -153,7 +153,7 @@ class Products(Document):
         return real_data
 
     @classmethod
-    def mapID_to_obj(cls, product, function):
+    def mapID_to_obj(cls, product, function='none'):
         data = {
             'brand': product.brand.id,
             'types': product.types.id,
@@ -170,7 +170,6 @@ class Products(Document):
                 'price' : product.price,
                 'picture' : product.picture,
                 'amount' : product.amount,
-                'is_available' : product.is_available,
                 'is_discount' : product.is_discount,
                 'discountPercent' : product.discountPercent,
                 'date' : timestamp_date(product.date),
@@ -193,6 +192,7 @@ class Products(Document):
                 'slug': product.slug,
                 'name' : product.name,
                 'price' : product.price,
+                'amount' : product.amount
             }
             return obj
 
@@ -220,7 +220,7 @@ class Products(Document):
 
 
     @classmethod
-    def map_referenceID(cls, products, function):
+    def map_referenceID(cls, products, function='none'):
         output = []
         if not hasattr(products, 'count'):
             obj = cls.mapID_to_obj(products,function)
