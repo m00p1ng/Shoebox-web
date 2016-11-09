@@ -36,13 +36,13 @@ def product_with_name(request, slug):
 def product_category(request, category, slug):
     body = request.body
     if request.method == 'GET':
-        if search == 'type':
+        if category == 'type':
             return product_type(slug)
-        if search == 'brand':
+        if category == 'brand':
             return product_brand(slug)
-        if search == 'size':
+        if category == 'size':
             return product_size(slug)
-        if search == 'color':
+        if category == 'color':
             return product_color(slug)
     if request.method == 'POST':
         pass
