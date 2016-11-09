@@ -1,33 +1,19 @@
 import React, { PropTypes } from 'react'
 import ProductItem from './ProductItem'
 
-const ProductListApp = ({title, products}) => {
-  const renderProducts = (products) => (
-    products.map(product =>
-      <ProductItem
-        key={product.slug}
-        product={product}
-        onClickedAddToCart={
-          () => this.onClickedAddToCart(product.name, product.slug, product)
-        }
-      />
-    )
-  )
-
-  return (
-    <div>
-      <h1>{title}</h1>
-      <div className="container">
-        <div className="row">
-          {renderProducts(products)}
-        </div>
+const ProductListApp = ({title, children}) => (
+  <div>
+    <h1>{title}</h1>
+    <div className="container">
+      <div className="row">
+        {children}
       </div>
     </div>
-  )
-}
+  </div>
+)
 
 ProductListApp.propTypes = {
-  products: PropTypes.array.isRequired,
+  children: PropTypes.node,
   title: PropTypes.string.isRequired
 }
 
