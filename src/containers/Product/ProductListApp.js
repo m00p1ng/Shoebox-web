@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { ProductListApp, ProductItem } from '../../components'
+import { ProductListApp } from '../../components'
 import {
   loadProducts,
   clickAddToCart,
@@ -55,15 +55,13 @@ class ProductListAppContainer extends Component {
     return (
       <div>
         {
-        not_hasError ? (
+          not_hasError ? (
           hasProducts ? (
             <ProductListApp
               title="New Arrival"
-              products={this.props.products} >
-              {this.renderProducts(this.props.products)}
-            </ProductListApp>
+              products={this.props.products} />
           ): ( <Loading /> )
-        ) : ( <h1>Can't Fetch data</h1> )
+          ) : ( <h1>Can't Fetch data</h1> )
       }
       </div>
     )
