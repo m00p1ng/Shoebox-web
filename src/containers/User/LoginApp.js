@@ -15,16 +15,12 @@ class LoginAppContainer extends Component {
     resetErrorMsg: PropTypes.func
   }
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       username: '',
       password: ''
     }
-
-    this.onUsernameChange = this.onUsernameChange.bind(this)
-    this.onPasswordChange = this.onPasswordChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -56,9 +52,9 @@ class LoginAppContainer extends Component {
   render() {
     return(
       <LoginApp
-        onUsernameChange={this.onUsernameChange}
-        onPasswordChange={this.onPasswordChange}
-        handleSubmit={this.handleSubmit}
+        onUsernameChange={this.onUsernameChange.bind(this)}
+        onPasswordChange={this.onPasswordChange.bind(this)}
+        handleSubmit={this.handleSubmit.bind(this)}
         errorMsg={this.props.errorMsg}
       />
     )

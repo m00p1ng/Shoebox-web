@@ -20,8 +20,8 @@ class ProductListAppContainer extends Component {
 
   componentDidMount() {
     this.props.clearDetail()
-    this.props.clearError()
-    this.props.loadProducts()
+    .then(this.props.clearError())
+    .then(this.props.loadProducts())
   }
 
   shouldComponentUpdate(nextProps) {
@@ -56,13 +56,13 @@ class ProductListAppContainer extends Component {
       <div>
         {
           not_hasError ? (
-          hasProducts ? (
-            <ProductListApp
-              title="New Arrival"
-              products={this.props.products} />
-          ): ( <Loading /> )
+            hasProducts ? (
+              <ProductListApp
+                title="New Arrival"
+                products={this.props.products} />
+            ): ( <Loading /> )
           ) : ( <h1>Can't Fetch data</h1> )
-      }
+        }
       </div>
     )
   }

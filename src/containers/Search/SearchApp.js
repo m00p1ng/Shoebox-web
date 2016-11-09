@@ -7,11 +7,6 @@ import {
 } from '../../actions/search'
 
 class SearchAppContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.onSearchChange = this.onSearchChange.bind(this)
-  }
-
   onSearchChange(event) {
     const value = event.target.value
     if (value.length > 0)
@@ -24,8 +19,7 @@ class SearchAppContainer extends Component {
   render() {
     return (
       <SearchApp
-        onSearchChange={this.onSearchChange}
-        handleSubmit={this.handleSubmit}
+        onSearchChange={this.onSearchChange.bind(this)}
         result={this.props.searchResult}/>
     )
   }
