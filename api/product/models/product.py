@@ -153,7 +153,7 @@ class Products(Document):
         return real_data
 
     @classmethod
-    def mapID_to_obj(cls, product):
+    def mapID_to_obj(cls, product, function):
         data = {
             'brand': product.brand.id,
             'types': product.types.id,
@@ -163,35 +163,69 @@ class Products(Document):
         }
         real_data = cls.to_realData(data)
 
-        obj = {
-            'name' : product.name,
-            'description' : product.description,
-            'price' : product.price,
-            'picture' : product.picture,
-            'amount' : product.amount,
-            'is_available' : product.is_available,
-            'is_discount' : product.is_discount,
-            'discountPercent' : product.discountPercent,
-            'sold_unit' : product.sold_unit,
-            'number_of_views' : product.number_of_views,
-            'slug' : product.slug,
-            'date' : timestamp_date(product.date),
-            'brand' : real_data['brand'],
-            'types' : real_data['types'],
-            'color' : real_data['color'],
-            'size' : real_data['size'],
-            'supplier': real_data['supplier']
-        }
-        return obj
+        if function is 'customer':
+            obj = {
+                'name' : product.name,
+                'description' : product.description,
+                'price' : product.price,
+                'picture' : product.picture,
+                'amount' : product.amount,
+                'is_available' : product.is_available,
+                'is_discount' : product.is_discount,
+                'discountPercent' : product.discountPercent,
+                'date' : timestamp_date(product.date),
+                'brand' : real_data['brand'],
+                'types' : real_data['types'],
+                'color' : real_data['color'],
+                'size' : real_data['size'],
+            }
+
+            if obj['is_discount'] is False:
+                obj.pop('is_discount')
+                obj.pop('discountPercent')
+            else:
+                obj.pop('is_discount')
+
+            return obj
+
+        elif function is 'search':
+            obj = {
+                'name' : product.name,
+                'price' : product.price,
+            }
+            return obj
+
+        else:
+            obj = {
+                'name' : product.name,
+                'description' : product.description,
+                'price' : product.price,
+                'picture' : product.picture,
+                'amount' : product.amount,
+                'is_available' : product.is_available,
+                'is_discount' : product.is_discount,
+                'discountPercent' : product.discountPercent,
+                'sold_unit' : product.sold_unit,
+                'number_of_views' : product.number_of_views,
+                'slug' : product.slug,
+                'date' : timestamp_date(product.date),
+                'brand' : real_data['brand'],
+                'types' : real_data['types'],
+                'color' : real_data['color'],
+                'size' : real_data['size'],
+                'supplier': real_data['supplier']
+            }
+            return obj
+
 
     @classmethod
-    def map_referenceID(cls, products):
+    def map_referenceID(cls, products, function):
         output = []
         if not hasattr(products, 'count'):
-            obj = cls.mapID_to_obj(products)
+            obj = cls.mapID_to_obj(products,function)
             return json.dumps(obj)
         else:
             for product in products:
-                obj = cls.mapID_to_obj(product)
+                obj = cls.mapID_to_obj(product,function)
                 output.append(obj)
             return json.dumps(output)
