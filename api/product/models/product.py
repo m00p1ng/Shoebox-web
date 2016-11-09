@@ -190,6 +190,7 @@ class Products(Document):
 
         elif function is 'search':
             obj = {
+                'slug': product.slug,
                 'name' : product.name,
                 'price' : product.price,
             }

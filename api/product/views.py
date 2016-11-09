@@ -133,7 +133,7 @@ def query_by_view():
 
 
 def query_by_customer_all():
-    return Products.objects(is_available=False).all()
+    return Products.objects(is_available=True).all()
 
 
 def query_by_keyword(keyword):

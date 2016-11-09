@@ -1,6 +1,8 @@
 import {
   SEARCH_PRODUCT_SUCCESS,
   SEARCH_PRODUCT_FAILURE,
+
+  CLEAR_SEARCH
 } from 'actionTypes'
 
 const initialState = {
@@ -21,6 +23,13 @@ const search = (state = initialState, action) => {
         ...state,
         result: [],
         error: true
+      })
+
+    case CLEAR_SEARCH:
+      return ({
+        result: [],
+        isLoading: false,
+        error: false
       })
 
     default:

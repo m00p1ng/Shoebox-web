@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SearchApp } from '../../components'
-import { searchProduct } from '../../actions/search'
+import {
+  searchProduct,
+  clearSearch
+} from '../../actions/search'
 
 class SearchAppContainer extends Component {
   constructor(props) {
@@ -10,7 +13,12 @@ class SearchAppContainer extends Component {
   }
 
   onSearchChange(event) {
-    this.props.searchProduct(event.target.value)
+    const value = event.target.value
+    if (value.length > 0)
+      this.props.searchProduct(value)
+    else {
+      this.props.clearSearch()
+    }
   }
 
   render() {
@@ -28,7 +36,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  searchProduct
+  searchProduct,
+  clearSearch
 })
 
 export default connect(

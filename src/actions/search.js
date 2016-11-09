@@ -3,7 +3,9 @@ import { SEARCH_PRODUCT_ENDPOINT } from 'endpoint'
 import {
   SEARCH_PRODUCT_REQUEST,
   SEARCH_PRODUCT_SUCCESS,
-  SEARCH_PRODUCT_FAILURE
+  SEARCH_PRODUCT_FAILURE,
+
+  CLEAR_SEARCH
 } from 'actionTypes'
 
 
@@ -18,3 +20,8 @@ export const searchProduct = (keyword) => ({
     ]
   }
 })
+
+export const clearSearch = () =>
+  (dispatch) => dispatch({
+    type: CLEAR_SEARCH
+  })
