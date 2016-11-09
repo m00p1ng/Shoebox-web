@@ -74,12 +74,13 @@ export const clearDetail = () =>
     type: CLEAR_DETAIL
   })
 
-const addToCart = (productId, productDetail) => ({
+const addToCart = (productId, productDetail, price) => ({
   type: ADD_TO_CART,
   productId,
-  productDetail
+  productDetail,
+  price
 })
 
-export const clickAddToCart = (productId, productDetail) => (
-  dispatch => dispatch(addToCart(productId, productDetail))
+export const clickAddToCart = (productId, productDetail, price) => (
+  dispatch => dispatch(addToCart(productId, productDetail, price))
 )

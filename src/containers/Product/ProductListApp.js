@@ -28,13 +28,13 @@ class ProductListAppContainer extends Component {
     return this.props.products !== nextProps.products
   }
 
-  onClickedAddToCart(name, slug, product) {
+  onClickedAddToCart(name, slug, product, price) {
     Materialize.toast(
       `Add&nbsp;&nbsp;
         <strong>${name}</strong>
       &nbsp;&nbsp;to cart`,
       2000, 'rounded amber darken-1')
-    return this.props.clickAddToCart(slug, product)
+    return this.props.clickAddToCart(slug, product, price)
   }
 
   renderProducts(products) {
@@ -43,7 +43,7 @@ class ProductListAppContainer extends Component {
         key={product.slug}
         product={product}
         onClickedAddToCart={
-          () => this.onClickedAddToCart(product.name, product.slug, product)
+          () => this.onClickedAddToCart(product.name, product.slug, product, product.price)
         }
       />
     )
