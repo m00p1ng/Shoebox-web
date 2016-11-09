@@ -127,7 +127,7 @@ def query_by_customer_all():
 
 
 def query_by_keyword(keyword):
-    return Products.objects.filter(name__contains=keyword)
+    return Products.objects.filter(name__icontains=keyword)
 
 
 def product_type(slug):
