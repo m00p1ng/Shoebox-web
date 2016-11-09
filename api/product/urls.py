@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^latest/?$', views.product_latest),
     url(r'^bestseller/?$', views.product_bestseller),
     url(r'^topview/?$', views.product_topview),
-    url(r'^customer/?$', views.product_customer),
     url(r'^search/(?P<keyword>.+?)$', views.product_search),
 
     url(r'^type/?', include('api.product.productType.urls')),

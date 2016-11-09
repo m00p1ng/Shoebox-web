@@ -10,7 +10,9 @@ import json
 def product(request):
     body = request.body
     if request.method == 'GET':
-        return request_get_real(Products, query_all())
+        if 'role' in request.session and request.session['role'] == 'employee':
+            return request_get_real(Products, query_all())
+        return request_get_by_function(Products, query_by_customer_all(), 'customer')
     if request.method == 'POST':
         return product_create(body)
     if request.method == 'PUT':
@@ -92,18 +94,6 @@ def product_topview(request):
 def product_search(request,keyword):
     if request.method == 'GET':
         return request_get_by_function(Products, query_by_keyword(keyword), 'search')
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
-
-
-@csrf_exempt
-def product_customer(request):
-    if request.method == 'GET':
-        return request_get_by_function(Products, query_by_customer_all(),'customer')
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
