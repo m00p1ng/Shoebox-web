@@ -53,6 +53,7 @@ class Products(Document):
 
         return field_id
 
+
     @staticmethod
     def validation(data):
         err = []
@@ -85,6 +86,7 @@ class Products(Document):
             err.append('discountPercent cannot empty')
         return err
 
+
     @classmethod
     def create_obj(cls, data):
         field_id = cls.get_id_from_field(data)
@@ -107,6 +109,7 @@ class Products(Document):
         product.save()
         return product
 
+
     @classmethod
     def update_obj(cls, slug, data):
 
@@ -123,6 +126,7 @@ class Products(Document):
         data['number_of_views'] = product.first().number_of_views+1
         product.update(**data)
         return product
+
 
     def to_realData(data):
         colors = []
@@ -152,6 +156,68 @@ class Products(Document):
 
         return real_data
 
+
+    def customer_product_view(product, real_data):
+        obj = {
+            'name' : product.name,
+            'description' : product.description,
+            'price' : product.price,
+            'picture' : product.picture,
+            'amount' : product.amount,
+            'is_discount' : product.is_discount,
+            'discountPercent' : product.discountPercent,
+            'date' : timestamp_date(product.date),
+            'brand' : real_data['brand'],
+            'types' : real_data['types'],
+            'color' : real_data['color'],
+            'size' : real_data['size'],
+        }
+
+        if obj['is_discount'] is False:
+            obj.pop('is_discount')
+            obj.pop('discountPercent')
+        else:
+            obj.pop('is_discount')
+
+        return obj
+
+
+
+    def search_product_view(product, real_data):
+        obj = {
+            'slug': product.slug,
+            'name' : product.name,
+            'price' : product.price,
+            'amount' : product.amount
+        }
+        return obj
+
+
+
+    def employee_product_view(product, real_data):
+         obj = {
+            'name' : product.name,
+            'description' : product.description,
+            'price' : product.price,
+            'picture' : product.picture,
+            'amount' : product.amount,
+            'is_available' : product.is_available,
+            'is_discount' : product.is_discount,
+            'discountPercent' : product.discountPercent,
+            'sold_unit' : product.sold_unit,
+            'number_of_views' : product.number_of_views,
+            'slug' : product.slug,
+            'date' : timestamp_date(product.date),
+            'brand' : real_data['brand'],
+            'types' : real_data['types'],
+            'color' : real_data['color'],
+            'size' : real_data['size'],
+            'supplier': real_data['supplier']
+         }
+         return obj
+
+
+
     @classmethod
     def mapID_to_obj(cls, product, function='none'):
         data = {
@@ -164,58 +230,15 @@ class Products(Document):
         real_data = cls.to_realData(data)
 
         if function is 'customer':
-            obj = {
-                'name' : product.name,
-                'description' : product.description,
-                'price' : product.price,
-                'picture' : product.picture,
-                'amount' : product.amount,
-                'is_discount' : product.is_discount,
-                'discountPercent' : product.discountPercent,
-                'date' : timestamp_date(product.date),
-                'brand' : real_data['brand'],
-                'types' : real_data['types'],
-                'color' : real_data['color'],
-                'size' : real_data['size'],
-            }
-
-            if obj['is_discount'] is False:
-                obj.pop('is_discount')
-                obj.pop('discountPercent')
-            else:
-                obj.pop('is_discount')
-
+            obj = cls.customer_product_view(product,real_data)
             return obj
 
         elif function is 'search':
-            obj = {
-                'slug': product.slug,
-                'name' : product.name,
-                'price' : product.price,
-                'amount' : product.amount
-            }
+            obj = cls.search_product_view(product,real_data)
             return obj
 
         else:
-            obj = {
-                'name' : product.name,
-                'description' : product.description,
-                'price' : product.price,
-                'picture' : product.picture,
-                'amount' : product.amount,
-                'is_available' : product.is_available,
-                'is_discount' : product.is_discount,
-                'discountPercent' : product.discountPercent,
-                'sold_unit' : product.sold_unit,
-                'number_of_views' : product.number_of_views,
-                'slug' : product.slug,
-                'date' : timestamp_date(product.date),
-                'brand' : real_data['brand'],
-                'types' : real_data['types'],
-                'color' : real_data['color'],
-                'size' : real_data['size'],
-                'supplier': real_data['supplier']
-            }
+            obj = cls.employee_product_view(product,real_data)
             return obj
 
 
