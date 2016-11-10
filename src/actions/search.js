@@ -14,7 +14,10 @@ export const searchProduct = (keyword) => ({
     endpoint: `${SEARCH_PRODUCT_ENDPOINT}/${keyword}`,
     method: 'GET',
     types: [
-      SEARCH_PRODUCT_REQUEST,
+      {
+        type: SEARCH_PRODUCT_REQUEST,
+        payload: (action, state) => ({isLoading: true})
+      },
       SEARCH_PRODUCT_SUCCESS,
       SEARCH_PRODUCT_FAILURE
     ]

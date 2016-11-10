@@ -1,4 +1,5 @@
 import {
+  SEARCH_PRODUCT_REQUEST,
   SEARCH_PRODUCT_SUCCESS,
   SEARCH_PRODUCT_FAILURE,
 
@@ -13,15 +14,22 @@ const initialState = {
 
 const search = (state = initialState, action) => {
   switch(action.type) {
-    case SEARCH_PRODUCT_SUCCESS:
+    case SEARCH_PRODUCT_REQUEST:
       return ({
         ...state,
-        result: action.payload
+        isLoading: action.payload.isLoading
+      })
+
+    case SEARCH_PRODUCT_SUCCESS:
+      return ({
+        result: action.payload,
+        isLoading: false,
+        error: false
       })
     case SEARCH_PRODUCT_FAILURE:
       return ({
-        ...state,
         result: [],
+        isLoading: false,
         error: true
       })
 
