@@ -17,7 +17,7 @@ const search = (state = initialState, action) => {
     case SEARCH_PRODUCT_REQUEST:
       return ({
         ...state,
-        isLoading: action.payload.isLoading
+        isLoading: true
       })
 
     case SEARCH_PRODUCT_SUCCESS:
