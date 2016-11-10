@@ -1,6 +1,6 @@
 from mongoengine import *
 from api.include.model import to_slug
-from api.suppliers.models import Companies
+from api.supplier.models import Companies
 import json
 
 class Suppliers(Document):

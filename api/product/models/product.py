@@ -1,6 +1,6 @@
 from mongoengine import *
 from api.include.model import to_slug, timestamp_date
-from api.suppliers.models import Suppliers
+from api.supplier.models import Suppliers
 from api.product.models import *
 import datetime
 import json

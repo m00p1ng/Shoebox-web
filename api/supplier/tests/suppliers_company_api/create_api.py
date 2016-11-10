@@ -2,8 +2,8 @@ from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
-from api.suppliers.company import *
-from api.suppliers.models import company
+from api.supplier.company import *
+from api.supplier.models import company
 
 class Company_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
