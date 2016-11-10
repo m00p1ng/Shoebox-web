@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 import { ProductListApp, ProductItem } from '../../components'
 import {
   loadProducts,
-  clickAddToCart,
-  clearError,
-  clearDetail
+  clickAddToCart
 } from '../../actions/product'
 import Loading from '../../constants/Loading/Loading'
 
@@ -13,15 +11,11 @@ class ProductListAppContainer extends Component {
   static propTypes = {
     products: PropTypes.array.isRequired,
     error: PropTypes.bool.isRequired,
-    clearDetail: PropTypes.func.isRequired,
-    clearError: PropTypes.func.isRequired,
     loadProducts: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-    this.props.clearDetail()
-    .then(this.props.clearError())
-    .then(this.props.loadProducts())
+    this.props.loadProducts()
   }
 
   shouldComponentUpdate(nextProps) {
@@ -77,9 +71,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = ({
   loadProducts,
-  clickAddToCart,
-  clearDetail,
-  clearError
+  clickAddToCart
 })
 
 export default connect(

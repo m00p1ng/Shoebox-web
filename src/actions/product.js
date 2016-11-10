@@ -4,9 +4,6 @@ import {
 } from 'endpoint'
 
 import {
-  CLEAR_ERROR,
-  CLEAR_DETAIL,
-
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
   LOAD_PRODUCTS_FAILURE,
@@ -27,7 +24,10 @@ export const loadProducts = () => ({
     endpoint: `${PRODUCT_ENDPOINT}/latest`,
     method: 'GET',
     types: [
-      LOAD_PRODUCTS_REQUEST,
+    {
+      type: LOAD_PRODUCTS_REQUEST,
+      payload: (action, state) => ({detail: [], error: false})
+    },
       LOAD_PRODUCTS_SUCCESS,
       LOAD_PRODUCTS_FAILURE
     ]
@@ -62,17 +62,6 @@ export const updateViews = (slug) => ({
     ]
   }
 })
-
-
-export const clearError = () =>
-  (dispatch) => dispatch({
-    type: CLEAR_ERROR
-  })
-
-export const clearDetail = () =>
-  (dispatch) => dispatch({
-    type: CLEAR_DETAIL
-  })
 
 const addToCart = (productId, productDetail, price) => ({
   type: ADD_TO_CART,

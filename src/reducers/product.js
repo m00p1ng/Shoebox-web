@@ -6,9 +6,6 @@ import {
   LOAD_PRODUCT_REQUEST,
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
-
-  CLEAR_ERROR,
-  CLEAR_DETAIL
 } from 'actionTypes'
 
 const initialState = {
@@ -28,15 +25,10 @@ const setProductState = (state, action) => {
 
 const products = (state = initialState, action) => {
   switch(action.type) {
-    case CLEAR_ERROR:
+    case LOAD_PRODUCTS_REQUEST:
       return ({
         ...state,
-        error: false
-      })
-
-    case CLEAR_DETAIL:
-      return ({
-        ...state,
+        error: true,
         detail: []
       })
 
