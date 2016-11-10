@@ -76,10 +76,14 @@ const subtotalById = (state = initialState.subtotalById, action) => {
   }
 }
 
-export const getQuantity = (state, productId) =>
-  state.quantityById[productId] || 0
-
-export const getAddedIds = state => state.addedIds
+const getTotal = (state = initialState.total, action) => {
+  switch (action.type) {
+    case ADD_TO_CART:
+      return state + action.price
+    default:
+      return state
+  }
+}
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
@@ -89,11 +93,12 @@ const cart = (state = initialState, action) => {
       return action.cart
     default:
       return {
+        ...state,
         productDetail: productDetail(state.productDetail, action),
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
         subtotalById: subtotalById(state.subtotalById, action),
-        total: 0
+        total: getTotal(state.total, action)
       }
   }
 }

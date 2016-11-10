@@ -25,7 +25,7 @@ const CartOrderRow = ({left, right}) => (
   </div>
 )
 
-const CartSummary = () => (
+const CartSummary = ({total}) => (
   <div className="col s12 l4 offset-l1">
     <div className="row">
       <div className="card white">
@@ -45,7 +45,7 @@ const CartSummary = () => (
 
           <CartOrderRow
             left="Total"
-            right="$271"/>
+            right={`$${total}`}/>
         </div>
       </div>
     </div>
