@@ -25,6 +25,7 @@ class CartAppContainer extends Component {
   render() {
     return (
       <CartApp>
+        <h3>{this.props.cart.length} items in cart</h3>
         {this.hasItemInCart()}
       </CartApp>
     )
