@@ -123,9 +123,9 @@ class Customers(User):
             gender = data['gender'],
             picture=data['picture'],
             birthday = datetime.datetime(
-                year = data['birthday']['year'],
-                month = data['birthday']['month'],
-                day = data['birthday']['day']
+                year = int(data['birthday']['year']),
+                month = int(data['birthday']['month']),
+                day = int(data['birthday']['day'])
             ),
             city = data['address']['city'],
             district = data['address']['district'],
