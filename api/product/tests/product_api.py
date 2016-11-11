@@ -1,10 +1,5 @@
 from django.test import Client
 from test_addons import MongoTestCase
-from api.product.models import product
-from api.product.models import productColor
-from api.product.models import productBrand
-from api.product.models import productSize
-from api.product.models import productType
 
 class product_API_Test(MongoTestCase):
     CLEAR_CACHE = True

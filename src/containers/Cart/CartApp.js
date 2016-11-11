@@ -13,6 +13,10 @@ class CartAppContainer extends Component {
       this.props.getCartItem()
   }
 
+  shouldComponentUpdate(nextProps) {
+  return (this.props.qty !== nextProps.qty)
+}
+
   hasItemInCart() {
     return (this.props.cart.length > 0) ? (
       <div>
