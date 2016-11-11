@@ -3,7 +3,6 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 from api.supplier.company import *
-from api.supplier.models import company
 
 class supplierCompany_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
