@@ -34,11 +34,7 @@ const search = (state = initialState, action) => {
       })
 
     case CLEAR_SEARCH:
-      return ({
-        result: [],
-        isLoading: false,
-        error: false
-      })
+      return initialState
 
     default:
       return state
