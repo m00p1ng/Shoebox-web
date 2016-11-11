@@ -51,10 +51,7 @@ def gen_customer(total):
             "credit" : {
                 "type" : fake.random_element(elements=('visa', 'master')),
                 "id" : fake.credit_card_number(),
-                "exp" : {
-                    "year": 2000,
-                    "month": 10
-                }
+                "exp" : fake.credit_card_expire(start="now", end="+10y", date_format="%m/%y")
             }
         }
 
