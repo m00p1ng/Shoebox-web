@@ -17,7 +17,7 @@ class Customers(User):
     role = StringField(max_length=20, required=True, default="customer")
     creditType = StringField(max_length=10, required=True)
     creditID = StringField(max_length=16, required=True)
-    creditEXP = DateTimeField(required=True)
+    creditEXP = StringField(max_length=10, required=True)
     shipCity = StringField(max_length=50, required=True)
     shipDistrict = StringField(max_length=50, required=True)
     shipStreet = StringField(max_length=50, required=True)
@@ -137,11 +137,7 @@ class Customers(User):
             shipZipcode = data['ship']['zipcode'],
             creditID = data['credit']['id'],
             creditType = data['credit']['type'],
-            creditEXP = datetime.datetime(
-                year = data['credit']['exp']['year'],
-                month = data['credit']['exp']['month'],
-                day = 1
-            ),
+            creditEXP = data['credit']['exp'],
             phone = data['phone']
         )
         customer.set_password(data['password'])
@@ -188,11 +184,7 @@ class Customers(User):
             if 'type' in data['credit']:
                 data['creditType'] = data['credit']['type']
             if 'exp' in data['credit']:
-                data['creditEXP'] = datetime.datetime(
-                    year=data['credit']['exp']['year'],
-                    month=data['credit']['exp']['month'],
-                    day=1
-                )
+                data['creditEXP'] = data['credit']['exp']
             data.pop('credit')
 
         customer = cls.objects(username=username)
@@ -224,7 +216,7 @@ class Customers(User):
             'credit':{
                 'id': customer.creditID,
                 'type': customer.creditType,
-                'exp': timestamp_date(customer.creditEXP)
+                'exp': customer.creditEXP
             },
             'phone': customer.phone,
             'date_joined': timestamp_fulldate(customer.date_joined),

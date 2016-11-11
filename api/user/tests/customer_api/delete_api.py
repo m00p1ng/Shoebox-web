@@ -33,10 +33,7 @@ class customer_Delete_API_Test(MongoTestCase):
             "credit" : {
                 "type" : "XXX",
                 "id" : "6625526",
-                "exp" : {
-                    "year": 2000,
-        		    "month": 10,
-        		    "day": 10}
+                "exp" : "06/12"
             },
             "ship": {
         		"city": "my-city",
