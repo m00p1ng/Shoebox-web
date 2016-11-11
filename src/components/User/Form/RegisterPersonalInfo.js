@@ -1,4 +1,5 @@
 import React from 'react'
+import { Field } from 'redux-form'
 
 const RegisterPersonalInfo = () => (
   <div>
@@ -6,36 +7,44 @@ const RegisterPersonalInfo = () => (
 
     <div className="row">
       <label>First Name</label>
-      <input id="firstname" type="text"/>
+      <Field name="firstname" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Last Name</label>
-      <input id="lastname" type="text"/>
+      <Field name="lastname" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Gender</label>
-      <select className="browser-default">
-        <option defaultValue="" disabled>---</option>
+      <Field name="gender" component="select">
+        <option></option>
         <option value="1">Male</option>
         <option value="2">Female</option>
-      </select>
+      </Field>
     </div>
 
     <div className="row">
       <label>Birthday</label>
-      <input type="date" className="datepicker"/>
+      <div className="row">
+        <Field name="birthday.day" component="input" type="text"/>
+      </div>
+      <div className="row">
+        <Field name="birthday.month" component="input" type="text"/>
+      </div>
+      <div className="row">
+        <Field name="birthday.year" component="input" type="text"/>
+      </div>
     </div>
 
     <div className="row">
       <label>E-mail</label>
-      <input id="email" type="email"/>
+      <Field name="email" component="input" type="email"/>
     </div>
 
     <div className="row">
       <label>Phone</label>
-      <input id="phone" type="text"/>
+      <Field name="phone" component="input" type="text"/>
     </div>
   </div>
 )

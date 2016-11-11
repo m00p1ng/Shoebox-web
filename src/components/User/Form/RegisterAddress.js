@@ -1,4 +1,5 @@
 import React from 'react'
+import { Field } from 'redux-form'
 
 const RegisterAddress = () => (
   <div>
@@ -6,22 +7,22 @@ const RegisterAddress = () => (
 
     <div className="row">
       <label>City</label>
-      <input id="address-city" type="text"/>
+      <Field name="address.city" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>District</label>
-      <input id="address-district" type="text"/>
+      <Field name="address.district" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Street</label>
-      <input id="address-street" type="text"/>
+      <Field name="address.street" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Zipcode</label>
-      <input id="address-zipcode" type="text"/>
+      <Field name="address.zipcode" component="input" type="text"/>
     </div>
   </div>
 )

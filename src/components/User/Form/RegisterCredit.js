@@ -1,3 +1,0 @@
-//creditType
-//crediteEXP
-//creditID

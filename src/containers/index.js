@@ -26,5 +26,3 @@ export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'
 export ManOrderApp from './Manage/Order/ManOrderApp'
 export ManPromotionApp from './Manage/Promotion/ManPromotionApp'
 export ManSupplierApp from './Manage/Supplier/ManSupplierApp'
-
-export TestRegis from './User/TestRegis'

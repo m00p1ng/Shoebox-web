@@ -33,9 +33,7 @@ import {
   ManProductApp,
   ManProductCreateApp,
   ManProductUpdateApp,
-  ManSupplierApp,
-
-  TestRegis
+  ManSupplierApp
 } from './containers'
 
 export default (
@@ -57,7 +55,6 @@ export default (
       <Route path='logout' component={LogoutApp} />
       <Route path='register' component={RegisterApp} />
       <Route path='profile' component={ProfileApp} />
-      <Route path='test' component={TestRegis} />
 
 
       <Route path='manage'>

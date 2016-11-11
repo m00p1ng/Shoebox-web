@@ -74,7 +74,12 @@ export const getUsername = () => ({
   }
 })
 
-export const registerCustomer = (values) => ({
+export const sendRegisterForm = (values) =>
+  (dispatch) => {
+    dispatch(registerCustomer(values))
+  }
+
+const registerCustomer = (values) => ({
   [CALL_API]: {
     endpoint: REGISTER_CUSTOMER_ENDPOINT,
     method: 'POST',

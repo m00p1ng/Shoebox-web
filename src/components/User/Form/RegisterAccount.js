@@ -1,26 +1,28 @@
 import React from 'react'
+import { Field } from 'redux-form'
 
-const RegisterAccount = ({
-  onUsernameChange,
-  onPasswordChange,
-  onRePasswordChange
-}) => (
+const RegisterAccount = () => (
   <div>
     <p>Account Info:</p>
 
     <div className="row">
       <label>Username</label>
-      <input id="username" type="text"/>
+      <Field name="username" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Password</label>
-      <input id="password" type="password"/>
+      <Field name="password" component="input" type="password"/>
     </div>
 
     <div className="row">
       <label>Re password</label>
-      <input id="repassword" type="password"/>
+      <Field name="repassword" component="input" type="password"/>
+    </div>
+
+    <div className="row">
+      <label>Picture</label>
+      <Field name="picture" component="input" type="text"/>
     </div>
   </div>
 )

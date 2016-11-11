@@ -7,10 +7,5 @@
       });
 
       $(".dropdown-button").dropdown();
-
-      $('.datepicker').pickadate({
-         selectMonths: true,
-         selectYears: 100
-       });
   });
 })(jQuery);

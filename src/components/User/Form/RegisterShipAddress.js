@@ -1,29 +1,30 @@
 import React from 'react'
+import { Field } from 'redux-form'
 
-const RegisterAddress = () => (
+const RegisterShipAddress = () => (
   <div>
     <p>Ship Address:</p>
 
     <div className="row">
       <label>City</label>
-      <input id="ship-city" type="text"/>
+      <Field name="ship.city" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>District</label>
-      <input id="ship-district" type="text"/>
+      <Field name="ship.district" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Street</label>
-      <input id="ship-street" type="text"/>
+      <Field name="ship.street" component="input" type="text"/>
     </div>
 
     <div className="row">
       <label>Zipcode</label>
-      <input id="ship-zipcode" type="text"/>
+      <Field name="ship.zipcode" component="input" type="text"/>
     </div>
   </div>
 )
 
-export default RegisterAddress
+export default RegisterShipAddress
