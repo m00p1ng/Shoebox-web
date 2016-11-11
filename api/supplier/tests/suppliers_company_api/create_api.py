@@ -18,7 +18,8 @@ class Company_Create_API_Test(MongoTestCase):
                 "district": "Test district",
                 "street": "Test street",
                 "zipcode": "10000"
-              }
+              },
+            "phone" : "0866625526"
         }
     """
 
@@ -48,13 +49,15 @@ class Company_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['created'], False)
 
     def test_create_size_dubplicated(self):
-        CREATE_BODY = """{"name": "nike",
+        CREATE_BODY = """{
+            "name": "nike",
             "address": {
                 "city": "Test city",
                 "district": "Test district",
                 "street": "Test street",
                 "zipcode": "10000"
-              }
+              },
+            "phone" : "0866625526"
         }"""
 
         create_request(self.URL, CREATE_BODY)

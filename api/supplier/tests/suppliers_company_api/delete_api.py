@@ -18,7 +18,8 @@ class supplierCompany_Delete_API_Test(MongoTestCase):
                 "district": "Test district",
                 "street": "Test street",
                 "zipcode": "10000"
-              }
+              },
+            "phone" : "0866625526"
         }
     """
 
@@ -43,7 +44,8 @@ class supplierCompany_Delete_Fail_API_Test(MongoTestCase):
                 "district": "Test district",
                 "street": "Test street",
                 "zipcode": "10000"
-              }
+              },
+            "phone" : "0866625526"
         }
         """
 

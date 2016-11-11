@@ -8,7 +8,7 @@ class Companies(Document):
     street = StringField(max_length=50, required=True)
     zipcode = StringField(max_length=10, required=True)
     slug = StringField(max_length=100, required=True, unique=True)
-
+    phone = StringField(max_length=50, required=True)
     @staticmethod
     def validation(data):
         err = []
@@ -42,6 +42,7 @@ class Companies(Document):
            district=data['address']['district'],
            street=data['address']['street'],
            zipcode=data['address']['zipcode'],
+           phone=data['phone'],
            slug=to_slug(data['name'])
        )
        companies.save()
@@ -61,6 +62,8 @@ class Companies(Document):
             data.pop('address')
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
+        if 'phone' in data:
+            data['slug'] = to_slug(data['phone'])
 
         companies = cls.objects(slug=slug)
         companies.update(**data)

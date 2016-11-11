@@ -4,6 +4,7 @@ from api.include.api import request_get, errors_to_json
 from api.supplier.models import Companies
 from mongoengine import NotUniqueError
 import json
+json_type = "application/json"
 
 @csrf_exempt
 def company(request):
@@ -51,10 +52,16 @@ def company_create(body):
             return errors_to_json(err)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error',status =400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('Company already exist', status=400)
+        err = {}
+        err['errorMsg'] = ['Company already exist']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def company_delete(slug):
