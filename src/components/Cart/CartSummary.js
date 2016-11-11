@@ -20,12 +20,37 @@ const CartOrderRow = ({left, right}) => (
       <p className="sbox-cart-subtotal">{left}</p>
     </div>
     <div className="col s1 l2 offset-l4 offset-s5">
-      <p className="sbox-cart-subtotal">{right}</p>
+      <p className="sbox-cart-subtotal"><strong>{right}</strong></p>
     </div>
   </div>
 )
 
-const CartSummary = ({total}) => (
+const CartItemRow = ({qty, name, price}) => (
+  <div className="row sbox-row-order">
+    <div className="col s6 l6">
+      <p className="sbox-cart-subtotal">
+        {qty}{' x '}{name}
+      </p>
+    </div>
+    <div className="col s1 l2 offset-l4 offset-s5">
+      <p className="sbox-cart-subtotal"><strong>${price*qty}</strong></p>
+    </div>
+  </div>
+)
+
+const CartItemList = (products, qty) => (
+  products.map(
+    (product) => (
+      <CartItemRow
+        key={product.slug}
+        qty={qty[product.slug]}
+        price={product.price}
+        name={product.name}/>
+    )
+  )
+)
+
+const CartSummary = ({total, products, qty}) => (
   <div className="col s12 l4 offset-l1">
     <div className="row">
       <div className="card white">
@@ -33,9 +58,7 @@ const CartSummary = ({total}) => (
           <p className="card-title sbox-summary-header padding-bottom-10">Order Summary</p>
           <div className="divider"></div>
 
-          <CartOrderRow
-            left="Sub total"
-            right="$271"/>
+          {CartItemList(products, qty)}
 
           <CartOrderRow
             left="Shipping fee"
