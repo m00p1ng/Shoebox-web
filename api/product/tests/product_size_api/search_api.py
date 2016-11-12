@@ -29,7 +29,7 @@ class productSize_Search_Fail_API_Test(MongoTestCase):
     URL_SEARCH = '/api/product/size/213'
     CREATE_BODY = """{ "name": "213" }"""
     
-    def test_create_no_name(self):
+    def test_search_no_size(self):
         c = Client()
         res = c.get(self.URL_SEARCH)
 

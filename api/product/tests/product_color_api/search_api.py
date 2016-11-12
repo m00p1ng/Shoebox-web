@@ -29,7 +29,7 @@ class productColor_Search_Fail_API_Test(MongoTestCase):
     URL_SEARCH = '/api/product/color/green'
     CREATE_BODY = """{ "name": "green" }"""
     
-    def test_create_no_name(self):
+    def test_search_no_color(self):
         c = Client()
         res = c.get(self.URL_SEARCH)
 

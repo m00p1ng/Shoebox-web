@@ -29,7 +29,7 @@ class productBrand_Search_Fail_API_Test(MongoTestCase):
     URL_SEARCH = '/api/product/brand/Bata'
     CREATE_BODY = """{ "name": "Bata" }"""
     
-    def test_create_no_name(self):
+    def test_search_no_brand(self):
         c = Client()
         res = c.get(self.URL_SEARCH)
 

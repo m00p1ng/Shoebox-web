@@ -55,6 +55,7 @@ class employee_Delete_Fail_API_Test(MongoTestCase):
         }
     """
 
+
     def test_delete_employee_not_exist(self):
         URL_NAME = '/api/promotion/FREE2'
         create_request(self.URL, self.CREATE_BODY)        
