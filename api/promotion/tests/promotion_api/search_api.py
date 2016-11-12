@@ -3,7 +3,7 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
-class promotion_Search_API_Test(MongoTestCase):
+class Promotion_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/promotion'
@@ -37,7 +37,7 @@ class promotion_Search_API_Test(MongoTestCase):
         self.assertEqual(data['cutpercent'], 100)
 
 
-class promotion_Search_Fail_API_Test(MongoTestCase):
+class Promotion_Search_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/promotion'
