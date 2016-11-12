@@ -18,7 +18,6 @@ const CartItem = ({product, qty}) => (
 					<div className="divider"></div>
 					<p className="sbox-price-in-cart">Price: $ {product.price}</p>
 					<p className="sbox-quantity-in-cart">Quantity: {qty}</p>
-          <p className="sbox-quantity-in-cart">Total: $ {product.price*qty}</p>
 				</div>
 			</div>
 		</div>

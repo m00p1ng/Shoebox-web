@@ -1,30 +1,46 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import RegisterRenderField from './RegisterRenderField'
 
-const RegisterShipAddress = () => (
-  <div>
-    <p>Ship Address:</p>
+const RegisterShipAddress = (props) => {
+  const { handleSubmit, previousPage } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>Ship Address:</p>
 
-    <div className="row">
-      <label>City</label>
-      <Field name="ship.city" component="input" type="text"/>
-    </div>
+      <Field
+        name="ship.city"
+        component={RegisterRenderField}
+        type="text"
+        label="City"/>
 
-    <div className="row">
-      <label>District</label>
-      <Field name="ship.district" component="input" type="text"/>
-    </div>
+      <Field
+        name="ship.district"
+        component={RegisterRenderField}
+        type="text"
+        label="District"/>
 
-    <div className="row">
-      <label>Street</label>
-      <Field name="ship.street" component="input" type="text"/>
-    </div>
+      <Field
+        name="ship.street"
+        component={RegisterRenderField}
+        type="text"
+        label="Street"/>
 
-    <div className="row">
-      <label>Zipcode</label>
-      <Field name="ship.zipcode" component="input" type="text"/>
-    </div>
-  </div>
-)
+      <Field
+        name="ship.zipcode"
+        component={RegisterRenderField}
+        type="text"
+        label="Zipcode"/>
 
-export default RegisterShipAddress
+      <div>
+        <button type="button" className="previous" onClick={previousPage}>Previous</button>
+        <button type="submit" className="next">Next</button>
+      </div>
+    </form>
+  )
+}
+
+export default reduxForm({
+  form: "register",
+  destroyOnUnmount: false
+})(RegisterShipAddress)

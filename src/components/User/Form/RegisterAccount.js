@@ -1,30 +1,45 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import RegisterRenderField from './RegisterRenderField'
 
-const RegisterAccount = () => (
-  <div>
-    <p>Account Info:</p>
+const RegisterAccount = (props) => {
+  const { handleSubmit } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>Account Info:</p>
 
-    <div className="row">
-      <label>Username</label>
-      <Field name="username" component="input" type="text"/>
-    </div>
+      <Field
+        name="username"
+        component={RegisterRenderField}
+        type="text"
+        label="Username"/>
 
-    <div className="row">
-      <label>Password</label>
-      <Field name="password" component="input" type="password"/>
-    </div>
+      <Field
+        name="password"
+        component={RegisterRenderField}
+        type="password"
+        label="Password"/>
 
-    <div className="row">
-      <label>Re password</label>
-      <Field name="repassword" component="input" type="password"/>
-    </div>
+      <Field
+        name="repassword"
+        component={RegisterRenderField}
+        type="password"
+        label="Re password"/>
 
-    <div className="row">
-      <label>Picture</label>
-      <Field name="picture" component="input" type="text"/>
-    </div>
-  </div>
-)
+      <Field
+        name="picture"
+        component={RegisterRenderField}
+        type="text"
+        label="Picture"/>
 
-export default RegisterAccount
+      <div>
+        <button type="submit" className="next">Next</button>
+      </div>
+    </form>
+  )
+}
+
+export default reduxForm({
+  form: "register",
+  destroyOnUnmount: false,
+})(RegisterAccount)

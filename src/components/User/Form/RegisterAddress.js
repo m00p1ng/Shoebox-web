@@ -1,30 +1,46 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import RegisterRenderField from './RegisterRenderField'
 
-const RegisterAddress = () => (
-  <div>
-    <p>Address:</p>
+const RegisterAddress = (props) => {
+  const { handleSubmit, previousPage } = props
+  return(
+    <form onSubmit={handleSubmit}>
+      <p>Address:</p>
 
-    <div className="row">
-      <label>City</label>
-      <Field name="address.city" component="input" type="text"/>
-    </div>
+      <Field
+        name="address.city"
+        component={RegisterRenderField}
+        type="text"
+        label="City"/>
 
-    <div className="row">
-      <label>District</label>
-      <Field name="address.district" component="input" type="text"/>
-    </div>
+      <Field
+        name="address.district"
+        component={RegisterRenderField}
+        type="text"
+        label="District"/>
 
-    <div className="row">
-      <label>Street</label>
-      <Field name="address.street" component="input" type="text"/>
-    </div>
+      <Field
+        name="address.street"
+        component={RegisterRenderField}
+        type="text"
+        label="Street"/>
 
-    <div className="row">
-      <label>Zipcode</label>
-      <Field name="address.zipcode" component="input" type="text"/>
-    </div>
-  </div>
-)
+      <Field
+        name="address.zipcode"
+        component={RegisterRenderField}
+        type="text"
+        label="Zipcode"/>
 
-export default RegisterAddress
+      <div>
+        <button type="button" className="previous" onClick={previousPage}>Previous</button>
+        <button type="submit" className="next">Next</button>
+      </div>
+    </form>
+  )
+}
+
+export default reduxForm({
+  form: "register",
+  destroyOnUnmount: false
+})(RegisterAddress)
