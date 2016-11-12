@@ -5,9 +5,11 @@ const ErrorMsg = ({errorMsg}) => (
     {
       (errorMsg !== '') ? (
       <div className="card-panel red lighten-3">
-        <span className="white-text">
-          {errorMsg}
-        </span>
+        <div className="center-align">
+          <span className="white-text">
+            {errorMsg}
+          </span>
+        </div>
       </div>
       ): (<span></span>)
     }

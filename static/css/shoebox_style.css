@@ -221,3 +221,11 @@ i.sbox-icon-gray {
 	padding-right: 18px;
 	padding-top: 25px;
 }
+
+
+/* Shoebox Login Style*/
+#sbox-login-logo {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
