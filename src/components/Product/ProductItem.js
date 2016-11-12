@@ -19,8 +19,11 @@ const ProductItem = ({ product, onClickedAddToCart }) => (
         <div className="sbox-price" >
             Price: {product.price}
         </div>
-        <div className="sbox-add-to-cart" >
-            <a onClick={onClickedAddToCart}><img src="/static/images/add_to_cart_red.png" /></a>
+        <div>
+            <a className="waves-effect waves-light btn"
+              onClick={onClickedAddToCart}>
+              Add to cart
+            </a>
         </div>
       </div>
     </div>

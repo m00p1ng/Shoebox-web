@@ -131,11 +131,20 @@
     width: auto;
 }
 
+i.sbox-giant-icon {
+  font-size: 20em;
+}
+
+i.sbox-icon-gray {
+  color: #BDBDBD;
+}
+
 /* Shoebox Header Styles */
 
 .sbox-header-bar {
 	/*background-color: #D32F2F;*/
-  background-color: #e53935;
+  /*background-color: #e53935;*/
+  background-color: #e57373;
 	height: 120px;
 	margin-bottom: 30px;
 }
