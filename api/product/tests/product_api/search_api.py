@@ -46,7 +46,7 @@ class Product_Search_Fail_API_Test(MongoTestCase):
     URL = '/api/product'
     URL_SEARCH = '/api/product/name/shoe'
     
-    def test_create_no_name(self):
+    def test_search_no_product(self):
         c = Client()
         res = c.get(self.URL_SEARCH)
 
