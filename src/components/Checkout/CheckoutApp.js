@@ -1,7 +1,4 @@
 import React from 'react'
-import ShipAddress from './ShipAddress'
-import CheckoutList from './CheckoutList'
-import PaymentMethod from './PaymentMethod'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -18,20 +15,14 @@ const HeaderBarApp = () => (
 </div>
 )
 
-const CheckoutApp = () => (
+const CheckoutApp = ({children}) => (
   <div>
     <HeaderBarApp />
     <div className="container">
-			<div className="card white">
-        <ShipAddress />
-        <CheckoutList />
-        <CheckoutList />
-        <CheckoutList />
-        <CheckoutList />
-    		<div className="row">
-  				<div className="col s10 offset-s1 divider grey"></div>
-  			</div>
-        <PaymentMethod />
+      <div className="row">
+				<div className="card white">
+	        {children}
+				</div>
       </div>
     </div>
   </div>

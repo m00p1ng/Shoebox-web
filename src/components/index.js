@@ -19,6 +19,9 @@ export CartSummary from './Cart/CartSummary'
 export NoItemInCart from './Cart/NoItemInCart'
 
 export CheckoutApp from './Checkout/CheckoutApp'
+export CheckoutList from './Checkout/CheckoutList'
+export ShipAddress from './Checkout/ShipAddress'
+export PaymentMethod from './Checkout/PaymentMethod'
 
 export LogoutApp from './User/LogoutApp'
 export LoginApp from './User/LoginApp'
