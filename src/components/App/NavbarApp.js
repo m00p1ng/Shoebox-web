@@ -20,7 +20,9 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
           <NavbarDesktopMenu
             NumberOfCartItem={NumberOfCartItem}
             Username={Username}/>
-          <NavbarMobileMenu />
+          <NavbarMobileMenu
+            NumberOfCartItem={NumberOfCartItem}
+            Username={Username}/>
         </div>
       </nav>
     </div>
