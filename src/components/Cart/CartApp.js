@@ -3,16 +3,16 @@ import HeaderBarApp from '../App/HeaderBarApp'
 
 const CartApp = ({children}) => (
   <div>
-  <HeaderBarApp
-    title="My Cart"
-    link="cart"
-  />
-  <div className="container">
-    <div className="row">
-      {children}
+    <HeaderBarApp
+      title="My Cart"
+      link="cart"
+    />
+    <div className="container">
+      <div className="row">
+        {children}
+      </div>
     </div>
   </div>
-</div>
 )
 
 CartApp.propTypes = {
