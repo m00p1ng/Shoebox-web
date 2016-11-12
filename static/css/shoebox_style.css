@@ -230,6 +230,19 @@ i.sbox-icon-gray {
   margin-bottom: 30px;
 }
 
-#sbox-login-form {
+#sbox-login-card {
   margin-top: 30px;
+}
+
+#sbox-login-form {
+  max-width: 400px;
+}
+
+/* Shoebox Search Style */
+#sbox-search-form {
+  max-height: 100px;
+}
+
+.sbox-search-form-input {
+  max-height: 0px;
 }

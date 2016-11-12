@@ -7,10 +7,10 @@ const LoginForm = ({
   handleSubmit,
   errorMsg
 }) => (
-  <div className="card brown lighten-5" id="sbox-login-form">
+  <div className="card brown lighten-5" id="sbox-login-card">
     <div className="card-content">
       <form onSubmit={handleSubmit}>
-        <div className="form-style-6">
+        <div className="form-style-6" id="sbox-login-form">
           <div className="row">
             <img
               id="sbox-login-logo"
