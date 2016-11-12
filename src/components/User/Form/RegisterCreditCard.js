@@ -6,8 +6,7 @@ const RegisterCreditCard = (props) => {
   const { handleSubmit, pristine, previousPage, submitting, sendRegisterForm } = props
   return (
     <form onSubmit={handleSubmit(sendRegisterForm)}>
-      <p>Credit Card Info:</p>
-
+      
       <Field
         name="credit.id"
         component={RegisterRenderField}
@@ -27,8 +26,8 @@ const RegisterCreditCard = (props) => {
         label="EXP"/>
 
       <div>
-        <button type="button" className="previous" onClick={previousPage}>Previous</button>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
+        <button type="submit" className="btn" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
   )

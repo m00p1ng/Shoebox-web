@@ -6,7 +6,6 @@ const RegisterAccount = (props) => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <p>Account Info:</p>
 
       <Field
         name="username"
@@ -31,9 +30,9 @@ const RegisterAccount = (props) => {
         component={RegisterRenderField}
         type="text"
         label="Picture"/>
-
+        
       <div>
-        <button type="submit" className="next">Next</button>
+        <button type="submit" className="btn">Next</button>
       </div>
     </form>
   )

@@ -28,11 +28,20 @@ class RegisterAppContainer extends Component {
     this.setState({ page: this.state.page - 1 })
   }
 
+  pageName() {
+    const page = this.state.page
+    if(page === 1) return "Account"
+    if(page === 2) return "Personal Infomation"
+    if(page === 3) return "Address"
+    if(page === 4) return "Ship Address"
+    if(page === 5) return "Credit Cart"
+  }
+
   render() {
     const { onSubmit } = this.props
     const { page } = this.state
     return(
-      <RegisterApp>
+      <RegisterApp pageName={this.pageName()}>
         {page === 1 && <RegisterAccount onSubmit={this.nextPage}/>}
         {page === 2 && <RegisterPersonalInfo previousPage={this.previousPage} onSubmit={this.nextPage}/>}
         {page === 3 && <RegisterAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}

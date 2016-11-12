@@ -6,7 +6,6 @@ const RegisterAddress = (props) => {
   const { handleSubmit, previousPage } = props
   return(
     <form onSubmit={handleSubmit}>
-      <p>Address:</p>
 
       <Field
         name="address.city"
@@ -31,10 +30,10 @@ const RegisterAddress = (props) => {
         component={RegisterRenderField}
         type="text"
         label="Zipcode"/>
-
+        
       <div>
-        <button type="button" className="previous" onClick={previousPage}>Previous</button>
-        <button type="submit" className="next">Next</button>
+        <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
+        <button type="submit" className="btn">Next</button>
       </div>
     </form>
   )
