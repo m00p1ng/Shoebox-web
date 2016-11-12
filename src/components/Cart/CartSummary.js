@@ -19,7 +19,7 @@ const CartOrderRow = ({left, right}) => (
     <div className="col s6 l6">
       <p className="sbox-cart-subtotal">{left}</p>
     </div>
-    <div className="col s1 l2 offset-l4 offset-s5">
+    <div className="right-align">
       <p className="sbox-cart-subtotal"><strong>{right}</strong></p>
     </div>
   </div>
@@ -32,7 +32,7 @@ const CartItemRow = ({qty, name, price}) => (
         {qty}{' x '}{name}
       </p>
     </div>
-    <div className="col s1 l2 offset-l4 offset-s5">
+    <div className="right-align">
       <p className="sbox-cart-subtotal"><strong>${price*qty}</strong></p>
     </div>
   </div>
