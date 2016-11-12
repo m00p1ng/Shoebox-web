@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.include.api import request_get, errors_to_json
+from api.include.api import request_get, errors_to_json, request_get_to_json
 from api.promotion.models import *
+from mongoengine import NotUniqueError
 import json
+
+json_type = "application/json"
 
 @csrf_exempt
 def promotion(request):
@@ -42,40 +45,58 @@ def promotion_create(body):
     try:
         data = json.loads(body.decode())
         err = Promotions.validation(data)
-
         if len(err) == 0:
             Promotions.create_obj(data)
-            return HttpResponse('Promotion created', status=201)
+            message = {'created' : True}
+            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
-            return errors_to_json(err)
+            return errors_to_json(err, 'created')
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error',status =400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
 
     except NotUniqueError as e:
-        return HttpResponse('Promotion already exist', status=400)
+        err = {}
+        err['errorMsg'] = ['promotion already exist']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
 
 
 def promotion_delete(slug):
     item = Promotions.objects(slug=slug)
+    err = {}
     if not item:
-        return HttpResponse('This promotion not exist', status=404)
+        err['errorMsg'] = ['This promotion not exist']
+        err['deleted'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status =404)
     item.delete()
-    return HttpResponse('Promotion removed')
+    message = {'deleted' : True}
+    return HttpResponse(json.dumps(message), content_type=json_type)
 
 
 def promotion_update(body, slug):
     try:
         item = Promotions.objects(slug=slug)
+        err = {}
         if not item:
-            return HttpResponse('This promotion not exist',status=404)
+            err['errorMsg'] = ['This promotion not exist']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status =404)
 
         data = json.loads(body.decode())
         if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            err['errorMsg'] = ['Data cannot empty']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status =400)
 
         Promotions.update_obj(slug,data)
-        return HttpResponse('Promotion updated')
+        message = {'updated' : True}
+        return HttpResponse(json.dumps(message), content_type=json_type)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err['errorMsg'] = ['JSON Decode error']
+        err['updated'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
