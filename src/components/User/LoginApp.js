@@ -8,7 +8,7 @@ const LoginApp = ({
   errorMsg
 }) => (
   <div className="row">
-    <div className="col s6 offset-s3">
+    <div className="col l6 offset-l3 m10 offset-m1 s12">
       <LoginForm
         onUsernameChange={onUsernameChange}
         onPasswordChange={onPasswordChange}
