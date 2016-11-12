@@ -37,3 +37,5 @@ export ManProductApp from './Manage/Product/ManProductApp'
 export ManProductCreateApp from './Manage/Product/ManProductCreateApp'
 export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'
 export ManSupplierApp from './Manage/Supplier/ManSupplierApp'
+
+export OrderHistoryApp from './Order/OrderHistoryApp'

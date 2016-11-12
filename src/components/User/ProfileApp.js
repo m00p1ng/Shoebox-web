@@ -1,7 +1,12 @@
 import React from 'react'
+import HeaderBarApp from '../App/HeaderBarApp'
 
 const ProfileApp = () => (
-  <h1>Profile</h1>
+  <div>
+    <HeaderBarApp
+    title="Profile"
+    link="profile"/>
+  </div>
 )
 
 export default ProfileApp

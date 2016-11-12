@@ -19,6 +19,8 @@ export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'
 
+export OrderHistoryApp from './Order/OrderHistoryApp'
+
 export ManageApp from './Manage/ManageApp'
 export ManProductApp from './Manage/Product/ManProductApp'
 export ManProductCreateApp from './Manage/Product/ManProductCreateApp'

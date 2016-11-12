@@ -19,7 +19,8 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
           </a>
           <NavbarDesktopMenu
             NumberOfCartItem={NumberOfCartItem}
-            Username={Username}/>
+            Username={Username}
+            Role={Role}/>
           <NavbarMobileMenu
             NumberOfCartItem={NumberOfCartItem}
             Username={Username}/>

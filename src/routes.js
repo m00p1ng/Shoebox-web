@@ -27,6 +27,8 @@ import {
   CartApp,
   CheckoutApp,
 
+  OrderHistoryApp,
+
   ManageApp,
   ManOrderApp,
   ManPromotionApp,
@@ -56,6 +58,7 @@ export default (
       <Route path='register' component={RegisterApp} />
       <Route path='profile' component={ProfileApp} />
 
+      <Route path='history' component={OrderHistoryApp} />
 
       <Route path='manage'>
         <IndexRoute component={ManageApp} />
