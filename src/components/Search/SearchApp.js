@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from './SearchBar'
 import SearchResult from './SearchResult'
+import HeaderBarApp from '../App/HeaderBarApp'
 
 const SearchApp = ({
   onSearchChange,
@@ -10,7 +11,11 @@ const SearchApp = ({
   hasError
 }) => (
   <div>
-    <h1>Search</h1>
+    <HeaderBarApp
+      title="Search"
+      link="search"
+    />
+    <div className="container">
     <SearchBar
       onSearchChange={onSearchChange}/>
     <SearchResult
@@ -18,6 +23,7 @@ const SearchApp = ({
       isLoading={isLoading}
       searchText={searchText}
       hasError={hasError}/>
+    </div>
   </div>
 )
 

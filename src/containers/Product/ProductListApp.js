@@ -45,7 +45,7 @@ class ProductListAppContainer extends Component {
 
   render() {
     let not_hasError = this.props.error !== true
-    let hasProducts = this.props.products.length > 1
+    let hasProducts = this.props.products.length > 0
     return (
       <div>
         {

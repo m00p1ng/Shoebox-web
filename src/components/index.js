@@ -1,6 +1,7 @@
 export App from './App/App'
 export NavbarApp from './App/NavbarApp'
 export FooterApp from './App/FooterApp'
+export HeaderBarApp from './App/HeaderBarApp'
 
 export Home from './Home/Home'
 
