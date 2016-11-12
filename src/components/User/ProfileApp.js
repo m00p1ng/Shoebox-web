@@ -4,8 +4,8 @@ import HeaderBarApp from '../App/HeaderBarApp'
 const ProfileApp = () => (
   <div>
     <HeaderBarApp
-    title="Profile"
-    link="profile"/>
+      title="Profile"
+      link="profile"/>
   </div>
 )
 

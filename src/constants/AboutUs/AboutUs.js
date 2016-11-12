@@ -1,10 +1,12 @@
 import React from 'react'
-import { URL_ROOT } from 'endpoint'
-import { Link } from 'react-router'
+import HeaderBarApp from '../../components/App/HeaderBarApp'
 
 const AboutUs = () => (
   <div>
-    <h1>About us</h1>
+    <HeaderBarApp
+      title="About us"
+      link="aboutus"
+    />
   </div>
 )
 
