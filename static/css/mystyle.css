@@ -23,16 +23,6 @@ nav ul li a {
     padding-right: 12px;
 }
 
-#search_box {
-    width: 100px;
-    height: 52px;
-}
-
-.container-full {
-    margin: 0 auto;
-    width: 100%;
-}
-
 .no-padding {
     padding-right: 0px;
     padding-left: 0px;
@@ -44,28 +34,10 @@ margin-60 {
     margin-top: 6000px;
 }
 
-.black_arrow {
-    float: right;
-}
-
-.block_header {
-    font-size: 28px;
-    padding-top: 60px;
-}
-
-.header_bar {
+.a {
   background-color: #EE6E73;
   height: 120px;
   margin-bottom: 70px;
-}
-
-.header_text {
-  font-size: 32px;
-  padding-left: 80px;
-}
-
-.price_tag {
-    position: relative;
 }
 
 .margin-l-r-90 {

@@ -143,8 +143,7 @@ i.sbox-icon-gray {
 
 .sbox-header-bar {
 	/*background-color: #D32F2F;*/
-  /*background-color: #e53935;*/
-  background-color: #e57373;
+  background-color: #E57373;
 	height: 120px;
 	margin-bottom: 30px;
 }
@@ -155,11 +154,70 @@ i.sbox-icon-gray {
 
 .sbox-header-bread {
 	position: relative;
-	top: 15px;
+	top: 9px;
 }
 
 .sbox-header-bread span {
 	position: relative;
 	top: 2px;
 	font-size: 20px;
+}
+
+/* Shoebox Checkout Style */
+
+.sbox-checkout-detail {
+	padding-top: 29px;
+}
+
+.sbox-checkout-img {
+	height: 80px;
+	width: 80px;
+}
+
+.sbox-checkout-list {
+	height: 80px;
+}
+
+.sbox-grey-box {
+	background-color: #E0E0E0;
+	margin-top: 70px;
+}
+
+.sbox-grey-box-2 {
+	background-color: #E0E0E0;
+	margin-top: 20px;
+}
+
+.sbox-grey-box-header {
+	font-size: 18px;
+	padding-top: 25px;
+	padding-left: 20px;
+}
+
+.sbox-grey-box-address {
+	font-size: 14px;
+	padding-top: 10px;
+	padding-left: 20px;
+	margin-bottom: 30px;
+}
+
+.sbox-grey-box-card-number {
+	font-size: 14px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.sbox-grey-box-cvv {
+	font-size: 14px;
+	padding-left: 20px;
+}
+
+.sbox-checkout-cvv-input {
+  padding-left: 20px;
+}
+
+.sbox-edit-text {
+	float: right;
+	padding-right: 18px;
+	padding-top: 25px;
 }
