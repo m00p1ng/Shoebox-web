@@ -130,3 +130,27 @@
     height: 180px;
     width: auto;
 }
+
+/* Shoebox Header Styles */
+
+.sbox-header-bar {
+	/*background-color: #D32F2F;*/
+  background-color: #e53935;
+	height: 120px;
+	margin-bottom: 30px;
+}
+
+.sbox-header-text {
+  margin-top: 10px;
+}
+
+.sbox-header-bread {
+	position: relative;
+	top: 15px;
+}
+
+.sbox-header-bread span {
+	position: relative;
+	top: 2px;
+	font-size: 20px;
+}
