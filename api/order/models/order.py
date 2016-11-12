@@ -4,13 +4,14 @@ from api.user.models import Customers
 import datetime
 import json
 
+
 class Orders(Document):
+    orderID = StringField(max_length=50,unique=True)
     customer = ReferenceField(Customers)
     date = DateTimeField(required=True)
     timeStamp = StringField(required=True)
     status = BooleanField(required=True)
-    orderNumber = ListField(StringField(max_length=20))
-    username = StringField(max_length=200,required=True)
+    orderNumber = ListField(StringField(max_length=20),unique=True)
 
     def get_id_from_field(data):
         field_id = {}
@@ -21,9 +22,14 @@ class Orders(Document):
 
         return field_id
 
+
     @staticmethod
     def validation(data):
         err = []
+        if 'orderID' not in data:
+            err.append('orderID cannot empty')
+        if 'customer' not in data:
+            err.append('Customers cannot empty')
         if 'status' not in data:
             err.append('Status cannot empty')
         if 'orderNumber' not in data:
@@ -44,11 +50,13 @@ class Orders(Document):
                     err.append('- year cannot empty')
         return err
 
+
     @classmethod
     def create_obj(cls, data):
         field_id = cls.get_id_from_field(data)
         order = cls(
             customer = field_id['customer'],
+            orderID = data['orderID'],
             date = datetime.datetime(
                 year = data['date']['year'],
                 month = data['date']['month'],
@@ -57,22 +65,23 @@ class Orders(Document):
             status = data['status'],
             orderNumber = data['orderNumber'],
             timeStamp = get_Timestamp(),
-            username = Customers.objects(username=data['customer']).first().username
         )
         order.save()
         return order
 
+
     @classmethod
-    def update_obj(cls, cid, data):
+    def update_obj(cls, oid, data):
         if 'date' in data:
             data['date'] = datetime.datetime(
                 year=data['date']['year'],
                 month=data['date']['month'],
                 day=data['date']['day']
             )
-        order = cls.objects(pk=cid)
+        order = cls.objects(orderID=oid)
         order.update(**data)
         return order
+
 
 def get_Timestamp():
     now = datetime.datetime.now()
