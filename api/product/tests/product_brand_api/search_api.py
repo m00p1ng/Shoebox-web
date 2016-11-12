@@ -7,7 +7,7 @@ class productBrand_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/product/brand'
-    URL_SIZE = '/api/product/brand/nike'
+    URL_BRAND = '/api/product/brand/nike'
     CREATE_BODY = """{ "name": "nike" }"""
 
 
@@ -15,7 +15,7 @@ class productBrand_Search_API_Test(MongoTestCase):
         create_request(self.URL, self.CREATE_BODY)
 
         c = Client()
-        res = c.get(self.URL_SIZE)
+        res = c.get(self.URL_BRAND)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'nike')

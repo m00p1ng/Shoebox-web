@@ -7,7 +7,7 @@ class productType_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/product/type'
-    URL_SIZE = '/api/product/type/running'
+    URL_TYPE = '/api/product/type/running'
     CREATE_BODY = """{ "name": "running" }"""
 
 
@@ -15,7 +15,7 @@ class productType_Search_API_Test(MongoTestCase):
         create_request(self.URL, self.CREATE_BODY)
 
         c = Client()
-        res = c.get(self.URL_SIZE)
+        res = c.get(self.URL_TYPE)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'running')

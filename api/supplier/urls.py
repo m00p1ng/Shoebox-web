@@ -4,7 +4,4 @@ from . import views
 urlpatterns = [
     url(r'^$', views.supplier),
     url(r'^name/(?P<slug>.+?)/?$', views.supplier_with_name),
-#    url(r'^by(?P<search>.+?)/(?P<slug>.+?)/?$', views.product_search),
-
-    url(r'^company/?', include('api.supplier.company.urls'))
 ]

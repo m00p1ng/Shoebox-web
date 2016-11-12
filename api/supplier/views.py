@@ -1,35 +1,37 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.include.api import request_get, request_get_real, errors_to_json
-from api.supplier.models import *
+from api.supplier.models import Suppliers
+from api.include.api import request_get, errors_to_json
 from mongoengine import NotUniqueError
 import json
+
+json_type = "application/json"
 
 @csrf_exempt
 def supplier(request):
     body = request.body
     if request.method == 'GET':
-        return request_get_real(Suppliers, query_all())
+        return request_get(query_all())
     if request.method == 'POST':
         return supplier_create(body)
     if request.method == 'PUT':
-        pass
+        return HttpResponse('Method not allowed', status=405)
     if request.method == 'DELETE':
-        pass
+        return HttpResponse('Method not allowed', status=405)
 
 
 @csrf_exempt
 def supplier_with_name(request, slug):
     body = request.body
     if request.method == 'GET':
-        return request_get_real(Suppliers, query_by_name(slug))
+        return request_get(query_by_name(slug))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':
         return supplier_update(body, slug)
     if request.method == 'DELETE':
-        print(slug)
         return supplier_delete(slug)
+
 
 def query_all():
     return Suppliers.objects.all()
@@ -39,53 +41,63 @@ def query_by_name(slug):
     return Suppliers.objects(slug=slug).first()
 
 
-def supplier_company(company):
-    company = Companies.objects(name=company).first()
-    if not company:
-        return HttpResponse('Not found', status=404)
-    supplier = Suppliers.objects(company=company.id)
-    return request_get_real(Suppliers, supplier)
-
-
 def supplier_create(body):
     try:
         data = json.loads(body.decode())
         err = Suppliers.validation(data)
-
         if len(err) == 0:
             Suppliers.create_obj(data)
-            return HttpResponse('Supplier created', status=201)
+            message = {'created': True}
+            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:
-            return errors_to_json(err)
+            return errors_to_json(err, 'created')
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err = {}
+        err['errorMsg'] = ['JSON Decode error']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        return HttpResponse('Supplier already exist', status=400)
+        err = {}
+        err['errorMsg'] = ['Supplier already exist']
+        err['created'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def supplier_delete(slug):
-    print(slug)
     item = Suppliers.objects(slug=slug)
+    err = {}
     if not item:
-        return HttpResponse('This supplier not exist', status=404)
+        err['errorMsg'] = ['This supplier not exist']
+        err['deleted'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
     item.delete()
-    return HttpResponse('Supplier removed')
+    message = {'deleted': True}
+    return HttpResponse(json.dumps(message), content_type=json_type)
 
 
 def supplier_update(body, slug):
     try:
         item = Suppliers.objects(slug=slug)
+        err = {}
         if not item:
-            return HttpResponse('This supplier not exist', status=404)
+            err['errorMsg'] = ['This supplier not exist']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
-            return HttpResponse('Data cannot empty', status=400)
+            err['errorMsg'] = ['Data cannot empty']
+            err['updated'] = False
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         Suppliers.update_obj(slug, data)
-        return HttpResponse('Supplier updated')
+
+        message = {'updated': True}
+        return HttpResponse(json.dumps(message), content_type=json_type)
 
     except ValueError as e:
-        return HttpResponse('JSON Decode error', status=400)
+        err['errorMsg'] = ['JSON Decode error']
+        err['updated'] = False
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)

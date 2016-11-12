@@ -1,2 +1,1 @@
-from .supplier import *
-from .company import *
+from .supplier_api import *

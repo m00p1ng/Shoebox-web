@@ -3,11 +3,11 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
-class supplierCompany_Search_API_Test(MongoTestCase):
+class Supplier_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/supplier/company'
-    URL_COMPANY = '/api/supplier/company/nike'
+    URL = '/api/supplier'
+    URL_SIZE = '/api/supplier/name/nike'
     CREATE_BODY = """
         {
             "name": "Nike",
@@ -17,7 +17,7 @@ class supplierCompany_Search_API_Test(MongoTestCase):
                 "street": "Test street",
                 "zipcode": "10000"
               },
-            "phone" : "0866625526"
+            "phone": "080-000-0000"
         }
     """
 
@@ -26,27 +26,31 @@ class supplierCompany_Search_API_Test(MongoTestCase):
         create_request(self.URL, self.CREATE_BODY)
 
         c = Client()
-        res = c.get(self.URL_COMPANY)
+        res = c.get(self.URL_SIZE)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'Nike')
 
 
-class supplierCompany_Search_Fail_API_Test(MongoTestCase):
+class Supplier_Search_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/supplier/company'
-    URL_SEARCH = '/api/supplier/company/Bata'
-    CREATE_BODY = """{  
-            "name": "Bata",
+    URL = '/api/supplier'
+    URL_SEARCH = '/api/supplier/name/bata'
+    CREATE_BODY = """
+        {
+            "name": "Nike",
             "address": {
                 "city": "Test city",
                 "district": "Test district",
                 "street": "Test street",
                 "zipcode": "10000"
               },
-            "phone" : "0866625526"}"""
-    
+            "phone": "080-000-0000"
+        }
+    """
+
+
     def test_create_no_name(self):
         c = Client()
         res = c.get(self.URL_SEARCH)

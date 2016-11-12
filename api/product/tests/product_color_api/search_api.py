@@ -7,7 +7,7 @@ class productColor_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/product/color'
-    URL_SIZE = '/api/product/color/white'
+    URL_COLOR = '/api/product/color/white'
     CREATE_BODY = """{ "name": "white" }"""
 
 
@@ -15,7 +15,7 @@ class productColor_Search_API_Test(MongoTestCase):
         create_request(self.URL, self.CREATE_BODY)
 
         c = Client()
-        res = c.get(self.URL_SIZE)
+        res = c.get(self.URL_COLOR)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'white')
