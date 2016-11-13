@@ -1,6 +1,7 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import RegisterRenderField from './RegisterRenderField'
+import RegisterValidate from './RegisterValidate'
 
 const RegisterAccount = (props) => {
   const { handleSubmit } = props
@@ -30,7 +31,7 @@ const RegisterAccount = (props) => {
         component={RegisterRenderField}
         type="text"
         label="Picture"/>
-        
+
       <div>
         <button type="submit" className="btn">Next</button>
       </div>
@@ -41,4 +42,5 @@ const RegisterAccount = (props) => {
 export default reduxForm({
   form: "register",
   destroyOnUnmount: false,
+  validate: RegisterValidate
 })(RegisterAccount)

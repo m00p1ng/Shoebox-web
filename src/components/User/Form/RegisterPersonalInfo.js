@@ -1,6 +1,7 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import RegisterRenderField from './RegisterRenderField'
+import RegisterValidate from './RegisterValidate'
 
 const renderError = ({ meta: { touched, error } }) => touched && error ?
   <span>{error}</span> : false
@@ -66,5 +67,6 @@ const RegisterPersonalInfo = (props) => {
 
 export default reduxForm({
   form: "register",
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
+  validate: RegisterValidate
 })(RegisterPersonalInfo)

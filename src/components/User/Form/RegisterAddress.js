@@ -1,6 +1,7 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import RegisterRenderField from './RegisterRenderField'
+import RegisterValidate from './RegisterValidate'
 
 const RegisterAddress = (props) => {
   const { handleSubmit, previousPage } = props
@@ -30,7 +31,7 @@ const RegisterAddress = (props) => {
         component={RegisterRenderField}
         type="text"
         label="Zipcode"/>
-        
+
       <div>
         <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
         <button type="submit" className="btn">Next</button>
@@ -41,5 +42,6 @@ const RegisterAddress = (props) => {
 
 export default reduxForm({
   form: "register",
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
+  validate: RegisterValidate
 })(RegisterAddress)
