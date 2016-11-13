@@ -1,5 +1,7 @@
 URL_CUSTOMER = '/api/user/customer'
+
 URL_CUSTOMER_USERNAME = '/api/user/customer/mooping12345'
+
 CREATE_BODY = {
     'username': 'mooping12345',
     'password': 'secret',

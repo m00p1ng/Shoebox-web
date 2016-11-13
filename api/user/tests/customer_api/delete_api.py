@@ -20,9 +20,6 @@ class customer_Delete_API_Test(MongoTestCase):
 class customer_Delete_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/customer'
-    URL_CUSTOMER = '/api/user/customer/mooping12345'
-
     def test_delete_customer_not_exist(self):
 
         c = Client()

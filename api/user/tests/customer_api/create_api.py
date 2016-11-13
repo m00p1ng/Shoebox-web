@@ -19,7 +19,8 @@ class customer_Create_Fail_API_Test(MongoTestCase):
         CREATE_BODY = """{}"""
         res = create_request(URL_CUSTOMER, CREATE_BODY)
         data = json.loads(res.content.decode())
-        self.assertEqual(data['errorMsg'],[
+        self.assertEqual(data['errorMsg'],
+        [
             "Username cannot empty",
             "Password cannot empty",
             "Repassword cannot empty",

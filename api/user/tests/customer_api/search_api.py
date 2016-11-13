@@ -20,10 +20,9 @@ class Customer_Search_API_Test(MongoTestCase):
 
 class Customer_Search_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
-    URL_SEARCH = '/api/user/customer/mooping12345'
 
     def test_search_no_Customer(self):
         c = Client()
-        res = c.get(self.URL_SEARCH)
+        res = c.get(URL_CUSTOMER_USERNAME)
 
         self.assertEqual(res.content.decode(), 'Not found')
