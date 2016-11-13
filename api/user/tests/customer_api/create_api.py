@@ -16,11 +16,11 @@ class customer_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_create_no_firstname(self):
-        CREATE_BODY = """{}"""
-        res = create_request(URL_CUSTOMER, CREATE_BODY)
+        CREATE_BODY = {}
+        res = create_request(URL_CUSTOMER, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
-        self.assertEqual(data['errorMsg'],
-        [
+
+        self.assertEqual(data['errorMsg'], [
             "Username cannot empty",
             "Password cannot empty",
             "Repassword cannot empty",
@@ -47,6 +47,7 @@ class customer_Create_Fail_API_Test(MongoTestCase):
         ])
         self.assertEqual(data['created'], False)
 
+
     def test_create_no_data(self):
         CREATE_BODY = ""
 
@@ -55,6 +56,7 @@ class customer_Create_Fail_API_Test(MongoTestCase):
 
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
         self.assertEqual(data['created'], False)
+
 
     def test_create_username_duplicated(self):
         create_request(URL_CUSTOMER, json.dumps(CREATE_BODY))
