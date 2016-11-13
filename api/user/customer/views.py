@@ -97,7 +97,7 @@ def customer_update(body, username):
 
         if 'password' in data:
             if len(data['password']) < 6:
-                err['errorMsg'].append('Password must be at least 6 characters long')
+                err['errorMsg'].append('Password must be at least 6 characters')
                 err['updated'] = False
                 return HttpResponse(json.dumps(err), content_type=json_type, status=400)
         if len(err['errorMsg']) > 0:

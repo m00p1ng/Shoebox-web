@@ -35,7 +35,7 @@ class Customers(User):
             err.append('Password cannot empty')
         else:
             if len(data['password']) < 6:
-                err.append('Password must be at least 6 characters long')
+                err.append('Password must be at least 6 characters')
         if 'repassword' not in data:
             err.append('Repassword cannot empty')
         if 'password' in data and 'repassword' in data:
