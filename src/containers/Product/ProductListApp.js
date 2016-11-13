@@ -27,7 +27,7 @@ class ProductListAppContainer extends Component {
       `Add&nbsp;&nbsp;
         <strong>${name}</strong>
       &nbsp;&nbsp;to cart`,
-      2000, 'rounded amber darken-1')
+      2000, 'amber darken-1')
     return this.props.clickAddToCart(slug, product, price)
   }
 
