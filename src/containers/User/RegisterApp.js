@@ -37,6 +37,10 @@ class RegisterAppContainer extends Component {
     if(page === 5) return "Credit Cart"
   }
 
+  handleSubmit(values) {
+    this.props.sendRegisterForm(values)
+  }
+
   render() {
     const { onSubmit } = this.props
     const { page } = this.state
@@ -46,7 +50,7 @@ class RegisterAppContainer extends Component {
         {page === 2 && <RegisterPersonalInfo previousPage={this.previousPage} onSubmit={this.nextPage}/>}
         {page === 3 && <RegisterAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
         {page === 4 && <RegisterShipAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
-        {page === 5 && <RegisterCreditCard previousPage={this.previousPage} onSubmit={onSubmit} sendRegisterForm={this.props.sendRegisterForm}/>}
+        {page === 5 && <RegisterCreditCard previousPage={this.previousPage} onSubmit={onSubmit} sendRegisterForm={this.handleSubmit.bind(this)}/>}
       </RegisterApp>
     )
   }
