@@ -31,6 +31,7 @@ class Order_Search_API_Test(MongoTestCase):
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['orderID'], '0123456789')
+        self.assertEqual(data['customer'], 'mooping12345')
         self.assertEqual(data['status'], False)
 
 

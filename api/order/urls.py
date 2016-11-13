@@ -5,5 +5,5 @@ urlpatterns = [
     url(r'^$', views.order),
     url(r'^id/(?P<oid>.+?)/?$', views.order_with_id),
 
-    url(r'^orderDetail/?', include('api.order.orderDetail.urls'))
+    url(r'^detail/?', include('api.order.orderDetail.urls'))
 ]

@@ -50,7 +50,7 @@ class Order_Update_Fail_API_Test(MongoTestCase):
         'orderNumber': ['0001']
     }
 
-    def test_update_api(self):
+    def test_update_no_order(self):
         create_test_database()
 
         UPDATE_BODY = {'status': True}
