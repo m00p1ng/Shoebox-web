@@ -1,76 +1,27 @@
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
+from .create_body import *
 import json
 
 class employee_Updated_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/employee'
-    URL_EMPLOYEE = '/api/user/employee/mooping12345'
-    CREATE_BODY = {
-        	'username': 'mooping12345',
-        	'password': 'secret',
-        	'repassword': 'secret',
-        	'email': 'mail@gmail.com',
-        	'firstname': 'kaoneaw',
-        	'lastname': 'mooping',
-            'picture': 'picture URL',
-        	'gender': 'male',
-        	'birthday': {
-        		'year': 2000,
-        		'month': 10,
-        		'day': 10
-        	},
-        	'address': {
-        		'city': 'my-city',
-        		'district': 'my-district',
-        		'street': 'my-street',
-        		'zipcode': '99999'
-        	},
-        	'phone': '080-000-0000'
-        }
-
     def test_update_api(self):
-        create_request(self.URL, json.dumps(self.CREATE_BODY))        
+        create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
 
         UPDATE_BODY = {'phone' : '087-777-7777'}
 
-        res = update_request(self.URL_EMPLOYEE, json.dumps(UPDATE_BODY))
+        res = update_request(URL_EMPLOYEE_USERNAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
         self.assertEqual(data['updated'], True)
 
 class employee_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/user/employee'
-    URL_EMPLOYEE = '/api/user/employee/mooping12345'
-    CREATE_BODY = {
-        	'username': 'mooping12345',
-        	'password': 'secret',
-        	'repassword': 'secret',
-        	'email': 'mail@gmail.com',
-        	'firstname': 'kaoneaw',
-        	'lastname': 'mooping',
-            'picture': 'picture URL',
-        	'gender': 'male',
-        	'birthday': {
-        		'year': 2000,
-        		'month': 10,
-        		'day': 10
-        	},
-        	'address': {
-        		'city': 'my-city',
-        		'district': 'my-district',
-        		'street': 'my-street',
-        		'zipcode': '99999'
-        	},
-        	'phone': '080-000-0000'
-        }
-
     def test_update_no_item(self):
 
         UPDATE_BODY = {'phone' : '087-777-7777'}
-        res = update_request(self.URL_EMPLOYEE, json.dumps(UPDATE_BODY))
+        res = update_request(URL_EMPLOYEE_USERNAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['This employee not exist'])
@@ -80,8 +31,8 @@ class employee_Update_Fail_API_Test(MongoTestCase):
     def test_update_no_data(self):
         UPDATE_BODY = {}
 
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
-        res = update_request(self.URL_EMPLOYEE, json.dumps(UPDATE_BODY))
+        create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        res = update_request(URL_EMPLOYEE_USERNAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
@@ -91,8 +42,8 @@ class employee_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
-        res = update_request(self.URL_EMPLOYEE, UPDATE_BODY)
+        create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        res = update_request(URL_EMPLOYEE_USERNAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
