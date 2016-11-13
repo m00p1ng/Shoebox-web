@@ -83,6 +83,45 @@ class Orders(Document):
         return order
 
 
+    def to_realData(data):
+        customer = Customers.objects(pk=data['customer']).first().username
+
+        real_data = {'customer' : customer}
+
+        return real_data
+
+
+    @classmethod
+    def mapID_to_obj(cls, order):
+        data = {'customer': order.customer.id}
+
+        real_data = cls.to_realData(data)
+
+        obj = {
+            'orderID' : order.orderID,
+            'customer' : real_data['customer'],
+            'date' : str(order.date),
+            'timeStamp' : order.timeStamp,
+            'status' : order.status,
+            'orderNumber' : order.orderNumber
+        }
+
+        return obj
+
+
+    @classmethod
+    def map_referenceID(cls, orders):
+        output = []
+        if not hasattr(orders, 'count'):
+            obj = cls.mapID_to_obj(orders)
+            return json.dumps(obj)
+        else:
+            for order in orders:
+                obj = cls.mapID_to_obj(order)
+                output.append(obj)
+            return json.dumps(output)
+
+
 def get_Timestamp():
     now = datetime.datetime.now()
     split = str(now).split()

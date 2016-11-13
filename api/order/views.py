@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.order.models import *
-from api.include.api import request_get, errors_to_json
+from api.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -11,7 +11,7 @@ json_type = "application/json"
 def order(request):
     body  = request.body
     if request.method == 'GET':
-        return request_get(query_all())
+        return request_get_real(Orders, query_all())
     if request.method == 'POST':
         return order_create(body)
     if request.method == 'PUT':
@@ -24,7 +24,7 @@ def order(request):
 def order_with_id(request,oid):
     body  = request.body
     if request.method == 'GET':
-        return request_get(query_by_id(oid))
+        return request_get_real(Orders, query_by_id(oid))
     if request.method == 'POST':
         return HttpResponse('Method not allow', status=405)
     if request.method == 'PUT':
