@@ -39,8 +39,6 @@ class OrderDetails(Document):
             err.append('Quantity cannot empty')
         if 'product' not in data:
             err.append('Product cannot empty')
-        if 'orderNumber' not in data:
-            err.append('orderNumber cannot empty')
         if 'promotion' not in data:
             err.append('Promotion cannot empty')
         return err
@@ -64,6 +62,14 @@ class OrderDetails(Document):
         orderDetail.save()
         return orderDetail
 
+
+    @classmethod
+    def update_obj(cls, orderNumber, data):
+        order = cls.objects(orderNumber=orderNumber)
+        order.update(**data)
+        return order
+
+
     def to_realData(data):
         product = Products.objects(pk=data['product']).first().name
         promotion = Promotions.objects(pk=data['promotion']).first().name
@@ -73,6 +79,7 @@ class OrderDetails(Document):
             'promotion': promotion
         }
         return real_data
+
 
     @classmethod
     def mapID_to_obj(cls, orderDetail):
@@ -93,6 +100,7 @@ class OrderDetails(Document):
             'orderNumber' : orderDetail.orderNumber
         }
         return obj
+
 
     @classmethod
     def map_referenceID(cls, orderDetails):
