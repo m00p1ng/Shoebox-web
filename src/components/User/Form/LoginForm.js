@@ -20,6 +20,7 @@ const LoginForm = ({
             <div className="input-field">
               <input
               id="sb_username"
+              className="sbox-login-input"
               type="text"
               placeholder="Username"
               onChange={onUsernameChange} />
@@ -29,6 +30,7 @@ const LoginForm = ({
             <div className="input-field">
               <input
                 id="sb_password"
+                className="sbox-login-input"
                 type="password"
                 placeholder="Password"
                 onChange={onPasswordChange}/>
@@ -36,7 +38,8 @@ const LoginForm = ({
           </div>
           <div className="row">
             <button
-              className="waves-effect waves-light btn"
+              id="sbox-login-button"
+              className="waves-effect waves-light btn-large"
               type="submit"
               onClick={handleSubmit}>Login
             </button>
