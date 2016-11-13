@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { sendRegisterForm } from '../../actions/user'
+import { sendRegisterForm } from '../../actions/register'
 import { connect } from 'react-redux'
 import {
   RegisterApp,
