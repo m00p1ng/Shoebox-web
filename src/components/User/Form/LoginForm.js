@@ -17,6 +17,7 @@ const LoginForm = ({
               className="responsive-img"
               src="/static/images/shoebox_logo.png" />
             <ErrorMsg errorMsg={errorMsg} />
+
             <div className="input-field">
               <input
               id="sb_username"
@@ -26,6 +27,7 @@ const LoginForm = ({
               onChange={onUsernameChange} />
             </div>
           </div>
+
           <div className="row">
             <div className="input-field">
               <input
@@ -36,6 +38,7 @@ const LoginForm = ({
                 onChange={onPasswordChange}/>
             </div>
           </div>
+
           <div className="row">
             <button
               id="sbox-login-button"
@@ -44,6 +47,7 @@ const LoginForm = ({
               onClick={handleSubmit}>Login
             </button>
           </div>
+          
         </div>
       </form>
     </div>

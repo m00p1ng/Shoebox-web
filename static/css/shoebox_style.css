@@ -224,6 +224,7 @@ i.sbox-icon-gray {
 
 
 /* Shoebox Login Style*/
+
 #sbox-login-logo {
   position: relative;
   margin-top: 30px;
@@ -240,6 +241,7 @@ i.sbox-icon-gray {
 
 .sbox-login-input {
   text-align: center;
+  font-size: 18px;
 }
 
 #sbox-login-button {
@@ -253,6 +255,7 @@ i.sbox-icon-gray {
 }
 
 /* Shoebox Search Style */
+
 #sbox-search-form {
   max-height: 100px;
   font-size: 30px;
