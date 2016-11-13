@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -13,5 +13,10 @@ const HeaderBarApp = ({title, link}) => (
 	</div>
 </div>
 )
+
+HeaderBarApp.propTypes = {
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
+}
 
 export default HeaderBarApp

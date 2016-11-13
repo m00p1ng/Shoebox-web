@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import SearchItem from './SearchItem'
 
 const render_list = (list) => (
   list.map(item => {
     return (
-      <div>
-        <SearchItem
-          key={item.slug}
-          product={item}/>
-      </div>
+      <SearchItem
+        key={item.slug}
+        product={item}/>
     )
   })
 )
@@ -35,5 +33,12 @@ const SearchResult = ({
     {renderResult(result, hasError, isLoading, searchText)}
   </div>
 )
+
+SearchResult.propTypes = {
+  result: PropTypes.array.isRequired,
+  searchText: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool.isRequired
+}
 
 export default SearchResult

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import SearchBar from './SearchBar'
 import SearchResult from './SearchResult'
 import HeaderBarApp from '../App/HeaderBarApp'
@@ -26,5 +26,13 @@ const SearchApp = ({
     </div>
   </div>
 )
+
+SearchApp.propTypes = {
+  onSearchChange: PropTypes.func.isRequired,
+  result: PropTypes.array.isRequired,
+  searchText: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool.isRequired
+}
 
 export default SearchApp

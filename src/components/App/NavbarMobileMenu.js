@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -22,5 +22,10 @@ const NavbarMobileMenu = ({NumberOfCartItem, Username}) => (
     </li>
   </ul>
 )
+
+NavbarMobileMenu.propTypes = {
+  NumberOfCartItem: PropTypes.number.isRequired,
+  Username: PropTypes.string.isRequired
+}
 
 export default NavbarMobileMenu

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const SearchBar = ({onSearchChange}) => (
   <div className="row">
@@ -11,5 +11,9 @@ const SearchBar = ({onSearchChange}) => (
     </div>
   </div>
 )
+
+SearchBar.propTypes = {
+  onSearchChange: PropTypes.func.isRequired
+}
 
 export default SearchBar

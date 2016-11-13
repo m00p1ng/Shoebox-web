@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -77,5 +77,22 @@ const CartSummary = ({total, products, qty}) => (
 
   </div>
 )
+
+CartOrderRow.propTypes = {
+  left: PropTypes.string.isRequired,
+  right: PropTypes.string.isRequired
+}
+
+CartItemRow.propTypes = {
+  qty: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired
+}
+
+CartSummary.propTypes = {
+  total: PropTypes.number.isRequired,
+  products: PropTypes.array.isRequired,
+  qty: PropTypes.object.isRequired
+}
 
 export default CartSummary
