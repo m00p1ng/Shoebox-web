@@ -1,8 +1,11 @@
 import React from 'react'
+import HeaderBarApp from '../HeaderBarApp'
 
 const ManProductApp = () => (
   <div>
-    <h1>Product All</h1>
+    <HeaderBarApp
+      link="product"
+      title="Product" />
   </div>
 )
 
