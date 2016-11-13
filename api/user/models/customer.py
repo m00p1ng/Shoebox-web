@@ -22,7 +22,7 @@ class Customers(User):
     shipDistrict = StringField(max_length=50, required=True)
     shipStreet = StringField(max_length=50, required=True)
     shipZipcode = StringField(max_length=10, required=True)
-    picture = StringField(max_length=1000)
+    picture = StringField(max_length=1000, required=True, default="/static/images/avatar_2x.png")
 
     def validation(data):
         err = []

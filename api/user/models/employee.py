@@ -15,7 +15,7 @@ class Employees(User):
     zipcode = StringField(max_length=10, required=True)
     phone = StringField(max_length=20, required=True)
     role = StringField(max_length=20, required=True, default="employee")
-    picture = StringField(max_length=1000)
+    picture = StringField(max_length=1000, required=True, default="/static/images/avatar_2x.png")
 
     def validation(data):
         err = []
