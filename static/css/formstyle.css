@@ -50,9 +50,11 @@
 .form-style-6 textarea:focus,
 .form-style-6 select:focus
 {
-    box-shadow: 0 0 5px #43D1AF;
+/*    box-shadow: 0 0 5px #43D1AF;*/
     padding: 3%;
-    border: 1px solid #43D1AF;
+/*    border: 1px solid #43D1AF;*/
+    box-shadow: 0 0 5px #2196F3;
+    border: 1px solid #2196F3;
 }
 
 input:focus::-webkit-input-placeholder { color:transparent; }
