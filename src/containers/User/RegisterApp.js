@@ -46,11 +46,35 @@ class RegisterAppContainer extends Component {
     const { page } = this.state
     return(
       <RegisterApp pageName={this.pageName()}>
-        {page === 1 && <RegisterAccount onSubmit={this.nextPage}/>}
-        {page === 2 && <RegisterPersonalInfo previousPage={this.previousPage} onSubmit={this.nextPage}/>}
-        {page === 3 && <RegisterAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
-        {page === 4 && <RegisterShipAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
-        {page === 5 && <RegisterCreditCard previousPage={this.previousPage} onSubmit={onSubmit} sendRegisterForm={this.handleSubmit.bind(this)}/>}
+        {
+          page === 1 &&
+          <RegisterAccount
+            onSubmit={this.nextPage} />
+        }
+        {
+          page === 2 &&
+          <RegisterPersonalInfo
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage} />
+        }
+        {
+          page === 3 &&
+          <RegisterAddress
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage} />
+        }
+        {
+          page === 4 &&
+          <RegisterShipAddress
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage} />}
+        {
+          page === 5 &&
+          <RegisterCreditCard
+            previousPage={this.previousPage}
+            onSubmit={onSubmit}
+            sendRegisterForm={this.handleSubmit.bind(this)} />
+        }
       </RegisterApp>
     )
   }
