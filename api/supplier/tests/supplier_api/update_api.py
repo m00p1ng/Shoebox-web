@@ -1,28 +1,18 @@
+from .create_data import *
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
 import json
+
 
 class supplier_Update_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/supplier'
     URL_SUPPLIER = '/api/supplier/name/nike'
-    CREATE_BODY = """
-        {
-            "name": "Nike",
-            "address": {
-                "city": "Test city",
-                "district": "Test district",
-                "street": "Test street",
-                "zipcode": "10000"
-              },
-            "phone": "080-000-0000"
-        }
-    """
-
+    CREATE_BODY = create_data()
 
     def test_update_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         UPDATE_BODY = """{"name": "nike2"}"""
 
@@ -31,23 +21,13 @@ class supplier_Update_API_Test(MongoTestCase):
 
         self.assertEqual(data['updated'], True)
 
+
 class supplier_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     URL = '/api/supplier'
     URL_SUPPLIER = '/api/supplier/name/nike'
-    CREATE_BODY = """
-        {
-            "name": "Nike",
-            "address": {
-                "city": "Test city",
-                "district": "Test district",
-                "street": "Test street",
-                "zipcode": "10000"
-              },
-            "phone": "080-000-0000"
-        }
-    """
+    CREATE_BODY = create_data()
 
     def test_update_no_item(self):
         UPDATE_BODY = """{"name": "nike2"}"""
@@ -62,7 +42,7 @@ class supplier_Update_Fail_API_Test(MongoTestCase):
     def test_update_no_data(self):
         UPDATE_BODY = "{}"
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_SUPPLIER, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
@@ -73,7 +53,7 @@ class supplier_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_SUPPLIER, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
