@@ -6,7 +6,7 @@ import { URL_ROOT } from 'endpoint'
 const ProductItem = ({ product, onClickedAddToCart }) => (
   <div className="col s12 m4 l3">
     <div className="card center">
-      <Link to={`${URL_ROOT}/product/${product.slug}`}>
+      <Link to={`${URL_ROOT}/shop/${product.slug}`}>
         <div className="card-image">
           <img className="activator" src={product.picture} />
         </div>
@@ -16,7 +16,7 @@ const ProductItem = ({ product, onClickedAddToCart }) => (
           {product.brand}
         </span> <br />
         <div className="sbox-product-name">
-          <Link to={`${URL_ROOT}/product/${product.slug}`}>{product.name}</Link>
+          <Link to={`${URL_ROOT}/shop/${product.slug}`}>{product.name}</Link>
         </div>
         <div className="sbox-price">
           Price: {product.price}

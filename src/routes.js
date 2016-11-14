@@ -44,8 +44,8 @@ export default (
       <IndexRoute component={Home} />
 
 
-      <Route path='shop' component={ShopApp} />
-      <route path='product'>
+      <route path='shop'>
+        <IndexRoute component={ShopApp} />
         <route path=':slug' component={ProductDetailApp} />
       </route>
       <Route path='cart' component={CartApp} />
