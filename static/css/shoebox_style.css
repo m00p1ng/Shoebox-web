@@ -141,8 +141,6 @@ i.sbox-icon-gray {
 /* Shoebox Header Styles */
 
 .sbox-header-bar {
-	/*background-color: #D32F2F;*/
-    /*background-color: #E57373;*/
 	background-color: #EE6573;
 	height: 120px;
 	margin-bottom: 30px;
@@ -165,7 +163,7 @@ i.sbox-icon-gray {
 
 /* Shoebox Checkout Style */
 
-.edit-text {
+.sb-edit-text {
 	float: right;
 	padding-right: 18px;
 	padding-top: 25px;

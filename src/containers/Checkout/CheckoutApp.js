@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
+  ShipAddress,
   CheckoutApp,
   CheckoutList,
-  ShipAddress,
-  PaymentMethod
+  CheckoutBottom
 } from '../../components'
 import { getCartItem } from '../../actions/cart'
 import { browserHistory } from 'react-router';
@@ -36,8 +36,7 @@ class CheckoutAppContainer extends Component {
                 products={this.props.cart}
                 qty={this.props.qty}/>
           		<DividerLine />
-              <PaymentMethod />
-              {this.props.role}
+              <CheckoutBottom />
             </CheckoutApp>
           ) : ( browserHistory.push(`${URL_ROOT}/login`) )
         }

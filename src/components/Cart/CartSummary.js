@@ -4,21 +4,15 @@ import { URL_ROOT } from 'endpoint'
 
 const CartCheckoutButton = ({role}) => (
   <div className="row">
+    <Link to={`${URL_ROOT}/checkout`}>
     <button
       className="orange darken-3 btn-large sbox-checkout-button"
       disabled={
         role.toLowerCase() === 'guest'
       }>
-      {
-        (role.toLowerCase() === 'guest') ? (
-          <Link to={`${URL_ROOT}/checkout`}>
-            <span className="white-text">CHECKOUT</span>
-          </Link>
-        ): (
-          <span className="white-text">CHECKOUT</span>
-        )
-      }
+      <span className="white-text">CHECKOUT</span>
     </button>
+  </Link>
     {
       (role.toLowerCase() === 'guest') ? (
           <p>
