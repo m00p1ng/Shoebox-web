@@ -5,7 +5,9 @@ import { Link } from 'react-router'
 const NotFound = () => (
   <div>
     <h1>NotFound</h1>
-    <Link to={`${URL_ROOT}`}><button>Go home</button></Link>
+    <Link to={`${URL_ROOT}`}>
+      <button>Go home</button>
+    </Link>
   </div>
 )
 

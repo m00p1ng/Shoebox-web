@@ -16,7 +16,9 @@ const ProductItem = ({ product, onClickedAddToCart }) => (
           {product.brand}
         </span> <br />
         <div className="sbox-product-name">
-          <Link to={`${URL_ROOT}/shop/${product.slug}`}>{product.name}</Link>
+          <Link to={`${URL_ROOT}/shop/${product.slug}`}>
+            {product.name}
+          </Link>
         </div>
         <div className="sbox-price">
           Price: {product.price}

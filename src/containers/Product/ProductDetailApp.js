@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ProductDetailApp } from '../../components'
-import { loadProduct, clickAddToCart, updateViews } from '../../actions/product'
+import {
+  loadProduct,
+  clickAddToCart,
+  updateViews
+} from '../../actions/product'
 import { browserHistory } from 'react-router';
 import Loading from '../../constants/Loading/Loading'
 import { URL_ROOT } from 'endpoint'
@@ -39,7 +43,9 @@ class ProductDetailAppContainer extends Component {
             hasProduct ? (
               <ProductDetailApp
                 product={this.props.product[0]}
-                onClickedAddToCart={() => this.onClickedAddToCart(this.props.product[0])} />
+                onClickedAddToCart={() => {
+                  this.onClickedAddToCart(this.props.product[0])
+                }} />
             ): ( <Loading /> )
           ): ( browserHistory.push(`${URL_ROOT}/404`) )
         }

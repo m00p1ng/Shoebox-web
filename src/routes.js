@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
+import {
+  Router,
+  Route,
+  IndexRoute,
+  browserHistory,
+  Redirect
+} from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 import NotFound from './constants/404/NotFound'

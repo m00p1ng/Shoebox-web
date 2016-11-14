@@ -20,8 +20,13 @@ class CartAppContainer extends Component {
   hasItemInCart() {
     return (this.props.cart.length > 0) ? (
       <div>
-        <CartList products={this.props.cart} qty={this.props.qty}/>
-        <CartSummary products={this.props.cart} qty={this.props.qty} total={this.props.total} />
+        <CartList
+          products={this.props.cart}
+          qty={this.props.qty}/>
+        <CartSummary
+          products={this.props.cart}
+          qty={this.props.qty}
+          total={this.props.total} />
       </div>
     ) : ( <NoItemInCart /> )
   }

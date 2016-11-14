@@ -4,10 +4,10 @@ import { URL_ROOT } from 'endpoint'
 
 const NavbarBrandDropdown = () => (
   <ul id="sbox-brand-dropdown" className="dropdown-content">
-    <li><a href="#!">Nike</a></li>
-    <li><a href="#!">Vans</a></li>
-    <li><a href="#!">Converse</a></li>
-    <li><a href="#!">Allen Edmonds</a></li>
+    <li><a>Nike</a></li>
+    <li><a>Vans</a></li>
+    <li><a>Converse</a></li>
+    <li><a>Allen Edmonds</a></li>
   </ul>
 )
 

@@ -37,7 +37,14 @@ class ProductListAppContainer extends Component {
         key={product.slug}
         product={product}
         onClickedAddToCart={
-          () => this.onClickedAddToCart(product.name, product.slug, product, product.price)
+          () => {
+            this.onClickedAddToCart(
+              product.name,
+              product.slug,
+              product,
+              product.price
+            )
+          }
         }
       />
     )

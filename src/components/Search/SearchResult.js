@@ -13,7 +13,9 @@ const render_list = (list) => (
 
 const renderResult = (result, hasError, isLoading ,searchText) => {
   // if(isLoading) return(<h1>Loading...</h1>)
-  if (hasError) return (<h3>Oh sorry, <strong>{searchText}</strong> Not found</h3>)
+  if (hasError) return (
+    <h3>Oh sorry, <strong>{searchText}</strong> Not found</h3>
+  )
   if (result.length > 0) return (
     <div>
     <h3>Found {result.length} items</h3>

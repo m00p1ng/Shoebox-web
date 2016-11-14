@@ -55,7 +55,9 @@ const CartSummary = ({total, products, qty}) => (
     <div className="row">
       <div className="card white">
         <div className="card-content">
-          <p className="card-title sbox-summary-header padding-bottom-10">Order Summary</p>
+          <p className="card-title sbox-summary-header padding-bottom-10">
+            Order Summary
+          </p>
           <div className="divider"></div>
 
           {CartItemList(products, qty)}
