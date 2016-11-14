@@ -2,15 +2,31 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const CartCheckoutButton = () => (
-  <Link to={`${URL_ROOT}/checkout`}>
-    <div className="row">
-      <button
-        className="orange darken-3 btn-large sbox-checkout-button">
-        <span className="white-text">CHECKOUT</span>
-      </button>
-    </div>
-  </Link>
+const CartCheckoutButton = ({role}) => (
+  <div className="row">
+    <button
+      className="orange darken-3 btn-large sbox-checkout-button"
+      disabled={
+        role.toLowerCase() === 'guest'
+      }>
+      {
+        (role.toLowerCase() === 'guest') ? (
+          <Link to={`${URL_ROOT}/checkout`}>
+            <span className="white-text">CHECKOUT</span>
+          </Link>
+        ): (
+          <span className="white-text">CHECKOUT</span>
+        )
+      }
+    </button>
+    {
+      (role.toLowerCase() === 'guest') ? (
+          <p>
+            Please <Link to={`${URL_ROOT}/login`}>Login</Link>
+          </p>
+      ) : (<span></span>)
+    }
+  </div>
 )
 
 const CartOrderRow = ({left, right}) => (
@@ -53,7 +69,7 @@ const CartItemList = (products, qty) => (
   )
 )
 
-const CartSummary = ({total, products, qty}) => (
+const CartSummary = ({total, products, qty, role}) => (
   <div className="col s12 l4 offset-l1">
     <div className="row">
       <div className="card white">
@@ -78,7 +94,7 @@ const CartSummary = ({total, products, qty}) => (
       </div>
     </div>
 
-    <CartCheckoutButton />
+    <CartCheckoutButton role={role}/>
 
   </div>
 )

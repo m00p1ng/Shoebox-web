@@ -26,7 +26,8 @@ class CartAppContainer extends Component {
         <CartSummary
           products={this.props.cart}
           qty={this.props.qty}
-          total={this.props.total} />
+          total={this.props.total}
+          role={this.props.role}/>
       </div>
     ) : ( <NoItemInCart /> )
   }
@@ -44,7 +45,8 @@ class CartAppContainer extends Component {
 const mapStateToProps = (state) => ({
   cart: state.cart.productDetail,
   qty: state.cart.quantityById,
-  total: state.cart.total
+  total: state.cart.total,
+  role: state.user.role
 })
 
 const mapDispatchToProps = ({
