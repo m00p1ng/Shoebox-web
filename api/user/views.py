@@ -36,7 +36,7 @@ def query_all():
 
 
 def query_username(username):
-    return User.objects(username=username).exclude('password')
+    return User.objects(username=username).exclude('password').first()
 
 
 @csrf_exempt

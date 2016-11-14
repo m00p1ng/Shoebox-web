@@ -22,20 +22,20 @@ class Customers(User):
     shipDistrict = StringField(max_length=50, required=True)
     shipStreet = StringField(max_length=50, required=True)
     shipZipcode = StringField(max_length=10, required=True)
-    picture = StringField(max_length=1000)
+    picture = StringField(max_length=1000, required=True, default="/static/images/avatar_2x.png")
 
     def validation(data):
         err = []
         if 'username' not in data:
             err.append('Username cannot empty')
         else:
-            if len(data['username'])<6 or len(data['username'])>20:
+            if len(data['username']) < 6 or len(data['username']) > 20:
                 err.append('Username must be 6-20 characters')
         if 'password' not in data:
             err.append('Password cannot empty')
         else:
-            if len(data['password'])<6 or len(data['password'])>20:
-                err.append('Password must be 6-20 characters')
+            if len(data['password']) < 6:
+                err.append('Password must be at least 6 characters')
         if 'repassword' not in data:
             err.append('Repassword cannot empty')
         if 'password' in data and 'repassword' in data:

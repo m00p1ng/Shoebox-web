@@ -24,6 +24,7 @@ class Product_Create_API_Test(MongoTestCase):
             "discountPercent": 20
         }
     """
+
     def test_create_api(self):
         create_test_database()
         res = create_request(self.URL, self.CREATE_BODY)

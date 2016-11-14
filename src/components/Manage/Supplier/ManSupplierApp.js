@@ -1,8 +1,11 @@
 import React from 'react'
+import HeaderBarApp from '../HeaderBarApp'
 
 const ManSupplierApp = () => (
   <div>
-    <h1>Supplier App</h1>
+    <HeaderBarApp
+      link="supplier"
+      title="Supplier" />
   </div>
 )
 

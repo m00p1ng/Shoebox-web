@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.include.api import request_get, errors_to_json, request_get_to_json
+from api.include.api import request_get, errors_to_json
 from api.promotion.models import *
 from mongoengine import NotUniqueError
 import json

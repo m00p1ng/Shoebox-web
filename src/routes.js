@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
+import {
+  Router,
+  Route,
+  IndexRoute,
+  browserHistory,
+  Redirect
+} from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 import NotFound from './constants/404/NotFound'
@@ -27,6 +33,8 @@ import {
   CartApp,
   CheckoutApp,
 
+  OrderHistoryApp,
+
   ManageApp,
   ManOrderApp,
   ManPromotionApp,
@@ -42,8 +50,8 @@ export default (
       <IndexRoute component={Home} />
 
 
-      <Route path='shop' component={ShopApp} />
-      <route path='product'>
+      <route path='shop'>
+        <IndexRoute component={ShopApp} />
         <route path=':slug' component={ProductDetailApp} />
       </route>
       <Route path='cart' component={CartApp} />
@@ -56,6 +64,7 @@ export default (
       <Route path='register' component={RegisterApp} />
       <Route path='profile' component={ProfileApp} />
 
+      <Route path='history' component={OrderHistoryApp} />
 
       <Route path='manage'>
         <IndexRoute component={ManageApp} />

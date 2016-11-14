@@ -14,13 +14,16 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
       <nav>
         <div className="nav-wrapper sbox-white-nav">
           <NavbarLogo />
-          <a href="#" data-activates="mobile-demo" className="button-collapse">
+          <a data-activates="mobile-demo" className="button-collapse">
             <i className="material-icons">menu</i>
           </a>
           <NavbarDesktopMenu
             NumberOfCartItem={NumberOfCartItem}
+            Username={Username}
+            Role={Role}/>
+          <NavbarMobileMenu
+            NumberOfCartItem={NumberOfCartItem}
             Username={Username}/>
-          <NavbarMobileMenu />
         </div>
       </nav>
     </div>

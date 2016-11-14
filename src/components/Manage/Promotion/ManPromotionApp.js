@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
+import HeaderBarApp from '../HeaderBarApp'
 
 const ManPromotionApp = () => (
   <div>
-    <h1>ManPromotion App</h1>
+    <HeaderBarApp
+      link="promotion"
+      title="Promotion" />
   </div>
 )
 

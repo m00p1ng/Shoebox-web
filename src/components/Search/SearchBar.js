@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const SearchBar = ({onSearchChange}) => (
   <div className="row">
-    <div className="input-field col s6 offset-s3">
-      <input id="sb_search" type="text" className="validate" onChange={onSearchChange}/>
-      <label htmlFor="sb_search">Search</label>
+    <div className="form-style-6" id="sbox-search-form">
+    <input
+      id="sb_search"
+      type="text"
+      className="sbox-search-form-input"
+      onChange={onSearchChange}/>
     </div>
   </div>
 )
+
+SearchBar.propTypes = {
+  onSearchChange: PropTypes.func.isRequired
+}
 
 export default SearchBar

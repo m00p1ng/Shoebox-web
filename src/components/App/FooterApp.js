@@ -18,14 +18,16 @@ const FooterApp = () => (
                 <span className="grey-text text-lighten-3">About</span>
               </Link>
             </li>
-            <li><span className="grey-text text-lighten-3">Contact us</span></li>
+            <li>
+              <span className="grey-text text-lighten-3">Contact us</span>
+            </li>
           </ul>
         </div>
       </div>
     </div>
     <div className="footer-copyright">
       <div className="container">
-      Shoebox &copy; 2016 Copyright.
+        Shoebox &copy; 2016 Copyright.
       </div>
     </div>
   </footer>

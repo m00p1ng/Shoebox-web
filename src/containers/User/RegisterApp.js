@@ -1,60 +1,59 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { sendRegisterForm } from '../../actions/user'
+import { sendRegisterForm } from '../../actions/register'
 import { connect } from 'react-redux'
-import { RegisterApp } from '../../components'
-
-
-// let RegisterAppContainer = (props) => {
-//   const { handleSubmit, pristine, reset, submitting, sendRegisterForm } = props
-//   return(
-//     <div className="row">
-//       <h1>Register</h1>
-//       <div className="col s6 offset-s3">
-//
-//
-//         <form onSubmit={handleSubmit(sendRegisterForm)}>
-//           <div>
-//             <label>First Name</label>
-//             <div>
-//               <Field name="firstname" component="input" type="text" placeholder="First Name"/>
-//             </div>
-//           </div>
-//
-//           <div>
-//             <label>First Name</label>
-//             <div>
-//               <Field name="member.firstname" component="input" type="text" placeholder="First Name"/>
-//               <Field name="member.lastname" component="input" type="text" placeholder="First Name"/>
-//             </div>
-//           </div>
-//
-//           <div>
-//             <button type="submit" disabled={pristine || submitting}>Submit</button>
-//             <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-//           </div>
-//         </form>
-//
-//       </div>
-//     </div>
-//   )
-// }
+import {
+  RegisterApp,
+  RegisterAccount,
+  RegisterPersonalInfo,
+  RegisterAddress,
+  RegisterShipAddress,
+  RegisterCreditCard
+} from '../../components'
 
 class RegisterAppContainer extends Component {
-  render() {
-      const { handleSubmit, pristine, reset, submitting, sendRegisterForm } = this.props
-      return(
-        <RegisterApp
-          handleSubmit={handleSubmit(sendRegisterForm)}
-          pristine={pristine}
-          reset={reset}
-          submitting={submitting}/>
-      )
+   constructor(props) {
+    super(props)
+    this.nextPage = this.nextPage.bind(this)
+    this.previousPage = this.previousPage.bind(this)
+    this.state = {
+      page: 1
     }
-}
+  }
 
-RegisterAppContainer = reduxForm({
-  form: 'register'
-})(RegisterAppContainer);
+  nextPage() {
+    this.setState({ page: this.state.page + 1 })
+  }
+
+  previousPage() {
+    this.setState({ page: this.state.page - 1 })
+  }
+
+  pageName() {
+    const page = this.state.page
+    if(page === 1) return "Account"
+    if(page === 2) return "Personal Infomation"
+    if(page === 3) return "Address"
+    if(page === 4) return "Ship Address"
+    if(page === 5) return "Credit Card"
+  }
+
+  handleSubmit(values) {
+    this.props.sendRegisterForm(values)
+  }
+
+  render() {
+    const { onSubmit } = this.props
+    const { page } = this.state
+    return(
+      <RegisterApp pageName={this.pageName()}>
+        {page === 1 && <RegisterAccount onSubmit={this.nextPage}/>}
+        {page === 2 && <RegisterPersonalInfo previousPage={this.previousPage} onSubmit={this.nextPage}/>}
+        {page === 3 && <RegisterAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
+        {page === 4 && <RegisterShipAddress previousPage={this.previousPage} onSubmit={this.nextPage}/>}
+        {page === 5 && <RegisterCreditCard previousPage={this.previousPage} onSubmit={onSubmit} sendRegisterForm={this.handleSubmit.bind(this)}/>}
+      </RegisterApp>
+    )
+  }
+}
 
 export default connect(null, { sendRegisterForm })(RegisterAppContainer)

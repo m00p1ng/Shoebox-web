@@ -2,7 +2,15 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
+const renderOrder = (Role) => {
+  if(Role === 'employee') {
+    return (
+      <li><Link to={`${URL_ROOT}/manage/order`}>Order</Link></li>
+    )
+  }
+}
+
+const NavbarDesktopMenu = ({NumberOfCartItem, Username, Role}) => (
   <ul className="right hide-on-med-and-down">
     <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
     <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
@@ -25,6 +33,7 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username}) => (
       }
       </Link>
     </li>
+    {renderOrder(Role)}
     <li>
       <a
         className="dropdown-button"

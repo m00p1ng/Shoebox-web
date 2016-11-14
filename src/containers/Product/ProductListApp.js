@@ -27,7 +27,7 @@ class ProductListAppContainer extends Component {
       `Add&nbsp;&nbsp;
         <strong>${name}</strong>
       &nbsp;&nbsp;to cart`,
-      2000, 'rounded amber darken-1')
+      2000, 'amber darken-1')
     return this.props.clickAddToCart(slug, product, price)
   }
 
@@ -37,7 +37,14 @@ class ProductListAppContainer extends Component {
         key={product.slug}
         product={product}
         onClickedAddToCart={
-          () => this.onClickedAddToCart(product.name, product.slug, product, product.price)
+          () => {
+            this.onClickedAddToCart(
+              product.name,
+              product.slug,
+              product,
+              product.price
+            )
+          }
         }
       />
     )
@@ -45,7 +52,7 @@ class ProductListAppContainer extends Component {
 
   render() {
     let not_hasError = this.props.error !== true
-    let hasProducts = this.props.products.length > 1
+    let hasProducts = this.props.products.length > 0
     return (
       <div>
         {

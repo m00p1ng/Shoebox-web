@@ -1,6 +1,6 @@
 # Shoebox Web
 
-![Shoebox logo image](https://raw.githubusercontent.com/moopings/Shoebox-web/master/static/images/navigation_bar/logo_with_name.png)
+![Shoebox logo image](https://raw.githubusercontent.com/moopings/Shoebox-web/master/static/images/shoebox_logo.png)
 
 ## Pre Requirements
 - Python 3

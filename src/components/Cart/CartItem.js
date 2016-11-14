@@ -9,7 +9,7 @@ const CartItem = ({product, qty}) => (
 				</div>
 			</div>
 
-			<a href="#"><i className="material-icons sbox-cart-bin">cancel</i></a>
+			<a><i className="material-icons sbox-cart-bin">cancel</i></a>
 
 			<div className="col s12 l6">
 				<div className="card-content sbox-cart-content-detail">
@@ -18,7 +18,6 @@ const CartItem = ({product, qty}) => (
 					<div className="divider"></div>
 					<p className="sbox-price-in-cart">Price: $ {product.price}</p>
 					<p className="sbox-quantity-in-cart">Quantity: {qty}</p>
-          <p className="sbox-quantity-in-cart">Total: $ {product.price*qty}</p>
 				</div>
 			</div>
 		</div>

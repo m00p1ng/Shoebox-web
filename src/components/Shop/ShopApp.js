@@ -1,7 +1,13 @@
 import React from 'react'
+import HeaderBarApp from '../App/HeaderBarApp'
 
 const ShopApp = () => (
-  <h1>Shop App</h1>
+  <div>
+    <HeaderBarApp
+      title="Shop"
+      link="shop"
+    />
+  </div>
 )
 
 export default ShopApp

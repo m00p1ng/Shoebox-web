@@ -1,52 +1,112 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import RegisterRenderField from './RegisterRenderField'
+import RegisterValidate from './RegisterValidate'
 
-const RegisterPersonalInfo = () => (
-  <div>
-    <p>PersonalInfo:</p>
+const renderError = ({ meta: { touched, error } }) => touched && error ?
+  <span>{error}</span> : false
 
-    <div className="row">
-      <label>First Name</label>
-      <Field name="firstname" component="input" type="text"/>
-    </div>
+const RegisterPersonalInfo = (props) => {
+  const {
+    handleSubmit,
+    pristine,
+    previousPage,
+    submitting
+  } = props
 
-    <div className="row">
-      <label>Last Name</label>
-      <Field name="lastname" component="input" type="text"/>
-    </div>
+  return (
+    <form onSubmit={handleSubmit}>
 
-    <div className="row">
-      <label>Gender</label>
-      <Field name="gender" component="select">
-        <option></option>
-        <option value="1">Male</option>
-        <option value="2">Female</option>
-      </Field>
-    </div>
+      <Field
+        name="firstname"
+        component={RegisterRenderField}
+        type="text"
+        label="Firstname"/>
 
-    <div className="row">
-      <label>Birthday</label>
+      <Field
+        name="lastname"
+        component={RegisterRenderField}
+        type="text"
+        label="Lastname"/>
+
       <div className="row">
-        <Field name="birthday.day" component="input" type="text"/>
+        <label>Gender</label>
+        <div>
+          <label>
+            <Field
+              name="gender"
+              component="input"
+              type="radio"
+              value="male"/>
+            Male
+          </label>
+          <label>
+            <Field
+              name="gender"
+              component="input"
+              type="radio"
+              value="female"/>
+            Female
+          </label>
+          <Field name="gender" component={renderError}/>
+        </div>
       </div>
+
       <div className="row">
-        <Field name="birthday.month" component="input" type="text"/>
+        <label>Birthday</label>
+        <div className="row">
+          <Field
+            name="birthday.day"
+            component="input"
+            type="text"/>
+        </div>
+        <div className="row">
+          <Field
+            name="birthday.month"
+            component="input"
+            type="text"/>
+        </div>
+        <div className="row">
+          <Field
+            name="birthday.year"
+            component="input"
+            type="text"/>
+        </div>
       </div>
-      <div className="row">
-        <Field name="birthday.year" component="input" type="text"/>
+
+      <Field
+        name="email"
+        component={RegisterRenderField}
+        type="email"
+        label="E-mail"/>
+
+      <Field
+        name="phone"
+        component={RegisterRenderField}
+        type="text"
+        label="Phone"/>
+
+      <div>
+        <button
+          type="button"
+          className="btn"
+          onClick={previousPage}>
+            Previous
+        </button>
+        {' '}
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+            Next
+        </button>
       </div>
-    </div>
+    </form>
+  )
+}
 
-    <div className="row">
-      <label>E-mail</label>
-      <Field name="email" component="input" type="email"/>
-    </div>
-
-    <div className="row">
-      <label>Phone</label>
-      <Field name="phone" component="input" type="text"/>
-    </div>
-  </div>
-)
-
-export default RegisterPersonalInfo
+export default reduxForm({
+  form: "register",
+  destroyOnUnmount: false,
+  validate: RegisterValidate
+})(RegisterPersonalInfo)

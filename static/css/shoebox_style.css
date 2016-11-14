@@ -114,8 +114,7 @@
 }
 
 .sbox-checkout-button {
-    font-size: 25px;
-    text-align: center;
+    width: 100%;
 }
 
 .sbox-cart-bin {
@@ -129,4 +128,137 @@
     padding-right: 50px;
     height: 180px;
     width: auto;
+}
+
+i.sbox-giant-icon {
+  font-size: 20em;
+}
+
+i.sbox-icon-gray {
+  color: #BDBDBD;
+}
+
+/* Shoebox Header Styles */
+
+.sbox-header-bar {
+	/*background-color: #D32F2F;*/
+  background-color: #E57373;
+	height: 120px;
+	margin-bottom: 30px;
+}
+
+.sbox-header-text {
+  margin-top: 10px;
+}
+
+.sbox-header-bread {
+	position: relative;
+	top: 9px;
+}
+
+.sbox-header-bread span {
+	position: relative;
+	top: 2px;
+	font-size: 20px;
+}
+
+/* Shoebox Checkout Style */
+
+.sbox-checkout-detail {
+	padding-top: 29px;
+}
+
+.sbox-checkout-img {
+	height: 80px;
+	width: 80px;
+}
+
+.sbox-checkout-list {
+	height: 80px;
+}
+
+.sbox-grey-box {
+	background-color: #E0E0E0;
+	margin-top: 70px;
+}
+
+.sbox-grey-box-2 {
+	background-color: #E0E0E0;
+	margin-top: 20px;
+}
+
+.sbox-grey-box-header {
+	font-size: 18px;
+	padding-top: 25px;
+	padding-left: 20px;
+}
+
+.sbox-grey-box-address {
+	font-size: 14px;
+	padding-top: 10px;
+	padding-left: 20px;
+	margin-bottom: 30px;
+}
+
+.sbox-grey-box-card-number {
+	font-size: 14px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.sbox-grey-box-cvv {
+	font-size: 14px;
+	padding-left: 20px;
+}
+
+.sbox-checkout-cvv-input {
+  padding-left: 20px;
+}
+
+.sbox-edit-text {
+	float: right;
+	padding-right: 18px;
+	padding-top: 25px;
+}
+
+/* Shoebox Login Style*/
+
+#sbox-login-logo {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#sbox-login-card {
+  margin-top: 30px;
+}
+
+#sbox-login-form {
+  max-width: 500px;
+}
+
+.sbox-login-input {
+  text-align: center;
+  font-size: 18px;
+}
+
+#sbox-login-button {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+  text-align: center;
+}
+
+/* Shoebox Search Style */
+
+#sbox-search-form {
+  max-height: 100px;
+  font-size: 30px;
+}
+
+.sbox-search-form-input {
+  max-height: 0px;
 }

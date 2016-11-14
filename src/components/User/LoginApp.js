@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import LoginForm from './Form/LoginForm'
-import ErrorMsg from './Form/ErrorMsg'
 
 const LoginApp = ({
   onUsernameChange,
@@ -9,12 +8,11 @@ const LoginApp = ({
   errorMsg
 }) => (
   <div className="row">
-    <h1>Login</h1>
-    <div className="col s6 offset-s3">
-      <ErrorMsg errorMsg={errorMsg} />
+    <div className="col l6 offset-l3 m10 offset-m1 s12">
       <LoginForm
         onUsernameChange={onUsernameChange}
         onPasswordChange={onPasswordChange}
+        errorMsg={errorMsg}
         handleSubmit={handleSubmit}
       />
     </div>

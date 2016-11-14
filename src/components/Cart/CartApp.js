@@ -1,10 +1,16 @@
 import React, { PropTypes } from 'react'
+import HeaderBarApp from '../App/HeaderBarApp'
 
 const CartApp = ({children}) => (
-  <div className="container">
-    <div className="row">
-      <h1>My Cart</h1>
-      {children}
+  <div>
+    <HeaderBarApp
+      title="My Cart"
+      link="cart"
+    />
+    <div className="container">
+      <div className="row">
+        {children}
+      </div>
     </div>
   </div>
 )

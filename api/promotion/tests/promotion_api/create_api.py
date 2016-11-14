@@ -2,6 +2,7 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
+
 class employee_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
@@ -51,6 +52,7 @@ class promotion_Create_Fail_API_Test(MongoTestCase):
         ])
         self.assertEqual(data['created'], False)
 
+
     def test_create_name_duplicated(self):
         CREATE_BODY = """
             {
@@ -74,6 +76,7 @@ class promotion_Create_Fail_API_Test(MongoTestCase):
 
         self.assertEqual(data['errorMsg'],['promotion already exist'])
         self.assertEqual(data['created'], False)
+
 
     def test_create_JSON(self):
         CREATE_BODY = ""

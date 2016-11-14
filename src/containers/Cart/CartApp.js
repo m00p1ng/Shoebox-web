@@ -14,14 +14,20 @@ class CartAppContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-  return (this.props.qty !== nextProps.qty)
-}
+    return (this.props.qty !== nextProps.qty)
+  }
 
   hasItemInCart() {
     return (this.props.cart.length > 0) ? (
       <div>
-        <CartList products={this.props.cart} qty={this.props.qty}/>
-        <CartSummary products={this.props.cart} qty={this.props.qty} total={this.props.total} />
+        <CartList
+          products={this.props.cart}
+          qty={this.props.qty}/>
+        <CartSummary
+          products={this.props.cart}
+          qty={this.props.qty}
+          total={this.props.total}
+          role={this.props.role}/>
       </div>
     ) : ( <NoItemInCart /> )
   }
@@ -39,7 +45,8 @@ class CartAppContainer extends Component {
 const mapStateToProps = (state) => ({
   cart: state.cart.productDetail,
   qty: state.cart.quantityById,
-  total: state.cart.total
+  total: state.cart.total,
+  role: state.user.role
 })
 
 const mapDispatchToProps = ({

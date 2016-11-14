@@ -1,6 +1,7 @@
 export App from './App/App'
 export NavbarApp from './App/NavbarApp'
 export FooterApp from './App/FooterApp'
+export HeaderBarApp from './App/HeaderBarApp'
 
 export Home from './Home/Home'
 
@@ -18,10 +19,18 @@ export CartSummary from './Cart/CartSummary'
 export NoItemInCart from './Cart/NoItemInCart'
 
 export CheckoutApp from './Checkout/CheckoutApp'
+export CheckoutList from './Checkout/CheckoutList'
+export ShipAddress from './Checkout/ShipAddress'
+export PaymentMethod from './Checkout/PaymentMethod'
 
 export LogoutApp from './User/LogoutApp'
 export LoginApp from './User/LoginApp'
 export RegisterApp from './User/RegisterApp'
+export RegisterAccount from './User/Form/RegisterAccount'
+export RegisterPersonalInfo from './User/Form/RegisterPersonalInfo'
+export RegisterAddress from './User/Form/RegisterAddress'
+export RegisterShipAddress from './User/Form/RegisterShipAddress'
+export RegisterCreditCard from './User/Form/RegisterCreditCard'
 export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'
@@ -33,3 +42,5 @@ export ManProductApp from './Manage/Product/ManProductApp'
 export ManProductCreateApp from './Manage/Product/ManProductCreateApp'
 export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'
 export ManSupplierApp from './Manage/Supplier/ManSupplierApp'
+
+export OrderHistoryApp from './Order/OrderHistoryApp'

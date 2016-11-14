@@ -1,25 +1,58 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
+import RegisterRenderField from './RegisterRenderField'
+import RegisterValidate from './RegisterValidate'
 
-const RegisterCreditCard = () => (
-  <div>
-    <p>Credit Card Info:</p>
+const RegisterCreditCard = (props) => {
+  const {
+    handleSubmit,
+    pristine,
+    previousPage,
+    submitting,
+    sendRegisterForm
+  } = props
 
-    <div className="row">
-      <label>Number:</label>
-      <Field name="credit.id" component="input" type="text"/>
-    </div>
+  return (
+    <form onSubmit={handleSubmit(sendRegisterForm)}>
 
-    <div className="row">
-      <label>Type:</label>
-      <Field name="credit.type" component="input" type="text"/>
-    </div>
+      <Field
+        name="credit.id"
+        component={RegisterRenderField}
+        type="text"
+        label="Number"/>
 
-    <div className="row">
-      <label>EXP:</label>
-      <Field name="credit.exp" component="input" type="text"/>
-    </div>
-  </div>
-)
+      <Field
+        name="credit.type"
+        component={RegisterRenderField}
+        type="text"
+        label="Type"/>
 
-export default RegisterCreditCard
+      <Field
+        name="credit.exp"
+        component={RegisterRenderField}
+        type="text"
+        label="EXP"/>
+
+      <div>
+        <button
+          type="button"
+          className="btn"
+          onClick={previousPage}>
+            Previous
+        </button>
+        {' '}
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+            Submit
+        </button>
+      </div>
+    </form>
+  )
+}
+export default reduxForm({
+  form: "register",
+  destroyOnUnmount: false,
+  validate: RegisterValidate
+})(RegisterCreditCard)
