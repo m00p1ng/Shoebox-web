@@ -5,9 +5,7 @@ import { URL_ROOT } from 'endpoint'
 const ShipAddress = () => (
 	<div className="row">
 		<div className="col s10 offset-s1 sb-grey-box">
-			<div className="sb-edit-text">
-        <a href="#!">Edit</a>
-      </div>
+			<div className="sb-edit-text"><a href="#!">Edit</a></div>
 
 			<div className="sb-grey-box-header">
 				Shipping Address:
