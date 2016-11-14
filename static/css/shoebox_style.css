@@ -142,7 +142,8 @@ i.sbox-icon-gray {
 
 .sbox-header-bar {
 	/*background-color: #D32F2F;*/
-  background-color: #E57373;
+    /*background-color: #E57373;*/
+	background-color: #EE6573;
 	height: 120px;
 	margin-bottom: 30px;
 }
