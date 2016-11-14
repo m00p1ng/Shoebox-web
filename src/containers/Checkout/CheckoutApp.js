@@ -7,6 +7,8 @@ import {
   PaymentMethod
 } from '../../components'
 import { getCartItem } from '../../actions/cart'
+import { browserHistory } from 'react-router';
+import { URL_ROOT } from 'endpoint'
 
 const DividerLine = () => (
   <div className="row">
@@ -25,14 +27,21 @@ class CheckoutAppContainer extends Component {
 
   render() {
     return (
-      <CheckoutApp>
-        <ShipAddress />
-        <CheckoutList
-          products={this.props.cart}
-          qty={this.props.qty}/>
-    		<DividerLine />
-        <PaymentMethod />
-      </CheckoutApp>
+      <div>
+        {
+          (this.props.role.toLowerCase() !== 'guest') ? (
+            <CheckoutApp>
+              <ShipAddress />
+              <CheckoutList
+                products={this.props.cart}
+                qty={this.props.qty}/>
+          		<DividerLine />
+              <PaymentMethod />
+              {this.props.role}
+            </CheckoutApp>
+          ) : ( browserHistory.push(`${URL_ROOT}/login`) )
+        }
+      </div>
     )
   }
 }
@@ -40,7 +49,8 @@ class CheckoutAppContainer extends Component {
 const mapStateToProps = (state) => ({
   cart: state.cart.productDetail,
   qty: state.cart.quantityById,
-  total: state.cart.total
+  total: state.cart.total,
+  role: state.user.role
 })
 
 const mapDispatchToProps = ({
