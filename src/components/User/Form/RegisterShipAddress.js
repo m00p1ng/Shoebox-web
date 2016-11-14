@@ -4,7 +4,13 @@ import RegisterRenderField from './RegisterRenderField'
 import RegisterValidate from './RegisterValidate'
 
 const RegisterShipAddress = (props) => {
-  const { handleSubmit, pristine, previousPage, submitting } = props
+  const {
+    handleSubmit,
+    pristine,
+    previousPage,
+    submitting
+  } = props
+  
   return (
     <form onSubmit={handleSubmit}>
 
@@ -33,8 +39,19 @@ const RegisterShipAddress = (props) => {
         label="Zipcode"/>
 
       <div>
-        <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
-        <button type="submit" className="btn" disabled={pristine || submitting}>Next</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={previousPage}>
+            Previous
+        </button>
+        {' '}
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+          Next
+        </button>
       </div>
     </form>
   )

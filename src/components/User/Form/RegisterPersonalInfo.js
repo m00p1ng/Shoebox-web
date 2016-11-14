@@ -7,7 +7,13 @@ const renderError = ({ meta: { touched, error } }) => touched && error ?
   <span>{error}</span> : false
 
 const RegisterPersonalInfo = (props) => {
-  const { handleSubmit, pristine, previousPage, submitting } = props
+  const {
+    handleSubmit,
+    pristine,
+    previousPage,
+    submitting
+  } = props
+
   return (
     <form onSubmit={handleSubmit}>
 
@@ -26,8 +32,22 @@ const RegisterPersonalInfo = (props) => {
       <div className="row">
         <label>Gender</label>
         <div>
-          <label><Field name="gender" component="input" type="radio" value="male"/> Male</label>
-          <label><Field name="gender" component="input" type="radio" value="female"/> Female</label>
+          <label>
+            <Field
+              name="gender"
+              component="input"
+              type="radio"
+              value="male"/>
+            Male
+          </label>
+          <label>
+            <Field
+              name="gender"
+              component="input"
+              type="radio"
+              value="female"/>
+            Female
+          </label>
           <Field name="gender" component={renderError}/>
         </div>
       </div>
@@ -35,13 +55,22 @@ const RegisterPersonalInfo = (props) => {
       <div className="row">
         <label>Birthday</label>
         <div className="row">
-          <Field name="birthday.day" component="input" type="text"/>
+          <Field
+            name="birthday.day"
+            component="input"
+            type="text"/>
         </div>
         <div className="row">
-          <Field name="birthday.month" component="input" type="text"/>
+          <Field
+            name="birthday.month"
+            component="input"
+            type="text"/>
         </div>
         <div className="row">
-          <Field name="birthday.year" component="input" type="text"/>
+          <Field
+            name="birthday.year"
+            component="input"
+            type="text"/>
         </div>
       </div>
 
@@ -58,8 +87,19 @@ const RegisterPersonalInfo = (props) => {
         label="Phone"/>
 
       <div>
-        <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
-        <button type="submit" className="btn" disabled={pristine || submitting}>Next</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={previousPage}>
+            Previous
+        </button>
+        {' '}
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+            Next
+        </button>
       </div>
     </form>
   )

@@ -33,7 +33,12 @@ const RegisterAccount = (props) => {
         label="Picture"/>
 
       <div>
-        <button type="submit" className="btn" disabled={pristine || submitting}>Next</button>
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+            Next
+        </button>
       </div>
     </form>
   )

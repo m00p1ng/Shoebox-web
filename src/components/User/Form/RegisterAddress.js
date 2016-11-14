@@ -33,8 +33,19 @@ const RegisterAddress = (props) => {
         label="Zipcode"/>
 
       <div>
-        <button type="button" className="btn" onClick={previousPage}>Previous</button>{' '}
-        <button type="submit" className="btn" disabled={pristine || submitting}>Next</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={previousPage}>
+            Previous
+        </button>
+        {' '}
+        <button
+          type="submit"
+          className="btn"
+          disabled={pristine || submitting}>
+            Next
+        </button>
       </div>
     </form>
   )

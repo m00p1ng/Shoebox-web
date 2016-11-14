@@ -34,7 +34,7 @@ class RegisterAppContainer extends Component {
     if(page === 2) return "Personal Infomation"
     if(page === 3) return "Address"
     if(page === 4) return "Ship Address"
-    if(page === 5) return "Credit Cart"
+    if(page === 5) return "Credit Card"
   }
 
   handleSubmit(values) {
