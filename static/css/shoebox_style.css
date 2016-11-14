@@ -114,8 +114,7 @@
 }
 
 .sbox-checkout-button {
-    font-size: 25px;
-    text-align: center;
+    width: 100%;
 }
 
 .sbox-cart-bin {
@@ -221,7 +220,6 @@ i.sbox-icon-gray {
 	padding-right: 18px;
 	padding-top: 25px;
 }
-
 
 /* Shoebox Login Style*/
 

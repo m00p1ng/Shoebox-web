@@ -3,15 +3,14 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const CartCheckoutButton = () => (
-  <div className="row">
-    <div className="card orange darken-3">
-      <Link to={`${URL_ROOT}/checkout`}>
-        <div className="card-content white-text">
-          <p className="sbox-checkout-button">CHECKOUT</p>
-        </div>
-      </Link>
+  <Link to={`${URL_ROOT}/checkout`}>
+    <div className="row">
+      <button
+        className="orange darken-3 btn-large sbox-checkout-button">
+        <span className="white-text">CHECKOUT</span>
+      </button>
     </div>
-  </div>
+  </Link>
 )
 
 const CartOrderRow = ({left, right}) => (
@@ -20,7 +19,9 @@ const CartOrderRow = ({left, right}) => (
       <p className="sbox-cart-subtotal">{left}</p>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-subtotal"><strong>{right}</strong></p>
+      <p className="sbox-cart-subtotal">
+        <strong>{right}</strong>
+      </p>
     </div>
   </div>
 )
@@ -33,7 +34,9 @@ const CartItemRow = ({qty, name, price}) => (
       </p>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-subtotal"><strong>${price*qty}</strong></p>
+      <p className="sbox-cart-subtotal">
+        <strong>${price*qty}</strong>
+      </p>
     </div>
   </div>
 )
