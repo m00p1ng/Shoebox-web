@@ -292,3 +292,45 @@ i.sbox-icon-gray {
 .sbox-search-form-input {
   max-height: 0px;
 }
+
+/* new checkout style */
+
+.sb-checkout-list2 {
+}
+
+.sb-checkout-list2-brand {
+	font-weight: 500;
+}
+
+.sb-checkout-img2 {
+	height: 120px;
+	width: 120px;
+}
+
+.sb-checkout-middle-in-card {
+	margin-top: 17px;
+}
+
+.sb-checkout-margin-in-card {
+	margin-top: 7px
+}
+
+.sb-checkout-list2-right {
+	float: right;
+}
+
+.sb-bold {
+	font-weight: 500;
+}
+
+.sb-checkout-list-header {
+	font-size: 16px;
+}
+
+.sb-checkout-list-preview {
+	margin-left: 25px;
+}
+
+.sb-checkout-list-row {
+	margin-top: -20px;
+}
