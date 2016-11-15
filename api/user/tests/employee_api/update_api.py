@@ -15,6 +15,7 @@ class employee_Updated_API_Test(MongoTestCase):
         data = json.loads(res.content.decode())
         self.assertEqual(data['updated'], True)
 
+
 class employee_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 

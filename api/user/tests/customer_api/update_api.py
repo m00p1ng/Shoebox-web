@@ -21,7 +21,6 @@ class customer_Updated_API_Test(MongoTestCase):
 class customer_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-
     def test_update_no_item(self):
 
         UPDATE_BODY = {'phone' : '087-777-7777'}

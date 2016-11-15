@@ -10,7 +10,8 @@ class employee_Create_API_Test(MongoTestCase):
         res = create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
 
-            self.assertEqual(data['created'], True)
+        self.assertEqual(data['created'], True)
+
 
 class employee_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True

@@ -12,6 +12,7 @@ class customer_Create_API_Test(MongoTestCase):
 
         self.assertEqual(data['created'], True)
 
+
 class customer_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
