@@ -2,7 +2,7 @@ import React from 'react'
 
 const CheckoutItem = ({product, qty}) => (
 	<div className="row sb-checkout-list-row">
-		<div className="col s10 offset-s1">
+		<div className="col s6 offset-s1">
 			<div className="card horizontal sb-checkout-list2">
 				<div className="card-image">
 					<img className="sb-checkout-img2" src={product.picture} alt="img01"  />
