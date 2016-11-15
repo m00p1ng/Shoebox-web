@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckoutSummary = ({total}) => (
+const CheckoutSummary = ({total, checkout}) => (
 <div className="col offset-s1 l3 offset-l1" >
 
   <div className="row" >
@@ -53,7 +53,8 @@ const CheckoutSummary = ({total}) => (
       <button
         className="waves-effect waves-light
           orange darken-3 btn-large
-          sb-pay-button">
+          sb-pay-button"
+        onClick={checkout}>
         PAY NOW
       </button>
     </div>

@@ -1,3 +1,5 @@
+import { CALL_API } from 'redux-api-middleware'
+import { ORDER_ENDPOINT } from 'endpoint'
 import {
   LOAD_CART_ITEM_REQUEST,
   LOAD_CART_ITEM_SUCCESS,
@@ -5,7 +7,11 @@ import {
 
   CHECKOUT_REQUEST,
   CHECKOUT_SUCCESS,
-  CHECKOUT_FAILURE
+  CHECKOUT_FAILURE,
+
+  SEND_ORDER_REQUEST,
+  SEND_ORDER_SUCCESS,
+  SEND_ORDER_FAILURE,
 } from 'actionTypes'
 
 const receiveCart = (cart) => ({
@@ -15,16 +21,33 @@ const receiveCart = (cart) => ({
   }
 })
 
-export const checkout = products => (dispatch, getState) => {
-  const { cart } = getState()
-
-  dispatch({
-    type: CHECKOUT_REQUEST
+const formatOrder = (cart) => {
+  const prodIDs = cart.addedIds
+  let order = []
+  prodIDs.map((prodID) => {
+    let detail = {}
+    detail['product'] = prodID
+    detail['qty'] = cart.quantityById[prodID]
+    detail['price'] = (cart.subtotalById[prodID]/cart.quantityById[prodID])
+    detail['subtotal'] = cart.subtotalById[prodID]
+    order.push(detail)
   })
-  shop.buyProducts(products, () => {
-    dispatch({
-      type: CHECKOUT_SUCCESS,
-      cart
-    })
-  })
+  return order
 }
+
+export const checkout = (cart) => ({
+  [CALL_API]: {
+    endpoint: `${ORDER_ENDPOINT}`,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formatOrder(cart)),
+    types: [
+      SEND_ORDER_REQUEST,
+      SEND_ORDER_SUCCESS,
+      SEND_ORDER_FAILURE
+    ]
+  }
+})

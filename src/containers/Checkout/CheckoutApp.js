@@ -6,6 +6,7 @@ import {
   CheckoutList,
   CheckoutBottom
 } from '../../components'
+import { checkout } from '../../actions/cart'
 import { browserHistory } from 'react-router';
 import { URL_ROOT } from 'endpoint'
 
@@ -33,7 +34,8 @@ class CheckoutAppContainer extends Component {
                 qty={this.props.qty}/>
           		<DividerLine />
               <CheckoutBottom
-                total={this.props.total}/>
+                total={this.props.total}
+                checkout={() => this.props.checkout(this.props.allcart)}/>
             </CheckoutApp>
           ) : ( browserHistory.push(`${URL_ROOT}/login`) )
         }
@@ -43,6 +45,7 @@ class CheckoutAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  allcart: state.cart,
   cart: state.cart.productDetail,
   qty: state.cart.quantityById,
   total: state.cart.total,
@@ -51,6 +54,11 @@ const mapStateToProps = (state) => ({
   user: state.user.detail
 })
 
+const mapDispatchToProps = ({
+  checkout
+})
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CheckoutAppContainer)
