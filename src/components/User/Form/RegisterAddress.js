@@ -4,7 +4,7 @@ import RegisterRenderField from './RegisterRenderField'
 import RegisterValidate from './RegisterValidate'
 
 const RegisterAddress = (props) => {
-  const { handleSubmit, pristine, previousPage, submitting } = props
+  const { handleSubmit, previousPage, invalid, submitting } = props
   return(
     <form onSubmit={handleSubmit}>
 
@@ -43,7 +43,7 @@ const RegisterAddress = (props) => {
         <button
           type="submit"
           className="btn"
-          disabled={pristine || submitting}>
+          disabled={invalid || submitting}>
             Next
         </button>
       </div>

@@ -6,8 +6,8 @@ import RegisterValidate from './RegisterValidate'
 const RegisterCreditCard = (props) => {
   const {
     handleSubmit,
-    pristine,
     previousPage,
+    invalid,
     submitting,
     sendRegisterForm
   } = props
@@ -44,7 +44,7 @@ const RegisterCreditCard = (props) => {
         <button
           type="submit"
           className="btn"
-          disabled={pristine || submitting}>
+          disabled={invalid || submitting}>
             Submit
         </button>
       </div>

@@ -6,11 +6,11 @@ import RegisterValidate from './RegisterValidate'
 const RegisterShipAddress = (props) => {
   const {
     handleSubmit,
-    pristine,
     previousPage,
+    invalid,
     submitting
   } = props
-  
+
   return (
     <form onSubmit={handleSubmit}>
 
@@ -49,7 +49,7 @@ const RegisterShipAddress = (props) => {
         <button
           type="submit"
           className="btn"
-          disabled={pristine || submitting}>
+          disabled={invalid || submitting}>
           Next
         </button>
       </div>

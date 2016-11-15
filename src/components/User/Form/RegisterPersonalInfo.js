@@ -9,8 +9,8 @@ const renderError = ({ meta: { touched, error } }) => touched && error ?
 const RegisterPersonalInfo = (props) => {
   const {
     handleSubmit,
-    pristine,
     previousPage,
+    invalid,
     submitting
   } = props
 
@@ -97,7 +97,7 @@ const RegisterPersonalInfo = (props) => {
         <button
           type="submit"
           className="btn"
-          disabled={pristine || submitting}>
+          disabled={invalid || submitting}>
             Next
         </button>
       </div>
