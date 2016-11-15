@@ -15,11 +15,6 @@ const receiveCart = (cart) => ({
   }
 })
 
-export const getCartItem = () =>
-  (dispatch, getState) => {
-      dispatch(receiveCart(getState().cart))
-  }
-
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 

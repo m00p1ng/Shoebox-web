@@ -45,7 +45,7 @@ const CartItemRow = ({qty, name, price}) => (
     </div>
     <div className="right-align">
       <p className="sbox-cart-subtotal">
-        <strong>${price*qty}</strong>
+        <strong>$ {price*qty}</strong>
       </p>
     </div>
   </div>
@@ -83,7 +83,7 @@ const CartSummary = ({total, products, qty, role}) => (
 
           <CartOrderRow
             left="Total"
-            right={`$${total}`}/>
+            right={`$ ${total}`}/>
         </div>
       </div>
     </div>

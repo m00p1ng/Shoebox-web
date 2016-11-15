@@ -6,12 +6,8 @@ import {
   CartSummary,
   NoItemInCart
 } from '../../components'
-import { getCartItem } from '../../actions/cart'
 
 class CartAppContainer extends Component {
-  componentDidMount() {
-      this.props.getCartItem()
-  }
 
   shouldComponentUpdate(nextProps) {
     return (this.props.qty !== nextProps.qty)
@@ -49,11 +45,6 @@ const mapStateToProps = (state) => ({
   role: state.user.role
 })
 
-const mapDispatchToProps = ({
-  getCartItem
-})
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(CartAppContainer)
