@@ -14,7 +14,7 @@ class NavbarAppContainer extends Component {
     role: PropTypes.string.isRequired,
     getUsername: PropTypes.func.isRequired
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.getUsername().then(() => {
       if(this.props.role.toLowerCase() === 'customer')
         this.props.getCustomerDetail(this.props.username)
