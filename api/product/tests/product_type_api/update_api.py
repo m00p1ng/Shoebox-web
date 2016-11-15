@@ -1,21 +1,17 @@
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
+from .create_data import *
 import json
 
 class productType_Update_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/type'
-    URL_TYPE = '/api/product/type/running'
-    CREATE_BODY = """{ "name": "running" }"""
-
-
     def test_update_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(URL_TYPE, json.dumps(CREATE_BODY))
 
-        UPDATE_BODY = """{"name": "walking"}"""
+        UPDATE_BODY = {"name": "walking"}
 
-        res = update_request(self.URL_TYPE, UPDATE_BODY)
+        res = update_request(URL_TYPE_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['updated'], True)
@@ -23,14 +19,10 @@ class productType_Update_API_Test(MongoTestCase):
 class productType_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/type'
-    URL_TYPE = '/api/product/type/running'
-    CREATE_BODY = """{ "name": "running" }"""
-
     def test_update_no_item(self):
-        UPDATE_BODY = """{"name": "walking"}"""
+        UPDATE_BODY = {"name": "walking"}
 
-        res = update_request(self.URL_TYPE, UPDATE_BODY)
+        res = update_request(URL_TYPE_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['This productType not exist'])
@@ -38,10 +30,10 @@ class productType_Update_Fail_API_Test(MongoTestCase):
 
 
     def test_update_no_data(self):
-        UPDATE_BODY = "{}"
+        UPDATE_BODY = {}
 
-        create_request(self.URL, self.CREATE_BODY)
-        res = update_request(self.URL_TYPE, UPDATE_BODY)
+        create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        res = update_request(URL_TYPE_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
@@ -51,8 +43,8 @@ class productType_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, self.CREATE_BODY)
-        res = update_request(self.URL_TYPE, UPDATE_BODY)
+        create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        res = update_request(URL_TYPE_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
