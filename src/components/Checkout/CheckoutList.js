@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import CheckoutItem from './CheckoutItem'
 
 const CheckoutList = ({products, qty}) => (
@@ -15,5 +15,10 @@ const CheckoutList = ({products, qty}) => (
     }
 	</div>
 )
+
+CheckoutList.propTypes = {
+  products: PropTypes.array.isRequired,
+  qty: PropTypes.array.isRequired
+}
 
 export default CheckoutList

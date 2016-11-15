@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -33,5 +33,9 @@ const CheckoutApp = ({children}) => (
     </div>
   </div>
 )
+
+CheckoutApp.propTypes = {
+	children: PropTypes.node.isRequired
+}
 
 export default CheckoutApp

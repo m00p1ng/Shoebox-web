@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const CheckoutItem = ({product, qty}) => (
 	<div className="row sb-checkout-list-row">
@@ -26,5 +26,10 @@ const CheckoutItem = ({product, qty}) => (
 		</div>
 	</div>
 )
+
+CheckoutItem.propTypes = {
+	product: PropTypes.object.isRequired,
+	qty: PropTypes.number.isRequired
+}
 
 export default CheckoutItem

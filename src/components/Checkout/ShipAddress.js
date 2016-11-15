@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -19,5 +19,9 @@ const ShipAddress = ({user}) => (
 		</div>
 	</div>
 )
+
+ShipAddress.propTypes = {
+	user: PropTypes.object.isRequired
+}
 
 export default ShipAddress

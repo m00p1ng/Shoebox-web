@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const CheckoutSummary = ({total, checkout}) => (
 <div className="col offset-s1 l3 offset-l1" >
@@ -62,5 +62,10 @@ const CheckoutSummary = ({total, checkout}) => (
 
 </div>
 )
+
+CheckoutSummary.propTypes = {
+  total: PropTypes.number.isRequired,
+  checkout: PropTypes.func.isRequired
+}
 
 export default CheckoutSummary
