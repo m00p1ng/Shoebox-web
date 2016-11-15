@@ -19,9 +19,15 @@ def response_print(res):
 
 def gen_supplier(total):
     URL = "http://localhost:8000/api/supplier/"
-    supplier_list = ["nike","puma","bata","addidas","converse"]
+    supplier_list = [
+        "Nike",
+        "Puma",
+        "Bata",
+        "Addidas",
+        "Converse"
+    ]
     for i in range(total):
-        name = supplier_list[i] 
+        name = supplier_list[i]
         payload =  {
             "name": name,
             "phone": fake.phone_number(),
@@ -85,4 +91,3 @@ if __name__ == '__main__':
             find_supplier(sys.argv[2])
         else:
             find_supplier()
-
