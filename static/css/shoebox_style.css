@@ -13,6 +13,12 @@
     left: 30px;
 }
 
+#sbox-nav-logo-small {
+  height: 48px;
+  position: relative;
+  top: 4.5px;
+}
+
 .sbox-white-nav {
     background: #FAFAFA;
 }
