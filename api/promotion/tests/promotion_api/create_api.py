@@ -1,42 +1,23 @@
 from test_addons import MongoTestCase
 from api.include.test import create_request
+from .create_body import *
 import json
 
 
 class employee_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/promotion/'
-    CREATE_BODY = """
-        {
-        	"name" : "FREE",
-            "cutpercent" : 100,
-            "dateStart" : {
-                "year" : 2016,
-                "month" : 11,
-                "day" : 10
-            },
-            "dateEnd" : {
-                "year" : 2020,
-                "month" : 11,
-                "day" : 10
-            }
-        }
-    """
-
     def test_create_api(self):
-        res = create_request(self.URL, self.CREATE_BODY)
+        res = create_request(URL, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
         self.assertEqual(data['created'], True)
 
 class promotion_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/promotion/'
-
     def test_create_empty(self):
-        CREATE_BODY = """{}"""
-        res = create_request(self.URL, CREATE_BODY)
+        CREATE_BODY = {}
+        res = create_request(URL, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'],[
             "Promotion name cannot empty",
@@ -54,24 +35,8 @@ class promotion_Create_Fail_API_Test(MongoTestCase):
 
 
     def test_create_name_duplicated(self):
-        CREATE_BODY = """
-            {
-        	    "name" : "FREE",
-                "cutpercent" : 100,
-                "dateStart" : {
-                    "year" : 2016,
-                    "month" : 11,
-                    "day" : 10
-                },
-                "dateEnd" : {
-                    "year" : 2020,
-                    "month" : 11,
-                    "day" : 10
-                }
-            }
-        """
-        create_request(self.URL, CREATE_BODY)
-        res = create_request(self.URL, CREATE_BODY)
+        create_request(URL, json.dumps(CREATE_BODY))
+        res = create_request(URL, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'],['promotion already exist'])
@@ -80,7 +45,7 @@ class promotion_Create_Fail_API_Test(MongoTestCase):
 
     def test_create_JSON(self):
         CREATE_BODY = ""
-        res = create_request(self.URL, CREATE_BODY)
+        res = create_request(URL, CREATE_BODY)
         data = json.loads(res.content.decode())
         self.assertEqual(data['errorMsg'],['JSON Decode error'])
         self.assertEqual(data['created'], False)

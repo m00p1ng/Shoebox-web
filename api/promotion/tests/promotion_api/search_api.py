@@ -1,36 +1,17 @@
 from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request
+from .create_body import *
 import json
 
 class Promotion_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/promotion'
-    URL_PROMOTION = '/api/promotion/free'
-    CREATE_BODY = """
-        {
-        	"name" : "FREE",
-            "cutpercent" : 100,
-            "dateStart" : {
-                "year" : 2016,
-                "month" : 11,
-                "day" : 10
-            },
-            "dateEnd" : {
-                "year" : 2020,
-                "month" : 11,
-                "day" : 10
-            }
-        }
-    """
-
-
     def test_search_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(URL, json.dumps(CREATE_BODY))
 
         c = Client()
-        res = c.get(self.URL_PROMOTION)
+        res = c.get(URL_NAME)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'FREE')
