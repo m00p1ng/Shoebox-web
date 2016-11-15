@@ -25,10 +25,6 @@ import {
   GET_EMPLOYEE_DETAIL_REQUEST,
   GET_EMPLOYEE_DETAIL_SUCCESS,
   GET_EMPLOYEE_DETAIL_FAILURE,
-
-  REGISTER_CUSTOMER_REQUEST,
-  REGISTER_CUSTOMER_SUCCESS,
-  REGISTER_CUSTOMER_FAILURE
 } from 'actionTypes'
 
 export const onLogin = (values) =>({
@@ -102,28 +98,6 @@ export const getEmployeeDetail = (username) => ({
       GET_EMPLOYEE_DETAIL_REQUEST,
       GET_EMPLOYEE_DETAIL_SUCCESS,
       GET_EMPLOYEE_DETAIL_FAILURE
-    ]
-  }
-})
-
-export const sendRegisterForm = (values) =>
-  (dispatch) => {
-    dispatch(registerCustomer(values))
-  }
-
-const registerCustomer = (values) => ({
-  [CALL_API]: {
-    endpoint: `${USER_ENDPOINT}/customer`,
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(values),
-    types: [
-      REGISTER_CUSTOMER_REQUEST,
-      REGISTER_CUSTOMER_SUCCESS,
-      REGISTER_CUSTOMER_FAILURE
     ]
   }
 })

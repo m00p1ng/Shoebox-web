@@ -31,6 +31,7 @@ export RegisterPersonalInfo from './User/Form/RegisterPersonalInfo'
 export RegisterAddress from './User/Form/RegisterAddress'
 export RegisterShipAddress from './User/Form/RegisterShipAddress'
 export RegisterCreditCard from './User/Form/RegisterCreditCard'
+export RegisterSuccessApp from './User/RegisterSuccessApp'
 export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'

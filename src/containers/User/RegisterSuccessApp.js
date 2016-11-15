@@ -1,0 +1,20 @@
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { RegisterSuccessApp } from '../../components'
+import { browserHistory } from 'react-router'
+import { URL_ROOT } from 'endpoint'
+
+class RegisterSuccessAppContainer extends Component {
+  componentDidMount() {
+    setTimeout(() => browserHistory.push(`${URL_ROOT}`), 5000)
+  }
+
+  render() {
+    return (
+      <RegisterSuccessApp />
+    )
+  }
+}
+
+
+export default connect()(RegisterSuccessAppContainer)

@@ -28,6 +28,7 @@ import {
   LoginApp,
   LogoutApp,
   RegisterApp,
+  RegisterSuccessApp,
   ProfileApp,
 
   CartApp,
@@ -61,7 +62,10 @@ export default (
 
       <Route path='login' component={LoginApp} />
       <Route path='logout' component={LogoutApp} />
-      <Route path='register' component={RegisterApp} />
+      <route path='register'>
+        <IndexRoute component={RegisterApp} />
+        <route path='Success' component={RegisterSuccessApp} />
+      </route>
       <Route path='profile' component={ProfileApp} />
 
       <Route path='history' component={OrderHistoryApp} />

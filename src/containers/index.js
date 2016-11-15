@@ -15,6 +15,7 @@ export CheckoutApp from './Checkout/CheckoutApp'
 export LoginApp from './User/LoginApp'
 export LogoutApp from './User/LogoutApp'
 export RegisterApp from './User/RegisterApp'
+export RegisterSuccessApp from './User/RegisterSuccessApp'
 export ProfileApp from './User/ProfileApp'
 
 export SearchApp from './Search/SearchApp'
