@@ -6,7 +6,7 @@ import { URL_ROOT } from 'endpoint'
 
 class RegisterSuccessAppContainer extends Component {
   componentDidMount() {
-    setTimeout(() => browserHistory.push(`${URL_ROOT}`), 5000)
+    setTimeout(() => browserHistory.push(`${URL_ROOT}`), 3000)
   }
 
   render() {

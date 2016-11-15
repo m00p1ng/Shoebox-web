@@ -12,7 +12,7 @@ class Customers(User):
     city = StringField(max_length=50)
     district = StringField(max_length=50)
     street = StringField(max_length=50)
-    zipcode = StringField(max_length=10)
+    zipcode = StringField(max_length=20)
     phone = StringField(max_length=20)
     role = StringField(max_length=20, required=True, default="customer")
     creditType = StringField(max_length=10, required=True)
@@ -21,7 +21,7 @@ class Customers(User):
     shipCity = StringField(max_length=50, required=True)
     shipDistrict = StringField(max_length=50, required=True)
     shipStreet = StringField(max_length=50, required=True)
-    shipZipcode = StringField(max_length=10, required=True)
+    shipZipcode = StringField(max_length=20, required=True)
     picture = StringField(max_length=1000, required=True, default="/static/images/avatar_2x.png")
 
     def validation(data):
