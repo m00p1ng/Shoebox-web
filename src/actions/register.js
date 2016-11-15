@@ -1,6 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import {
-  REGISTER_CUSTOMER_ENDPOINT
+  USER_ENDPOINT
 } from 'endpoint'
 
 import {
@@ -16,7 +16,7 @@ export const sendRegisterForm = (values) =>
 
 const registerCustomer = (values) => ({
   [CALL_API]: {
-    endpoint: REGISTER_CUSTOMER_ENDPOINT,
+    endpoint: `${USER_ENDPOINT}/customer`,
     method: 'POST',
     headers: {
       'Accept': 'application/json',
