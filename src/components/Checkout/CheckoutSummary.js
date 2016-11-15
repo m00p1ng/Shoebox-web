@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckoutSummary = () => (
+const CheckoutSummary = ({total}) => (
 <div className="col offset-s1 l3 offset-l1" >
 
   <div className="row" >
@@ -13,7 +13,7 @@ const CheckoutSummary = () => (
         className="col l4 offset-l1
           sb-checkout-total-right
           no-padding" >
-        $217.00
+        $ {total}
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@ const CheckoutSummary = () => (
       <div className="col l4 offset-l1
         sb-checkout-total-right
         no-padding" >
-        $217.00
+        $ {total}
       </div>
     </div>
   </div>

@@ -7,6 +7,7 @@ const SearchBar = ({onSearchChange}) => (
       id="sb_search"
       type="text"
       className="sbox-search-form-input"
+      placeholder="Search here"
       onChange={onSearchChange}/>
     </div>
   </div>

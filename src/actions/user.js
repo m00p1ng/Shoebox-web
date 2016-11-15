@@ -2,7 +2,7 @@ import { CALL_API } from 'redux-api-middleware'
 import {
   LOGIN_ENDPOINT,
   LOGOUT_ENDPOINT,
-  REGISTER_CUSTOMER_ENDPOINT
+  USER_ENDPOINT
 } from 'endpoint'
 
 import {
@@ -17,6 +17,14 @@ import {
   GET_USERNAME_REQUEST,
   GET_USERNAME_SUCCESS,
   GET_USERNAME_FAILURE,
+
+  GET_CUSTOMER_DETAIL_REQUEST,
+  GET_CUSTOMER_DETAIL_SUCCESS,
+  GET_CUSTOMER_DETAIL_FAILURE,
+
+  GET_EMPLOYEE_DETAIL_REQUEST,
+  GET_EMPLOYEE_DETAIL_SUCCESS,
+  GET_EMPLOYEE_DETAIL_FAILURE,
 
   REGISTER_CUSTOMER_REQUEST,
   REGISTER_CUSTOMER_SUCCESS,
@@ -74,6 +82,30 @@ export const getUsername = () => ({
   }
 })
 
+export const getCustomerDetail = (username) => ({
+  [CALL_API]: {
+    endpoint: `${USER_ENDPOINT}/customer/${username}`,
+    method: 'GET',
+    types: [
+      GET_CUSTOMER_DETAIL_REQUEST,
+      GET_CUSTOMER_DETAIL_SUCCESS,
+      GET_CUSTOMER_DETAIL_FAILURE
+    ]
+  }
+})
+
+export const getEmployeeDetail = (username) => ({
+  [CALL_API]: {
+    endpoint: `${USER_ENDPOINT}/employee/${username}`,
+    method: 'GET',
+    types: [
+      GET_EMPLOYEE_DETAIL_REQUEST,
+      GET_EMPLOYEE_DETAIL_SUCCESS,
+      GET_EMPLOYEE_DETAIL_FAILURE
+    ]
+  }
+})
+
 export const sendRegisterForm = (values) =>
   (dispatch) => {
     dispatch(registerCustomer(values))
@@ -81,7 +113,7 @@ export const sendRegisterForm = (values) =>
 
 const registerCustomer = (values) => ({
   [CALL_API]: {
-    endpoint: REGISTER_CUSTOMER_ENDPOINT,
+    endpoint: `${USER_ENDPOINT}/customer`,
     method: 'POST',
     headers: {
       'Accept': 'application/json',

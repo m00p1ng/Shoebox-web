@@ -1,5 +1,5 @@
 import { CALL_API } from 'redux-api-middleware'
-import { SEARCH_PRODUCT_ENDPOINT } from 'endpoint'
+import { PRODUCT_ENDPOINT } from 'endpoint'
 import {
   SEARCH_PRODUCT_REQUEST,
   SEARCH_PRODUCT_SUCCESS,
@@ -11,7 +11,7 @@ import {
 
 export const searchProduct = (keyword) => ({
   [CALL_API]: {
-    endpoint: `${SEARCH_PRODUCT_ENDPOINT}/${keyword}`,
+    endpoint: `${PRODUCT_ENDPOINT}/search/${keyword}`,
     method: 'GET',
     types: [
       SEARCH_PRODUCT_REQUEST,

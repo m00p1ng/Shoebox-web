@@ -6,7 +6,6 @@ import {
   CheckoutList,
   CheckoutBottom
 } from '../../components'
-import { getCartItem } from '../../actions/cart'
 import { browserHistory } from 'react-router';
 import { URL_ROOT } from 'endpoint'
 
@@ -17,10 +16,6 @@ const DividerLine = () => (
 )
 
 class CheckoutAppContainer extends Component {
-  componentDidMount() {
-      this.props.getCartItem()
-  }
-
   shouldComponentUpdate(nextProps) {
     return (this.props.qty !== nextProps.qty)
   }
@@ -31,12 +26,14 @@ class CheckoutAppContainer extends Component {
         {
           (this.props.role.toLowerCase() !== 'guest') ? (
             <CheckoutApp>
-              <ShipAddress />
+              <ShipAddress
+                user={this.props.user}/>
               <CheckoutList
                 products={this.props.cart}
                 qty={this.props.qty}/>
           		<DividerLine />
-              <CheckoutBottom />
+              <CheckoutBottom
+                total={this.props.total}/>
             </CheckoutApp>
           ) : ( browserHistory.push(`${URL_ROOT}/login`) )
         }
@@ -49,14 +46,11 @@ const mapStateToProps = (state) => ({
   cart: state.cart.productDetail,
   qty: state.cart.quantityById,
   total: state.cart.total,
-  role: state.user.role
-})
-
-const mapDispatchToProps = ({
-  getCartItem
+  role: state.user.role,
+  username: state.user.username,
+  user: state.user.detail
 })
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(CheckoutAppContainer)

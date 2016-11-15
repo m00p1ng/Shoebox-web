@@ -2,10 +2,11 @@ import React from 'react'
 import PaymentMethod from './PaymentMethod'
 import CheckoutSummary from './CheckoutSummary'
 
-const CheckoutBottom = () => (
+const CheckoutBottom = ({total}) => (
   <div className="row">
     <PaymentMethod />
-    <CheckoutSummary />
+    <CheckoutSummary
+      total={total}/>
   </div>
 )
 
