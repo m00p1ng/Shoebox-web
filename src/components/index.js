@@ -38,7 +38,6 @@ export SearchApp from './Search/SearchApp'
 
 export ManageApp from './Manage/ManageApp'
 export ManOrderApp from './Manage/Order/ManOrderApp'
-export ManPromotionApp from './Manage/Promotion/ManPromotionApp'
 export ManProductApp from './Manage/Product/ManProductApp'
 export ManProductCreateApp from './Manage/Product/ManProductCreateApp'
 export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'

@@ -38,7 +38,6 @@ import {
 
   ManageApp,
   ManOrderApp,
-  ManPromotionApp,
   ManProductApp,
   ManProductCreateApp,
   ManProductUpdateApp,
@@ -79,9 +78,6 @@ export default (
         </route>
         <route path='order'>
           <IndexRoute component={ManOrderApp} />
-        </route>
-        <route path='promotion'>
-          <IndexRoute component={ManPromotionApp} />
         </route>
         <route path='supplier'>
           <IndexRoute component={ManSupplierApp} />

@@ -49,7 +49,8 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username, Role}) => (
 
 NavbarDesktopMenu.propTypes = {
   NumberOfCartItem: PropTypes.number.isRequired,
-  Username: PropTypes.string.isRequired
+  Username: PropTypes.string.isRequired,
+  Role: PropTypes.string.isRequired
 }
 
 export default NavbarDesktopMenu
