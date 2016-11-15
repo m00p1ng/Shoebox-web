@@ -6,32 +6,24 @@ import json
 class productBrand_Update_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/brand'
-    URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = create_data()
-
-
     def test_update_api(self):
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
+        create_request(URL_BRAND, json.dumps(CREATE_BODY))
 
-        UPDATE_BODY = """{"name": "nike2"}"""
+        UPDATE_BODY = {"name": "nike2"}
 
-        res = update_request(self.URL_BRAND, UPDATE_BODY)
+        res = update_request(URL_BRAND_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['updated'], True)
 
+
 class productBrand_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/brand'
-    URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = create_data()
-
     def test_update_no_item(self):
-        UPDATE_BODY = """{"name": "nike2"}"""
+        UPDATE_BODY = {"name": "nike2"}
 
-        res = update_request(self.URL_BRAND, UPDATE_BODY)
+        res = update_request(URL_BRAND_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['This productBrand not exist'])
@@ -39,10 +31,10 @@ class productBrand_Update_Fail_API_Test(MongoTestCase):
 
 
     def test_update_no_data(self):
-        UPDATE_BODY = "{}"
+        UPDATE_BODY = {}
 
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
-        res = update_request(self.URL_BRAND, UPDATE_BODY)
+        create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        res = update_request(URL_BRAND_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
@@ -52,8 +44,8 @@ class productBrand_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
-        res = update_request(self.URL_BRAND, UPDATE_BODY)
+        create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        res = update_request(URL_BRAND_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])

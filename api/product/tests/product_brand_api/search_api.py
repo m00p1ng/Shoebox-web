@@ -7,16 +7,11 @@ import json
 class productBrand_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/brand'
-    URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = create_data()
-
-
     def test_search_api(self):
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
+        create_request(URL_BRAND, json.dumps(CREATE_BODY))
 
         c = Client()
-        res = c.get(self.URL_BRAND)
+        res = c.get(URL_BRAND_NAME)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['name'], 'nike')
@@ -25,14 +20,10 @@ class productBrand_Search_API_Test(MongoTestCase):
 
 class productBrand_Search_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
-
-    URL = '/api/product/brand'
     URL_SEARCH = '/api/product/brand/Bata'
-    CREATE_BODY = create_data()
-    
+
     def test_search_no_brand(self):
         c = Client()
         res = c.get(self.URL_SEARCH)
 
         self.assertEqual(res.content.decode(), 'Not found')
-

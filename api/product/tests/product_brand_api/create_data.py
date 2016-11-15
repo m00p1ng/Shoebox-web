@@ -1,7 +1,4 @@
-def create_data(): 
-    CREATE_BODY = {
-    
-            "name": "nike"
-        }
+CREATE_BODY = { "name": "nike" }
 
-    return CREATE_BODY
+URL_BRAND = '/api/product/brand'
+URL_BRAND_NAME = '/api/product/brand/nike'
