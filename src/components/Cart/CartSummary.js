@@ -2,24 +2,35 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
+const renderCheckoutText = (role) => {
+  if (role.toLowerCase() === 'guest')
+    return (
+      <p>
+        Please <Link to={`${URL_ROOT}/login`}>Login</Link>
+      </p>
+    )
+  if (role.toLowerCase() === 'employee')
+    return (
+      <p>
+        This function for customer only
+      </p>
+    )
+  return (<span></span>)
+}
+
 const CartCheckoutButton = ({role}) => (
   <div className="row">
     <Link to={`${URL_ROOT}/checkout`}>
-    <button
-      className="orange darken-3 btn-large sbox-checkout-button"
-      disabled={
-        role.toLowerCase() === 'guest'
-      }>
-      <span className="white-text">CHECKOUT</span>
-    </button>
-  </Link>
-    {
-      (role.toLowerCase() === 'guest') ? (
-          <p>
-            Please <Link to={`${URL_ROOT}/login`}>Login</Link>
-          </p>
-      ) : (<span></span>)
-    }
+      <button
+        className="orange darken-3 btn-large sbox-checkout-button"
+        disabled={
+          role.toLowerCase() === 'guest' ||
+          role.toLowerCase() === 'employee'
+        }>
+        <span className="white-text">CHECKOUT</span>
+      </button>
+    </Link>
+    {renderCheckoutText(role)}
   </div>
 )
 

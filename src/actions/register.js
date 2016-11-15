@@ -1,5 +1,8 @@
 import { CALL_API } from 'redux-api-middleware'
-import { onLogin } from './user'
+import {
+  onLogin,
+  getCustomerDetail
+} from './user'
 import {
   USER_ENDPOINT,
   URL_ROOT
@@ -11,7 +14,7 @@ import {
   REGISTER_CUSTOMER_FAILURE
 } from 'actionTypes'
 
-export const sendRegisterForm = (values) =>
+export const sendRegisterCustomerForm = (values) =>
   (dispatch) => {
     dispatch(registerCustomer(values))
   }
@@ -36,8 +39,12 @@ const registerCustomer = (values) => (
                username: values.username,
                password: values.password
              }))
-            }).then(() =>
-               browserHistory.push(`${URL_ROOT}/register/success`)
+             .then(() => {
+                dispatch(getCustomerDetail(values.username))
+             })
+           })
+           .then(() =>
+              browserHistory.push(`${URL_ROOT}/register/success`)
             )
           }
         },

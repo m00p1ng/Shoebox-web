@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { sendRegisterForm } from '../../actions/register'
+import { sendRegisterCustomerForm } from '../../actions/register'
+import { getCustomerDetail } from '../../actions/user'
 import { connect } from 'react-redux'
 import {
   RegisterApp,
@@ -38,7 +39,8 @@ class RegisterAppContainer extends Component {
   }
 
   handleSubmit(values) {
-    this.props.sendRegisterForm(values)
+    const { username } = values
+    this.props.sendRegisterCustomerForm(values)
   }
 
   render() {
@@ -80,4 +82,12 @@ class RegisterAppContainer extends Component {
   }
 }
 
-export default connect(null, { sendRegisterForm })(RegisterAppContainer)
+const mapDispatchToProps = ({
+  sendRegisterCustomerForm,
+  getCustomerDetail
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RegisterAppContainer)
