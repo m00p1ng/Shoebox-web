@@ -2,6 +2,26 @@ from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
 
+URL_PRODUCT = '/api/product'
+
+URL_PRODUCT_NAME = '/api/product/name/shoe'
+
+CREATE_BODY = {
+    "name": "shoe",
+    "supplier": "nike",
+    "brand": "nike",
+    "types": "running",
+    "description": "product description",
+    "price": 20,
+    "picture": "picture URL",
+    "amount": 20,
+    "size": ["48"],
+    "color": ["red"],
+    "is_available": True,
+    "is_discount": False,
+    "discountPercent": 20
+}
+
 def create_test_database():
     URL_BRAND = '/api/product/brand'
     URL_COLOR = '/api/product/color'
