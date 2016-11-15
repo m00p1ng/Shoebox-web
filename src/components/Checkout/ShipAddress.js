@@ -13,8 +13,8 @@ const ShipAddress = ({user}) => (
 
 			<div className="sb-grey-box-address">
 				<p>{user.firstname} {user.lastname}</p>
-				<p>{user.address.street}, {user.address.district}, </p>
-				<p>{user.address.city}, {user.address.zipcode}, USA</p>
+				<p>{user.ship.street}, {user.ship.district}, </p>
+				<p>{user.ship.city}, {user.ship.zipcode}, USA</p>
 			</div>
 		</div>
 	</div>
