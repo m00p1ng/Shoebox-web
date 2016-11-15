@@ -10,7 +10,6 @@ class productColor_Update_API_Test(MongoTestCase):
         create_request(URL_COLOR, json.dumps(CREATE_BODY))
 
         UPDATE_BODY = {"name": "red"}
-
         res = update_request(URL_COLOR_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 

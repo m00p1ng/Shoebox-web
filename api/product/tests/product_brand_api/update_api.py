@@ -10,7 +10,6 @@ class productBrand_Update_API_Test(MongoTestCase):
         create_request(URL_BRAND, json.dumps(CREATE_BODY))
 
         UPDATE_BODY = {"name": "nike2"}
-
         res = update_request(URL_BRAND_NAME, json.dumps(UPDATE_BODY))
         data = json.loads(res.content.decode())
 
