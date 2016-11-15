@@ -1,3 +1,4 @@
+from .create_data import *
 from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request
@@ -8,11 +9,11 @@ class productBrand_Search_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
+    CREATE_BODY = create_data()
 
 
     def test_search_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         c = Client()
         res = c.get(self.URL_BRAND)
@@ -27,7 +28,7 @@ class productBrand_Search_Fail_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_SEARCH = '/api/product/brand/Bata'
-    CREATE_BODY = """{ "name": "Bata" }"""
+    CREATE_BODY = create_data()
     
     def test_search_no_brand(self):
         c = Client()

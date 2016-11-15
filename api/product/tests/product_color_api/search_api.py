@@ -1,3 +1,4 @@
+from .create_data import *
 from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request
@@ -8,11 +9,11 @@ class productColor_Search_API_Test(MongoTestCase):
 
     URL = '/api/product/color'
     URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = """{ "name": "white" }"""
+    CREATE_BODY = create_data()
 
 
     def test_search_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         c = Client()
         res = c.get(self.URL_COLOR)

@@ -1,3 +1,4 @@
+from .create_data import *
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
 import json
@@ -7,11 +8,11 @@ class productColor_Update_API_Test(MongoTestCase):
 
     URL = '/api/product/color'
     URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = """{ "name": "white" }"""
+    CREATE_BODY = create_data()
 
 
     def test_update_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         UPDATE_BODY = """{"name": "red"}"""
 
@@ -26,7 +27,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
 
     URL = '/api/product/color'
     URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = """{ "name": "white" }"""
+    CREATE_BODY = create_data()
 
     def test_update_no_item(self):
         UPDATE_BODY = """{"name": "red"}"""
@@ -41,7 +42,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
     def test_update_no_data(self):
         UPDATE_BODY = "{}"
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_COLOR, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
@@ -52,7 +53,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_COLOR, UPDATE_BODY)
         data = json.loads(res.content.decode())
 

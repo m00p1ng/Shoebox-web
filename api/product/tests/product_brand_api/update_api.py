@@ -1,3 +1,4 @@
+from .create_data import *
 from test_addons import MongoTestCase
 from api.include.test import create_request, update_request
 import json
@@ -7,11 +8,11 @@ class productBrand_Update_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
+    CREATE_BODY = create_data()
 
 
     def test_update_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         UPDATE_BODY = """{"name": "nike2"}"""
 
@@ -25,7 +26,7 @@ class productBrand_Update_Fail_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
+    CREATE_BODY = create_data()
 
     def test_update_no_item(self):
         UPDATE_BODY = """{"name": "nike2"}"""
@@ -40,7 +41,7 @@ class productBrand_Update_Fail_API_Test(MongoTestCase):
     def test_update_no_data(self):
         UPDATE_BODY = "{}"
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_BRAND, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
@@ -51,7 +52,7 @@ class productBrand_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
         res = update_request(self.URL_BRAND, UPDATE_BODY)
         data = json.loads(res.content.decode())
 

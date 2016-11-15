@@ -1,3 +1,4 @@
+from .create_data import *
 from test_addons import MongoTestCase
 from api.include.test import create_request
 import json
@@ -7,10 +8,9 @@ class productBrand_Create_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
-
+    CREATE_BODY = create_data()
     def test_create_api(self):
-        res = create_request(self.URL, self.CREATE_BODY)
+        res = create_request(self.URL, json.dumps(self.CREATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['created'], True)
@@ -42,10 +42,10 @@ class productBrand_Create_Fail_API_Test(MongoTestCase):
 
 
     def test_create_brand_dubplicated(self):
-        CREATE_BODY = """{"name": "Nike"}"""
+        CREATE_BODY = create_data()
 
-        create_request(self.URL, CREATE_BODY)
-        res = create_request(self.URL, CREATE_BODY)
+        create_request(self.URL, json.dumps(CREATE_BODY))
+        res = create_request(self.URL, json.dumps(CREATE_BODY))
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Brand already exist'])

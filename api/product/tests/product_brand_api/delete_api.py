@@ -1,3 +1,4 @@
+from .create_data import *
 from django.test import Client
 from test_addons import MongoTestCase
 from api.include.test import create_request
@@ -8,11 +9,11 @@ class productBrand_Delete_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
+    CREATE_BODY = create_data()
 
 
     def test_delete_api(self):
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         c = Client()
         res = c.delete(self.URL_BRAND)
@@ -26,11 +27,11 @@ class productBrand_Delete_Fail_API_Test(MongoTestCase):
 
     URL = '/api/product/brand'
     URL_BRAND = '/api/product/brand/nike'
-    CREATE_BODY = """{ "name": "nike" }"""
+    CREATE_BODY = create_data()
 
     def test_delete_brand_not_exist(self):
         URL_BRAND = '/api/product/brand/nike2'
-        create_request(self.URL, self.CREATE_BODY)
+        create_request(self.URL, json.dumps(self.CREATE_BODY))
 
         c = Client()
         res = c.delete(URL_BRAND)
