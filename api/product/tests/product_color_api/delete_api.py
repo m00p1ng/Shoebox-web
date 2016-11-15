@@ -7,16 +7,11 @@ import json
 class productColor_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/color'
-    URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = create_data()
-
-
     def test_delete_api(self):
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
+        create_request(URL_COLOR, json.dumps(CREATE_BODY))
 
         c = Client()
-        res = c.delete(self.URL_COLOR)
+        res = c.delete(URL_COLOR_NAME)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['deleted'], True)
@@ -25,17 +20,12 @@ class productColor_Delete_API_Test(MongoTestCase):
 class productColor_Delete_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
-    URL = '/api/product/color'
-    URL_COLOR = '/api/product/color/white'
-    CREATE_BODY = create_data()
-
     def test_delete_color_not_exist(self):
-        URL_COLOR = '/api/product/color/yellow'
-        create_request(self.URL, json.dumps(self.CREATE_BODY))
+        URL_COLOR_NAME = '/api/product/color/yellow'
+        create_request(URL_COLOR_NAME, json.dumps(CREATE_BODY))
 
         c = Client()
-        res = c.delete(URL_COLOR)
+        res = c.delete(URL_COLOR_NAME)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['deleted'], False)
-
