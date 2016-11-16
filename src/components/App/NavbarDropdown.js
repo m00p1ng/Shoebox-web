@@ -4,10 +4,10 @@ import { URL_ROOT } from 'endpoint'
 
 const NavbarBrandDropdown = () => (
   <ul id="sbox-brand-dropdown" className="dropdown-content">
-    <li><a>Nike</a></li>
-    <li><a>Vans</a></li>
-    <li><a>Converse</a></li>
-    <li><a>Allen Edmonds</a></li>
+    <li><a><span className="black-text">Nike</span></a></li>
+    <li><a><span className="black-text">Vans</span></a></li>
+    <li><a><span className="black-text">Converse</span></a></li>
+    <li><a><span className="black-text">Allen Edmonds</span></a></li>
   </ul>
 )
 
@@ -15,29 +15,29 @@ const showDropdownByRole = (Role) => {
   if(Role === 'employee') {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
-        <li><Link to={`${URL_ROOT}/history`}>History</Link></li>
-        <li><Link to={`${URL_ROOT}/manage`}>Manage</Link></li>
+        <li><Link to={`${URL_ROOT}/profile`}><span className="black-text">Profile</span></Link></li>
+        <li><Link to={`${URL_ROOT}/history`}><span className="black-text">History</span></Link></li>
+        <li><Link to={`${URL_ROOT}/manage`}><span className="black-text">Manage</span></Link></li>
         <li className="divider"></li>
-        <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
+        <li><Link to={`${URL_ROOT}/logout`}><span className="black-text">Logout</span></Link></li>
       </div>
     )
   }
   else if(Role === 'customer') {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/profile`}>Profile</Link></li>
-        <li><Link to={`${URL_ROOT}/history`}>History</Link></li>
+        <li><Link to={`${URL_ROOT}/profile`}><span className="black-text">Profile</span></Link></li>
+        <li><Link to={`${URL_ROOT}/history`}><span className="black-text">History</span></Link></li>
         <li className="divider"></li>
-        <li><Link to={`${URL_ROOT}/logout`}>Logout</Link></li>
+        <li><Link to={`${URL_ROOT}/logout`}><span className="black-text">Logout</span></Link></li>
       </div>
     )
   }
   else {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/login`}>Login</Link></li>
-        <li><Link to={`${URL_ROOT}/register`}>Register</Link></li>
+        <li><Link to={`${URL_ROOT}/login`}><span className="black-text">Login</span></Link></li>
+        <li><Link to={`${URL_ROOT}/register`}><span className="black-text">Register</span></Link></li>
       </div>
     )
   }
