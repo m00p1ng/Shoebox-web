@@ -21,38 +21,24 @@ class LoginAppContainer extends Component {
     resetErrorMsg: PropTypes.func
   }
 
-  constructor() {
-    super()
-    this.state = {
-      username: '',
-      password: ''
-    }
-  }
-
   componentDidMount() {
     this.props.resetErrorMsg()
     this.props.onLogout()
   }
 
-  onUsernameChange(event) {
-    this.setState({username: event.target.value})
-  }
-
-  onPasswordChange(event) {
-    this.setState({password: event.target.value})
-  }
-
-  handleSubmit(event) {
-    event.preventDefault()
-    this.props.onLogin({
-      username: this.state.username,
-      password: this.state.password
-    })
+  sendLoginForm(values) {
+    if(!values.username) {
+      values['username'] = ''
+    }
+    if(!values.password) {
+      values['password'] = ''
+    }
+    this.props.onLogin(values)
     .then(() => {
       if(this.props.role.toLowerCase() === 'customer')
-        this.props.getCustomerDetail(this.props.user)
+        this.props.getCustomerDetail(this.props.username)
       else if(this.props.role.toLowerCase() === 'employee')
-        this.props.getEmployeeDetail(this.props.user)
+        this.props.getEmployeeDetail(this.props.username)
     })
     .then(() =>{
       if(this.props.isLoggedIn === true) {
@@ -64,9 +50,7 @@ class LoginAppContainer extends Component {
   render() {
     return(
       <LoginApp
-        onUsernameChange={this.onUsernameChange.bind(this)}
-        onPasswordChange={this.onPasswordChange.bind(this)}
-        handleSubmit={this.handleSubmit.bind(this)}
+        sendLoginForm={this.sendLoginForm.bind(this)}
         errorMsg={this.props.errorMsg}
       />
     )
@@ -75,7 +59,7 @@ class LoginAppContainer extends Component {
 
 const mapStatetoProps = (state) => ({
   errorMsg: state.user.errorMsg,
-  user: state.user.username,
+  username: state.user.username,
   role: state.user.role,
   isLoggedIn: state.user.isLoggedIn
 })
