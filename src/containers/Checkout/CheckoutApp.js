@@ -22,6 +22,7 @@ class CheckoutAppContainer extends Component {
   }
 
   render() {
+    const {checkout, allcart, total, username} = this.props
     return (
       <div>
         {
@@ -35,7 +36,7 @@ class CheckoutAppContainer extends Component {
           		<DividerLine />
               <CheckoutBottom
                 total={this.props.total}
-                checkout={() => this.props.checkout(this.props.allcart)}/>
+                checkout={() => checkout(username, allcart, total)}/>
             </CheckoutApp>
           ) : ( browserHistory.push(`${URL_ROOT}/login`) )
         }

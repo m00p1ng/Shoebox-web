@@ -21,21 +21,29 @@ const receiveCart = (cart) => ({
   }
 })
 
-const formatOrder = (cart) => {
+const formatOrder = (username, cart, total) => {
   const prodIDs = cart.addedIds
   let order = []
   prodIDs.map((prodID) => {
-    let detail = {}
-    detail['product'] = prodID
-    detail['qty'] = cart.quantityById[prodID]
-    detail['price'] = (cart.subtotalById[prodID]/cart.quantityById[prodID])
-    detail['subtotal'] = cart.subtotalById[prodID]
+    let detail = {
+      product: prodID,
+      qty: cart.quantityById[prodID],
+      price: (cart.subtotalById[prodID]/cart.quantityById[prodID]),
+      subtotal: cart.subtotalById[prodID]
+    }
     order.push(detail)
   })
-  return order
+
+  let out = {
+    username,
+    cart: order,
+    total
+  }
+  console.log(out)
+  return out
 }
 
-export const checkout = (cart) => ({
+export const checkout = (username, cart, total) => ({
   [CALL_API]: {
     endpoint: `${ORDER_ENDPOINT}`,
     method: 'POST',
@@ -43,7 +51,7 @@ export const checkout = (cart) => ({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(formatOrder(cart)),
+    body: JSON.stringify(formatOrder(username, cart, total)),
     types: [
       SEND_ORDER_REQUEST,
       SEND_ORDER_SUCCESS,

@@ -18,7 +18,7 @@ const CheckoutList = ({products, qty}) => (
 
 CheckoutList.propTypes = {
   products: PropTypes.array.isRequired,
-  qty: PropTypes.array.isRequired
+  qty: PropTypes.object.isRequired
 }
 
 export default CheckoutList
