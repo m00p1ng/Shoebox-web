@@ -15,7 +15,15 @@ export const searchProduct = (keyword) => ({
     method: 'GET',
     types: [
       SEARCH_PRODUCT_REQUEST,
-      SEARCH_PRODUCT_SUCCESS,
+      {
+        type: SEARCH_PRODUCT_SUCCESS,
+        meta: (action, state, res) => {
+          return ({status: res.status})
+        },
+        payload: (action, state, res) => {
+          return res.json()
+        }
+      },
       SEARCH_PRODUCT_FAILURE
     ]
   }

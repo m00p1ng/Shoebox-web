@@ -21,11 +21,18 @@ const search = (state = initialState, action) => {
       })
 
     case SEARCH_PRODUCT_SUCCESS:
-      return ({
-        result: action.payload,
-        isLoading: false,
-        error: false
-      })
+      if(action.meta.status === 200)
+        return ({
+          result: action.payload,
+          isLoading: false,
+          error: false
+        })
+      else if(action.meta.status === 204)
+        return ({
+          result: [],
+          isLoading: false,
+          error: true
+        })
     case SEARCH_PRODUCT_FAILURE:
       return ({
         result: [],
