@@ -31,7 +31,6 @@ urlpatterns = [
     url(r'^api/logout/?', logout),
     url(r'^api/product/?', include('api.product.urls')),
     url(r'^api/user/?', include('api.user.urls')),
-    url(r'^api/promotion/?', include('api.promotion.urls')),
     url(r'^api/supplier/?', include('api.supplier.urls')),
     url(r'^api/order/?', include('api.order.urls'))
 ]
