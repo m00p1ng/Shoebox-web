@@ -22,7 +22,7 @@ class CheckoutAppContainer extends Component {
   }
 
   render() {
-    const {checkout, allcart, total, username} = this.props
+    const {checkout, allcart, total} = this.props
     return (
       <div>
         {
@@ -36,7 +36,7 @@ class CheckoutAppContainer extends Component {
           		<DividerLine />
               <CheckoutBottom
                 total={this.props.total}
-                checkout={() => checkout(username, allcart, total)}/>
+                checkout={() => checkout(allcart, total)}/>
             </CheckoutApp>
           ) : ( browserHistory.push(`${URL_ROOT}/login`) )
         }
@@ -51,7 +51,6 @@ const mapStateToProps = (state) => ({
   qty: state.cart.quantityById,
   total: state.cart.total,
   role: state.user.role,
-  username: state.user.username,
   user: state.user.detail
 })
 

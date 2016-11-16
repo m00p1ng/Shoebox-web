@@ -20,7 +20,7 @@ const renderCheckoutText = (role) => {
 
 const CartCheckoutButton = ({role}) => (
   <div className="row">
-    <Link to={`${URL_ROOT}/checkout`}>
+    <Link to={`${URL_ROOT}/cart/checkout`}>
       <button
         className="orange darken-3 btn-large sbox-checkout-button"
         disabled={

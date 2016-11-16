@@ -22,6 +22,7 @@ export CheckoutApp from './Checkout/CheckoutApp'
 export ShipAddress from './Checkout/ShipAddress'
 export CheckoutList from './Checkout/CheckoutList'
 export CheckoutBottom from './Checkout/CheckoutBottom'
+export CheckoutSuccessApp from './Checkout/CheckoutSuccessApp'
 
 export LogoutApp from './User/LogoutApp'
 export LoginApp from './User/LoginApp'

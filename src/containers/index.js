@@ -11,6 +11,7 @@ export ProductDetailApp from './Product/ProductDetailApp'
 
 export CartApp from './Cart/CartApp'
 export CheckoutApp from './Checkout/CheckoutApp'
+export CheckoutSuccessApp from './Checkout/CheckoutSuccessApp'
 
 export LoginApp from './User/LoginApp'
 export LogoutApp from './User/LogoutApp'

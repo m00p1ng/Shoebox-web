@@ -1,13 +1,13 @@
 import { CALL_API } from 'redux-api-middleware'
-import {
-  onLogin,
-  getCustomerDetail
-} from './user'
+import { browserHistory } from 'react-router'
 import {
   USER_ENDPOINT,
   URL_ROOT
 } from 'endpoint'
-import { browserHistory } from 'react-router'
+import {
+  onLogin,
+  getCustomerDetail
+} from './user'
 import {
   REGISTER_CUSTOMER_REQUEST,
   REGISTER_CUSTOMER_SUCCESS,

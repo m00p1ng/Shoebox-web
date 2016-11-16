@@ -5,7 +5,10 @@ import {
 
   CHECKOUT_REQUEST,
   CHECKOUT_SUCCESS,
-  CHECKOUT_FAILURE
+  CHECKOUT_FAILURE,
+
+  SEND_ORDER_SUCCESS,
+  SEND_ORDER_FAILURE,
 } from 'actionTypes'
 
 const initialState = {
@@ -91,6 +94,8 @@ const cart = (state = initialState, action) => {
       return initialState
     case CHECKOUT_FAILURE:
       return action.cart
+    case SEND_ORDER_SUCCESS:
+      return initialState
     default:
       return {
         ...state,

@@ -33,6 +33,7 @@ import {
 
   CartApp,
   CheckoutApp,
+  CheckoutSuccessApp,
 
   OrderHistoryApp,
 
@@ -54,8 +55,13 @@ export default (
         <IndexRoute component={ShopApp} />
         <route path=':slug' component={ProductDetailApp} />
       </route>
-      <Route path='cart' component={CartApp} />
-      <Route path='checkout' component={CheckoutApp} />
+      <Route path='cart'>
+        <IndexRoute component={CartApp} />
+        <route path='checkout'>
+          <IndexRoute component={CheckoutApp} />
+          <route path='success' component={CheckoutSuccessApp} />
+        </route>
+      </Route>
       <Route path='search' component={SearchApp} />
 
 
