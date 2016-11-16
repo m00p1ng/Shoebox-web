@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
-import NavbarDropdown from './NavbarDropdown'
-import NavbarLogo from './NavbarLogo'
-import NavbarMobileMenu from './NavbarMobileMenu'
-import NavbarDesktopMenu from './NavbarDesktopMenu'
+import NavbarDropdown from './Navbar/NavbarDropdown'
+import NavbarLogo from './Navbar/NavbarLogo'
+import NavbarMobileMenu from './Navbar/NavbarMobileMenu'
+import NavbarDesktopMenu from './Navbar/NavbarDesktopMenu'
 
 const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
   <header>
