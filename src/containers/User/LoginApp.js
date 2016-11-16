@@ -4,7 +4,6 @@ import { browserHistory } from 'react-router'
 import { LoginApp } from '../../components'
 import {
   onLogin,
-  onLogout,
   getCustomerDetail,
   getEmployeeDetail,
   resetErrorMsg
@@ -16,14 +15,11 @@ class LoginAppContainer extends Component {
     onLogin: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     errorMsg: PropTypes.string,
-    onLogin: PropTypes.func,
-    onLogout: PropTypes.func,
     resetErrorMsg: PropTypes.func
   }
 
   componentDidMount() {
     this.props.resetErrorMsg()
-    this.props.onLogout()
   }
 
   sendLoginForm(values) {
@@ -49,10 +45,12 @@ class LoginAppContainer extends Component {
 
   render() {
     return(
-      <LoginApp
-        sendLoginForm={this.sendLoginForm.bind(this)}
-        errorMsg={this.props.errorMsg}
-      />
+      (!this.props.isLoggedIn) ? (
+        <LoginApp
+          sendLoginForm={this.sendLoginForm.bind(this)}
+          errorMsg={this.props.errorMsg}
+        />
+      ) : ( browserHistory.push(`${URL_ROOT}`) )
     )
   }
 }
@@ -66,7 +64,6 @@ const mapStatetoProps = (state) => ({
 
 const mapDispatchToProps = ({
   onLogin,
-  onLogout,
   getCustomerDetail,
   getEmployeeDetail,
   resetErrorMsg

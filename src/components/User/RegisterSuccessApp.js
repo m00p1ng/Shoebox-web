@@ -3,12 +3,18 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const RegisterSuccessApp = () => (
-  <div>
+  <div className="container">
     <h1>Register Success</h1>
-    <h3>Please wait to redirect to home
-      or
+    <h3>Please wait to redirect to
+      {' '}
       <Link to={`${URL_ROOT}`}>
-        click here
+        Home
+      </Link>
+      {' '}
+      or
+      {' '}
+      <Link to={`${URL_ROOT}/login`}>
+        Login
       </Link>
     </h3>
   </div>
