@@ -34,13 +34,11 @@ const formatOrder = (username, cart, total) => {
     order.push(detail)
   })
 
-  let out = {
+  return ({
     username,
     cart: order,
     total
-  }
-  console.log(out)
-  return out
+  })
 }
 
 export const checkout = (username, cart, total) => ({
