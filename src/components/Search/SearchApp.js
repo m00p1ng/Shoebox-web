@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import SearchBar from './SearchBar'
 import SearchResult from './SearchResult'
-import HeaderBarApp from '../App/HeaderBarApp'
+import { HeaderBarApp } from '../App/HeaderBarApp'
 
 const SearchApp = ({
   onSearchChange,
