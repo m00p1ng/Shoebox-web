@@ -9,21 +9,21 @@ const ShopList = () => (
 			<ShopItem />
 			<ShopItem />
 		</div>
-		<div className="divider grey"></div>
+		<div className="divider grey lighten-3"></div>
 		<div className="row">
 			<ShopItem />
 			<ShopItem />
 			<ShopItem />
 			<ShopItem />
 		</div>
-		<div className="divider grey"></div>
+		<div className="divider grey lighten-3"></div>
 		<div className="row">
 			<ShopItem />
 			<ShopItem />
 			<ShopItem />
 			<ShopItem />
 		</div>
-		<div className="divider grey"></div>
+		<div className="divider grey lighten-3"></div>
 		<div className="row">
 			<ShopItem />
 			<ShopItem />
