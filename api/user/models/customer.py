@@ -106,15 +106,6 @@ class Customers(User):
 
     @classmethod
     def create_obj(cls, data):
-        email = data['email']
-        if email is not None:
-            try:
-                email_name, domain_part = email.strip().split('@', 1)
-            except ValueError:
-                pass
-            else:
-                email = '@'.join([email_name, domain_part.lower()])
-
         customer = cls(
             username = data['username'],
             email = data['email'],
