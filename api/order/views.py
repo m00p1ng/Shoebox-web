@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.order.models import Orders,Cart
-from api.order.models import OrderIDs
+from api.order.models import Orders
 from api.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
@@ -14,7 +13,7 @@ def order(request):
     if request.method == 'GET':
         return request_get_real(Orders, query_all())
     if request.method == 'POST':
-        return order_create(body)
+        return order_create(body, request.session)
     if request.method == 'PUT':
         pass
     if request.method == 'DELETE':
@@ -42,19 +41,15 @@ def query_by_id(oid):
     return Orders.objects(orderID=oid).first()
 
 
-def order_create(body):
+def order_create(body, session):
     try:
         data = json.loads(body.decode())
         err = Orders.validation(data)
-        if len(err) == 0:
-            data['orderID'] = OrderIDs.objects.all().first().orderID
-            Orders.create_obj(data)
-
-            for item in data['cart']:
-                cart = Cart.create_obj(item)
-                Orders.objects(orderID=data['orderID']).update(push__cart=cart)
-
-            OrderIDs.update_obj()
+        if len(err) == 0 and \
+            'username' in session and \
+            session['role'] == 'customer':
+            
+            Orders.create_obj(data, session)
             message = {'created' : True}
             return HttpResponse(json.dumps(message), content_type=json_type, status=201)
         else:

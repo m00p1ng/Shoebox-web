@@ -1,3 +1,2 @@
-from .order import Orders,Cart
-from .orderID import OrderIDs
-#from .detail import Detail
+from .order import Orders
+from .cart import Cart

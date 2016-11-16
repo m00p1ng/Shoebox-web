@@ -1,57 +1,24 @@
 from mongoengine import *
-from api.include.model import timestamp_date
+from api.include.model import timestamp_fulldate
 from api.user.models import Customers
-from api.order.models import *
+from .cart import Cart
 import datetime
 import json
 
-
-class Cart(EmbeddedDocument):
-    product = StringField(required=True)
-    qty = IntField(required=True)
-    price = IntField(required=True)
-    subtotal = FloatField(required=True)
-
-
-    @staticmethod
-    def validation(data):
-        err = []
-        if 'product' not in data:
-            err.append('Total cannot empty')
-        if 'qty' not in data:
-            err.append('Qty cannot empty')
-        if 'price' not in data:
-            err.append('Price cannot empty')
-        if 'subtotal' not in data:
-            err.append('Subtotal cannot empty')
-        return err
-
-
-    @classmethod
-    def create_obj(cls, data):
-        cart = cls(
-            product = data['product'],
-            qty = data['qty'],
-            price = data['price'],
-            subtotal = data['subtotal']
-        )
-        return cart
-
-
 class Orders(Document):
-    orderID = IntField(required=True,unique=True)
+    orderID = IntField(min_value=1, required=True, unique=True)
     username = ReferenceField(Customers)
     timestamp = DateTimeField(required=True, default=datetime.datetime.now())
-    status = BooleanField(required=True,default=False)
+    status = BooleanField(required=True, default=False)
     total = FloatField(required=True)
-    cart = ListField(EmbeddedDocumentField(Cart)) 
+    cart = ListField(EmbeddedDocumentField(Cart))
 
 
-    def get_id_from_field(data):
+    def get_id_from_field(data, session):
         field_id = {}
 
-        if 'username' in data:
-            username = Customers.objects(username=data['username']).first().id
+        if 'username' in session and session['role'] == 'customer':
+            username = Customers.objects(username=session['username']).first().id
             field_id['username'] = username
 
         return field_id
@@ -62,19 +29,23 @@ class Orders(Document):
         err = []
         if 'total' not in data:
             err.append('Total cannot empty')
-        if 'username' not in data:
-            err.append('Username cannot empty')
         return err
 
 
     @classmethod
-    def create_obj(cls, data):
-        field_id = cls.get_id_from_field(data)
+    def create_obj(cls, data, session):
+        field_id = cls.get_id_from_field(data, session)
+        orderID = cls.objects.count() + 1
         order = cls(
             username = field_id['username'],
-            orderID = data['orderID'],
+            orderID = orderID,
             total = data['total'],
         )
+
+        for item in data['cart']:
+            cart = Cart.create_obj(item)
+            order.cart.append(cart)
+
         order.save()
         return order
 
@@ -106,7 +77,7 @@ class Orders(Document):
             'orderID' : order.orderID,
             'username' : real_data['username'],
             'total' : order.total,
-            'timestamp' : timestamp_date(order.timestamp),
+            'timestamp' : timestamp_fulldate(order.timestamp),
             'status' : order.status,
         }
 
@@ -124,4 +95,3 @@ class Orders(Document):
                 obj = cls.mapID_to_obj(order)
                 output.append(obj)
             return json.dumps(output)
-
