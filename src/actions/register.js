@@ -39,10 +39,10 @@ const registerCustomer = (values) => (
                username: values.username,
                password: values.password
              }))
-             .then(() => {
-                dispatch(getCustomerDetail(values.username))
-             })
            })
+            .then(() => {
+               dispatch(getCustomerDetail(values.username))
+            })
            .then(() =>
               browserHistory.push(`${URL_ROOT}/register/success`)
             )

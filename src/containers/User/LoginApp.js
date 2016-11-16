@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import { LoginApp } from '../../components'
 import {
   onLogin,
+  onLogout,
   getCustomerDetail,
   getEmployeeDetail,
   resetErrorMsg
@@ -15,26 +16,43 @@ class LoginAppContainer extends Component {
     onLogin: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     errorMsg: PropTypes.string,
+    onLogin: PropTypes.func,
+    onLogout: PropTypes.func,
     resetErrorMsg: PropTypes.func
+  }
+
+  constructor() {
+    super()
+    this.state = {
+      username: '',
+      password: ''
+    }
   }
 
   componentDidMount() {
     this.props.resetErrorMsg()
+    this.props.onLogout()
   }
 
-  sendLoginForm(values) {
-    if(!values.username) {
-      values['username'] = ''
-    }
-    if(!values.password) {
-      values['password'] = ''
-    }
-    this.props.onLogin(values)
+  onUsernameChange(event) {
+    this.setState({username: event.target.value})
+  }
+
+  onPasswordChange(event) {
+    this.setState({password: event.target.value})
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.onLogin({
+      username: this.state.username,
+      password: this.state.password
+    })
     .then(() => {
       if(this.props.role.toLowerCase() === 'customer')
-        this.props.getCustomerDetail(this.props.username)
+        this.props.getCustomerDetail(this.props.user)
       else if(this.props.role.toLowerCase() === 'employee')
-        this.props.getEmployeeDetail(this.props.username)
+        this.props.getEmployeeDetail(this.props.user)
     })
     .then(() =>{
       if(this.props.isLoggedIn === true) {
@@ -45,25 +63,26 @@ class LoginAppContainer extends Component {
 
   render() {
     return(
-      (!this.props.isLoggedIn) ? (
-        <LoginApp
-          sendLoginForm={this.sendLoginForm.bind(this)}
-          errorMsg={this.props.errorMsg}
-        />
-      ) : ( browserHistory.push(`${URL_ROOT}`) )
+      <LoginApp
+        onUsernameChange={this.onUsernameChange.bind(this)}
+        onPasswordChange={this.onPasswordChange.bind(this)}
+        handleSubmit={this.handleSubmit.bind(this)}
+        errorMsg={this.props.errorMsg}
+      />
     )
   }
 }
 
 const mapStatetoProps = (state) => ({
   errorMsg: state.user.errorMsg,
-  username: state.user.username,
+  user: state.user.username,
   role: state.user.role,
   isLoggedIn: state.user.isLoggedIn
 })
 
 const mapDispatchToProps = ({
   onLogin,
+  onLogout,
   getCustomerDetail,
   getEmployeeDetail,
   resetErrorMsg
