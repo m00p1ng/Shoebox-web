@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const HeaderBarApp = ({title, link}) => (
+export const HeaderBarApp = ({title, link}) => (
 	<div className="nav-wrapper sbox-header-bar white-text">
 		<div className="container">
 			<div className="col s12 sbox-header-bread">
@@ -23,4 +23,21 @@ HeaderBarApp.propTypes = {
   link: PropTypes.string.isRequired
 }
 
-export default HeaderBarApp
+export const HeaderBar2StepApp = ({header, title1, link1, title2, link2}) => (
+	<div className="nav-wrapper sbox-header-bar white-text">
+		<div className="container">
+			<div className="col s12 sbox-header-bread">
+				<Link to={`${URL_ROOT}`} className="breadcrumb">
+					<span>Home</span>
+				</Link>
+				<Link to={`${URL_ROOT}/${link1}`} className="breadcrumb">
+					<span>{title1}</span>
+				</Link>
+				<Link to={`${URL_ROOT}/${link1}/${link2}`} className="breadcrumb">
+					<span>{title2}</span>
+				</Link>
+			</div>
+			<h2 className="sbox-header-text">{header}</h2>
+	</div>
+</div>
+)

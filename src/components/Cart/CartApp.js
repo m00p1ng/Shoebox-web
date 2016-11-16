@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import HeaderBarApp from '../App/HeaderBarApp'
+import{ HeaderBarApp } from '../App/HeaderBarApp'
 
 const CartApp = ({children}) => (
   <div>

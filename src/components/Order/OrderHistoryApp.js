@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderBarApp from '../App/HeaderBarApp'
+import { HeaderBarApp } from '../App/HeaderBarApp'
 
 const OrderHistoryApp = () => (
   <div>
