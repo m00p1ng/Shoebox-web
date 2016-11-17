@@ -6,6 +6,8 @@ const RegisterValidate = values => {
     errors.username = 'Username must be at least 6 characters'
   } else if(values.username.length > 20) {
     errors.username = 'Username must be at greatly 20 characters'
+  } else if(!/^[a-z][\w\.]{0,20}$/i.test(values.username)) {
+    errors.username = 'Username must contain only A-Z, a-z, 0-9 or _'
   }
 
 
@@ -13,13 +15,9 @@ const RegisterValidate = values => {
     errors.password = 'Required'
   } else if (values.password.length < 6) {
     errors.password = 'Password must be at least 6 characters'
-  }
-
-  if(!values.repassword) {
+  } else if(!values.repassword) {
     errors.repassword = 'Required'
-  }
-
-  if(values.password !== values.repassword) {
+  } else if(values.password !== values.repassword) {
     errors.repassword = 'Password didn\'t match'
   }
 
