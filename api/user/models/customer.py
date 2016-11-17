@@ -130,7 +130,7 @@ class Customers(User):
             creditEXP = data['credit']['exp'],
             phone = data['phone']
         )
-        if data.get('picture') is not None:
+        if 'picture' in data:
             customer.picture = data['picture']
         customer.set_password(data['password'])
         customer.save()

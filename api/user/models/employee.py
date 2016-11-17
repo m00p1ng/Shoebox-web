@@ -97,7 +97,7 @@ class Employees(User):
             phone = data['phone'],
             is_staff=True
         )
-        if data.get('picture') is not None:
+        if 'picture' in data:
             employee.picture = data['picture']
         employee.set_password(data['password'])
         employee.save()
