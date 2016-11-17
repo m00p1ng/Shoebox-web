@@ -85,7 +85,6 @@ class Employees(User):
             firstname = data['firstname'],
             lastname = data['lastname'],
             gender = data['gender'],
-            picture=data['picture'],
             birthday = datetime.datetime(
                 year = data['birthday']['year'],
                 month = data['birthday']['month'],
@@ -98,6 +97,8 @@ class Employees(User):
             phone = data['phone'],
             is_staff=True
         )
+        if data.get('picture') is not None:
+            employee.picture = data['picture']
         employee.set_password(data['password'])
         employee.save()
 
