@@ -15,28 +15,60 @@ const showDropdownByRole = (Role) => {
   if(Role === 'employee') {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/profile`}><span className="black-text">Profile</span></Link></li>
-        <li><Link to={`${URL_ROOT}/manage`}><span className="black-text">Manage</span></Link></li>
+        <li>
+          <Link to={`${URL_ROOT}/profile`}>
+            <span className="black-text">Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={`${URL_ROOT}/manage`}>
+          <span className="black-text">Manage</span>
+          </Link>
+        </li>
         <li className="divider"></li>
-        <li><Link to={`${URL_ROOT}/logout`}><span className="black-text">Logout</span></Link></li>
+        <li>
+          <Link to={`${URL_ROOT}/logout`}>
+            <span className="black-text">Logout</span>
+          </Link>
+        </li>
       </div>
     )
   }
   else if(Role === 'customer') {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/profile`}><span className="black-text">Profile</span></Link></li>
-        <li><Link to={`${URL_ROOT}/history`}><span className="black-text">History</span></Link></li>
+        <li>
+          <Link to={`${URL_ROOT}/profile`}>
+            <span className="black-text">Profile</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={`${URL_ROOT}/history`}>
+            <span className="black-text">History</span>
+          </Link>
+        </li>
         <li className="divider"></li>
-        <li><Link to={`${URL_ROOT}/logout`}><span className="black-text">Logout</span></Link></li>
+        <li>
+          <Link to={`${URL_ROOT}/logout`}>
+            <span className="black-text">Logout</span>
+          </Link>
+        </li>
       </div>
     )
   }
   else {
     return (
       <div>
-        <li><Link to={`${URL_ROOT}/login`}><span className="black-text">Login</span></Link></li>
-        <li><Link to={`${URL_ROOT}/register`}><span className="black-text">Register</span></Link></li>
+        <li>
+          <Link to={`${URL_ROOT}/login`}>
+            <span className="black-text">Login</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={`${URL_ROOT}/register`}>
+            <span className="black-text">Register</span>
+          </Link>
+        </li>
       </div>
     )
   }
