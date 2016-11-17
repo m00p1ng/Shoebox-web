@@ -4,13 +4,9 @@ const ErrorMsg = ({errorMsg}) => (
   <div className="row">
     {
       (errorMsg !== '') ? (
-      <div className="card-panel red lighten-3">
         <div className="center-align">
-          <span className="white-text">
-            {errorMsg}
-          </span>
+          {errorMsg}
         </div>
-      </div>
       ): (<span></span>)
     }
   </div>
