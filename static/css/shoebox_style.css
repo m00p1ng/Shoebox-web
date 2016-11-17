@@ -147,13 +147,14 @@ i.sbox-icon-gray {
 /* Shoebox Header Styles */
 
 .sbox-header-bar {
-	background-color: #EE6573;
+	/*background-color: #EE6573;*/
+  background-color: #8BC34A;
 	height: 120px;
 	margin-bottom: 30px;
 }
 
 .sbox-header-bar-manage {
-	background-color: #FF8F00;
+	background-color: #ef6c00;
 	height: 120px;
 	margin-bottom: 30px;
 }
