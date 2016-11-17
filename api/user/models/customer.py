@@ -112,7 +112,6 @@ class Customers(User):
             firstname = data['firstname'],
             lastname = data['lastname'],
             gender = data['gender'],
-            picture=data['picture'],
             birthday = datetime.datetime(
                 year = int(data['birthday']['year']),
                 month = int(data['birthday']['month']),
@@ -131,6 +130,8 @@ class Customers(User):
             creditEXP = data['credit']['exp'],
             phone = data['phone']
         )
+        if data.get('picture') is not None:
+            customer.picture = data['picture']
         customer.set_password(data['password'])
         customer.save()
 
