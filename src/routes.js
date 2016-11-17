@@ -39,9 +39,15 @@ import {
 
   ManageApp,
   ManOrderApp,
+
   ManProductApp,
   ManProductCreateApp,
   ManProductUpdateApp,
+
+  ManCustomerApp,
+  ManCustomerCreateApp,
+  ManCustomerUpdateApp,
+
   ManSupplierApp
 } from './containers'
 
@@ -81,6 +87,11 @@ export default (
           <IndexRoute component={ManProductApp} />
           <route path='create' component={ManProductCreateApp} />
           <route path='edit' component={ManProductUpdateApp} />
+        </route>
+        <route path='customer'>
+          <IndexRoute component={ManCustomerApp} />
+          <route path='create' component={ManCustomerCreateApp} />
+          <route path='edit' component={ManCustomerUpdateApp} />
         </route>
         <route path='order'>
           <IndexRoute component={ManOrderApp} />

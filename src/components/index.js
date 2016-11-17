@@ -39,9 +39,15 @@ export SearchApp from './Search/SearchApp'
 
 export ManageApp from './Manage/ManageApp'
 export ManOrderApp from './Manage/Order/ManOrderApp'
+
 export ManProductApp from './Manage/Product/ManProductApp'
 export ManProductCreateApp from './Manage/Product/ManProductCreateApp'
 export ManProductUpdateApp from './Manage/Product/ManProductUpdateApp'
+
+export ManCustomerApp from './Manage/Customer/ManCustomerApp'
+export ManCustomerCreateApp from './Manage/Customer/ManCustomerCreateApp'
+export ManCustomerUpdateApp from './Manage/Customer/ManCustomerUpdateApp'
+
 export ManSupplierApp from './Manage/Supplier/ManSupplierApp'
 
 export OrderHistoryApp from './Order/OrderHistoryApp'

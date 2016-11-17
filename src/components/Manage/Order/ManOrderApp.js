@@ -1,9 +1,9 @@
 import React from 'react'
-import HeaderBarApp from '../HeaderBarApp'
+import { HeaderBar2StepApp } from '../HeaderBarApp'
 
 const ManOrderApp = () => (
   <div>
-    <HeaderBarApp
+    <HeaderBar2StepApp
       link="order"
       title="Order" />
   </div>

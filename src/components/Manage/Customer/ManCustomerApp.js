@@ -1,12 +1,12 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../HeaderBarApp'
 
-const ManProductApp = () => (
+const ManCustomerApp = () => (
   <div>
     <HeaderBar2StepApp
-      link="product"
-      title="Product" />
+      link="customer"
+      title="Customer" />
   </div>
 )
 
-export default ManProductApp
+export default ManCustomerApp

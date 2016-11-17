@@ -152,6 +152,12 @@ i.sbox-icon-gray {
 	margin-bottom: 30px;
 }
 
+.sbox-header-bar-manage {
+	background-color: #FF8F00;
+	height: 120px;
+	margin-bottom: 30px;
+}
+
 .sbox-header-text {
   margin-top: 10px;
 }
