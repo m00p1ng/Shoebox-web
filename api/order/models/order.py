@@ -1,6 +1,7 @@
 from mongoengine import *
 from api.include.model import timestamp_fulldate
 from api.user.models import Customers
+from api.product.models import Products
 from .cart import Cart
 import datetime
 import json
@@ -21,6 +22,9 @@ class Orders(Document):
             username = Customers.objects(username=session['username']).first().id
             field_id['username'] = username
 
+        if 'product' in data:
+            product = Products.objects(slug=product).first().id
+            field_id['product'] = product
         return field_id
 
 
@@ -75,7 +79,7 @@ class Orders(Document):
 
         cart = []
         for item in order.cart:
-            cart.append(json.loads(item.to_json()))
+            cart.append(Cart.mapID_to_obj(item))
 
         obj = {
             'orderID' : order.orderID,
