@@ -73,12 +73,17 @@ class Orders(Document):
 
         real_data = cls.to_realData(data)
 
+        cart = []
+        for item in order.cart:
+            cart.append(json.loads(item.to_json()))
+
         obj = {
             'orderID' : order.orderID,
             'username' : real_data['username'],
             'total' : order.total,
             'timestamp' : timestamp_fulldate(order.timestamp),
             'status' : order.status,
+            'cart': cart
         }
 
         return obj
