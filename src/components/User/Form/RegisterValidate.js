@@ -49,21 +49,76 @@ const RegisterValidate = values => {
     errors.email = 'Invalid email address'
   }
 
-  // if(!values.address){
-  //   errors.address = 'Required'
-  // }
+  const address = {}
+  if(values.address){
+    if(!values.address.city){
+      address["city"] = ['Required']
+    }
+    if(!values.address.district){
+      address["district"] = ['Required']
+    }
+    if(!values.address.street){
+      address["street"] = ['Required']
+    }
+    if(!values.address.zipcode){
+      address["zipcode"] = ['Required']
+    }
+    errors.address = address
+  }
+  else {
+    errors.address = {
+      "city": ['Required'],
+      "district": ['Required'],
+      "street": ['Required'],
+      "zipcode": ['Required']
+    }
+  }
 
-  // if(!values.address.district){
-  //   errors.address.district = 'Required'
-  // }
-  //
-  // if(!values.address.street){
-  //   errors.address.street = 'Required'
-  // }
-  //
-  // if(!values.address.zipcode){
-  //   errors.address.zipcode = 'Required'
-  // }
+  const ship = {}
+  if(values.ship) {
+    if(!values.ship.city) {
+      ship["city"] = ['Required']
+    }
+    if(!values.ship.district) {
+      ship["district"] = ['Required']
+    }
+    if(!values.ship.street) {
+      ship["street"] = ['Required']
+    }
+    if(!values.ship.zipcode) {
+      ship["zipcode"] = ['Required']
+    }
+    errors.ship = ship
+  }
+  else {
+    errors.ship = {
+      "city": ['Required'],
+      "district": ['Required'],
+      "street": ['Required'],
+      "zipcode": ['Required']
+    }
+  }
+
+  const credit = {}
+  if(values.credit) {
+    if(!values.credit.id) {
+      credit["id"] = ['Required']
+    }
+    if(!values.credit.type) {
+      credit["type"] = ['Required']
+    }
+    if(!values.credit.exp) {
+      credit["exp"] = ['Required']
+    }
+    errors.credit = credit
+  }
+  else {
+    errors.credit = {
+      "id": ['Required'],
+      "type": ['Required'],
+      "exp": ['Required']
+    }
+  }
 
   return errors
 }
