@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.order.models import Orders
+from api.user.models import Customers
 from api.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
@@ -11,7 +12,15 @@ json_type = "application/json"
 def order(request):
     body  = request.body
     if request.method == 'GET':
-        return request_get_real(Orders, query_all())
+
+        if 'username' in request.session:
+            if request.session['role'] == 'employee':
+                return request_get_real(Orders, query_all())
+            elif request.session['role'] == 'customer':
+                username = request.session['username']
+                return request_get(query_by_username(username))
+        return HttpResponse('You\'re guest', status=403)
+
     if request.method == 'POST':
         return order_create(body, request.session)
     if request.method == 'PUT':
@@ -21,10 +30,23 @@ def order(request):
 
 
 @csrf_exempt
-def order_with_id(request,oid):
+def order_with_id(request, oid):
     body  = request.body
     if request.method == 'GET':
         return request_get_real(Orders, query_by_id(oid))
+    if request.method == 'POST':
+        return HttpResponse('Method not allow', status=405)
+    if request.method == 'PUT':
+        return order_update(body,oid)
+    if request.method == 'DELETE':
+        return order_delete(oid)
+
+
+@csrf_exempt
+def order_with_username(request, username):
+    body  = request.body
+    if request.method == 'GET':
+        return request_get_real(Orders, query_by_username(username))
     if request.method == 'POST':
         return HttpResponse('Method not allow', status=405)
     if request.method == 'PUT':
@@ -41,6 +63,11 @@ def query_by_id(oid):
     return Orders.objects(orderID=oid).first()
 
 
+def query_by_username(username):
+    cus_user = Customers.objects(username=username).first().id
+    return Orders.objects(username=cus_user)
+
+
 def order_create(body, session):
     try:
         data = json.loads(body.decode())
@@ -48,7 +75,6 @@ def order_create(body, session):
         if len(err) == 0 and \
             'username' in session and \
             session['role'] == 'customer':
-            
             Orders.create_obj(data, session)
             message = {'created' : True}
             return HttpResponse(json.dumps(message), content_type=json_type, status=201)
