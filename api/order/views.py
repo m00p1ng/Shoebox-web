@@ -18,7 +18,7 @@ def order(request):
                 return request_get_real(Orders, query_all())
             elif request.session['role'] == 'customer':
                 username = request.session['username']
-                return request_get(query_by_username(username))
+                return request_get_real(Orders, query_by_username(username))
         return HttpResponse('You\'re guest', status=403)
 
     if request.method == 'POST':
