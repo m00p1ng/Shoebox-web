@@ -2,10 +2,22 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const renderOrder = (Role) => {
+const renderOrder = (Role, NumberOfCartItem) => {
   if(Role === 'employee') {
     return (
       <li><Link to={`${URL_ROOT}/manage/order`}>Order</Link></li>
+    )
+  } else {
+    return (
+      <li>
+        <Link to={`${URL_ROOT}/cart`}>Cart
+        {
+          (NumberOfCartItem > 0)? (
+            <span className="badge red white-text">{NumberOfCartItem}</span>
+          ) : (<span></span>)
+        }
+        </Link>
+      </li>
     )
   }
 }
@@ -24,16 +36,7 @@ const NavbarDesktopMenu = ({NumberOfCartItem, Username, Role}) => (
         Brand<i className="material-icons right">arrow_drop_down</i>
       </a>
     </li>
-    <li>
-      <Link to={`${URL_ROOT}/cart`}>Cart
-      {
-        (NumberOfCartItem > 0)? (
-          <span className="badge red white-text">{NumberOfCartItem}</span>
-        ) : (<span></span>)
-      }
-      </Link>
-    </li>
-    {renderOrder(Role)}
+    {renderOrder(Role, NumberOfCartItem)}
     <li>
       <a
         className="dropdown-button"

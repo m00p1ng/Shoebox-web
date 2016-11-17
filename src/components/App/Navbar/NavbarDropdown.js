@@ -16,7 +16,6 @@ const showDropdownByRole = (Role) => {
     return (
       <div>
         <li><Link to={`${URL_ROOT}/profile`}><span className="black-text">Profile</span></Link></li>
-        <li><Link to={`${URL_ROOT}/history`}><span className="black-text">History</span></Link></li>
         <li><Link to={`${URL_ROOT}/manage`}><span className="black-text">Manage</span></Link></li>
         <li className="divider"></li>
         <li><Link to={`${URL_ROOT}/logout`}><span className="black-text">Logout</span></Link></li>
