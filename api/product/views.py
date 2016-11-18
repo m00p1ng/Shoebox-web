@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.product.models import *
-from api.include.api import request_get, request_get_real, request_get_by_function, errors_to_json
+from api.include.api import request_get, request_get_real, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -13,7 +13,7 @@ def product(request):
     if request.method == 'GET':
         if 'role' in request.session and request.session['role'] == 'employee':
             return request_get_real(Products, query_all())
-        return request_get_by_function(Products, query_by_customer_all(), 'customer')
+        return request_get_real(Products, query_by_customer_all(), 'customer')
     if request.method == 'POST':
         return product_create(body)
     if request.method == 'PUT':
@@ -94,7 +94,7 @@ def product_topview(request):
 @csrf_exempt
 def product_search(request,keyword):
     if request.method == 'GET':
-        return request_get_by_function(Products, query_by_keyword(keyword), 'search')
+        return request_get_real(Products, query_by_keyword(keyword), 'search')
     if request.method == 'POST':
         pass
     if request.method == 'PUT':

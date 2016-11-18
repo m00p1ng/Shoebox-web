@@ -7,13 +7,7 @@ def request_get(queryset):
     return HttpResponse(queryset.to_json(), content_type="application/json")
 
 
-def request_get_real(model, queryset):
-    if not queryset:
-        return HttpResponse('Not found', status=404)
-    return HttpResponse(model.map_referenceID(queryset), content_type="application/json")
-
-
-def request_get_by_function(model, queryset, function):
+def request_get_real(model, queryset, function='none'):
     if not queryset:
         return HttpResponse('Not found', status=404)
     return HttpResponse(model.map_referenceID(queryset,function), content_type="application/json")
