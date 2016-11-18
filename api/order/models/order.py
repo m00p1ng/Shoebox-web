@@ -72,7 +72,7 @@ class Orders(Document):
 
 
     @classmethod
-    def mapID_to_obj(cls, order):
+    def mapID_to_obj(cls, order, function='none'):
         data = {'username': order.username.id}
 
         real_data = cls.to_realData(data)
@@ -90,17 +90,20 @@ class Orders(Document):
             'cart': cart
         }
 
+        if function is 'customer':
+            obj.pop('username')
+
         return obj
 
 
     @classmethod
-    def map_referenceID(cls, orders):
+    def map_referenceID(cls, orders, function='none'):
         output = []
         if not hasattr(orders, 'count'):
-            obj = cls.mapID_to_obj(orders)
+            obj = cls.mapID_to_obj(orders,function)
             return json.dumps(obj)
         else:
             for order in orders:
-                obj = cls.mapID_to_obj(order)
+                obj = cls.mapID_to_obj(order,function)
                 output.append(obj)
             return json.dumps(output)
