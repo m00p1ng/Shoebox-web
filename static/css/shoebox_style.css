@@ -7,10 +7,9 @@
 /* Shoebox Navbar */
 
 #sbox-nav-logo {
-    height: 52px;
+    height: 48px;
     position: relative;
-    top: 6px;
-    left: 30px;
+    top: 8px;
 }
 
 #sbox-nav-logo-small {

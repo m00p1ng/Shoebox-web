@@ -13,17 +13,19 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
     <div className="navbar-fixed">
       <nav>
         <div className="nav-wrapper sbox-white-nav">
-          <NavbarLogo />
-          <a data-activates="mobile-demo" className="button-collapse">
-            <i className="material-icons">menu</i>
-          </a>
-          <NavbarDesktopMenu
-            NumberOfCartItem={NumberOfCartItem}
-            Username={Username}
-            Role={Role}/>
-          <NavbarMobileMenu
-            NumberOfCartItem={NumberOfCartItem}
-            Username={Username}/>
+          <div className="container">
+            <NavbarLogo />
+            <a data-activates="mobile-demo" className="button-collapse">
+              <i className="material-icons">menu</i>
+            </a>
+            <NavbarDesktopMenu
+              NumberOfCartItem={NumberOfCartItem}
+              Username={Username}
+              Role={Role}/>
+            <NavbarMobileMenu
+              NumberOfCartItem={NumberOfCartItem}
+              Username={Username}/>
+          </div>
         </div>
       </nav>
     </div>
