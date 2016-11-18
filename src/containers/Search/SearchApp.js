@@ -14,7 +14,7 @@ class SearchAppContainer extends Component {
       }
   }
 
-  componentDidMount() {
+  componentWillUnmount() {
     this.props.clearSearch()
   }
 
