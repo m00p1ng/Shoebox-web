@@ -94,7 +94,7 @@ def product_topview(request):
 @csrf_exempt
 def product_search(request,keyword):
     if request.method == 'GET':
-        return request_get_real(Products, query_by_keyword(keyword), 'search')
+        return search_by_keyword(keyword)
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -127,9 +127,11 @@ def query_by_customer_all():
     return Products.objects(is_available=True).all()
 
 
-def query_by_keyword(keyword):
-    return Products.objects.filter(name__icontains=keyword)
-
+def search_by_keyword(keyword):
+    product = Products.objects.filter(name__icontains=keyword)
+    if not product:
+        return HttpResponse(status=204)
+    return request_get_real(Products, product)
 
 def product_type(slug):
     types = ProductTypes.objects(slug=slug).first()
