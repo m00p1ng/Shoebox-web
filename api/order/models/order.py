@@ -33,6 +33,12 @@ class Orders(Document):
         err = []
         if 'total' not in data:
             err.append('Total cannot empty')
+        if 'cart' not in data:
+            err.append('Cart cannot empty')
+        else:
+            for item in data['cart']:
+                if len(Cart.validation(item)) != 0:
+                    err.append(Cart.validation(item))
         return err
 
 
