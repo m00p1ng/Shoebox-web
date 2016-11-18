@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.order.models import Orders
 from api.user.models import Customers
-from api.include.api import request_get, request_get_real, errors_to_json
+from api.include.api import request_get, request_get_real, request_get_by_function, errors_to_json
 from mongoengine import NotUniqueError
 import json
 
@@ -18,7 +18,7 @@ def order(request):
                 return request_get_real(Orders, query_all())
             elif request.session['role'] == 'customer':
                 username = request.session['username']
-                return request_get_real(Orders, query_by_username(username))
+                return request_get_by_function(Orders, query_by_username(username), 'customer')
         return HttpResponse('You\'re guest', status=403)
 
     if request.method == 'POST':
