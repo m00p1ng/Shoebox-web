@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 from faker import Faker
-from pprint import pprint
 import requests
-import time
 import sys
 import json
 
 fake = Faker()
-
+CUSTOMER_API_ROOT = "http://localhost:8000/api/user/customer"
 
 def response_print(res):
     print()
@@ -18,7 +16,7 @@ def response_print(res):
 
 
 def gen_customer(total):
-    URL = "http://localhost:8000/api/user/customer/"
+    URL = CUSTOMER_API_ROOT
     for i in range(total):
         username = fake.user_name()
         payload =  {
@@ -66,7 +64,7 @@ def gen_customer(total):
 
 
 def delete_customer(username):
-    URL = "http://localhost:8000/api/user/customer/%s" % username
+    URL = CUSTOMER_API_ROOT + "/" + username
     res = requests.delete(URL)
 
     if res.status_code == 200 or res.status_code == 201:
@@ -80,9 +78,9 @@ def delete_customer(username):
 def find_customer(username=0):
     URL = ""
     if username == 0:
-        URL = "http://localhost:8000/api/user/customer"
+        URL = CUSTOMER_API_ROOT
     else:
-        URL = "http://localhost:8000/api/user/customer/%s" % username
+        URL = CUSTOMER_API_ROOT + "/" + username
 
     res = requests.get(URL)
 

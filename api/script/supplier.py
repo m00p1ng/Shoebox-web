@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 from faker import Faker
-from pprint import pprint
 import requests
-import time
 import sys
 import json
 
 fake = Faker()
-
+SUPPLIER_API_ROOT = "http://localhost:8000/api/supplier"
 
 def response_print(res):
     print()
@@ -18,7 +16,7 @@ def response_print(res):
 
 
 def gen_supplier(total):
-    URL = "http://localhost:8000/api/supplier/"
+    URL = SUPPLIER_API_ROOT
     supplier_list = [
         "Nike",
         "Puma",
@@ -50,7 +48,7 @@ def gen_supplier(total):
 
 
 def delete_supplier(name):
-    URL = "http://localhost:8000/api/supplier/%s" % name
+    URL = SUPPLIER_API_ROOT + "/" + name
     res = requests.delete(URL)
 
     if res.status_code == 200 or res.status_code == 201:
@@ -64,9 +62,9 @@ def delete_supplier(name):
 def find_supplier(name=0):
     URL = ""
     if name == 0:
-        URL = "http://localhost:8000/api/supplier"
+        URL = SUPPLIER_API_ROOT
     else:
-        URL = "http://localhost:8000/api/name/supplier/%s" % name
+        URL = SUPPLIER_API_ROOT + "/" + name
 
     res = requests.get(URL)
 
