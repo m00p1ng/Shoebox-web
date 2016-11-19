@@ -33,22 +33,32 @@ class ShopItemDetailAppContainer extends Component {
     this.props.clickAddToCart(product.slug, product, product.price)
   }
 
+  renderShopItemDetail(product, error) {
+    let hasError = error === true
+    let hasProduct = product.length > 0
+
+    if(hasError) {
+      return browserHistory.push(`${URL_ROOT}/404`)
+    } else if(hasProduct) {
+      return (
+        <ShopItemDetailApp
+          product={product[0]}
+          onClickedAddToCart={() => {
+            this.onClickedAddToCart(product[0])
+          }} />
+      )
+    } else {
+      return (
+        <Loading />
+      )
+    }
+  }
+
   render() {
-    let not_hasError = this.props.error !== true
-    let hasProduct = this.props.product.length > 0
+    const {product, error} = this.props
     return (
       <div>
-        {
-          not_hasError ? (
-            hasProduct ? (
-              <ShopItemDetailApp
-                product={this.props.product[0]}
-                onClickedAddToCart={() => {
-                  this.onClickedAddToCart(this.props.product[0])
-                }} />
-            ): ( <Loading /> )
-          ): ( browserHistory.push(`${URL_ROOT}/404`) )
-        }
+        {this.renderShopItemDetail(product, error)}
       </div>
     )
   }
