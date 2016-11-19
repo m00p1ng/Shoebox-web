@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router'
+import { URL_ROOT } from 'endpoint'
 
 const ManageMenu = () => (
   <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
@@ -7,32 +9,31 @@ const ManageMenu = () => (
         General
       </p>
       <ul className="menu-list">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Customers</a></li>
+        <li>
+          <Link to={`${URL_ROOT}/manage`}>Dashboard</Link>
+        </li>
+      </ul>
+      <p className="menu-label">
+        Shop
+      </p>
+      <ul className="menu-list">
+        <li>
+          <Link to={`${URL_ROOT}/manage/product`}>Products</Link>
+        </li>
+        <li>
+          <Link to={`${URL_ROOT}/manage/order`}>Orders</Link>
+        </li>
+        <li>
+          <Link to={`${URL_ROOT}/manage/supplier`}>Suppliers</Link>
+        </li>
       </ul>
       <p className="menu-label">
         Administration
       </p>
       <ul className="menu-list">
-        <li><a href="#">Team Settings</a></li>
         <li>
-          <a className="is-active" href="#">Manage Your Team</a>
-          <ul>
-            <li><a href="#">Members</a></li>
-            <li><a href="#">Plugins</a></li>
-            <li><a href="#">Add a member</a></li>
-          </ul>
+          <Link to={`${URL_ROOT}/manage/customer`}>Customers</Link>
         </li>
-        <li><a href="#">Invitations</a></li>
-        <li><a href="#">Authentication</a></li>
-      </ul>
-      <p className="menu-label">
-        Transactions
-      </p>
-      <ul className="menu-list">
-        <li><a href="#">Payments</a></li>
-        <li><a href="#">Transfers</a></li>
-        <li><a href="#">Balance</a></li>
       </ul>
     </aside>
 	</div>

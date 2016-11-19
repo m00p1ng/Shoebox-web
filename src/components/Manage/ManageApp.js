@@ -6,7 +6,7 @@ const ManageApp = () => (
   <div>
     <HeaderBarApp />
 
-    <div className="container" >
+    <div className="container">
       <ManageMenu />
     </div>
   </div>
