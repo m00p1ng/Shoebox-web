@@ -1,8 +1,10 @@
+from json import dumps
+
 URL_EMPLOYEE = '/api/user/employee'
 
 URL_EMPLOYEE_USERNAME = '/api/user/employee/mooping12345'
 
-CREATE_BODY = {
+CREATE_BODY =  dumps({
 	'username': 'mooping12345',
 	'password': 'secret',
 	'repassword': 'secret',
@@ -23,4 +25,4 @@ CREATE_BODY = {
 		'zipcode': '99999'
 	},
 	'phone': '080-000-0000'
-}
+})

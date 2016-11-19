@@ -8,7 +8,7 @@ class Employee_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_search_api(self):
-        create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        create_request(URL_EMPLOYEE, CREATE_BODY)
         c = Client()
         res = c.get(URL_EMPLOYEE_USERNAME)
         data = json.loads(res.content.decode())

@@ -8,7 +8,7 @@ class customer_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_delete_api(self):
-        create_request(URL_CUSTOMER, json.dumps(CREATE_BODY))
+        create_request(URL_CUSTOMER, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_CUSTOMER_USERNAME)

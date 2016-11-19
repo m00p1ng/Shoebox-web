@@ -7,7 +7,7 @@ class employee_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_create_api(self):
-        res = create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        res = create_request(URL_EMPLOYEE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['created'], True)
@@ -18,7 +18,7 @@ class employee_Create_Fail_API_Test(MongoTestCase):
 
     def test_create_no_firstname(self):
         CREATE_BODY = {}
-        res = create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        res = create_request(URL_EMPLOYEE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], [
@@ -52,8 +52,8 @@ class employee_Create_Fail_API_Test(MongoTestCase):
 
 
     def test_create_username_duplicated(self):
-        create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
-        res = create_request(URL_EMPLOYEE, json.dumps(CREATE_BODY))
+        create_request(URL_EMPLOYEE, CREATE_BODY)
+        res = create_request(URL_EMPLOYEE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Username already exist'])
