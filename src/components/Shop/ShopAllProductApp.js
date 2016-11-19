@@ -3,14 +3,14 @@ import { HeaderBar2StepApp } from '../App/HeaderBarApp'
 import ShopBody from './ShopBody'
 import ShopPage from './ShopPage'
 
-const ShopBestSellerApp = () => (
+const ShopAllProductApp = () => (
   <div>
     <HeaderBar2StepApp
-      header="Best Seller"
+      header="All Products"
       title1="Shop"
       link1="shop"
-      title2="Best Seller"
-      link2="best-seller"
+      title2="All Products"
+      link2="all"
     />
     <div className="container">
       <ShopBody />
@@ -19,4 +19,4 @@ const ShopBestSellerApp = () => (
   </div>
 )
 
-export default ShopBestSellerApp
+export default ShopAllProductApp

@@ -8,20 +8,47 @@ const ShopMenu = () => (
   		<div className="menu">
   			<p className="menu-label">General</p>
   			<ul className="menu-list">
+          <li>
+            <Link
+              to={`${URL_ROOT}/shop/all`}
+              activeClassName="is-active">
+              All Products
+            </Link>
+          </li>
   				<li>
-            <Link to={`${URL_ROOT}/shop/feature`}>Feature</Link>
+            <Link
+              to={`${URL_ROOT}/shop/feature`}
+              activeClassName="is-active">
+              Feature
+            </Link>
           </li>
   				<li>
-            <Link to={`${URL_ROOT}/shop/best-seller`}>Best Seller</Link>
+            <Link
+              to={`${URL_ROOT}/shop/best-seller`}
+              activeClassName="is-active">
+              Best Seller
+            </Link>
           </li>
           <li>
-            <Link to={`${URL_ROOT}/shop/new-arrival`}>New Arrival</Link>
+            <Link
+              to={`${URL_ROOT}/shop/new-arrival`}
+              activeClassName="is-active">
+              New Arrival
+            </Link>
           </li>
           <li>
-            <Link to={`${URL_ROOT}/shop/top-view`}>Top Views</Link>
+            <Link
+              to={`${URL_ROOT}/shop/top-view`}
+              activeClassName="is-active">
+              Top Views
+            </Link>
           </li>
           <li>
-            <Link to={`${URL_ROOT}/search`}>Search</Link>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active">
+              Search
+            </Link>
           </li>
   			</ul>
   			<p className="menu-label">Brand</p>
@@ -34,7 +61,9 @@ const ShopMenu = () => (
   			</ul>
   			<p className="menu-label">Cart</p>
   			<ul className="menu-list">
-  				<li><a href="#">Go to cart</a></li>
+  				<li>
+            <Link to={`${URL_ROOT}/cart`}>Go to cart</Link>
+          </li>
   			</ul>
   		</div>
     </div>

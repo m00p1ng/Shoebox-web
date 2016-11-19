@@ -1,18 +1,17 @@
 .menu-list a {
-  border-radius: 2px;
   color: #9e9e9e;
   display: block;
   padding: 5px 20px;
 }
 
 .menu-list a:hover {
-  background-color: #f9a825;
+  background-color: #ffca28;
   color: white;
 }
 
 .menu-list a.is-active {
-  background-color: #00d1b2;
-  color: red;
+  background-color: #f9a825;
+  color: white;
 }
 
 .menu-list li ul {

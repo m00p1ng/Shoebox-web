@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const FooterApp = () => (
-  <footer className="page-footer black">
+  <footer className="page-footer grey darken-3">
     <div className="container">
       <div className="row">
         <div className="col l6 s12">
