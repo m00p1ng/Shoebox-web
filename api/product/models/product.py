@@ -107,11 +107,13 @@ class Products(Document):
     def update_obj(cls, slug, data):
 
         qty = 0
+        product = cls.objects(slug=slug).first()
         if 'qty' in data:
             qty = data['qty']
             data = {}
             data['amount'] = product.amount - qty
             data['sold_unit'] = product.sold_unit + qty
+
 
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
@@ -122,9 +124,8 @@ class Products(Document):
             for key in field_id:
                 data[key] = field_id[key]
 
-        product = cls.objects(slug=slug).first()
-
         data['number_of_views'] = product.number_of_views+1
+
         product.update(**data)
         return product
 
