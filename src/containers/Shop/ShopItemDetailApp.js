@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { ProductDetailApp } from '../../components'
+import { ShopItemDetailApp } from '../../components'
 import {
   loadProduct,
   clickAddToCart,
@@ -10,7 +10,7 @@ import { browserHistory } from 'react-router';
 import Loading from '../../constants/Loading/Loading'
 import { URL_ROOT } from 'endpoint'
 
-class ProductDetailAppContainer extends Component {
+class ShopItemDetailAppContainer extends Component {
   static propTypes = {
     product: PropTypes.array.isRequired,
     error: PropTypes.bool.isRequired,
@@ -41,7 +41,7 @@ class ProductDetailAppContainer extends Component {
         {
           not_hasError ? (
             hasProduct ? (
-              <ProductDetailApp
+              <ShopItemDetailApp
                 product={this.props.product[0]}
                 onClickedAddToCart={() => {
                   this.onClickedAddToCart(this.props.product[0])
@@ -68,4 +68,4 @@ const mapDispatchToProps = ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetailAppContainer);
+)(ShopItemDetailAppContainer);

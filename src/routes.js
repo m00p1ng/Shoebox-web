@@ -22,8 +22,7 @@ import {
   ShopAllProductApp,
   ShopNewArrivalApp,
   ShopTopViewsApp,
-
-  ProductDetailApp,
+  ShopItemDetailApp,
 
   SearchApp,
 
@@ -66,7 +65,7 @@ export default (
         <route path='all' component={ShopAllProductApp} />
         <route path='new-arrival' component={ShopNewArrivalApp} />
         <route path='top-view' component={ShopTopViewsApp} />
-        <route path=':slug' component={ProductDetailApp} />
+        <route path=':slug' component={ShopItemDetailApp} />
       </route>
       <Route path='cart'>
         <IndexRoute component={CartApp} />

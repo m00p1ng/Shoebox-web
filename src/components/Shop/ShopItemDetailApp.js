@@ -7,7 +7,7 @@ const render_list = (list) => (
   })
 )
 
-const ProductDetailApp = ({product, onClickedAddToCart}) => (
+const ShopItemDetailApp = ({product, onClickedAddToCart}) => (
   <div>
     <HeaderBar2StepApp
 			header={product.name}
@@ -19,7 +19,7 @@ const ProductDetailApp = ({product, onClickedAddToCart}) => (
   </div>
 )
 
-ProductDetailApp.propTypes = {
+ShopItemDetailApp.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
@@ -41,4 +41,4 @@ ProductDetailApp.propTypes = {
   }).isRequired
 }
 
-export default ProductDetailApp
+export default ShopItemDetailApp
