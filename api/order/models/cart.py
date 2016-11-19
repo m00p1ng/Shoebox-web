@@ -10,6 +10,10 @@ class Cart(EmbeddedDocument):
     @staticmethod
     def validation(data):
         err = []
+        if 'product' in data:
+            amount = Products.objects(slug=data['product']).first().amount
+            if data['qty'] > amount:
+                err.append('Order qty more than stock available')
         if 'product' not in data:
             err.append('Total cannot empty')
         if 'qty' not in data:
@@ -64,4 +68,6 @@ class Cart(EmbeddedDocument):
             price = data['price'],
             subtotal = data['subtotal']
         )
+
+        Products.update_obj(data['product'],data)
         return cart

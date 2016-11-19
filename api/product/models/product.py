@@ -16,7 +16,7 @@ class Products(Document):
     date = DateTimeField(required=True, default=datetime.datetime.now())
     amount = IntField(required=True)
     size = ListField(ReferenceField(ProductSizes))
-    color = ListField(ReferenceField(ProductColors))
+    color = StringField(max_length=50,required=True)
     is_available = BooleanField(required=True)
     is_discount = BooleanField(required=True)
     discountPercent = FloatField(required=True, default=0)
@@ -38,12 +38,6 @@ class Products(Document):
         if 'types' in data:
             types = ProductTypes.objects(slug=data['types']).first().id
             field_id['types'] = types
-
-        if 'color' in data:
-            colors = []
-            for color in data['color']:
-                colors.append(ProductColors.objects(slug=color).first().id)
-            field_id['color'] = colors
 
         if 'size' in data:
             sizes = []
@@ -79,7 +73,6 @@ class Products(Document):
             err.append('Color cannot empty')
         if 'is_available' not in data:
             err.append('is_available cannot empty')
-
         if 'is_discount' not in data:
             err.append('is_discount cannot empty')
         if 'discountPercent' not in data:
@@ -103,7 +96,7 @@ class Products(Document):
             slug=to_slug(data['name']),
             brand=field_id['brand'],
             types=field_id['types'],
-            color=field_id['color'],
+            color=data['color'],
             size=field_id['size']
         )
         product.save()
@@ -112,6 +105,13 @@ class Products(Document):
 
     @classmethod
     def update_obj(cls, slug, data):
+
+        qty = 0
+        if 'qty' in data:
+            qty = data['qty']
+            data = {}
+            data['amount'] = product.amount - qty
+            data['sold_unit'] = product.sold_unit + qty
 
         if 'name' in data:
             data['slug'] = to_slug(data['name'])
@@ -122,24 +122,20 @@ class Products(Document):
             for key in field_id:
                 data[key] = field_id[key]
 
-        product = cls.objects(slug=slug)
-        data['number_of_views'] = product.first().number_of_views+1
+        product = cls.objects(slug=slug).first()
+
+        data['number_of_views'] = product.number_of_views+1
         product.update(**data)
         return product
 
 
     def to_realData(data):
-        colors = []
         sizes = []
         supplier = Suppliers.objects(pk=data['supplier']).first().slug
         brand = ProductBrands.objects(pk=data['brand']).first().name
         types = ProductTypes.objects(pk=data['types']).first().name
         brand = ProductBrands.objects(pk=data['brand']).first().slug
         types = ProductTypes.objects(pk=data['types']).first().slug
-
-        for color in data['color']:
-            query = ProductColors.objects(pk=color.id).first().slug
-            colors.append(query)
 
         for size in data['size']:
             query = ProductSizes.objects(pk=size.id).first().slug
@@ -149,7 +145,6 @@ class Products(Document):
             'supplier': supplier,
             'brand': brand,
             'types': types,
-            'color': colors,
             'supplier': supplier,
             'size': sizes
         }
@@ -164,12 +159,12 @@ class Products(Document):
             'price' : product.price,
             'picture' : product.picture,
             'amount' : product.amount,
+            'color' : product.color,
             'is_discount' : product.is_discount,
             'discountPercent' : product.discountPercent,
             'date' : timestamp_date(product.date),
             'brand' : real_data['brand'],
             'types' : real_data['types'],
-            'color' : real_data['color'],
             'size' : real_data['size'],
         }
 
@@ -201,6 +196,7 @@ class Products(Document):
             'price' : product.price,
             'picture' : product.picture,
             'amount' : product.amount,
+            'color' : product.color,
             'is_available' : product.is_available,
             'is_discount' : product.is_discount,
             'discountPercent' : product.discountPercent,
@@ -210,7 +206,6 @@ class Products(Document):
             'date' : timestamp_date(product.date),
             'brand' : real_data['brand'],
             'types' : real_data['types'],
-            'color' : real_data['color'],
             'size' : real_data['size'],
             'supplier': real_data['supplier']
          }
@@ -223,7 +218,6 @@ class Products(Document):
         data = {
             'brand': product.brand.id,
             'types': product.types.id,
-            'color': product.color,
             'size': product.size,
             'supplier' : product.supplier.id
         }
