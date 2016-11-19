@@ -18,13 +18,11 @@ def response_print(res):
 def gen_customer(total):
     URL = PRODUCT_API_ROOT
     picture = [
-        "http://www.freetrainer3-0.org.uk/images/nike-sneaker-womens-roshe-run-print-light-magenta-purple-z413_2.jpg",
-        "http://static.highsnobiety.com/wp-content/uploads/2015/12/03162839/best-sneaker-featured-960x576.jpg",
-        "http://weartesters.com/wp-content/uploads/2014/09/nike-air-force-1-duckboot-2.jpg",
-        "https://s-media-cache-ak0.pinimg.com/originals/9a/9c/45/9a9c45b640f98cf34c66f4c57a9feec5.jpg",
-        "https://s3-ap-southeast-1.amazonaws.com/wpimage.shopspotapp.com/wp-content/uploads/2015/10/nike-roshe-one-camo-print-2-960x576.jpg",
-        "http://www.hyp-boost.com/images/product/zxflux-0617-73_2_6.jpg",
-        "http://static.highsnobiety.com/wp-content/uploads/2015/12/18110730/asics-x-ronnie-fieg-homage-0.jpg"
+        "https://ae01.alicdn.com/kf/HTB1shrTLpXXXXX.XFXXq6xXFXXXB/Women-Shoes-2016-Spring-Summer-Women-Casual-Shoes-8-Colors-Fashion-Canvas-Shoes-Breathable-Solid-Color.jpg",
+        "https://ae01.alicdn.com/kf/HTB1WXbeNVXXXXX6XpXXq6xXFXXX9/High-Quality-men-women-breathable-casual-shoes-high-quality-fashion-mens-trainers-luxury-branded-designer-male.jpg",
+        "https://ae01.alicdn.com/kf/HTB1gO.0OXXXXXaxXpXXq6xXFXXX5/New-Fashion-Men-Women-Casual-Shoes-Trainers-Air-Mesh-Sport-Jogging-Male-Lovers-Flats-Shoes-Breathable.jpg",
+        "http://cdn2.bigcommerce.com/n-biq04i/p1jdk/products/3328/images/72746/1512WS_womens_blue_leather_sneaker_sport_shoes_01__16923.1460009681.1000.1200.jpg?c=2",
+        "https://ae01.alicdn.com/kf/HTB1hlyDMVXXXXa7XXXXq6xXFXXXo/Men-font-b-Shoes-b-font-Outdoor-Climbing-Mountain-2016-Large-Size-Sneaker-font-b-Leather.jpg"
     ]
     for i in range(total):
         name = "Sneaker test %s" % i
@@ -34,7 +32,7 @@ def gen_customer(total):
             "types": "running",
             "description": "product description",
             "price": 200,
-            "picture": picture[i%7],
+            "picture": picture[i%(len(picture))],
             "date" : {
                 "year": 2016,
                 "month": 10,
