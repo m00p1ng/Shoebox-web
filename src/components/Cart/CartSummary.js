@@ -79,7 +79,8 @@ const CartSummary = ({total, products, qty, role}) => (
     <div className="row">
       <div className="card white">
         <div className="card-content">
-          <p className="card-title sbox-summary-header padding-bottom-10">
+          <p className="card-title sbox-summary-header"
+            style={{paddingBottom: "10px"}}>
             Order Summary
           </p>
           <div className="divider"></div>

@@ -47,11 +47,12 @@ class ShopItemDetailAppContainer extends Component {
             this.onClickedAddToCart(product[0])
           }} />
       )
-    } else {
-      return (
-        <Loading />
-      )
     }
+    // else {
+    //   return (
+    //     <Loading />
+    //   )
+    // }
   }
 
   render() {

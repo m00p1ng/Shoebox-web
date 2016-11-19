@@ -5,7 +5,8 @@ const CheckoutSummary = ({total, checkout}) => (
 
   <div className="row" >
     <div
-      className="sb-checkout-subtotal padding-20" >
+      className="sb-checkout-subtotal"
+      style={{paddingTop: "20px"}}>
       <div className="col l6" >
         Subtotal
       </div>
@@ -31,12 +32,17 @@ const CheckoutSummary = ({total, checkout}) => (
     </div>
   </div>
 
-  <div className="padding-l-r-10-20">
-    <div className="divider" ></div>
+  <div
+    className="divider"
+    style={{
+      paddingLeft: "10px",
+    	paddingRight: "20px"
+    }}>
   </div>
 
   <div className="row" >
-    <div className="sb-checkout-total padding-20" >
+    <div className="sb-checkout-total"
+      style={{paddingTop: "20px"}}>
       <div className="col l6 " >
         Total
       </div>
