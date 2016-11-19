@@ -1,9 +1,9 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../App/HeaderBarApp'
 import ShopMenu from './ShopMenu'
-import ShopList from './ShopList'
+import renderShopList from './ShopList'
 
-const ShopTopViewsApp = () => (
+const ShopTopViewsApp = ({products, error}) => (
   <div>
     <HeaderBar2StepApp
       header="Top Views"
@@ -15,7 +15,7 @@ const ShopTopViewsApp = () => (
     <div className="container">
       <div className="row">
         <ShopMenu />
-        <ShopList />
+        {renderShopList(products, error)}
       </div>
     </div>
   </div>

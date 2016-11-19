@@ -4,21 +4,23 @@ import { URL_ROOT } from 'endpoint'
 import Loading from '../../constants/Loading/Loading'
 
 const ShopItem = ({product}) => (
-  <div className="col l3 m4 s6 sb-shop-item center">
-		<div className="sb-hover-zoom">
-			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
-				<img
-          src={product.picture}
-          alt={product.slug} />
-			</Link>
-			<span className="chip">Nike</span>
-			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
-        {product.name}
-      </Link>
-			<div className="sb-shop-item-price">
-        Price: $ {product.price}
-      </div>
-		</div>
+  <div className="col l3 m4 s6">
+    <div className="sb-shop-item center">
+  		<div className="sb-hover-zoom">
+  			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
+  				<img
+            src={product.picture}
+            alt={product.slug} />
+  			</Link>
+  			<span className="chip">Nike</span>
+  			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
+          {product.name}
+        </Link>
+  			<div className="sb-shop-item-price">
+          Price: $ {product.price}
+        </div>
+  		</div>
+    </div>
 	</div>
 )
 
@@ -32,7 +34,7 @@ const renderShopItem = (products) => {
 
 const ShopList = ({products}) => (
 	<div className="col l9 s12">
-		<div className="card white">
+		<div className="card grey lighten-4">
       <div className="row">
         {renderShopItem(products)}
       </div>

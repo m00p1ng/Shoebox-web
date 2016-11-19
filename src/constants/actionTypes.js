@@ -29,6 +29,8 @@ export const SEARCH_PRODUCT_FAILURE = 'SEARCH_PRODUCT_FAILURE'
 
 export const CLEAR_SEARCH = 'CLEAR_SEARCH'
 
+export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS'
+
 // action User
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

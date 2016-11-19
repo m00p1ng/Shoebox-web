@@ -16,12 +16,19 @@ import {
   UPDATE_PRODUCT_VIEWS_SUCCESS,
   UPDATE_PRODUCT_VIEWS_FAILURE,
 
-  ADD_TO_CART
+  ADD_TO_CART,
+  CLEAR_PRODUCTS,
 } from 'actionTypes'
 
-export const loadLatestProducts = () => ({
+export const clearProducts = () => (
+  (dispatch) => dispatch({
+    type: CLEAR_PRODUCTS
+  })
+)
+
+export const loadProducts = (type) => ({
   [CALL_API]: {
-    endpoint: `${PRODUCT_ENDPOINT}/latest`,
+    endpoint: `${PRODUCT_ENDPOINT}/${type}`,
     method: 'GET',
     types: [
     {

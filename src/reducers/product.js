@@ -6,6 +6,8 @@ import {
   LOAD_PRODUCT_REQUEST,
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
+
+  CLEAR_PRODUCTS,
 } from 'actionTypes'
 
 const initialState = {
@@ -57,6 +59,9 @@ const products = (state = initialState, action) => {
         detail: [],
         error: true
       })
+
+    case CLEAR_PRODUCTS:
+      return initialState
 
     default:
       return state

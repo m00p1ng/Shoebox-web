@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ManProductApp } from '../../../components'
-import { loadLastestProducts } from '../../../actions/product'
+import { loadProducts } from '../../../actions/product'
 
 class ManProductAppContainer extends Component {
   componentDidMount() {
-    this.props.loadLastestProducts()
+    this.props.loadProducts()
   }
 
   render() {
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  loadLastestProducts
+  loadProducts
 })
 
 export default connect(
