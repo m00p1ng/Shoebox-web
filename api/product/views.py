@@ -184,7 +184,7 @@ def product_create(body):
 
     except NotUniqueError as e:
         err = {}
-        err['errorMsg'] = ['Brand already exist']
+        err['errorMsg'] = ['Product already exist']
         err['created'] = False
         return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
