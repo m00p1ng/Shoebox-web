@@ -11,6 +11,7 @@ const ShopMenu = () => (
           <li>
             <Link
               to={`${URL_ROOT}/shop/all`}
+              className="hvr-bounce-to-right"
               activeClassName="is-active">
               All Products
             </Link>
@@ -18,35 +19,40 @@ const ShopMenu = () => (
   				<li>
             <Link
               to={`${URL_ROOT}/shop/feature`}
-              activeClassName="is-active">
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
               Feature
             </Link>
           </li>
   				<li>
             <Link
               to={`${URL_ROOT}/shop/best-seller`}
-              activeClassName="is-active">
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
               Best Seller
             </Link>
           </li>
           <li>
             <Link
               to={`${URL_ROOT}/shop/new-arrival`}
-              activeClassName="is-active">
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
               New Arrival
             </Link>
           </li>
           <li>
             <Link
               to={`${URL_ROOT}/shop/top-view`}
-              activeClassName="is-active">
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
               Top Views
             </Link>
           </li>
           <li>
             <Link
               to={`${URL_ROOT}/search`}
-              activeClassName="is-active">
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
               Search
             </Link>
           </li>
@@ -54,17 +60,57 @@ const ShopMenu = () => (
         <div className="divider grey lighten-3"></div>
   			<p className="menu-label">Brand</p>
   			<ul className="menu-list">
-  				<li><a href="#">Nike</a></li>
-          <li><a href="#">Adidas</a></li>
-          <li><a href="#">New Balance</a></li>
-  				<li><a href="#">Vans</a></li>
-  				<li><a href="#">Converse</a></li>
+  				<li>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              Nike
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              Adidas
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              New Balance
+            </Link>
+          </li>
+  				<li>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              Vans
+            </Link>
+          </li>
+  				<li>
+            <Link
+              to={`${URL_ROOT}/search`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              Converse
+            </Link>
+          </li>
   			</ul>
         <div className="divider grey lighten-3"></div>
   			<p className="menu-label">Cart</p>
   			<ul className="menu-list">
   				<li>
-            <Link to={`${URL_ROOT}/cart`}>Go to cart</Link>
+            <Link
+              to={`${URL_ROOT}/cart`}
+              activeClassName="is-active"
+              className="hvr-bounce-to-right">
+              Go to Cart
+            </Link>
           </li>
   			</ul>
   		</div>
