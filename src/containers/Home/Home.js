@@ -3,9 +3,9 @@ import { Home } from '../../components'
 
 class HomeContainer extends Component {
   componentDidMount() {
-    $('.carousel.carousel-slider').carousel({full_width: true,
-                       time_constant: 200});
-    window.setInterval(function(){$('.carousel').carousel('next')},5000)
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
   }
 
   render() {
