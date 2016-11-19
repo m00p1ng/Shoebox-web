@@ -19,6 +19,9 @@ const store = createStore(
 
 render((
   <Provider store={store} key='provider'>
-    <Router history={browserHistory} routes={routes}/>
+    <Router
+      onUpdate={() => window.scrollTo(0, 0)}
+      history={browserHistory}
+      routes={routes}/>
   </Provider>
 ), document.getElementById('shoebox'))

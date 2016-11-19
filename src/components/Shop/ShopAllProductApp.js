@@ -1,9 +1,22 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../App/HeaderBarApp'
-import ShopBody from './ShopBody'
-import ShopPage from './ShopPage'
+import ShopMenu from './ShopMenu'
+import ShopList from './ShopList'
+import Loading from '../../constants/Loading/Loading'
 
-const ShopAllProductApp = () => (
+const renderShopList = (products, error) => {
+  let hasError = error === true
+  let hasProducts = products.length > 0
+  if(hasError) return (<h1>Can't Fetch data</h1>)
+  if(hasProducts)
+    return(
+      <ShopList
+        products={products}/>
+    )
+  return ( <Loading /> )
+}
+
+const ShopAllProductApp = ({products, error}) => (
   <div>
     <HeaderBar2StepApp
       header="All Products"
@@ -13,8 +26,10 @@ const ShopAllProductApp = () => (
       link2="all"
     />
     <div className="container">
-      <ShopBody />
-      <ShopPage />
+      <div className="row">
+        <ShopMenu />
+        {renderShopList(products, error)}
+      </div>
     </div>
   </div>
 )

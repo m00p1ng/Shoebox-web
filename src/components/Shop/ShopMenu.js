@@ -51,6 +51,7 @@ const ShopMenu = () => (
             </Link>
           </li>
   			</ul>
+        <div className="divider grey lighten-3"></div>
   			<p className="menu-label">Brand</p>
   			<ul className="menu-list">
   				<li><a href="#">Nike</a></li>
@@ -59,6 +60,7 @@ const ShopMenu = () => (
   				<li><a href="#">Vans</a></li>
   				<li><a href="#">Converse</a></li>
   			</ul>
+        <div className="divider grey lighten-3"></div>
   			<p className="menu-label">Cart</p>
   			<ul className="menu-list">
   				<li>

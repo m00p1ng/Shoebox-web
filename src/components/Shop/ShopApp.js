@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeaderBarApp } from '../App/HeaderBarApp'
-import ShopBody from './ShopBody'
-import ShopPage from './ShopPage'
+import ShopMenu from './ShopMenu'
+import ShopList from './ShopList'
 
 const ShopApp = () => (
   <div>
@@ -10,8 +10,10 @@ const ShopApp = () => (
       link="shop"
     />
     <div className="container">
-      <ShopBody />
-      <ShopPage />
+      <div className="row">
+        <ShopMenu />
+        <ShopList />
+      </div>
     </div>
   </div>
 )

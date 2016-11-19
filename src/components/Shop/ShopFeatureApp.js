@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../App/HeaderBarApp'
-import ShopBody from './ShopBody'
-import ShopPage from './ShopPage'
+import ShopMenu from './ShopMenu'
+import ShopList from './ShopList'
 
 const ShopFeatureApp = () => (
   <div>
@@ -13,8 +13,10 @@ const ShopFeatureApp = () => (
       link2="feature"
     />
     <div className="container">
-      <ShopBody />
-      <ShopPage />
+      <div className="row">
+        <ShopMenu />
+        <ShopList />
+      </div>
     </div>
   </div>
 )
