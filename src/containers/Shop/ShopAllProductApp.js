@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ShopAllProductApp } from '../../components'
-import { loadProducts } from '../../actions/product'
-import Loading from '../../constants/Loading/Loading'
+import { loadLatestProducts } from '../../actions/product'
 
 class ShopAllProductAppContainer extends Component {
   componentDidMount() {
-    this.props.loadProducts()
+    this.props.loadLatestProducts()
   }
 
   shouldComponentUpdate(nextProps) {
@@ -28,7 +27,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  loadProducts
+  loadLatestProducts
 })
 
 export default connect(

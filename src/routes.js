@@ -23,7 +23,6 @@ import {
   ShopNewArrivalApp,
   ShopTopViewsApp,
 
-  ProductListApp,
   ProductDetailApp,
 
   SearchApp,

@@ -12,8 +12,6 @@ export ShopAllProductApp from './Shop/ShopAllProductApp'
 export ShopNewArrivalApp from './Shop/ShopNewArrivalApp'
 export ShopTopViewsApp from './Shop/ShopTopViewsApp'
 
-export ProductListApp from './Product/ProductListApp'
-export ProductItem from './Product/ProductItem'
 export ProductDetailApp from './Product/ProductDetailApp'
 
 export CartApp from './Cart/CartApp'

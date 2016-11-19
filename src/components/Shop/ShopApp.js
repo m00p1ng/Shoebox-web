@@ -1,9 +1,9 @@
 import React from 'react'
 import { HeaderBarApp } from '../App/HeaderBarApp'
 import ShopMenu from './ShopMenu'
-import ShopList from './ShopList'
+import renderShopList from './ShopList'
 
-const ShopApp = () => (
+const ShopApp = ({products, error}) => (
   <div>
     <HeaderBarApp
       title="Shop"
@@ -12,7 +12,7 @@ const ShopApp = () => (
     <div className="container">
       <div className="row">
         <ShopMenu />
-        <ShopList />
+        {renderShopList(products, error)}
       </div>
     </div>
   </div>

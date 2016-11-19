@@ -19,7 +19,7 @@ import {
   ADD_TO_CART
 } from 'actionTypes'
 
-export const loadProducts = () => ({
+export const loadLatestProducts = () => ({
   [CALL_API]: {
     endpoint: `${PRODUCT_ENDPOINT}/latest`,
     method: 'GET',
