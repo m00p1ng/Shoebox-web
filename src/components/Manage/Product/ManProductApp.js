@@ -3,7 +3,7 @@ import { HeaderBar2StepApp } from '../HeaderBarApp'
 import ManageMenu from '../ManageMenu'
 import ManProductList from './ManProductList'
 
-const ManProductApp = () => (
+const ManProductApp = ({products}) => (
   <div>
     <HeaderBar2StepApp
       link="product"
@@ -11,7 +11,8 @@ const ManProductApp = () => (
     <div className="container">
 	    <div className="row">
         <ManageMenu />
-        <ManProductList />
+        <ManProductList
+          products={products}/>
       </div>
     </div>
   </div>

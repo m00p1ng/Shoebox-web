@@ -85,7 +85,7 @@ export default (
         <IndexRoute component={ManageApp} />
         <route path='product'>
           <IndexRoute component={ManProductApp} />
-          <route path='create' component={ManProductCreateApp} />
+          <route path='new' component={ManProductCreateApp} />
           <route path='edit' component={ManProductUpdateApp} />
         </route>
         <route path='customer'>

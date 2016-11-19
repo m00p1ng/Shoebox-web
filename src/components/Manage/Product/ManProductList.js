@@ -1,53 +1,56 @@
 import React from 'react'
+import { Link } from 'react-router'
+import { URL_ROOT } from 'endpoint'
 
-const ManProductList = () => (
+const ProductRow = ({product, id}) => {
+  return (
+    <tr>
+      <td>{id}</td>
+      <td>{product.brand}</td>
+      <td>{product.name}</td>
+      <td>$ {product.price}</td>
+      <td>{product.amount}</td>
+      <td>{product.sold_unit}</td>
+      <td>{(product.is_available) ? "Yes" : "No"}</td>
+      <td><Link to={`${URL_ROOT}/manage/product/edit`}>Edit</Link></td>
+    </tr>
+  )
+}
+
+const renderProducts = (products) => {
+  let id = 1
+  return products.map(product =>
+    <ProductRow
+      key={product.slug}
+      id={id++}
+      product={product} />
+  )
+}
+
+const ManProductList = ({products}) => (
   <div className="col l10 s12 card">
     <h4>All Products</h4>
-    <table className="highlight sb-manage-table-in-card responsive-table">
+    <Link to={`${URL_ROOT}/manage/product/new`}>
+      <button className="waves-effect waves-light btn">
+        <i className="material-icons left white-text">add</i>
+        add product
+      </button>
+    </Link>
+    <table className="highlight sb-manage-table-in-card responsive-table striped">
       <thead>
         <tr>
-          <th data-field="slug">Slug</th>
+          <th data-field="id">ID</th>
           <th data-field="brand">Brand</th>
-          <th data-field="name">Item Name</th>
-          <th data-field="price">Item Price</th>
-          <th data-field="is_available">is_avaiable</th>
+          <th data-field="name">Name</th>
+          <th data-field="price">Price</th>
           <th data-field="amount">Amount</th>
+          <th data-field="sold_unit">Sold</th>
+          <th data-field="avaliable">Avaiable</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr data-href="#1">
-          <td>nike-fiex-experience</td>
-          <td>Nike</td>
-          <td>Fiex Experience</td>
-          <td>$69.00</td>
-          <td>true</td>
-          <td>20</td>
-        </tr>
-        <tr data-href="#2">
-          <td>nike-air-max</td>
-          <td>Nike</td>
-          <td>Air Max</td>
-          <td>$69.00</td>
-          <td>true</td>
-          <td>5</td>
-        </tr>
-        <tr data-href="#3">
-          <td>nike-tanjun</td>
-          <td>Nike</td>
-          <td>Tanjun</td>
-          <td>$69.00</td>
-          <td>true</td>
-          <td>50</td>
-        </tr>
-        <tr data-href="#4">
-          <td>converse-marble-white</td>
-          <td>Converse</td>
-          <td>Mable White</td>
-          <td>$79.00</td>
-          <td>true</td>
-          <td>20</td>
-        </tr>
+        {renderProducts(products)}
       </tbody>
     </table>
   </div>

@@ -54,7 +54,7 @@ class ProductDetailAppContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   product: state.products.detail,
   error: state.products['error']
 })
