@@ -40,7 +40,7 @@ def gen_customer(total):
             },
             "amount": 20,
             "size": ["48"],
-            "color": ["red"],
+            "color": "red",
             "is_available": True,
             "is_discount": False,
             "supplier": "nike",
