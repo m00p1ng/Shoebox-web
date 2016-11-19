@@ -3,14 +3,14 @@ import { HeaderBar2StepApp } from '../App/HeaderBarApp'
 import ShopMenu from './ShopMenu'
 import renderShopList from './ShopList'
 
-const ShopTopViewsApp = ({products, error}) => (
+const ShopMostViewsApp = ({products, error}) => (
   <div>
     <HeaderBar2StepApp
-      header="Top Views"
+      header="Most Views"
       title1="Shop"
       link1="shop"
-      title2="Top Views"
-      link2="top-view"
+      title2="Most Views"
+      link2="most-view"
     />
     <div className="container">
       <div className="row">
@@ -21,4 +21,4 @@ const ShopTopViewsApp = ({products, error}) => (
   </div>
 )
 
-export default ShopTopViewsApp
+export default ShopMostViewsApp

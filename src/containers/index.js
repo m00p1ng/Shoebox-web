@@ -7,7 +7,7 @@ export ShopFeatureApp from './Shop/ShopFeatureApp'
 export ShopBestSellerApp from './Shop/ShopBestSellerApp'
 export ShopAllProductApp from './Shop/ShopAllProductApp'
 export ShopNewArrivalApp from './Shop/ShopNewArrivalApp'
-export ShopTopViewsApp from './Shop/ShopTopViewsApp'
+export ShopMostViewsApp from './Shop/ShopMostViewsApp'
 export ShopItemDetailApp from './Shop/ShopItemDetailApp'
 
 export CartApp from './Cart/CartApp'

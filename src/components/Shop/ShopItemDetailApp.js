@@ -34,7 +34,7 @@ ShopItemDetailApp.propTypes = {
     }).isRequired,
     amount: PropTypes.number.isRequired,
     size: PropTypes.array.isRequired,
-    color: PropTypes.array.isRequired,
+    color: PropTypes.string.isRequired,
     is_available: PropTypes.bool.isRequired,
     is_discount: PropTypes.bool.isRequired,
     discountPercent : PropTypes.number.isRequired

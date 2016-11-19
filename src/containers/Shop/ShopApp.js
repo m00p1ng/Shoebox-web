@@ -5,7 +5,6 @@ import { loadProducts } from '../../actions/product'
 
 class ShopAppContainer extends Component {
   componentDidMount() {
-    this.props.loadProducts()
   }
 
   shouldComponentUpdate(nextProps) {

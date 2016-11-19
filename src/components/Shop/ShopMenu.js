@@ -45,7 +45,7 @@ const ShopMenu = () => (
               to={`${URL_ROOT}/shop/top-view`}
               activeClassName="is-active"
               className="hvr-bounce-to-right">
-              Top Views
+              Most Views
             </Link>
           </li>
           <li>

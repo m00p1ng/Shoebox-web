@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ShopTopViewsApp } from '../../components'
+import { ShopMostViewsApp } from '../../components'
 import {
   loadProducts,
   clearProducts
 } from '../../actions/product'
 
-class ShopTopViewsAppContainer extends Component {
+class ShopMostViewsAppContainer extends Component {
   componentDidMount() {
     this.props.loadProducts('top-view')
   }
@@ -21,7 +21,7 @@ class ShopTopViewsAppContainer extends Component {
 
   render() {
     return (
-      <ShopTopViewsApp
+      <ShopMostViewsApp
         products={this.props.products}
         error={this.props.error}/>
     )
@@ -41,4 +41,4 @@ const mapDispatchToProps = ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ShopTopViewsAppContainer)
+)(ShopMostViewsAppContainer)
