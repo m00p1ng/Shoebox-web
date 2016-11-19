@@ -5,17 +5,13 @@ import { URL_ROOT } from 'endpoint'
 const ManageMenu = () => (
   <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
     <aside className="menu">
-      <p className="menu-label">
-        General
-      </p>
+      <p className="menu-label">General</p>
       <ul className="menu-list">
         <li>
           <Link to={`${URL_ROOT}/manage`}>Dashboard</Link>
         </li>
       </ul>
-      <p className="menu-label">
-        Shop
-      </p>
+      <p className="menu-label">Shop</p>
       <ul className="menu-list">
         <li>
           <Link to={`${URL_ROOT}/manage/product`}>Products</Link>
@@ -27,9 +23,7 @@ const ManageMenu = () => (
           <Link to={`${URL_ROOT}/manage/supplier`}>Suppliers</Link>
         </li>
       </ul>
-      <p className="menu-label">
-        Administration
-      </p>
+      <p className="menu-label">Administration</p>
       <ul className="menu-list">
         <li>
           <Link to={`${URL_ROOT}/manage/customer`}>Customers</Link>

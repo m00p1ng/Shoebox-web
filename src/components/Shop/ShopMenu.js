@@ -3,16 +3,12 @@ import React from 'react'
 const ShopMenu = () => (
   <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
 		<aside className="menu">
-			<p className="menu-label">
-				General
-			</p>
+			<p className="menu-label">General</p>
 			<ul className="menu-list">
 				<li><a href="#">Dashboard</a></li>
 				<li><a href="#">Customers</a></li>
 			</ul>
-			<p className="menu-label">
-				Administration
-			</p>
+			<p className="menu-label">Administration</p>
 			<ul className="menu-list">
 				<li><a href="#">Team Settings</a></li>
 				<li>
@@ -26,9 +22,7 @@ const ShopMenu = () => (
 				<li><a href="#">Invitations</a></li>
 				<li><a href="#">Authentication</a></li>
 			</ul>
-			<p className="menu-label">
-				Transactions
-			</p>
+			<p className="menu-label">Transactions</p>
 			<ul className="menu-list">
 				<li><a href="#">Payments</a></li>
 				<li><a href="#">Transfers</a></li>

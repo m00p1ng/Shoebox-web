@@ -7,7 +7,9 @@ const ManageApp = () => (
     <HeaderBarApp />
 
     <div className="container">
-      <ManageMenu />
+      <div className="row">
+        <ManageMenu />
+      </div>
     </div>
   </div>
 )
