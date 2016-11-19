@@ -7,10 +7,10 @@ class productColor_Update_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_update_api(self):
-        create_request(URL_COLOR, json.dumps(CREATE_BODY))
+        create_request(URL_COLOR, CREATE_BODY)
 
-        UPDATE_BODY = {"name": "red"}
-        res = update_request(URL_COLOR_NAME, json.dumps(UPDATE_BODY))
+        UPDATE_BODY = json.dumps({"name": "red"})
+        res = update_request(URL_COLOR_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['updated'], True)
@@ -20,9 +20,9 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_update_no_item(self):
-        UPDATE_BODY = {"name": "red"}
+        UPDATE_BODY = json.dumps({"name": "red"})
 
-        res = update_request(URL_COLOR_NAME, json.dumps(UPDATE_BODY))
+        res = update_request(URL_COLOR_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['This productColor not exist'])
@@ -30,10 +30,10 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
 
 
     def test_update_no_data(self):
-        UPDATE_BODY = {}
+        UPDATE_BODY = json.dumps({})
 
-        create_request(URL_COLOR, json.dumps(CREATE_BODY))
-        res = update_request(URL_COLOR_NAME, json.dumps(UPDATE_BODY))
+        create_request(URL_COLOR, CREATE_BODY)
+        res = update_request(URL_COLOR_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
@@ -43,7 +43,7 @@ class productColor_Update_Fail_API_Test(MongoTestCase):
     def test_update_JSON_error(self):
         UPDATE_BODY = ""
 
-        create_request(URL_COLOR, json.dumps(CREATE_BODY))
+        create_request(URL_COLOR, CREATE_BODY)
         res = update_request(URL_COLOR_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 

@@ -8,7 +8,7 @@ class productType_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_delete_api(self):
-        create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        create_request(URL_TYPE, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_TYPE_NAME)
@@ -22,7 +22,7 @@ class productType_Delete_Fail_API_Test(MongoTestCase):
 
     def test_delete_type_not_exist(self):
         URL_TYPE_NAME = '/api/product/type/walking'
-        create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        create_request(URL_TYPE, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_TYPE_NAME)

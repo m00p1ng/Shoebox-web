@@ -8,11 +8,10 @@ class Product_Update_API_Test(MongoTestCase):
 
     def test_update_api(self):
         create_test_database()
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
+        UPDATE_BODY = json.dumps({"name": "nike2"})
 
-        UPDATE_BODY = {"name": "nike2"}
-
-        res = update_request(URL_PRODUCT_NAME, json.dumps(UPDATE_BODY))
+        res = update_request(URL_PRODUCT_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['updated'], True)
@@ -23,9 +22,9 @@ class Product_Update_Fail_API_Test(MongoTestCase):
 
     def test_update_no_item(self):
         create_test_database()
-        UPDATE_BODY = {"name": "nike2"}
+        UPDATE_BODY = json.dumps({"name": "nike2"})
 
-        res = update_request(URL_PRODUCT_NAME, json.dumps(UPDATE_BODY))
+        res = update_request(URL_PRODUCT_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['This product not exist'])
@@ -36,8 +35,8 @@ class Product_Update_Fail_API_Test(MongoTestCase):
         create_test_database()
         UPDATE_BODY = {}
 
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
-        res = update_request(URL_PRODUCT_NAME, json.dumps(UPDATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
+        res = update_request(URL_PRODUCT_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
@@ -48,7 +47,7 @@ class Product_Update_Fail_API_Test(MongoTestCase):
         create_test_database()
         UPDATE_BODY = ""
 
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
         res = update_request(URL_PRODUCT_NAME, UPDATE_BODY)
         data = json.loads(res.content.decode())
 

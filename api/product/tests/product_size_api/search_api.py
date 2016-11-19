@@ -6,10 +6,10 @@ import json
 
 class productSize_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
-    CREATE_BODY = { "name": "48" }
+    CREATE_BODY = json.dumps({ "name": "48" })
 
     def test_search_api(self):
-        create_request(URL_SIZE, json.dumps(CREATE_BODY))
+        create_request(URL_SIZE, CREATE_BODY)
 
         c = Client()
         res = c.get(URL_SIZE_NAME)

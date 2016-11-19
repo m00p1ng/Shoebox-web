@@ -8,7 +8,7 @@ class productBrand_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_delete_api(self):
-        create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        create_request(URL_BRAND, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_BRAND_NAME)
@@ -22,7 +22,7 @@ class productBrand_Delete_Fail_API_Test(MongoTestCase):
 
     def test_delete_brand_not_exist(self):
         URL_BRAND_NAME = '/api/product/brand/nike2'
-        create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        create_request(URL_BRAND, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_BRAND_NAME)

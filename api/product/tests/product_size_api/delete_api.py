@@ -8,7 +8,7 @@ class productSize_Delete_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_delete_api(self):
-        create_request(URL_SIZE, json.dumps(CREATE_BODY))
+        create_request(URL_SIZE, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_SIZE_NAME)
@@ -22,7 +22,7 @@ class productSize_Delete_Fail_API_Test(MongoTestCase):
 
     def test_delete_size_not_exist(self):
         URL_SIZE_NAME = '/api/product/size/36'
-        create_request(URL_SIZE, json.dumps(CREATE_BODY))
+        create_request(URL_SIZE, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_SIZE_NAME)

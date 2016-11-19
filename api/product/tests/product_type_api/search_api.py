@@ -8,7 +8,7 @@ class productType_Search_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_search_api(self):
-        create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        create_request(URL_TYPE, CREATE_BODY)
 
         c = Client()
         res = c.get(URL_TYPE_NAME)

@@ -7,7 +7,7 @@ class productBrand_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_create_api(self):
-        res = create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        res = create_request(URL_BRAND, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['created'], True)
@@ -17,9 +17,9 @@ class productBrand_Create_Fail_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_create_no_name(self):
-        CREATE_BODY = {}
+        CREATE_BODY = json.dumps({})
 
-        res = create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        res = create_request(URL_BRAND, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Name cannot empty'])
@@ -37,8 +37,8 @@ class productBrand_Create_Fail_API_Test(MongoTestCase):
 
 
     def test_create_brand_dubplicated(self):
-        create_request(URL_BRAND, json.dumps(CREATE_BODY))
-        res = create_request(URL_BRAND, json.dumps(CREATE_BODY))
+        create_request(URL_BRAND, CREATE_BODY)
+        res = create_request(URL_BRAND, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Brand already exist'])

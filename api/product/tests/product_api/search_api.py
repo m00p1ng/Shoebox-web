@@ -9,7 +9,7 @@ class Product_Search_API_Test(MongoTestCase):
 
     def test_search_api(self):
         create_test_database()
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
 
         c = Client()
         res = c.get(URL_PRODUCT_NAME)

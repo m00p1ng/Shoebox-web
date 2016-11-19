@@ -7,7 +7,7 @@ class productType_Create_API_Test(MongoTestCase):
     CLEAR_CACHE = True
 
     def test_create_api(self):
-        res = create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        res = create_request(URL_TYPE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['created'], True)
@@ -19,7 +19,7 @@ class productType_Create_Fail_API_Test(MongoTestCase):
     def test_create_no_name(self):
         CREATE_BODY = {}
 
-        res = create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        res = create_request(URL_TYPE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Name cannot empty'])
@@ -37,10 +37,10 @@ class productType_Create_Fail_API_Test(MongoTestCase):
 
 
     def test_create_type_dubplicated(self):
-        CREATE_BODY = {"name": "Running"}
+        CREATE_BODY = json.dumps({"name": "Running"})
 
-        create_request(URL_TYPE, json.dumps(CREATE_BODY))
-        res = create_request(URL_TYPE, json.dumps(CREATE_BODY))
+        create_request(URL_TYPE, CREATE_BODY)
+        res = create_request(URL_TYPE, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Type already exist'])

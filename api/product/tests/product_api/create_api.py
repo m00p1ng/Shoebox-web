@@ -8,7 +8,7 @@ class Product_Create_API_Test(MongoTestCase):
 
     def test_create_api(self):
         create_test_database()
-        res = create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        res = create_request(URL_PRODUCT, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['created'], True)
@@ -19,7 +19,7 @@ class Product_Create_Fail_API_Test(MongoTestCase):
 
     def test_create_no_name(self):
         create_test_database()
-        CREATE_BODY = {
+        CREATE_BODY = json.dumps({
             "supplier": "nike",
             "brand": "nike",
             "description": "product description",
@@ -30,9 +30,9 @@ class Product_Create_Fail_API_Test(MongoTestCase):
             "is_available": True,
             "is_discount": False,
             "discountPercent": 20
-        }
+        })
 
-        res = create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        res = create_request(URL_PRODUCT, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], [
@@ -56,8 +56,8 @@ class Product_Create_Fail_API_Test(MongoTestCase):
 
     def test_create_product_dubplicated(self):
         create_test_database()
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
-        res = create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
+        res = create_request(URL_PRODUCT, CREATE_BODY)
         data = json.loads(res.content.decode())
 
         self.assertEqual(data['errorMsg'], ['Brand already exist'])

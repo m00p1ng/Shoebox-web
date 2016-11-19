@@ -9,7 +9,7 @@ class Product_Delete_API_Test(MongoTestCase):
 
     def test_delete_api(self):
         create_test_database()
-        create_request(URL_PRODUCT, json.dumps(CREATE_BODY))
+        create_request(URL_PRODUCT, CREATE_BODY)
 
         c = Client()
         res = c.delete(URL_PRODUCT_NAME)
