@@ -2,7 +2,8 @@ import React from 'react'
 import ShopItem from './ShopItem'
 
 const ShopList = () => (
-	<div className="col l9 s12 card white">
+	<div className="col l9 s12">
+		<div className="card white">
   	<div className="row">
       <ShopItem />
 			<ShopItem />
@@ -30,6 +31,7 @@ const ShopList = () => (
 			<ShopItem />
 			<ShopItem />
     </div>
+	</div>
   </div>
 )
 
