@@ -85,13 +85,13 @@ def order_create(body, session):
         err = {}
         err['errorMsg'] = ['JSON Decode error']
         err['created'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
     except NotUniqueError as e:
         err = {}
         err['errorMsg'] = ['Order already exist']
         err['created'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
 
 def order_delete(oid):
@@ -100,7 +100,7 @@ def order_delete(oid):
     if not item:
         err['errorMsg'] = ['This order not exist']
         err['deleted'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status =404)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
     item.delete()
     message = {'deleted' : True}
     return HttpResponse(json.dumps(message), content_type=json_type)
@@ -113,13 +113,13 @@ def order_update(body, oid):
         if not item:
             err['errorMsg'] = ['This order not exist']
             err['updated'] = False
-            return HttpResponse(json.dumps(err), content_type=json_type, status =404)
+            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
             err['errorMsg'] = ['Data cannot empty']
             err['updated'] = False
-            return HttpResponse(json.dumps(err), content_type=json_type, status =400)
+            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
 
         Orders.update_obj(oid,data)
 
@@ -129,4 +129,4 @@ def order_update(body, oid):
     except ValueError as e:
         err['errorMsg'] = ['JSON Decode error']
         err['updated'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status =400)
+        return HttpResponse(json.dumps(err), content_type=json_type, status=400)

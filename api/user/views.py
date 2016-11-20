@@ -5,6 +5,8 @@ from mongoengine.django.auth import User
 from api.include.api import request_get
 import json
 
+json_type = "application/json"
+
 @csrf_exempt
 def user(request):
     body = request.body
@@ -48,7 +50,7 @@ def login(request):
                     "username": request.session['username'],
                     "role": request.session['role']
                 }
-                return HttpResponse(json.dumps(res), content_type="application/json")
+                return HttpResponse(json.dumps(res), content_type=json_type)
 
             data = json.loads(request.body.decode())
             username = data['username']
@@ -62,7 +64,7 @@ def login(request):
                     "username": request.session['username'],
                     "role": request.session['role']
                 }
-                return HttpResponse(json.dumps(res), content_type="application/json")
+                return HttpResponse(json.dumps(res), content_type=json_type)
             elif username == '' or password == '':
                 if username == '' and password == '':
                     errmsg = '{"errorMsg": "Username and password cannot empty"}'
@@ -70,10 +72,10 @@ def login(request):
                     errmsg = '{"errorMsg": "Username cannot empty"}'
                 elif password == '':
                     errmsg = '{"errorMsg": "Password cannot empty"}'
-                return HttpResponse(errmsg, content_type="application/json", status=401)
+                return HttpResponse(errmsg, content_type=json_type, status=401)
             else:
                 errmsg = '{"errorMsg": "Username or password incorrect"}'
-            return HttpResponse(errmsg, content_type="application/json", status=401)
+            return HttpResponse(errmsg, content_type=json_type, status=401)
 
         except ValueError as e:
             errmsg = '{"errorMsg": "JSON Decode error"}'
@@ -93,4 +95,4 @@ def logout(request):
         logged_out = {"logged_out": True}
     else:
         logged_out = {"logged_out": False}
-    return HttpResponse(json.dumps(logged_out), content_type="application/json")
+    return HttpResponse(json.dumps(logged_out), content_type=json_type)
