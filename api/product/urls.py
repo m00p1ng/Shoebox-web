@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^best-seller/?$', views.product_bestseller),
     url(r'^top-view/?$', views.product_topview),
     url(r'^search/(?P<keyword>.+?)$', views.product_search),
+    url(r'^page/(?P<page>.+?)$', views.product_page),
 
     url(r'^type/?', include('api.product.productType.urls')),
     url(r'^size/?', include('api.product.productSize.urls')),

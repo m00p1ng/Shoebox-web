@@ -68,6 +68,18 @@ def product_latest(request):
 
 
 @csrf_exempt
+def product_page(request,page):
+    if request.method == 'GET':
+        return product_by_page(page)
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
+
+@csrf_exempt
 def product_bestseller(request):
     if request.method == 'GET':
         return request_get_real(Products, query_by_sold_unit())
@@ -132,6 +144,14 @@ def search_by_keyword(keyword):
     if not product:
         return HttpResponse(status=204)
     return request_get_real(Products, product)
+
+
+def product_by_page(page):
+    items_per_page = 10
+    offset = (int(page)-1)*items_per_page
+    product = Products.objects.skip(offset).limit(items_per_page)
+    return request_get_real(Products,product)
+
 
 def product_type(slug):
     types = ProductTypes.objects(slug=slug).first()
