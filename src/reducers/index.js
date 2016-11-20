@@ -4,7 +4,6 @@ import products from './product'
 import search from './search'
 import cart from './cart'
 import user from './user'
-import order from './order'
 import { REGISTER_CUSTOMER_SUCCESS } from 'actionTypes'
 
 const rootReducer = combineReducers({
@@ -21,8 +20,7 @@ const rootReducer = combineReducers({
   products,
   search,
   cart,
-  user,
-  order
+  user
 });
 
 export default rootReducer;
