@@ -12,7 +12,12 @@ const ProductRow = ({product, id}) => {
       <td>{product.amount}</td>
       <td>{product.sold_unit}</td>
       <td>{(product.is_available) ? "Yes" : "No"}</td>
-      <td><Link to={`${URL_ROOT}/manage/product/edit`}>Edit</Link></td>
+      <td>
+        <Link
+          to={`${URL_ROOT}/manage/product/edit`}>
+          Edit
+        </Link>
+      </td>
     </tr>
   )
 }
@@ -36,7 +41,9 @@ const ManProductList = ({products}) => (
         add product
       </button>
     </Link>
-    <table className="highlight sb-manage-table-in-card responsive-table striped">
+    <table
+      className="highlight sb-manage-table-in-card
+        responsive-table striped">
       <thead>
         <tr>
           <th data-field="id">ID</th>

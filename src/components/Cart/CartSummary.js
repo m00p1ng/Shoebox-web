@@ -37,11 +37,11 @@ const CartCheckoutButton = ({role}) => (
 const CartOrderRow = ({left, right}) => (
   <div className="row sbox-row-order">
     <div className="col s6 l6">
-      <p className="sbox-cart-subtotal">{left}</p>
+      <p className="sbox-cart-subtotal-left">{left}</p>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-subtotal">
-        <strong>{right}</strong>
+      <p className="sbox-cart-subtotal-right">
+        {right}
       </p>
     </div>
   </div>
@@ -50,13 +50,13 @@ const CartOrderRow = ({left, right}) => (
 const CartItemRow = ({qty, name, price}) => (
   <div className="row sbox-row-order">
     <div className="col s6 l6">
-      <p className="sbox-cart-subtotal">
+      <p className="sbox-cart-item-left">
         {qty}{' x '}{name}
       </p>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-subtotal">
-        <strong>$ {price*qty}</strong>
+      <p className="sbox-cart-item-right">
+        $ {price*qty}
       </p>
     </div>
   </div>

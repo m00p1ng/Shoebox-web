@@ -7,8 +7,7 @@ const ShopApp = ({products, error}) => (
   <div>
     <HeaderBarApp
       title="Shop"
-      link="shop"
-    />
+      link="shop"/>
     <div className="container">
       <div className="row">
         <ShopMenu />

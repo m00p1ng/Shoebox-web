@@ -5,7 +5,7 @@ import { loadProducts } from '../../../actions/product'
 
 class ManProductAppContainer extends Component {
   componentDidMount() {
-    this.props.loadProducts()
+    this.props.loadProducts('latest')
   }
 
   render() {

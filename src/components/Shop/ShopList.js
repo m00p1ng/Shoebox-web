@@ -38,11 +38,11 @@ const ShopList = ({products}) => (
         {renderShopItem(products)}
       </div>
     </div>
-		<ShopPage />
+		<ShopPagination />
   </div>
 )
 
-const ShopPage = () => (
+const ShopPagination = () => (
 	<div className="row center" style={{marginTop: "30px"}}>
 		<ul className="pagination">
 			<li className="disabled">

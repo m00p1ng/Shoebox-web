@@ -9,25 +9,48 @@ const ManageMenu = () => (
         <p className="menu-label">General</p>
         <ul className="menu-list">
           <li>
-            <Link to={`${URL_ROOT}/manage`}>Dashboard</Link>
+            <Link
+              to={`${URL_ROOT}/manage`}>
+              Dashboard
+            </Link>
           </li>
         </ul>
         <p className="menu-label">Shop</p>
         <ul className="menu-list">
           <li>
-            <Link to={`${URL_ROOT}/manage/product`}>Products</Link>
+            <Link
+              to={`${URL_ROOT}/manage/product`}
+              className="hvr-bounce-to-right"
+              activeClassName="is-active">
+              Products
+            </Link>
           </li>
           <li>
-            <Link to={`${URL_ROOT}/manage/order`}>Orders</Link>
+            <Link
+              to={`${URL_ROOT}/manage/order`}
+              className="hvr-bounce-to-right"
+              activeClassName="is-active">
+              Orders
+            </Link>
           </li>
           <li>
-            <Link to={`${URL_ROOT}/manage/supplier`}>Suppliers</Link>
+            <Link
+              to={`${URL_ROOT}/manage/supplier`}
+              className="hvr-bounce-to-right"
+              activeClassName="is-active">
+              Suppliers
+            </Link>
           </li>
         </ul>
         <p className="menu-label">Administration</p>
         <ul className="menu-list">
           <li>
-            <Link to={`${URL_ROOT}/manage/customer`}>Customers</Link>
+            <Link
+              to={`${URL_ROOT}/manage/customer`}
+              className="hvr-bounce-to-right"
+              activeClassName="is-active">
+              Customers
+            </Link>
           </li>
         </ul>
       </div>
