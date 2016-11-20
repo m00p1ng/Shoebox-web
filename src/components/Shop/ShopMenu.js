@@ -28,7 +28,7 @@ const ShopMenu = () => (
   <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
     <div className="card white">
   		<div className="menu">
-  			<p className="menu-label">General</p>
+  			<p className="menu-label">Shop</p>
   			<ul className="menu-list">
           <LinkShopMenu title="All Products" link="all" />
           <LinkShopMenu title="Feature" link="feature" />
