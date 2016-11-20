@@ -8,10 +8,10 @@ const NoItemInCart = () => (
       <div className="card-content">
         <div className="center-align">
           <div className="row">
-            <i className="large material-icons sbox-giant-icon sbox-icon-gray">
+            <i className="material-icons sbox-giant-icon sbox-icon-gray">
               shopping_basket
             </i>
-            <h4 className="grey-text text-darken-2">
+            <h4 className="grey-text text-darken-1">
               No Items in Cart now
             </h4>
           </div>

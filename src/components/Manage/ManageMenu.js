@@ -2,6 +2,17 @@ import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
+const LinkManageMenu = ({title, link}) => (
+  <li>
+    <Link
+      to={`${URL_ROOT}/manage/${link}`}
+      className="hvr-bounce-to-right"
+      activeClassName="is-active">
+      {title}
+    </Link>
+  </li>
+)
+
 const ManageMenu = () => (
   <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
     <div className="card white">
@@ -10,48 +21,21 @@ const ManageMenu = () => (
         <ul className="menu-list">
           <li>
             <Link
-              to={`${URL_ROOT}/manage`}>
+              to={`${URL_ROOT}/manage`}
+              className="hvr-bounce-to-right">
               Dashboard
             </Link>
           </li>
         </ul>
         <p className="menu-label">Shop</p>
         <ul className="menu-list">
-          <li>
-            <Link
-              to={`${URL_ROOT}/manage/product`}
-              className="hvr-bounce-to-right"
-              activeClassName="is-active">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={`${URL_ROOT}/manage/order`}
-              className="hvr-bounce-to-right"
-              activeClassName="is-active">
-              Orders
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={`${URL_ROOT}/manage/supplier`}
-              className="hvr-bounce-to-right"
-              activeClassName="is-active">
-              Suppliers
-            </Link>
-          </li>
+          <LinkManageMenu title="Products" link="product" />
+          <LinkManageMenu title="Orders" link="order" />
+          <LinkManageMenu title="Suppliers" link="supplier" />
         </ul>
         <p className="menu-label">Administration</p>
         <ul className="menu-list">
-          <li>
-            <Link
-              to={`${URL_ROOT}/manage/customer`}
-              className="hvr-bounce-to-right"
-              activeClassName="is-active">
-              Customers
-            </Link>
-          </li>
+          <LinkManageMenu title="Customers" link="customer" />
         </ul>
       </div>
     </div>
