@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const ShopItem = ({product}) => (
-  <div className="col l3 m4 s6 card">
+  <div className="col l3 m4 s6">
     <div className="sb-shop-item center">
   		<div className="sb-hover-zoom">
   			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
