@@ -13,9 +13,7 @@ const SearchApp = ({
   <div>
     <HeaderBarApp
       title="Search"
-      link="search"
-    />
-    <div className="container">
+      link="search" />
     <SearchBar
       onSearchChange={onSearchChange}/>
     <SearchResult
@@ -23,7 +21,6 @@ const SearchApp = ({
       isLoading={isLoading}
       searchText={searchText}
       hasError={hasError}/>
-    </div>
   </div>
 )
 

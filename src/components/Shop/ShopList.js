@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
-import Loading from '../../constants/Loading/Loading'
 
 const ShopItem = ({product}) => (
   <div className="col l3 m4 s6">
@@ -38,7 +37,6 @@ const ShopList = ({products}) => (
       <div className="row">
         {renderShopItem(products)}
       </div>
-      {/* <div className="divider grey lighten-3"></div> */}
     </div>
 		<ShopPage />
   </div>
@@ -70,6 +68,17 @@ const ShopPage = () => (
 	</div>
 )
 
+const Loading = () => (
+  <div className="col l9 s12">
+    <div className="container center">
+      <h1 className="grey-text text-darken-2">Loading...</h1>
+      <div className="progress cyan lighten-3">
+        <div className="indeterminate cyan darken-1"></div>
+      </div>
+    </div>
+  </div>
+)
+
 const renderShopList = (products, error) => {
   let hasError = error === true
   let hasProducts = products.length > 0
@@ -85,9 +94,7 @@ const renderShopList = (products, error) => {
     )
   } else {
     return (
-      <div className="col l9 s12">
-        <Loading />
-      </div>
+      <Loading />
     )
   }
 }

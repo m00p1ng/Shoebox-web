@@ -30,6 +30,11 @@
   flex-direction: column;
 }
 
+.sbox-very-big-loading {
+  height: 100px;
+  width: 100px;
+}
+
 /* Shoebox Product Styles*/
 
 .sbox-brand {
@@ -264,6 +269,7 @@ i.sbox-icon-gray {
 .sbox-login-input {
   text-align: center;
   font-size: 18px;
+  min-height: 50px;
 }
 
 #sbox-login-button {
@@ -279,12 +285,11 @@ i.sbox-icon-gray {
 /* Shoebox Search Style */
 
 #sbox-search-form {
-  max-height: 100px;
   font-size: 30px;
 }
 
 .sbox-search-form-input {
-  max-height: 0px;
+  min-height: 65px;
 }
 
 /* new checkout style */

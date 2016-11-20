@@ -11,18 +11,29 @@ const render_list = (list) => (
   })
 )
 
-const renderResult = (result, hasError, isLoading ,searchText) => {
-  // if(isLoading) return(<h1>Loading...</h1>)
-  if (hasError) return (
-    <h3>Oh sorry, <strong>{searchText}</strong> Not found</h3>
-  )
-  if (result.length > 0) return (
-    <div>
+const DefaultSearch = () => (
+  <h3>What are you looking for..</h3>
+)
+
+const FoundResult = ({result}) => (
+  <div>
     <h3>Found {result.length} items</h3>
     {render_list(result)}
-    </div>
-  )
-  return (<h3>What are you looking for..</h3>)
+  </div>
+)
+
+const NotFoundResult = ({searchText}) => (
+  <h3>Oh sorry, <strong>{searchText}</strong> Not found</h3>
+)
+
+const renderResult = (result, hasError, isLoading ,searchText) => {
+  // if(isLoading) return(<h1>Loading...</h1>)
+  if (hasError)
+    return ( <NotFoundResult searchText={searchText} />)
+  else if (result.length > 0)
+    return ( <FoundResult result={result} />)
+  else
+    return ( <DefaultSearch /> )
 }
 
 const SearchResult = ({
@@ -31,7 +42,7 @@ const SearchResult = ({
   searchText,
   isLoading
 }) => (
-  <div>
+  <div className="container">
     {renderResult(result, hasError, isLoading, searchText)}
   </div>
 )

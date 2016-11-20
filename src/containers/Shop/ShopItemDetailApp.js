@@ -7,7 +7,6 @@ import {
   updateViews
 } from '../../actions/product'
 import { browserHistory } from 'react-router';
-import Loading from '../../constants/Loading/Loading'
 import { URL_ROOT } from 'endpoint'
 
 class ShopItemDetailAppContainer extends Component {
