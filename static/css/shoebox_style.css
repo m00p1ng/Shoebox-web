@@ -356,3 +356,20 @@ i.sbox-icon-gray {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+/* The new homepage with parallax */
+
+.sb-home-shop-now-btn {
+    padding-top: 15px;
+}
+
+/* manage-product-detail-edit  */
+
+.sb-product-edit img {
+	width: 60%;
+	height: auto;
+}
+
+.sb-product-edit-input {
+	width: 80%;
+}

@@ -8,6 +8,7 @@
 .form-style-6 input[type="time"],
 .form-style-6 input[type="url"],
 .form-style-6 textarea,
+
 .form-style-6 select
 {
     -webkit-transition: all 0.30s ease-in-out;
@@ -20,9 +21,8 @@
     -moz-box-sizing: border-box;
     width: 100%;
     background: #fff;
-    margin-bottom: 4%;
     border: 1px solid #ccc;
-    padding-left: 3%;
+    padding: 3%;
     color: #555;
 }
 
@@ -38,12 +38,13 @@
 .form-style-6 textarea:focus,
 .form-style-6 select:focus
 {
-/*    box-shadow: 0 0 5px #43D1AF;*/
-    /*padding: 3%;*/
-/*    border: 1px solid #43D1AF;*/
-    box-shadow: 0 0 5px #2196F3;
-    border: 1px solid #2196F3;
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+/*    box-shadow: 0 0 5px #2196F3; */
+/*    border: 1px solid #2196F3; */
 }
+
 
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
