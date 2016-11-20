@@ -42,7 +42,7 @@ const ManProductList = ({products}) => (
       </button>
     </Link>
     <table
-      className="highlight sb-manage-table-in-card
+      className="sb-manage-table-in-card
         responsive-table striped">
       <thead>
         <tr>
