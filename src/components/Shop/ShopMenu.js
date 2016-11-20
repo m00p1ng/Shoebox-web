@@ -25,7 +25,7 @@ const LinkToOtherPage = ({title, link}) => (
 )
 
 const ShopMenu = () => (
-  <div className="col l2 m3 m12 hide-on-small-only sb-manage-nav-panel">
+  <div className="col l2 m3 s12 sb-manage-nav-panel">
     <div className="card white">
   		<div className="menu">
   			<p className="menu-label">Shop</p>
@@ -37,9 +37,9 @@ const ShopMenu = () => (
           <LinkShopMenu title="Most Views" link="most-views" />
           <LinkToOtherPage title="Search" link="search" />
   			</ul>
-        <div className="divider grey lighten-3"></div>
-  			<p className="menu-label">Brand</p>
-  			<ul className="menu-list">
+        <div className="divider grey lighten-3 hide-on-small-only "></div>
+  			<p className="menu-label hide-on-small-only ">Brand</p>
+  			<ul className="menu-list hide-on-small-only ">
   				<LinkToOtherPage title="Nike" link="search" />
           <LinkToOtherPage title="Adidas" link="search" />
           <LinkToOtherPage title="New Balance" link="search" />

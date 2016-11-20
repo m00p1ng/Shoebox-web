@@ -13,9 +13,9 @@
 }
 
 #sbox-nav-logo-small {
-  height: 48px;
+  height: 42px;
   position: relative;
-  top: 4.5px;
+  top: 7px;
 }
 
 .sbox-white-nav {
@@ -149,7 +149,7 @@ i.sbox-icon-gray {
 
 .sbox-header-bread {
 	position: relative;
-	top: 9px;
+	top: 12px;
 }
 
 .sbox-header-bread span {
@@ -267,6 +267,7 @@ i.sbox-icon-gray {
 /* Shoebox Search Style */
 
 #sbox-search-form {
+  padding-top: 20px;
   font-size: 30px;
 }
 
@@ -318,7 +319,7 @@ i.sbox-icon-gray {
 }
 
 .sb-shop-item img {
-	width: 65%;
+	width: 70%;
 	height: auto;
 	display: block;
 	margin: 0px auto 10px auto;

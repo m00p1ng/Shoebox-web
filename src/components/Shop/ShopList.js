@@ -32,7 +32,7 @@ const renderShopItem = (products) => {
 }
 
 const ShopList = ({products}) => (
-	<div className="col l9 s12">
+	<div className="col l10 m9 s12">
 		<div className="card grey lighten-4">
       <div className="row">
         {renderShopItem(products)}
@@ -69,7 +69,7 @@ const ShopPagination = () => (
 )
 
 const Loading = () => (
-  <div className="col l9 s12">
+  <div className="col l10 m9 s12">
     <div className="container center">
       <h1 className="grey-text text-darken-2">Loading...</h1>
       <div className="progress cyan lighten-3">
