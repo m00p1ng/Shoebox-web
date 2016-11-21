@@ -178,12 +178,25 @@ class Products(Document):
         return obj
 
 
-    def page_data(page):
-        totalpage = Products.objects.count() + 1
+    def map_page_data_product(product):
         obj = {
-            "page" : page,
-            "totalpage" : totalpage
+            'name' : product.name,
+            'price' : product.price,
+            'is_discount' : product.is_discount,
+            'discountPercent' : product.discountPercent,
         }
+        return obj
+
+
+    def page_data(cls,page,products):
+        obj = {}
+        obj['totalpage'] = Products.objects.count() + 1
+        obj['page'] = page
+        obj['data'] = []
+
+        for product in products:
+            obj['data'].append(cls.map_page_data_product(product))
+
         return obj
 
 
@@ -252,10 +265,6 @@ class Products(Document):
             obj = cls.search_product_view(product, real_data)
             return obj
 
-        elif function is 'sort_by':
-            obj = cls.search_product_view(product, real_data)
-            return obj
-
         else:
             obj = cls.employee_product_view(product, real_data)
             return obj
@@ -268,9 +277,11 @@ class Products(Document):
             obj = cls.mapID_to_obj(products, function, page)
             return json.dumps(obj)
         else:
-            output.append(cls.page_data(page))   
-            print(page)
-            for product in products:
-                obj = cls.mapID_to_obj(product, function, page)
-                output.append(obj)
-            return json.dumps(output)
+            if page is not 'none':
+                obj = cls.page_data(cls, page, products)
+                return json.dumps(obj)
+            else:
+                for product in products:
+                    obj = cls.mapID_to_obj(product, function, page)
+                    output.append(obj)
+                return json.dumps(output)

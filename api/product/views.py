@@ -154,6 +154,8 @@ def search_by_keyword(keyword):
 
 
 def product_sort_by(page, sort_by, result):
+    if result is None:
+        result = 1
     items_per_page = int(result)
     offset = (int(page)-1)*items_per_page
     product = Products.objects.skip(offset).limit(items_per_page)
@@ -250,8 +252,6 @@ def product_update(body, slug):
         Products.update_obj(slug, data)
 
         message = {'updated': True}
-        return HttpResponse(json.dumps(message), content_type=json_type)
-
     except ValueError as e:
         err['errorMsg'] = ['JSON Decode error']
         err['updated'] = False
