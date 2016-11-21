@@ -11,7 +11,7 @@ import { URL_ROOT } from 'endpoint'
 
 class ShopItemDetailAppContainer extends Component {
   static propTypes = {
-    product: PropTypes.object.isRequired,
+    product: PropTypes.array.isRequired,
     error: PropTypes.bool.isRequired,
     loadProduct: PropTypes.func.isRequired,
     updateViews: PropTypes.func.isRequired,
@@ -32,17 +32,18 @@ class ShopItemDetailAppContainer extends Component {
     this.props.clickAddToCart(product.slug, product, product.price)
   }
 
-  renderShopItemDetail() {
-    const { product, error, isLoading } = this.props
+  renderShopItemDetail(product, error) {
+    let hasError = error === true
+    let hasProduct = product.length > 0
 
-    if(error) {
+    if(hasError) {
       return browserHistory.push(`${URL_ROOT}/404`)
-    } else if(!isLoading) {
+    } else if(hasProduct) {
       return (
         <ShopItemDetailApp
-          product={product}
+          product={product[0]}
           onClickedAddToCart={() => {
-            this.onClickedAddToCart(product)
+            this.onClickedAddToCart(product[0])
           }} />
       )
     }
@@ -54,18 +55,18 @@ class ShopItemDetailAppContainer extends Component {
   }
 
   render() {
+    const {product, error} = this.props
     return (
       <div>
-        {this.renderShopItemDetail()}
+        {this.renderShopItemDetail(product, error)}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  product: state.product['product'],
-  error: state.product['error'],
-  isLoading: state.product['isLoading']
+  product: state.product['detail'],
+  error: state.product['error']
 })
 
 const mapDispatchToProps = ({

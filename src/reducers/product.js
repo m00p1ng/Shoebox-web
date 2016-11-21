@@ -7,7 +7,7 @@ import {
 } from 'actionTypes'
 
 const initialState = {
-  product: {},
+  detail: [],
   error: false,
   isLoading: false
 }
@@ -16,14 +16,14 @@ const product = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCT_SUCCESS:
       return ({
-        product: action.payload,
+        detail: [action.payload],
         error: false,
         isLoading: false
       })
     case LOAD_PRODUCT_FAILURE:
       return ({
         ...state,
-        product: {},
+        detail: [],
         error: true,
         isLoading: false
       })
