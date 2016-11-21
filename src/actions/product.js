@@ -1,13 +1,7 @@
 import { CALL_API } from 'redux-api-middleware'
-import {
-  PRODUCT_ENDPOINT
-} from 'endpoint'
+import { PRODUCT_ENDPOINT } from 'endpoint'
 
 import {
-  LOAD_PRODUCTS_REQUEST,
-  LOAD_PRODUCTS_SUCCESS,
-  LOAD_PRODUCTS_FAILURE,
-
   LOAD_PRODUCT_REQUEST,
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
@@ -17,29 +11,7 @@ import {
   UPDATE_PRODUCT_VIEWS_FAILURE,
 
   ADD_TO_CART,
-  CLEAR_PRODUCTS,
 } from 'actionTypes'
-
-export const clearProducts = () => (
-  (dispatch) => dispatch({
-    type: CLEAR_PRODUCTS
-  })
-)
-
-export const loadProducts = (type) => ({
-  [CALL_API]: {
-    endpoint: `${PRODUCT_ENDPOINT}/${type}`,
-    method: 'GET',
-    types: [
-    {
-      type: LOAD_PRODUCTS_REQUEST,
-      payload: (action, state) => ({detail: [], error: false})
-    },
-      LOAD_PRODUCTS_SUCCESS,
-      LOAD_PRODUCTS_FAILURE
-    ]
-  }
-})
 
 export const loadProduct = (slug) => ({
   [CALL_API]: {

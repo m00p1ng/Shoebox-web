@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import products from './product'
+import product from './product'
+import shop from './shop'
 import search from './search'
 import cart from './cart'
 import user from './user'
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
       }
     }
   }),
-  products,
+  product,
+  shop,
   search,
   cart,
   order,

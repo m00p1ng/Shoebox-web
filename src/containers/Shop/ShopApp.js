@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { ShopApp } from '../../components'
-import { loadProducts } from '../../actions/product'
+import { loadProducts } from '../../actions/shop'
 
 class ShopAppContainer extends Component {
   static propTypes = {
@@ -27,8 +27,8 @@ class ShopAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products['products'],
-  error: state.products['error']
+  products: state.shop['products'],
+  error: state.shop['error']
 })
 
 const mapDispatchToProps = ({

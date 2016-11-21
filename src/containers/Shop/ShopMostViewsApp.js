@@ -4,7 +4,7 @@ import { ShopMostViewsApp } from '../../components'
 import {
   loadProducts,
   clearProducts
-} from '../../actions/product'
+} from '../../actions/shop'
 
 class ShopMostViewsAppContainer extends Component {
   static propTypes = {
@@ -35,8 +35,8 @@ class ShopMostViewsAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products['products'],
-  error: state.products['error']
+  products: state.shop['products'],
+  error: state.shop['error']
 })
 
 const mapDispatchToProps = ({
