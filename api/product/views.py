@@ -150,7 +150,7 @@ def get_page_data(request):
     data = {}
     data['page'] = request.GET.get('page')
     data['result'] = request.GET.get('result')
-    data['is_result'] = True
+    data['is_page'] = True
     data['is_result'] = True
 
     if data['result'] is None:

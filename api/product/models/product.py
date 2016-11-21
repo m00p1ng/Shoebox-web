@@ -180,11 +180,16 @@ class Products(Document):
 
 
     def map_page_data_product(product):
+        brand = ProductBrands.objects(pk=product.brand.id).first().name
+        
         obj = {
             'name' : product.name,
             'price' : product.price,
             'is_discount' : product.is_discount,
             'discountPercent' : product.discountPercent,
+            'slug' : product.slug,
+            'brand' :  brand,
+            'picture' : product.picture
         }
         return obj
 
