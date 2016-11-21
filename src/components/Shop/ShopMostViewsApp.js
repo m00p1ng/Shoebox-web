@@ -10,7 +10,7 @@ const ShopMostViewsApp = ({products, error}) => (
       title1="Shop"
       link1="shop"
       title2="Most Views"
-      link2="most-view"
+      link2="most-views"
     />
     <div className="container">
       <div className="row">
