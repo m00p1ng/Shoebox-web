@@ -124,7 +124,7 @@ class Products(Document):
             for key in field_id:
                 data[key] = field_id[key]
 
-        data['number_of_views'] = product.number_of_views+1
+        data['number_of_views'] = product.number_of_views + 1
 
         product.update(**data)
         return product
@@ -178,6 +178,26 @@ class Products(Document):
         return obj
 
 
+    def page_data(page):
+        totalpage = Products.objects.count() + 1
+        obj = {
+            "page" : page,
+            "totalpage" : totalpage
+        }
+        return obj
+
+
+    def product_sort_by_view(product, real_data):
+        obj = {
+            'name' : product.name,
+            'price' : product.price,
+            'is_discount' : product.is_discount,
+            'discountPercent' : product.discountPercent,
+            'size' : real_data['size'],
+        }
+
+        return obj
+
 
     def search_product_view(product, real_data):
         obj = {
@@ -215,7 +235,7 @@ class Products(Document):
 
 
     @classmethod
-    def mapID_to_obj(cls, product, function='none'):
+    def mapID_to_obj(cls, product, function='none', page='none'):
         data = {
             'brand': product.brand.id,
             'types': product.types.id,
@@ -225,26 +245,32 @@ class Products(Document):
         real_data = cls.to_realData(data)
 
         if function is 'customer':
-            obj = cls.customer_product_view(product,real_data)
+            obj = cls.customer_product_view(product, real_data)
             return obj
 
         elif function is 'search':
-            obj = cls.search_product_view(product,real_data)
+            obj = cls.search_product_view(product, real_data)
+            return obj
+
+        elif function is 'sort_by':
+            obj = cls.search_product_view(product, real_data)
             return obj
 
         else:
-            obj = cls.employee_product_view(product,real_data)
+            obj = cls.employee_product_view(product, real_data)
             return obj
 
 
     @classmethod
-    def map_referenceID(cls, products, function='none'):
+    def map_referenceID(cls, products, function='none', page='none'):
         output = []
         if not hasattr(products, 'count'):
-            obj = cls.mapID_to_obj(products,function)
+            obj = cls.mapID_to_obj(products, function, page)
             return json.dumps(obj)
         else:
+            output.append(cls.page_data(page))   
+            print(page)
             for product in products:
-                obj = cls.mapID_to_obj(product,function)
+                obj = cls.mapID_to_obj(product, function, page)
                 output.append(obj)
             return json.dumps(output)

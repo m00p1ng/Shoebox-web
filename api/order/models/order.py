@@ -78,7 +78,7 @@ class Orders(Document):
 
 
     @classmethod
-    def mapID_to_obj(cls, order, function='none'):
+    def mapID_to_obj(cls, order, function='none', page='none'):
         data = {'username': order.username.id}
 
         real_data = cls.to_realData(data)
@@ -103,7 +103,7 @@ class Orders(Document):
 
 
     @classmethod
-    def map_referenceID(cls, orders, function='none'):
+    def map_referenceID(cls, orders, function='none', page='none'):
         output = []
         if not hasattr(orders, 'count'):
             obj = cls.mapID_to_obj(orders,function)

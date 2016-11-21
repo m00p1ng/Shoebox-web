@@ -9,10 +9,10 @@ def request_get(queryset):
     return HttpResponse(queryset.to_json(), content_type=json_type)
 
 
-def request_get_real(model, queryset, function='none'):
+def request_get_real(model, queryset, function='none', page='none'):
     if not queryset:
         return HttpResponse('Not found', status=404)
-    return HttpResponse(model.map_referenceID(queryset,function), content_type=json_type)
+    return HttpResponse(model.map_referenceID(queryset,function,page), content_type=json_type)
 
 
 def errors_to_json(err, action):

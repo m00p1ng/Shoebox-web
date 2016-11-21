@@ -11,9 +11,16 @@ json_type = "application/json"
 def product(request):
     body = request.body
     if request.method == 'GET':
-        if 'role' in request.session and request.session['role'] == 'employee':
-            return request_get_real(Products, query_all())
-        return request_get_real(Products, query_by_customer_all(), 'customer')
+        page = request.GET.get('page')
+        sort_by = request.GET.get('sort_by')
+        print(page)
+        
+        if page is not None:
+            return request_get_real(Products, product_sort_by(page, sort_by), 'sort_by', page)
+        else:
+            if 'role' in request.session and request.session['role'] == 'employee':
+                return request_get_real(Products, query_all())
+            return request_get_real(Products, query_by_customer_all(), 'customer')
     if request.method == 'POST':
         return product_create(body)
     if request.method == 'PUT':
@@ -33,6 +40,24 @@ def product_with_name(request, slug):
         return product_update(body, slug)
     if request.method == 'DELETE':
         return product_delete(slug)
+
+
+# @csrf_exempt
+# def product_sort(request):
+#     body = request.body
+#     if request.method == 'GET':
+#         sort_by = body.GET.get('sort_by','')
+#         page = body.GET.get('page','')
+#         if sort_by == 'bestseller':
+#             return product_sort_by(page, sort_by)
+#         if sort_by == 'topview':
+#             return product_brand(slug)
+#     if request.method == 'POST':
+#         pass
+#     if request.method == 'PUT':
+#         pass
+#     if request.method == 'DELETE':
+#         pass
 
 
 @csrf_exempt
@@ -146,12 +171,17 @@ def search_by_keyword(keyword):
     return request_get_real(Products, product)
 
 
-def product_by_page(page):
-    items_per_page = 10
+def product_sort_by(page, sort_by):
+
+    items_per_page = 5
     offset = (int(page)-1)*items_per_page
     product = Products.objects.skip(offset).limit(items_per_page)
-    return request_get_real(Products,product)
 
+    if sort_by == 'bestseller':
+         product = product.order_by("-sold_unit")
+    if sort_by == 'topview':
+         product = product.order_by("-number_of_views")
+    return product
 
 def product_type(slug):
     types = ProductTypes.objects(slug=slug).first()
