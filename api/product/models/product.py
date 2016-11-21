@@ -190,17 +190,26 @@ class Products(Document):
 
 
     def page_data(cls, data, products):
-        totalpage = math.ceil(Products.objects.count() / int(data['result']))
-        dataArr = []
+        if data.get('page') and data.get('result'):
+            totalpage = math.ceil(Products.objects.count() / int(data['result']))
+            totalproduct = Products.objects.count()
+            dataArr = []
 
-        for product in products:
-            dataArr.append(cls.map_page_data_product(product))
+            for product in products:
+                dataArr.append(cls.map_page_data_product(product))
 
-        obj = {
-            'totalpage': totalpage,
-            'page': int(data['page']),
-            'data': dataArr
-        }
+            obj = {
+                'totalpage': totalpage,
+                'page': int(data['page']),
+                'data': dataArr,
+                'totalproduct' : totalproduct
+            }
+
+        else:
+            obj = []
+            for product in products:
+                obj.append(cls.map_page_data_product(product))
+
         return obj
 
 
@@ -248,7 +257,6 @@ class Products(Document):
             'supplier': real_data['supplier']
          }
          return obj
-
 
 
     @classmethod

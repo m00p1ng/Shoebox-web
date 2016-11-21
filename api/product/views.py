@@ -58,7 +58,7 @@ def product_category(request, category, slug):
 @csrf_exempt
 def product_latest(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'latest'))
+        return request_get_real(Products, product_sort_by(request, 'latest'), 'sort_by', get_page_data(request))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -82,7 +82,7 @@ def product_page(request,page):
 @csrf_exempt
 def product_bestseller(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'best-seller'))
+        return request_get_real(Products, product_sort_by(request, 'best-seller'), 'sort_by', get_page_data(request))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -94,7 +94,7 @@ def product_bestseller(request):
 @csrf_exempt
 def product_mostview(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'most-views'))
+        return request_get_real(Products, product_sort_by(request, 'most-views'), 'sort_by', get_page_data(request))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -146,10 +146,15 @@ def search_by_keyword(keyword):
     return request_get_real(Products, product)
 
 
-def product_sort_by(request, sort_by):
+def get_page_data(request):
     data = {}
     data['page'] = request.GET.get('page')
     data['result'] = request.GET.get('result')
+    return data
+
+
+def product_sort_by(request, sort_by):
+    data = get_page_data(request)
 
     if data['result'] is None and data['page'] is None:
         product = Products.objects.all()
