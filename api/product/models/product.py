@@ -190,7 +190,7 @@ class Products(Document):
 
 
     def page_data(cls, data, products):
-        if data.get('page') and data.get('result'):
+        if data.get('page') or data.get('result'):
             totalpage = math.ceil(Products.objects.count() / int(data['result']))
             totalproduct = Products.objects.count()
             dataArr = []
