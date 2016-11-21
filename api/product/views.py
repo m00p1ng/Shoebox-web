@@ -11,17 +11,9 @@ json_type = "application/json"
 def product(request):
     body = request.body
     if request.method == 'GET':
-        data = {}
-        data['page'] = request.GET.get('page')
-        data['sort_by'] = request.GET.get('sort_by')
-        data['result'] = request.GET.get('result')
-
-        if data['page'] is not None:
-            return request_get_real(Products, product_sort_by(data), 'sort_by', data)
-        else:
-            if 'role' in request.session and request.session['role'] == 'employee':
-                return request_get_real(Products, query_all())
-            return request_get_real(Products, query_by_customer_all(), 'customer')
+        if 'role' in request.session and request.session['role'] == 'employee':
+            return request_get_real(Products, query_all())
+        return request_get_real(Products, query_by_customer_all(), 'customer')
     if request.method == 'POST':
         return product_create(body)
     if request.method == 'PUT':
@@ -66,7 +58,7 @@ def product_category(request, category, slug):
 @csrf_exempt
 def product_latest(request):
     if request.method == 'GET':
-        return request_get_real(Products, query_latest())
+        return request_get_real(Products, product_sort_by(request, 'latest'))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -90,7 +82,7 @@ def product_page(request,page):
 @csrf_exempt
 def product_bestseller(request):
     if request.method == 'GET':
-        return request_get_real(Products, query_by_sold_unit())
+        return request_get_real(Products, product_sort_by(request, 'best-seller'))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -100,9 +92,9 @@ def product_bestseller(request):
 
 
 @csrf_exempt
-def product_topview(request):
+def product_mostview(request):
     if request.method == 'GET':
-        return request_get_real(Products, query_by_view())
+        return request_get_real(Products, product_sort_by(request, 'most-views'))
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -154,18 +146,25 @@ def search_by_keyword(keyword):
     return request_get_real(Products, product)
 
 
-def product_sort_by(data):
+def product_sort_by(request, sort_by):
+    data = {}
+    data['page'] = request.GET.get('page')
+    data['result'] = request.GET.get('result')
+
     if data['result'] is None:
         data['result'] = 1
-    items_per_page = int(data['result'])
-    offset = (int(data['page'])-1)*items_per_page
-    product = Products.objects.skip(offset).limit(items_per_page)
+    if data['page'] is not None:
+        items_per_page = int(data['result'])
+        offset = (int(data['page'])-1)*items_per_page
+        product = Products.objects.skip(offset).limit(items_per_page)
+    else:
+        product = Products.objects.all()
 
-    if data['sort_by'] == 'best-seller':
+    if sort_by == 'best-seller':
          product = product.order_by('-sold_unit')
-    elif data['sort_by'] == 'most-views':
+    elif sort_by == 'most-views':
          product = product.order_by('-number_of_views')
-    elif data['sort_by'] == 'latest':
+    elif sort_by == 'latest':
         product = product.order_by('-id')
     else:
         product = []

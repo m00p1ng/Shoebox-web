@@ -7,9 +7,9 @@ urlpatterns = [
     url(r'^by(?P<category>.+?)/(?P<slug>.+?)/?$', views.product_category),
     url(r'^latest/?$', views.product_latest),
     url(r'^best-seller/?$', views.product_bestseller),
-    url(r'^most-views/?$', views.product_mostview),
-    url(r'^search/(?P<keyword>.+?)$', views.product_search),
-    url(r'^page/(?P<page>.+?)$', views.product_page),
+    url(r'^most-views/?$', views.product_topview),
+    url(r'^search/(?P<keyword>.+?)/?$', views.product_search),
+    url(r'^page/(?P<page>.+?)/?$', views.product_page),
 
     url(r'^type/?', include('api.product.productType.urls')),
     url(r'^size/?', include('api.product.productSize.urls')),
