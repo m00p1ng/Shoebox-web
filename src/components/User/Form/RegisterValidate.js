@@ -2,12 +2,12 @@ const RegisterValidate = values => {
   const errors = {}
   if(!values.username) {
     errors.username = 'Required'
+  } else if(!/^[a-z][\w\.]{0,20}$/i.test(values.username)) {
+    errors.username = 'Username must contain only A-Z, a-z, 0-9 or _'
   } else if(values.username.length < 6) {
     errors.username = 'Username must be at least 6 characters'
   } else if(values.username.length > 20) {
     errors.username = 'Username must be at greatly 20 characters'
-  } else if(!/^[a-z][\w\.]{0,20}$/i.test(values.username)) {
-    errors.username = 'Username must contain only A-Z, a-z, 0-9 or _'
   }
 
 
@@ -27,10 +27,14 @@ const RegisterValidate = values => {
 
   if(!values.firstname) {
     errors.firstname = 'Required'
+  } else if(values.firstname.length > 50) {
+    errors.firstname = 'Firstname too long, Please try again'
   }
 
   if(!values.lastname) {
     errors.lastname = 'Required'
+  } else if(values.lastname.length > 50) {
+    errors.lastname = 'Lastname too long, Please try again'
   }
 
   if(!values.gender) {
@@ -39,6 +43,8 @@ const RegisterValidate = values => {
 
   if(!values.phone) {
     errors.phone = 'Required'
+  } else if(values.phone.length > 20) {
+    errors.phone = 'Phone number too long, Please try again'
   }
 
   if(!values.email) {
@@ -51,16 +57,28 @@ const RegisterValidate = values => {
   if(values.address){
     if(!values.address.city){
       address["city"] = ['Required']
+    } else if(values.address.city.length > 50) {
+      address["city"] = ['City too long, Please try again']
     }
+
     if(!values.address.district){
       address["district"] = ['Required']
+    } else if(values.address.district.length > 50) {
+      address["district"] = ['District too long, Please try again']
     }
+
     if(!values.address.street){
       address["street"] = ['Required']
+    } else if(values.address.street.length > 50) {
+      address["street"] = ['Street too long, Please try again']
     }
+
     if(!values.address.zipcode){
       address["zipcode"] = ['Required']
+    } else if(values.address.zipcode.length > 20) {
+      address["zipcode"] = ['Zipcode too long, Please try again']
     }
+
     errors.address = address
   }
   else {
@@ -76,16 +94,29 @@ const RegisterValidate = values => {
   if(values.ship) {
     if(!values.ship.city) {
       ship["city"] = ['Required']
+    } else if(values.ship.city.length > 50) {
+      ship["city"] = ['City too long, Please try again']
     }
+
     if(!values.ship.district) {
       ship["district"] = ['Required']
+    } else if(values.ship.district.length > 50) {
+      ship["district"] = ['District too long, Please try again']
     }
+
     if(!values.ship.street) {
       ship["street"] = ['Required']
+    } else if(values.ship.street.length > 50) {
+      ship["street"] = ['Street too long, Please try again']
     }
+
+
     if(!values.ship.zipcode) {
       ship["zipcode"] = ['Required']
+    } else if(values.ship.zipcode.length > 50) {
+      ship["zipcode"] = ['Zipcode too long, Please try again']
     }
+
     errors.ship = ship
   }
   else {

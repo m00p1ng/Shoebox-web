@@ -1,5 +1,16 @@
 import React, { PropTypes } from 'react'
-import ErrorMsg from './ErrorMsg'
+
+const ErrorMsg = ({errorMsg}) => (
+  <div className="row">
+    {
+      (errorMsg !== '') ? (
+        <div className="center-align">
+          {errorMsg}
+        </div>
+      ): (<span></span>)
+    }
+  </div>
+)
 
 const LoginForm = ({
   onUsernameChange,
