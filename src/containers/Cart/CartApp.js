@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {
   CartApp,
@@ -8,6 +8,12 @@ import {
 } from '../../components'
 
 class CartAppContainer extends Component {
+  static propTypes = {
+    cart: PropTypes.array.isRequired,
+    qty: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
+    role: PropTypes.string.isRequired
+  }
 
   shouldComponentUpdate(nextProps) {
     return (this.props.qty !== nextProps.qty)

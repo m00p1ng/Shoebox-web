@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { sendRegisterCustomerForm } from '../../actions/register'
 import { getCustomerDetail } from '../../actions/user'
 import { connect } from 'react-redux'
@@ -12,7 +12,12 @@ import {
 } from '../../components'
 
 class RegisterAppContainer extends Component {
-   constructor(props) {
+  static propTypes = {
+    sendRegisterCustomerForm: PropTypes.func.isRequired,
+    getCustomerDetail: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
     super(props)
     this.nextPage = this.nextPage.bind(this)
     this.previousPage = this.previousPage.bind(this)

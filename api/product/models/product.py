@@ -124,7 +124,7 @@ class Products(Document):
             for key in field_id:
                 data[key] = field_id[key]
 
-        data['number_of_views'] = product.number_of_views+1
+        data['number_of_views'] = product.number_of_views + 1
 
         product.update(**data)
         return product
