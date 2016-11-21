@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const ShopPagination = () => (
-	<div className="row center" style={{marginTop: "30px"}}>
+	<div className="row center sbox-shop-pagination">
 		<ul className="pagination">
 			<li className="disabled">
         <a href="#!"><i className="material-icons">
@@ -37,7 +37,7 @@ const ShopItem = ({product}) => (
             src={product.picture}
             alt={product.slug} />
   			</Link>
-  			<span className="chip">Nike</span>
+  			<span className="chip">{product.brand}</span>
   			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
           {product.name}
         </Link>
