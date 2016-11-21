@@ -2,6 +2,32 @@ import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
+const ShopPagination = () => (
+	<div className="row center" style={{marginTop: "30px"}}>
+		<ul className="pagination">
+			<li className="disabled">
+        <a href="#!"><i className="material-icons">
+          chevron_left
+        </i>
+      </a>
+    </li>
+			<li className="active">
+        <a href="#!">1</a>
+      </li>
+			<li className="waves-effect">
+        <a href="#!">2</a>
+      </li>
+			<li className="waves-effect">
+        <a href="#!">
+          <i className="material-icons">
+            chevron_right
+          </i>
+        </a>
+      </li>
+		</ul>
+	</div>
+)
+
 const ShopItem = ({product}) => (
   <div className="col l3 m4 s6">
     <div className="sb-shop-item center">
@@ -31,41 +57,15 @@ const renderShopItem = (products) => {
   )
 }
 
-const ShopList = ({products}) => (
+const ShopList = ({children}) => (
 	<div className="col l10 m9 s12">
 		<div className="card grey lighten-4">
       <div className="row">
-        {renderShopItem(products)}
+        {children}
       </div>
     </div>
 		<ShopPagination />
   </div>
-)
-
-const ShopPagination = () => (
-	<div className="row center" style={{marginTop: "30px"}}>
-		<ul className="pagination">
-			<li className="disabled">
-        <a href="#!"><i className="material-icons">
-          chevron_left
-        </i>
-      </a>
-    </li>
-			<li className="active">
-        <a href="#!">1</a>
-      </li>
-			<li className="waves-effect">
-        <a href="#!">2</a>
-      </li>
-			<li className="waves-effect">
-        <a href="#!">
-          <i className="material-icons">
-            chevron_right
-          </i>
-        </a>
-      </li>
-		</ul>
-	</div>
 )
 
 const Loading = () => (
@@ -89,8 +89,9 @@ const renderShopList = (products, error) => {
     )
   } else if(hasProducts) {
     return (
-      <ShopList
-        products={products}/>
+      <ShopList>
+        {renderShopItem(products)}
+      </ShopList>
     )
   } else {
     return (

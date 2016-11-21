@@ -16,8 +16,11 @@ const LoginForm = ({
               id="sbox-login-logo"
               className="responsive-img"
               src="/static/images/shoebox_logo.png" />
-            <ErrorMsg errorMsg={errorMsg} />
+          </div>
 
+          <ErrorMsg errorMsg={errorMsg} />
+
+          <div className="row">
             <div className="input-field">
               <input
                 id="sb_username"
