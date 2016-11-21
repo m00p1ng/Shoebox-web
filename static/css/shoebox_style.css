@@ -340,6 +340,10 @@ i.sbox-icon-gray {
 	font-size: 14px;
 }
 
+.sbox-shop-pagination {
+  margin-top: 30px;
+}
+
 /* Zoom In #1 */
 .sb-hover-zoom {
 	-webkit-transform: scale(1);

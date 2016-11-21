@@ -7,15 +7,90 @@ const render_list = (list) => (
   })
 )
 
+const ShopPicture = ({picture}) => (
+  <div className="col l7 sb-shop-detail-img">
+    <div className="center">
+      <img src={picture} alt="product-picture" />
+    </div>
+  </div>
+)
+
+const ShopItemDetail = ({product, onClickedAddToCart}) => (
+	<div className="col l5 sb-shop-detail sb-shop-detail-grey-box">
+    <div className="sb-shop-detail-text">
+      <div>
+        <h5 className="sb-bold">{product.brand}</h5>
+        <h5 className="sb-bold">{product.name}</h5>
+      </div>
+      <span className="sb-shop-detail-price sb-bold">$ {product.price}</span>
+      <br />
+      <span className="sb-shop-detail-small-text">
+        Incl. VAT in Thailand, packageing and shipping FREE
+      </span>
+      <br /><br />
+      <span className="sb-shop-detail-section sb-bold">
+        PRODUCT DETAILS
+      </span>
+      <div className="sb-shop-detail-first-line">
+        <span className="sb-shop-detail-med-text sb-bold">Type: </span>
+        <span className="sb-shop-detail-med-text">{product.types}</span>
+      </div>
+      <span className="sb-shop-detail-med-text sb-bold">Color: </span>
+      <span className="sb-shop-detail-med-text">{product.color}</span>
+      <br />
+      <span className="sb-shop-detail-med-text sb-bold">Date Arrival: </span>
+      <span className="sb-shop-detail-med-text">{product.date.day}-{product.date.month}-{product.date.year}</span>
+      <div className="sb-shop-detail-desc">
+        <span className="sb-shop-detail-med-text">
+          It all began in Peking. When Nike presented their first Hyperdunk,
+          they paved the way for sneakers and made a big step towards the future.
+          Innovations and performance technologies don't only keep the sneaker scene alive – they make sure continous accomplishments are achieved.
+          But the Hyperdunk never had to be afraid of extinction to begin with.
+          Year after year the majority of basketball fanatics await every release with open arms and wonder,
+          what Nike might have had up their sleeves this time.
+          And to prove that, there is no better method than success:
+          exactly what the HYPERDUNK 2016 has to offer. With its light engineered mesh upper,
+          stability is a sure thing, perfectly matching its low-cut silhouette.
+          Combined with a herringbone outsole supporting non-slip traction and ultra-reactive Nike Air Zoom cushioning in forefoot and heel area,
+          you've got the whole package – no flaws in your shoe game.
+          From shoe to shoe Nike upgraded, looking for their best input possible.
+          Nevertheless, perfection is not the goal.
+        </span>
+      </div>
+    </div>
+    <button
+      className="waves-effect waves-light btn orange darken-3 sb-shop-detail-add-to-cart-btn"
+      onClick={onClickedAddToCart}>
+      <i className="material-icons right white-text">shopping_cart</i>
+      ADD TO CART
+    </button>
+  </div>
+)
+
+const ShopBody = ({product, onClickedAddToCart}) => (
+	<div className="container">
+		<div className="row">
+			<div className="col l12 card white">
+				<ShopPicture picture={product.picture} />
+			  <ShopItemDetail
+          product={product}
+          onClickedAddToCart={onClickedAddToCart}/>
+			</div>
+		</div>
+	</div>
+)
+
 const ShopItemDetailApp = ({product, onClickedAddToCart}) => (
   <div>
     <HeaderBar2StepApp
-			header={product.name}
+			header="Product Detail"
 			title1="Shop"
 			link1="shop"
       title2={product.name}
 			link2={product.slug} />
-    <button onClick={onClickedAddToCart}>Add to cart</button>
+    <ShopBody
+      product={product}
+      onClickedAddToCart={onClickedAddToCart}/>
   </div>
 )
 
