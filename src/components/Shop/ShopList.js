@@ -58,7 +58,7 @@ const renderShopItem = (products) => {
 }
 
 const ShopList = ({children}) => (
-	<div className="col l10 m9 s12">
+	<div className="col l10 s12">
 		<div className="card grey lighten-4">
       <div className="row">
         {children}
@@ -69,7 +69,7 @@ const ShopList = ({children}) => (
 )
 
 const Loading = () => (
-  <div className="col l10 m9 s12">
+  <div className="col l10 s12">
     <div className="container center">
       <h1 className="grey-text text-darken-2">Loading...</h1>
       <div className="progress cyan lighten-3">
@@ -79,13 +79,19 @@ const Loading = () => (
   </div>
 )
 
+const ErrorMsg = () => (
+	<div className="container center">
+		<h1 className="grey-text text-darken-2">Can't Fetch data</h1>
+	</div>
+)
+
 const renderShopList = (products, error) => {
   let hasError = error === true
   let hasProducts = products.length > 0
 
   if(hasError) {
-      return (
-      <h1>Can't Fetch data</h1>
+    return (
+    	<ErrorMsg />
     )
   } else if(hasProducts) {
     return (
