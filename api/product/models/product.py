@@ -278,7 +278,7 @@ class Products(Document):
     def map_referenceID(cls, products, function='none', data='none'):
         output = []
         if not hasattr(products, 'count'):
-            obj = cls.mapID_to_obj(products, function, page)
+            obj = cls.mapID_to_obj(products, function, data='none')
             return json.dumps(obj)
         else:
             if data is not 'none':

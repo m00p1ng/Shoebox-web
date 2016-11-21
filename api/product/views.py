@@ -151,14 +151,17 @@ def product_sort_by(request, sort_by):
     data['page'] = request.GET.get('page')
     data['result'] = request.GET.get('result')
 
-    if data['result'] is None:
-        data['result'] = 1
-    if data['page'] is not None:
+    if data['result'] is None and data['page'] is None:
+        product = Products.objects.all()
+
+    else:
+        if data['result'] is None:
+            data['result'] = 10
+        if data['page'] is None:
+            data['page'] = 1
         items_per_page = int(data['result'])
         offset = (int(data['page'])-1)*items_per_page
         product = Products.objects.skip(offset).limit(items_per_page)
-    else:
-        product = Products.objects.all()
 
     if sort_by == 'best-seller':
          product = product.order_by('-sold_unit')
