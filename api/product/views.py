@@ -161,12 +161,14 @@ def product_sort_by(data):
     offset = (int(data['page'])-1)*items_per_page
     product = Products.objects.skip(offset).limit(items_per_page)
 
-    if data['sort_by'] == 'bestseller':
+    if data['sort_by'] == 'best-seller':
          product = product.order_by('-sold_unit')
-    if data['sort_by'] == 'topview':
+    elif data['sort_by'] == 'most-views':
          product = product.order_by('-number_of_views')
-    if data['sort_by'] == 'latest':
+    elif data['sort_by'] == 'latest':
         product = product.order_by('-id')
+    else:
+        product = []
     return product
 
 
@@ -208,55 +210,65 @@ def product_create(body):
         err = Products.validation(data)
         if len(err) == 0:
             Products.create_obj(data)
-            message = {'created': True}
-            return HttpResponse(json.dumps(message), content_type=json_type, status=201)
+            message = json.dumps({'created': True})
+            return HttpResponse(message, content_type=json_type, status=201)
         else:
             return errors_to_json(err, 'created')
 
     except ValueError as e:
-        err = {}
-        err['errorMsg'] = ['JSON Decode error']
-        err['created'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+        err = json.dumps({
+            'errorMsg': ['JSON Decode error'],
+            'created': False
+        })
+        return HttpResponse(err, content_type=json_type, status=400)
 
     except NotUniqueError as e:
-        err = {}
-        err['errorMsg'] = ['Product already exist']
-        err['created'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+        err = json.dumps({
+            'errorMsg': ['Product already exist'],
+            'created': False
+        })
+        return HttpResponse(err, content_type=json_type, status=400)
 
 
 def product_delete(slug):
     item = Products.objects(slug=slug)
-    err = {}
     if not item:
-        err['errorMsg'] = ['This product not exist']
-        err['deleted'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status=404)
+        err = json.dumps({
+            'errorMsg': ['This product not exist'],
+            'deleted': False
+        })
+        return HttpResponse(err, content_type=json_type, status=404)
     item.delete()
-    message = {'deleted': True}
-    return HttpResponse(json.dumps(message), content_type=json_type)
+    message = json.dumps({'deleted': True})
+    return HttpResponse(message, content_type=json_type)
 
 
 def product_update(body, slug):
     try:
         item = Products.objects(slug=slug)
-        err = {}
         if not item:
-            err['errorMsg'] = ['This product not exist']
-            err['updated'] = False
-            return HttpResponse(json.dumps(err), content_type=json_type, status=404)
+            err = json.dumps({
+                'errorMsg': ['This product not exist'],
+                'updated': False
+            })
+            return HttpResponse(err, content_type=json_type, status=404)
 
         data = json.loads(body.decode())
         if not data:
-            err['errorMsg'] = ['Data cannot empty']
-            err['updated'] = False
-            return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+            err = json.dumps({
+                'errorMsg': ['Data cannot empty'],
+                'updated': False
+            })
+            return HttpResponse(err, content_type=json_type, status=400)
 
         Products.update_obj(slug, data)
 
-        message = {'updated': True}
+        message = json.dumps({'updated': True})
+        return HttpResponse(message, content_type=json_type)
+
     except ValueError as e:
-        err['errorMsg'] = ['JSON Decode error']
-        err['updated'] = False
-        return HttpResponse(json.dumps(err), content_type=json_type, status=400)
+        err = json.dumps({
+            'errorMsg': ['JSON Decode error'],
+            'updated': False
+        })
+        return HttpResponse(err, content_type=json_type, status=400)

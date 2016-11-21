@@ -4,6 +4,7 @@ from api.supplier.models import Suppliers
 from api.product.models import *
 import datetime
 import json
+import math
 
 class Products(Document):
     supplier = ReferenceField(Suppliers)
@@ -188,15 +189,18 @@ class Products(Document):
         return obj
 
 
-    def page_data(cls,data,products):
-        obj = {}
-        obj['totalpage'] = int((Products.objects.count()/int(data['result']))) + 1 
-        obj['page'] = int(data['page'])
-        obj['data'] = []
+    def page_data(cls, data, products):
+        totalpage = math.ceil(Products.objects.count() / int(data['result']))
+        dataArr = []
 
         for product in products:
-            obj['data'].append(cls.map_page_data_product(product))
+            dataArr.append(cls.map_page_data_product(product))
 
+        obj = {
+            'totalpage': totalpage,
+            'page': int(data['page']),
+            'data': dataArr
+        }
         return obj
 
 
