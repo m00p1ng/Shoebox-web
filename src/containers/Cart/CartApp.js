@@ -31,9 +31,9 @@ class CartAppContainer extends Component {
   render() {
     return (
       <CartApp>
-        <h3 className="grey-text text-darken-2">
+        <h4 className="grey-text text-darken-2">
           {this.props.cart.length} items in cart
-        </h3>
+        </h4>
         {this.hasItemInCart()}
       </CartApp>
     )
