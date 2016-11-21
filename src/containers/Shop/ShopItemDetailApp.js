@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { ShopItemDetailApp } from '../../components'
 import {
   loadProduct,
+  clearProduct,
   clickAddToCart,
   updateViews
 } from '../../actions/product'
@@ -21,6 +22,10 @@ class ShopItemDetailAppContainer extends Component {
   componentDidMount() {
     this.props.loadProduct(this.props.params.slug)
     this.props.updateViews(this.props.params.slug)
+  }
+
+  componentWillUnmount() {
+    this.props.clearProduct()
   }
 
   onClickedAddToCart(product) {
@@ -72,6 +77,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = ({
   loadProduct,
+  clearProduct,
   updateViews,
   clickAddToCart
 })

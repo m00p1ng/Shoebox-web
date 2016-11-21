@@ -10,8 +10,15 @@ import {
   UPDATE_PRODUCT_VIEWS_SUCCESS,
   UPDATE_PRODUCT_VIEWS_FAILURE,
 
+  CLEAR_PRODUCT,
   ADD_TO_CART,
 } from 'actionTypes'
+
+export const clearProduct = () => (
+  (dispatch) => dispatch({
+    type: CLEAR_PRODUCT
+  })
+)
 
 export const loadProduct = (slug) => ({
   [CALL_API]: {

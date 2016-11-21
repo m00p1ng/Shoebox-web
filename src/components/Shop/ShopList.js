@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
 const PageItem = ({page}) => (
-		<li>
+		<li className="waves-effect">
 			<a href="#!">{page}</a>
 		</li>
 )
@@ -67,13 +67,14 @@ const renderShopItem = (products) => {
   )
 }
 
-const ShopList = ({children}) => (
+const ShopList = ({children, totalPage}) => (
 	<div className="col l10 s12">
 		<div className="card grey lighten-4">
       <div className="row">
         {children}
       </div>
     </div>
+		<ShopPagination row={initRow(totalPage)}/>
   </div>
 )
 
@@ -105,10 +106,9 @@ const renderShopList = (products, error, totalPage) => {
   } else if(hasProducts) {
     return (
 			<div>
-	      <ShopList>
+	      <ShopList totalPage={totalPage}>
 	        {renderShopItem(products)}
 	      </ShopList>
-				<ShopPagination row={initRow(totalPage)}/>
 			</div>
     )
   } else {

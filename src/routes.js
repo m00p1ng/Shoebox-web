@@ -58,7 +58,7 @@ export default (
       <IndexRoute component={Home} />
 
 
-      <route path='shop'>
+      <Route path='shop'>
         <IndexRoute component={ShopApp} />
         <route path='feature' component={ShopFeatureApp} />
         <route path='best-seller' component={ShopBestSellerApp} />
@@ -66,7 +66,7 @@ export default (
         <route path='new-arrival' component={ShopNewArrivalApp} />
         <route path='most-views' component={ShopMostViewsApp} />
         <route path=':slug' component={ShopItemDetailApp} />
-      </route>
+      </Route>
       <Route path='cart'>
         <IndexRoute component={CartApp} />
         <route path='checkout'>

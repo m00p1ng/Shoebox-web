@@ -14,7 +14,7 @@ class ShopMostViewsAppContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProducts('most-views')
+    this.props.loadProducts('most-views', 10, 1)
   }
 
   componentWillUnmount() {

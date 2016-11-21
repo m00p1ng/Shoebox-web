@@ -14,7 +14,7 @@ class ShopNewArrivalAppContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProducts('latest')
+    this.props.loadProducts('latest', 10, 1)
   }
 
   componentWillUnmount() {

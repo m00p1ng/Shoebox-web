@@ -14,7 +14,7 @@ class ShopBestSellerAppContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProducts('best-seller')
+    this.props.loadProducts('best-seller', 10, 1)
   }
 
   componentWillUnmount() {

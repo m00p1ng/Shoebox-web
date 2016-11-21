@@ -11,7 +11,7 @@ class ShopAllProductAppContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProducts('latest')
+    this.props.loadProducts('latest', 12, 1)
   }
 
   shouldComponentUpdate(nextProps) {

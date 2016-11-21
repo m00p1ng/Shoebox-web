@@ -3,7 +3,7 @@ import {
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCT_FAILURE,
 
-  CLEAR_PRODUCTS,
+  CLEAR_PRODUCT,
 } from 'actionTypes'
 
 const initialState = {
@@ -34,6 +34,9 @@ const product = (state = initialState, action) => {
         error: true,
         isLoading: false
       })
+
+    case CLEAR_PRODUCT:
+      return initialState
 
     default:
       return state
