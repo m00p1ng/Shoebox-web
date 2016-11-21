@@ -188,10 +188,10 @@ class Products(Document):
         return obj
 
 
-    def page_data(cls,page,products):
+    def page_data(cls,data,products):
         obj = {}
-        obj['totalpage'] = Products.objects.count() + 1
-        obj['page'] = page
+        obj['totalpage'] = int((Products.objects.count()/int(data['result']))) + 1 
+        obj['page'] = int(data['page'])
         obj['data'] = []
 
         for product in products:
@@ -248,7 +248,7 @@ class Products(Document):
 
 
     @classmethod
-    def mapID_to_obj(cls, product, function='none', page='none'):
+    def mapID_to_obj(cls, product, function='none', data='none'):
         data = {
             'brand': product.brand.id,
             'types': product.types.id,
@@ -271,17 +271,17 @@ class Products(Document):
 
 
     @classmethod
-    def map_referenceID(cls, products, function='none', page='none'):
+    def map_referenceID(cls, products, function='none', data='none'):
         output = []
         if not hasattr(products, 'count'):
             obj = cls.mapID_to_obj(products, function, page)
             return json.dumps(obj)
         else:
-            if page is not 'none':
-                obj = cls.page_data(cls, page, products)
+            if data['page'] is not 'none':
+                obj = cls.page_data(cls, data, products)
                 return json.dumps(obj)
             else:
                 for product in products:
-                    obj = cls.mapID_to_obj(product, function, page)
+                    obj = cls.mapID_to_obj(product, function, data)
                     output.append(obj)
                 return json.dumps(output)
