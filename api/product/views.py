@@ -11,12 +11,13 @@ json_type = "application/json"
 def product(request):
     body = request.body
     if request.method == 'GET':
-        page = request.GET.get('page')
-        sort_by = request.GET.get('sort_by')
-        result = request.GET.get('result')
+        data = {}
+        data['page'] = request.GET.get('page')
+        data['sort_by'] = request.GET.get('sort_by')
+        data['result'] = request.GET.get('result')
 
-        if page is not None:
-            return request_get_real(Products, product_sort_by(page, sort_by, result), 'sort_by', page)
+        if data['page'] is not None:
+            return request_get_real(Products, product_sort_by(data), 'sort_by', data)
         else:
             if 'role' in request.session and request.session['role'] == 'employee':
                 return request_get_real(Products, query_all())
@@ -135,11 +136,11 @@ def query_by_name(slug):
 
 
 def query_by_sold_unit():
-    return Products.objects().order_by("-sold_unit")
+    return Products.objects().order_by('-sold_unit')
 
 
 def query_by_view():
-    return Products.objects().order_by("-number_of_views")
+    return Products.objects().order_by('-number_of_views')
 
 
 def query_by_customer_all():
@@ -153,16 +154,21 @@ def search_by_keyword(keyword):
     return request_get_real(Products, product)
 
 
-def product_sort_by(page, sort_by, result):
-    items_per_page = int(result)
-    offset = (int(page)-1)*items_per_page
+def product_sort_by(data):
+    if data['result'] is None:
+        data['result'] = 1
+    items_per_page = int(data['result'])
+    offset = (int(data['page'])-1)*items_per_page
     product = Products.objects.skip(offset).limit(items_per_page)
 
-    if sort_by == 'bestseller':
-         product = product.order_by("-sold_unit")
-    if sort_by == 'topview':
-         product = product.order_by("-number_of_views")
+    if data['sort_by'] == 'bestseller':
+         product = product.order_by('-sold_unit')
+    if data['sort_by'] == 'topview':
+         product = product.order_by('-number_of_views')
+    if data['sort_by'] == 'latest':
+        product = product.order_by('-id')
     return product
+
 
 def product_type(slug):
     types = ProductTypes.objects(slug=slug).first()
@@ -250,8 +256,6 @@ def product_update(body, slug):
         Products.update_obj(slug, data)
 
         message = {'updated': True}
-        return HttpResponse(json.dumps(message), content_type=json_type)
-
     except ValueError as e:
         err['errorMsg'] = ['JSON Decode error']
         err['updated'] = False
