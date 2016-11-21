@@ -374,3 +374,55 @@ i.sbox-icon-gray {
 .sb-product-edit-input {
 	width: 80%;
 }
+
+/* shop-detail  */
+.sb-shop-detail-img img {
+	width: 80%;
+}
+
+.sb-shop-detail-header {
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.sb-shop-detail-grey-box {
+	background: #F6F6F6;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.sb-shop-detail-text {
+	padding-top: 10px;
+}
+
+.sb-shop-detail-price {
+	font-size: 18px;
+}
+
+.sb-shop-detail-section {
+	font-size: 18px;
+}
+
+.sb-shop-detail-med-text {
+	font-size: 14px;
+	word-wrap: break-word;
+}
+
+.sb-shop-detail-small-text {
+	font-size: 12px;
+}
+
+.sb-shop-detail-first-line {
+	margin-top: 10px;
+}
+
+.sb-shop-detail-desc {
+	margin-top: 20px;
+	padding-bottom: 10px;
+}
+
+.sb-shop-detail-add-to-cart-btn {
+	margin-top: 10px;
+	width: 100%;
+	margin-bottom: 10px;
+}
