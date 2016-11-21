@@ -281,7 +281,7 @@ class Products(Document):
             obj = cls.mapID_to_obj(products, function, page)
             return json.dumps(obj)
         else:
-            if data['page'] is not 'none':
+            if data is not 'none':
                 obj = cls.page_data(cls, data, products)
                 return json.dumps(obj)
             else:
@@ -289,3 +289,4 @@ class Products(Document):
                     obj = cls.mapID_to_obj(product, function, data)
                     output.append(obj)
                 return json.dumps(output)
+
