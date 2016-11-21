@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { SearchApp } from '../../components'
 import {
@@ -7,6 +7,12 @@ import {
 } from '../../actions/search'
 
 class SearchAppContainer extends Component {
+  static propTypes = {
+    searchResult: PropTypes.array.isRequired,
+    error: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired
+  }
+
   constructor() {
       super()
       this.state = {

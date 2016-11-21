@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import { CheckoutSuccessApp } from '../../components'
 import { browserHistory } from 'react-router'
 import { URL_ROOT } from 'endpoint'
@@ -17,4 +16,4 @@ class CheckoutSuccessAppContainer extends Component {
 }
 
 
-export default connect()(CheckoutSuccessAppContainer)
+export default CheckoutSuccessAppContainer

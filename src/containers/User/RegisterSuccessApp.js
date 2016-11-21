@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import { RegisterSuccessApp } from '../../components'
 import { browserHistory } from 'react-router'
 import { URL_ROOT } from 'endpoint'
@@ -17,4 +16,4 @@ class RegisterSuccessAppContainer extends Component {
 }
 
 
-export default connect()(RegisterSuccessAppContainer)
+export default RegisterSuccessAppContainer

@@ -12,8 +12,11 @@ class NavbarAppContainer extends Component {
     numberOfcartItem: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
-    getUsername: PropTypes.func.isRequired
+    getUsername: PropTypes.func.isRequired,
+    getCustomerDetail: PropTypes.func.isRequired,
+    getEmployeeDetail: PropTypes.func.isRequired
   }
+
   componentDidMount() {
     this.props.getUsername().then(() => {
       if(this.props.role.toLowerCase() === 'customer')

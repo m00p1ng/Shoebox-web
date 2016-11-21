@@ -10,7 +10,6 @@ const NavbarMobileMenu = ({NumberOfCartItem, Username}) => (
     <div className="divider grey lighten-4"></div>
     <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
     <li><Link to={`${URL_ROOT}/shop`}>Shop</Link></li>
-    <li><Link to={`${URL_ROOT}/search`}>Search</Link></li>
     <li>
       <Link to={`${URL_ROOT}/cart`}>Cart
       {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {
   ShipAddress,
@@ -17,6 +17,16 @@ const DividerLine = () => (
 )
 
 class CheckoutAppContainer extends Component {
+  static propTypes = {
+    allcart: PropTypes.object.isRequired,
+    cart: PropTypes.array,
+    qty: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
+    role: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
+    checkout: PropTypes.func.isRequired
+  }
+
   shouldComponentUpdate(nextProps) {
     return (this.props.qty !== nextProps.qty)
   }
