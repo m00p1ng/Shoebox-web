@@ -150,6 +150,11 @@ def get_page_data(request):
     data = {}
     data['page'] = request.GET.get('page')
     data['result'] = request.GET.get('result')
+    if data['result'] is None:
+        data['result'] = 10
+    if data['page'] is None:
+        data['page'] = 1
+
     return data
 
 
@@ -159,14 +164,9 @@ def product_sort_by(request, sort_by):
     if data['result'] is None and data['page'] is None:
         product = Products.objects.all()
 
-    else:
-        if data['result'] is None:
-            data['result'] = 10
-        if data['page'] is None:
-            data['page'] = 1
-        items_per_page = int(data['result'])
-        offset = (int(data['page'])-1)*items_per_page
-        product = Products.objects.skip(offset).limit(items_per_page)
+    items_per_page = int(data['result'])
+    offset = (int(data['page'])-1)*items_per_page
+    product = Products.objects.skip(offset).limit(items_per_page)
 
     if sort_by == 'best-seller':
          product = product.order_by('-sold_unit')
@@ -176,6 +176,7 @@ def product_sort_by(request, sort_by):
         product = product.order_by('-id')
     else:
         product = []
+
     return product
 
 
