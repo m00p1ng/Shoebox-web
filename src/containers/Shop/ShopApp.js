@@ -28,7 +28,10 @@ class ShopAppContainer extends Component {
 
 const mapStateToProps = (state) => ({
   products: state.shop['products'],
-  error: state.shop['error']
+  error: state.shop['error'],
+  totalPage: state.shop['totalPage'],
+  totalProduct: state.shop['totalProduct'],
+  page: state.shop['page']
 })
 
 const mapDispatchToProps = ({

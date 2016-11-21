@@ -18,7 +18,7 @@ class ShopItemDetailAppContainer extends Component {
     clickAddToCart: PropTypes.func.isRequired
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadProduct(this.props.params.slug)
     this.props.updateViews(this.props.params.slug)
   }
@@ -38,7 +38,7 @@ class ShopItemDetailAppContainer extends Component {
 
     if(hasError) {
       return browserHistory.push(`${URL_ROOT}/404`)
-    } else if(hasProduct) {
+    } else if(hasProduct && !this.props.isLoading) {
       return (
         <ShopItemDetailApp
           product={product[0]}
@@ -66,7 +66,8 @@ class ShopItemDetailAppContainer extends Component {
 
 const mapStateToProps = (state) => ({
   product: state.product['detail'],
-  error: state.product['error']
+  error: state.product['error'],
+  isLoading: state.product['isLoading']
 })
 
 const mapDispatchToProps = ({

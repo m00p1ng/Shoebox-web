@@ -29,14 +29,18 @@ class ShopMostViewsAppContainer extends Component {
     return (
       <ShopMostViewsApp
         products={this.props.products}
-        error={this.props.error}/>
+        error={this.props.error}
+        totalPage={this.props.totalPage} />
     )
   }
 }
 
 const mapStateToProps = (state) => ({
   products: state.shop['products'],
-  error: state.shop['error']
+  error: state.shop['error'],
+  totalPage: state.shop['totalPage'],
+  totalProduct: state.shop['totalProduct'],
+  page: state.shop['page']
 })
 
 const mapDispatchToProps = ({

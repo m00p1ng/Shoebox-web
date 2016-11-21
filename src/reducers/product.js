@@ -14,6 +14,13 @@ const initialState = {
 
 const product = (state = initialState, action) => {
   switch(action.type) {
+    case LOAD_PRODUCT_REQUEST:
+      return ({
+        detail: [],
+        error: false,
+        isLoading: true
+      })
+
     case LOAD_PRODUCT_SUCCESS:
       return ({
         detail: [action.payload],

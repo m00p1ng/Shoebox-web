@@ -2,26 +2,36 @@ import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const ShopPagination = () => (
+const PageItem = ({page}) => (
+		<li>
+			<a href="#!">{page}</a>
+		</li>
+)
+
+const initRow = (totalPage) => {
+	let row = []
+	for(let i = 1; i <= totalPage; i++) {
+		row.push(i)
+	}
+	return row
+}
+
+const ShopPagination = ({row}) => (
 	<div className="row center sbox-shop-pagination">
 		<ul className="pagination">
 			<li className="disabled">
-        <a href="#!"><i className="material-icons">
-          chevron_left
-        </i>
-      </a>
-    </li>
-			<li className="active">
-        <a href="#!">1</a>
-      </li>
-			<li className="waves-effect">
-        <a href="#!">2</a>
-      </li>
+        <a href="#!">
+					<i className="material-icons">chevron_left</i>
+	      </a>
+	    </li>
+			{
+				row.map((page) => (
+					<PageItem key={page} page={page} />
+				))
+			}
 			<li className="waves-effect">
         <a href="#!">
-          <i className="material-icons">
-            chevron_right
-          </i>
+          <i className="material-icons">chevron_right</i>
         </a>
       </li>
 		</ul>
@@ -64,7 +74,6 @@ const ShopList = ({children}) => (
         {children}
       </div>
     </div>
-		<ShopPagination />
   </div>
 )
 
@@ -85,7 +94,7 @@ const ErrorMsg = () => (
 	</div>
 )
 
-const renderShopList = (products, error) => {
+const renderShopList = (products, error, totalPage) => {
   let hasError = error === true
   let hasProducts = products.length > 0
 
@@ -95,9 +104,12 @@ const renderShopList = (products, error) => {
     )
   } else if(hasProducts) {
     return (
-      <ShopList>
-        {renderShopItem(products)}
-      </ShopList>
+			<div>
+	      <ShopList>
+	        {renderShopItem(products)}
+	      </ShopList>
+				<ShopPagination row={initRow(totalPage)}/>
+			</div>
     )
   } else {
     return (

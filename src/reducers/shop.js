@@ -10,28 +10,31 @@ const initialState = {
   products: [],
   error: false,
   page: 1,
-  totalPage: 1,
+  totalPage: 0,
   totalProduct: 0
 }
 
 const shop = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_SHOP_REQUEST:
-      return ({
-        ...state,
-        error: false,
-      })
+      return initialState
 
     case LOAD_SHOP_SUCCESS:
       return ({
         ...state,
         error: false,
         products: action.payload.data,
+        page: action.payload.page,
+        totalPage: action.payload.totalpage,
+        totalProduct: action.payload.totalproduct
       })
     case LOAD_SHOP_FAILURE:
       return ({
         products: [],
-        error: true
+        error: true,
+        page: 0,
+        totalPage: 0,
+        totalProduct: 0
       })
 
     case CLEAR_PRODUCTS:
