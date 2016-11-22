@@ -109,7 +109,6 @@ class Products(Document):
 
     @classmethod
     def update_obj(cls, slug, data):
-
         qty = 0
         product = cls.objects(slug=slug).first()
         if 'qty' in data:

@@ -82,7 +82,7 @@ class Employees(User):
     def create_obj(cls, data):
         employeeID = cls.objects.count() + 1
         employee = cls(
-            employeeeID=employeeID,
+            employeeID=employeeID,
             username = data['username'],
             email = data['email'],
             firstname = data['firstname'],
