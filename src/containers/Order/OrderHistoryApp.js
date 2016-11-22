@@ -10,13 +10,16 @@ class OrderHistoryAppContainer extends Component {
 
   render() {
     return (
-      <OrderHistoryApp />
+      <OrderHistoryApp
+        orders={this.props.order}
+        error={this.props.error}/>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  order: state.order['order']
+  order: state.order['order'],
+  error: state.order['error']
 })
 
 const mapDispatchtoProps = ({
@@ -24,6 +27,6 @@ const mapDispatchtoProps = ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchtoProps
 )(OrderHistoryAppContainer)

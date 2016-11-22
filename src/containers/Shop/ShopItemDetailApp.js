@@ -10,6 +10,17 @@ import {
 import { browserHistory } from 'react-router';
 import { URL_ROOT } from 'endpoint'
 
+const Loading = () => (
+  <div className="col l10 s12">
+    <div className="container center">
+      <h1 className="grey-text text-darken-2">Loading...</h1>
+      <div className="progress cyan lighten-3">
+        <div className="indeterminate cyan darken-1"></div>
+      </div>
+    </div>
+  </div>
+)
+
 class ShopItemDetailAppContainer extends Component {
   static propTypes = {
     product: PropTypes.array.isRequired,
@@ -52,11 +63,9 @@ class ShopItemDetailAppContainer extends Component {
           }} />
       )
     }
-    // else {
-    //   return (
-    //     <Loading />
-    //   )
-    // }
+    else {
+      return ( <Loading /> )
+    }
   }
 
   render() {
