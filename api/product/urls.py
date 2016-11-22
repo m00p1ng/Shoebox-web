@@ -5,9 +5,7 @@ urlpatterns = [
     url(r'^$', views.product),
     url(r'^name/(?P<slug>.+?)/?$', views.product_with_name),
     url(r'^by(?P<category>.+?)/(?P<slug>.+?)/?$', views.product_category),
-    url(r'^latest/?$', views.product_latest),
-    url(r'^best-seller/?$', views.product_bestseller),
-    url(r'^most-views/?$', views.product_mostview),
+    url(r'^(?P<function>.+?)/?$', views.product_sort),
     url(r'^search/(?P<keyword>.+?)/?$', views.product_search),
     url(r'^page/(?P<page>.+?)/?$', views.product_page),
 
