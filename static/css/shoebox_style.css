@@ -460,3 +460,8 @@ i.sbox-icon-gray {
 .sb-shop-item:hover {
   outline: 1px solid #BEBEBE;
 }
+
+.sb-shop-list {
+  padding-left: 20px;
+  padding-right: 20px;
+}
