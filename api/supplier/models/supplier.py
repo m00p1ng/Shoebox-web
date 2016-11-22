@@ -3,6 +3,7 @@ from api.include.model import to_slug
 
 
 class Suppliers(Document):
+    supplierID = IntField(min_value=1, required=True, unique=True)
     name = StringField(max_length=100, required=True, unique=True)
     city = StringField(max_length=50, required=True)
     district = StringField(max_length=50, required=True)
@@ -42,7 +43,9 @@ class Suppliers(Document):
 
     @classmethod
     def create_obj(cls, data):
+       supplierID = clas.objects.count() + 1 
        supplier = cls(
+           supplierID=supplierID,
            name=data['name'],
            city=data['address']['city'],
            district=data['address']['district'],

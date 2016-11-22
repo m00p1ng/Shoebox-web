@@ -10,7 +10,7 @@ class Orders(Document):
     orderID = IntField(min_value=1, required=True, unique=True)
     username = ReferenceField(Customers)
     timestamp = DateTimeField(required=True, default=datetime.datetime.now())
-    status = BooleanField(required=True, default=False)
+    is_ship = BooleanField(required=True, default=False)
     total = FloatField(required=True)
     cart = ListField(EmbeddedDocumentField(Cart))
 
@@ -92,7 +92,7 @@ class Orders(Document):
             'username' : real_data['username'],
             'total' : order.total,
             'timestamp' : timestamp_fulldate(order.timestamp),
-            'status' : order.status,
+            'is_ship' : order.is_ship,
             'cart': cart
         }
 

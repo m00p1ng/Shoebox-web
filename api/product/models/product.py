@@ -7,6 +7,7 @@ import json
 import math
 
 class Products(Document):
+    productID = IntField(min_value=1, required=True, unique=True)
     supplier = ReferenceField(Suppliers)
     name = StringField(max_length=200, required=True, unique=True)
     brand = ReferenceField(ProductBrands, required=True)
@@ -83,8 +84,10 @@ class Products(Document):
 
     @classmethod
     def create_obj(cls, data):
+        productID = cls.objects.count() + 1
         field_id = cls.get_id_from_field(data)
         product = cls(
+            productID = productID,
             supplier=field_id['supplier'],
             name=data['name'],
             description=data['description'],
@@ -158,6 +161,7 @@ class Products(Document):
         obj = {
             'name' : product.name,
             'description' : product.description,
+            'slug' : product.slug,
             'price' : product.price,
             'picture' : product.picture,
             'amount' : product.amount,
