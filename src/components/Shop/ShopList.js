@@ -90,8 +90,10 @@ const Loading = () => (
 )
 
 const ErrorMsg = () => (
-	<div className="container center">
-		<h1 className="grey-text text-darken-2">Can't Fetch data</h1>
+	<div className="col l10 s12">
+		<div className="container center">
+			<h1 className="grey-text text-darken-2">Can't Fetch data</h1>
+		</div>
 	</div>
 )
 
