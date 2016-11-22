@@ -21,9 +21,9 @@ const RegisterValidate = values => {
     errors.repassword = 'Password didn\'t match'
   }
 
-  if(!values.picture) {
-    errors.picture = 'Required'
-  }
+  // if(!values.picture) {
+  //   errors.picture = 'Required'
+  // }
 
   if(!values.firstname) {
     errors.firstname = 'Required'
