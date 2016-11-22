@@ -57,7 +57,6 @@ def product_category(request, category, slug):
 
 @csrf_exempt
 def product_sort(request, function):
-    print(function)
     body = request.body
     if request.method == 'GET':
         if function == 'latest':
@@ -97,6 +96,41 @@ def product_search(request,keyword):
     if request.method == 'DELETE':
         pass
 
+
+@csrf_exempt
+def product_latest(request):
+    if request.method == 'GET':
+        return request_get_real(Products, product_sort_by(request, 'latest'), 'sort_by', get_page_data(request))
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
+
+@csrf_exempt
+def product_bestseller(request):
+    if request.method == 'GET':
+        return request_get_real(Products, product_sort_by(request, 'best-seller'), 'sort_by', get_page_data(request))
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
+
+
+@csrf_exempt
+def product_mostview(request):
+    if request.method == 'GET':
+        return request_get_real(Products, product_sort_by(request, 'most-views'), 'sort_by', get_page_data(request))
+    if request.method == 'POST':
+        pass
+    if request.method == 'PUT':
+        pass
+    if request.method == 'DELETE':
+        pass
 
 def query_all():
     return Products.objects.all()
