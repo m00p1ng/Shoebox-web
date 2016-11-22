@@ -268,12 +268,11 @@ i.sbox-icon-gray {
 /* Shoebox Search Style */
 
 #sbox-search-form {
-  padding-top: 20px;
   font-size: 30px;
 }
 
 .sbox-search-form-input {
-  min-height: 65px;
+  min-height: 60px;
 }
 
 /* new checkout style */

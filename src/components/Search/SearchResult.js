@@ -11,6 +11,53 @@ const render_list = (list) => (
   })
 )
 
+const Loading = () => (
+  <div>
+  <div className="preloader-wrapper big active">
+    <div className="spinner-layer spinner-blue">
+      <div className="circle-clipper left">
+        <div className="circle"></div>
+      </div><div className="gap-patch">
+        <div className="circle"></div>
+      </div><div className="circle-clipper right">
+        <div className="circle"></div>
+      </div>
+    </div>
+
+    <div className="spinner-layer spinner-red">
+      <div className="circle-clipper left">
+        <div className="circle"></div>
+      </div><div className="gap-patch">
+        <div className="circle"></div>
+      </div><div className="circle-clipper right">
+        <div className="circle"></div>
+      </div>
+    </div>
+
+    <div className="spinner-layer spinner-yellow">
+      <div className="circle-clipper left">
+        <div className="circle"></div>
+      </div><div className="gap-patch">
+        <div className="circle"></div>
+      </div><div className="circle-clipper right">
+        <div className="circle"></div>
+      </div>
+    </div>
+
+    <div className="spinner-layer spinner-green">
+      <div className="circle-clipper left">
+        <div className="circle"></div>
+      </div><div className="gap-patch">
+        <div className="circle"></div>
+      </div><div className="circle-clipper right">
+        <div className="circle"></div>
+      </div>
+    </div>
+  </div>
+  <h3 style={{display: "inline", paddingLeft: "20px"}}>Loading...</h3>
+</div>
+)
+
 const DefaultSearch = () => (
   <h3>What are you looking for..</h3>
 )
@@ -27,7 +74,7 @@ const NotFoundResult = ({searchText}) => (
 )
 
 const renderResult = (result, hasError, isLoading ,searchText) => {
-  // if(isLoading) return(<h1>Loading...</h1>)
+  if(isLoading) return(<Loading />)
   if (hasError)
     return ( <NotFoundResult searchText={searchText} />)
   else if (result.length > 0)
