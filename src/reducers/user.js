@@ -24,7 +24,7 @@ const user = (state = initialState, action) => {
   switch(action.type) {
     case LOGIN_SUCCESS:
       return ({
-        detail: {},
+        ...state,
         username: action.payload.username,
         role: action.payload.role,
         errorMsg: '',
