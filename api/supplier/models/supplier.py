@@ -43,7 +43,7 @@ class Suppliers(Document):
 
     @classmethod
     def create_obj(cls, data):
-       supplierID = clas.objects.count() + 1 
+       supplierID = cls.objects.count() + 1 
        supplier = cls(
            supplierID=supplierID,
            name=data['name'],
