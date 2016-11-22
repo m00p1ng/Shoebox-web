@@ -320,7 +320,7 @@ i.sbox-icon-gray {
 }
 
 .sb-shop-item img {
-	width: 70%;
+	width: 90%;
 	height: auto;
 	display: block;
 	margin: 0px auto 10px auto;
@@ -429,4 +429,34 @@ i.sbox-icon-gray {
 	margin-top: 10px;
 	width: 100%;
 	margin-bottom: 10px;
+}
+
+/* The new shop */
+
+.sb-shop-med-text {
+	font-size: 14px;
+}
+
+.sb-shop-small-text {
+	font-size: 12px;
+}
+
+.sb-shop-price-text {
+	color: #F57C01;
+}
+
+.sb-shop-item {
+	margin-bottom: 20px;
+}
+
+.sb-shop-price-box {
+	padding-bottom: 15px;
+}
+
+.sb-shop-text-section {
+
+}
+
+.sb-shop-item:hover {
+  outline: 1px solid #BEBEBE;
 }
