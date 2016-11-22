@@ -3,7 +3,7 @@ import { HeaderBarApp } from '../App/HeaderBarApp'
 import ShopMenu from './ShopMenu'
 import renderShopList from './ShopList'
 
-const ShopApp = ({products, error, totalPage}) => (
+const ShopApp = (props) => (
   <div>
     <HeaderBarApp
       title="Shop"
@@ -11,7 +11,7 @@ const ShopApp = ({products, error, totalPage}) => (
     <div className="container">
       <div className="row">
         <ShopMenu />
-        {renderShopList(products, error, totalPage)}
+        {renderShopList(props)}
       </div>
     </div>
   </div>

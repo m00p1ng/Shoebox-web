@@ -97,9 +97,10 @@ const ErrorMsg = () => (
 	</div>
 )
 
-const renderShopList = (products, error, totalPage) => {
-  let hasError = error === true
-  let hasProducts = products.length > 0
+const renderShopList = (props) => {
+	const {products, error, totalPage} = props
+  const hasError = error === true
+  const hasProducts = products.length > 0
 
   if(hasError) {
     return (

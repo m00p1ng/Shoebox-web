@@ -3,7 +3,7 @@ import { HeaderBar2StepApp } from '../App/HeaderBarApp'
 import ShopMenu from './ShopMenu'
 import renderShopList from './ShopList'
 
-const ShopMostViewsApp = ({products, error, totalPage}) => (
+const ShopMostViewsApp = (props) => (
   <div>
     <HeaderBar2StepApp
       header="Most Views"
@@ -15,7 +15,7 @@ const ShopMostViewsApp = ({products, error, totalPage}) => (
     <div className="container">
       <div className="row">
         <ShopMenu />
-        {renderShopList(products, error, totalPage)}
+        {renderShopList(props)}
       </div>
     </div>
   </div>
