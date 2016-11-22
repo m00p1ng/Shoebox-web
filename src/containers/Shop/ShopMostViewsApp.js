@@ -13,8 +13,12 @@ class ShopMostViewsAppContainer extends Component {
     loadProducts: PropTypes.func.isRequired
   }
 
+  handlePage(page) {
+    this.props.loadProducts('most-views', 12, page)
+  }
+
   componentDidMount() {
-    this.props.loadProducts('most-views', 10, 1)
+    this.props.loadProducts('most-views', 12, 1)
   }
 
   componentWillUnmount() {
@@ -30,7 +34,9 @@ class ShopMostViewsAppContainer extends Component {
       <ShopMostViewsApp
         products={this.props.products}
         error={this.props.error}
-        totalPage={this.props.totalPage} />
+        activePage={this.props.page}
+        totalPage={this.props.totalPage}
+        handlePage={this.handlePage.bind(this)}/>
     )
   }
 }

@@ -13,8 +13,12 @@ class ShopNewArrivalAppContainer extends Component {
     loadProducts: PropTypes.func.isRequired
   }
 
+  handlePage(page) {
+    this.props.loadProducts('latest', 12, page)
+  }
+
   componentDidMount() {
-    this.props.loadProducts('latest', 10, 1)
+    this.props.loadProducts('latest', 12, 1)
   }
 
   componentWillUnmount() {
@@ -30,7 +34,9 @@ class ShopNewArrivalAppContainer extends Component {
       <ShopNewArrivalApp
         products={this.props.products}
         error={this.props.error}
-        totalPage={this.props.totalPage} />
+        totalPage={this.props.totalPage}
+        activePage={this.props.page}
+        handlePage={this.handlePage.bind(this)}/>
     )
   }
 }

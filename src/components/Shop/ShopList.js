@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const PageItem = ({page}) => (
-		<li className="waves-effect">
-			<a href="#!">{page}</a>
+const PageItem = ({page, handlePage, activePage}) => (
+		<li
+			className={(page === activePage)? "waves-effect active": "waves-effect"}>
+			<Link onClick={() => handlePage(page)}>{page}</Link>
 		</li>
 )
 
@@ -16,7 +17,7 @@ const initRow = (totalPage) => {
 	return row
 }
 
-const ShopPagination = ({row}) => (
+const ShopPagination = ({row, handlePage, activePage}) => (
 	<div className="row center sbox-shop-pagination">
 		<ul className="pagination">
 			<li className="disabled">
@@ -26,10 +27,14 @@ const ShopPagination = ({row}) => (
 	    </li>
 			{
 				row.map((page) => (
-					<PageItem key={page} page={page} />
+					<PageItem
+						key={page}
+						page={page}
+						handlePage={handlePage}
+						activePage={activePage}/>
 				))
 			}
-			<li className="waves-effect">
+			<li className="disabled">
         <a href="#!">
           <i className="material-icons">chevron_right</i>
         </a>
@@ -67,14 +72,22 @@ const renderShopItem = (products) => {
   )
 }
 
-const ShopList = ({children, totalPage}) => (
+const ShopList = ({
+	children,
+	totalPage,
+	handlePage,
+	activePage
+}) => (
 	<div className="col l10 s12">
 		<div className="card grey lighten-4">
       <div className="row">
         {children}
       </div>
     </div>
-		<ShopPagination row={initRow(totalPage)}/>
+		<ShopPagination
+			row={initRow(totalPage)}
+			activePage={activePage}
+			handlePage={handlePage}/>
   </div>
 )
 
@@ -98,7 +111,7 @@ const ErrorMsg = () => (
 )
 
 const renderShopList = (props) => {
-	const {products, error, totalPage} = props
+	const {products, error, totalPage, handlePage, activePage} = props
   const hasError = error === true
   const hasProducts = products.length > 0
 
@@ -109,7 +122,10 @@ const renderShopList = (props) => {
   } else if(hasProducts) {
     return (
 			<div>
-	      <ShopList totalPage={totalPage}>
+	      <ShopList
+					totalPage={totalPage}
+					activePage={activePage}
+					handlePage={handlePage}>
 	        {renderShopItem(products)}
 	      </ShopList>
 			</div>
