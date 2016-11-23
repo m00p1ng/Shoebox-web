@@ -8,7 +8,7 @@ const ManProductUpdateApp = () => (
     <HeaderBar3StepApp
       header="Product Name"
       title1="Product" link1="product"
-      title2="Edit" link2="edit"
+      title2="Edit"
     />
     <div className="container">
       <div className="row">

@@ -5,7 +5,6 @@ const CartApp = ({children}) => (
   <div>
     <HeaderBarApp
       title="My Cart"
-      link="cart"
     />
     <div className="container">
       <div className="row">

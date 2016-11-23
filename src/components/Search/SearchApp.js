@@ -12,8 +12,7 @@ const SearchApp = ({
 }) => (
   <div>
     <HeaderBarApp
-      title="Search"
-      link="search" />
+      title="Search" />
     <SearchBar
       onSearchChange={onSearchChange}/>
     <SearchResult

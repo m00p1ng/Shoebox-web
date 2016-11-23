@@ -5,7 +5,6 @@ import ManageMenu from '../ManageMenu'
 const ManOrderApp = () => (
   <div>
     <HeaderBar2StepApp
-      link="order"
       title="Order" />
     <div className="container">
       <div className="row">

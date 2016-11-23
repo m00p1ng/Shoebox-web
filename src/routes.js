@@ -60,12 +60,15 @@ export default (
 
       <Route path='shop'>
         <IndexRoute component={ShopApp} />
-        <route path='feature' component={ShopFeatureApp} />
-        <route path='best-seller' component={ShopBestSellerApp} />
-        <route path='all' component={ShopAllProductApp} />
-        <route path='new-arrival' component={ShopNewArrivalApp} />
-        <route path='most-views' component={ShopMostViewsApp} />
-        <route path=':slug' component={ShopItemDetailApp} />
+        <Route path='feature' component={ShopFeatureApp} />
+        <Route path='best-seller' component={ShopBestSellerApp} />
+        <Route path='all' component={ShopAllProductApp} />
+        <Route path='new-arrival' component={ShopNewArrivalApp} />
+        <Route path='most-views' component={ShopMostViewsApp} />
+        <route path='brand'>
+          <IndexRoute component={ShopApp} />
+        </route>
+        <Route path=':slug' component={ShopItemDetailApp} />
       </Route>
       <Route path='cart'>
         <IndexRoute component={CartApp} />

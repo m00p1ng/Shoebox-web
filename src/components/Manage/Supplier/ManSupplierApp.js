@@ -5,7 +5,6 @@ import ManageMenu from '../ManageMenu'
 const ManSupplierApp = () => (
   <div>
     <HeaderBar2StepApp
-      link="supplier"
       title="Supplier" />
     <div className="container">
       <div className="row">

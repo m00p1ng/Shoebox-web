@@ -10,7 +10,6 @@ const ShopAllProductApp = (props) => (
       title1="Shop"
       link1="shop"
       title2="All Products"
-      link2="all"
     />
     <div className="container">
       <div className="row">

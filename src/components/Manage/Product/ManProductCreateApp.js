@@ -8,7 +8,7 @@ const ManProductCreateApp = () => (
     <HeaderBar3StepApp
       header="New Product"
       title1="Product" link1="product"
-      title2="New" link2="new"
+      title2="New"
     />
     <div className="container">
       <div className="row">

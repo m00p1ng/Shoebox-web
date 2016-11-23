@@ -9,9 +9,7 @@ const ShopBestSellerApp = (props) => (
       header="Best Seller"
       title1="Shop"
       link1="shop"
-      title2="Best Seller"
-      link2="best-seller"
-    />
+      title2="Best Seller" />
     <div className="container">
       <div className="row">
         <ShopMenu />

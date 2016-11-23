@@ -7,8 +7,7 @@ const CheckoutApp = ({children}) => (
       header="Checkout"
       title1="My Cart"
       link1="cart"
-      title2="Checkout"
-      link2="checkout"/>
+      title2="Checkout" />
     <div className="container">
       <div className="row">
         <div className="card white">

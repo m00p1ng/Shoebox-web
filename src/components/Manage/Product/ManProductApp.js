@@ -6,7 +6,6 @@ import ManProductList from './ManProductList'
 const ManProductApp = ({products}) => (
   <div>
     <HeaderBar2StepApp
-      link="product"
       title="Product" />
     <div className="container">
       <div className="row">

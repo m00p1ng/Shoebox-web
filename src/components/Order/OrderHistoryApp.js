@@ -16,8 +16,7 @@ const renderOrders = (orders) => {
 const OrderHistoryApp = ({orders, error}) => (
   <div>
     <HeaderBarApp
-      title="History"
-      link="history" />
+      title="History" />
     {renderOrders(orders)}
   </div>
 )

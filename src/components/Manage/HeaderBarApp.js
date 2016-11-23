@@ -5,7 +5,7 @@ import { URL_ROOT } from 'endpoint'
 export const HeaderBar3StepApp = ({
   header,
   title1, link1,
-  title2, link2
+  title2
 }) => (
   <div className="nav-wrapper sbox-header-bar-manage white-text">
     <div className="container">
@@ -25,18 +25,16 @@ export const HeaderBar3StepApp = ({
           className="breadcrumb">
           <span>{title1}</span>
         </Link>
-        <Link
-          to={`${URL_ROOT}/manage/${link1}/${link2}`}
-          className="breadcrumb">
+        <a className="breadcrumb">
           <span>{title2}</span>
-        </Link>
+        </a>
       </div>
       <h2 className="sbox-header-text">{header}</h2>
   </div>
 </div>
 )
 
-export const HeaderBar2StepApp = ({title, link}) => (
+export const HeaderBar2StepApp = ({title}) => (
   <div className="nav-wrapper sbox-header-bar-manage white-text">
     <div className="container">
       <div className="col s12 sbox-header-bread">
@@ -50,11 +48,9 @@ export const HeaderBar2StepApp = ({title, link}) => (
           className="breadcrumb">
           <span>Manage</span>
         </Link>
-        <Link
-          to={`${URL_ROOT}/manage/${link}`}
-          className="breadcrumb">
+        <a className="breadcrumb">
           <span>{title}</span>
-        </Link>
+        </a>
       </div>
       <h2 className="sbox-header-text">{title}</h2>
   </div>
@@ -68,9 +64,9 @@ export const HeaderBarApp = () => (
         <Link to={`${URL_ROOT}`} className="breadcrumb">
           <span>Home</span>
         </Link>
-        <Link to={`${URL_ROOT}/manage`} className="breadcrumb">
+        <a className="breadcrumb">
           <span>Manage</span>
-        </Link>
+        </a>
       </div>
       <h2 className="sbox-header-text">Dashboard</h2>
   </div>

@@ -6,7 +6,6 @@ import ManCustomerList from './ManCustomerList'
 const ManCustomerApp = ({customers}) => (
   <div>
     <HeaderBar2StepApp
-      link="customer"
       title="Customer" />
     <div className="container">
       <div className="row">
