@@ -135,10 +135,9 @@ class Products(Document):
 
     def to_realData(data):
         sizes = []
-        supplier = Suppliers.objects(pk=data['supplier']).first().slug
+        supplier = Suppliers.objects(pk=data['supplier']).first().name
         brand = ProductBrands.objects(pk=data['brand']).first().name
         types = ProductTypes.objects(pk=data['types']).first().name
-        brand = ProductBrands.objects(pk=data['brand']).first().slug
         types = ProductTypes.objects(pk=data['types']).first().slug
 
         for size in data['size']:
