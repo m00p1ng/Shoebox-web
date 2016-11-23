@@ -1,30 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
-
-const HeaderBar3StepApp = (
-  {header, title1, link1, title2, link2, title3}
-) => (
-  <div className="nav-wrapper sbox-header-bar white-text">
-    <div className="container">
-      <div className="col s12 sbox-header-bread">
-        <Link to={`${URL_ROOT}`} className="breadcrumb">
-          <span>Home</span>
-        </Link>
-        <Link to={`${URL_ROOT}/${link1}`} className="breadcrumb">
-          <span>{title1}</span>
-        </Link>
-        <Link to={`${URL_ROOT}/${link1}/brand/${link2}`} className="breadcrumb">
-          <span>{title2}</span>
-        </Link>
-        <a className="breadcrumb">
-          <span>{title3}</span>
-        </a>
-      </div>
-      <h2 className="sbox-header-text">{header}</h2>
-  </div>
-</div>
-)
+import { HeaderBar3StepApp } from '../App/HeaderBarApp'
 
 const render_list = (list) => (
   list.map(item => {
@@ -124,7 +101,7 @@ const ShopItemDetailApp = ({product, onClickedAddToCart}) => (
       title1="Shop"
       link1="shop"
       title2={product.brand}
-      link2={to_slug(product.brand)}
+      link2={`brand/${to_slug(product.brand)}`}
       title3={product.name}/>
     <ShopBody
       product={product}
