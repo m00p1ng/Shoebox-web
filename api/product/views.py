@@ -88,7 +88,7 @@ def product_page(request,page):
 @csrf_exempt
 def product_search(request,keyword):
     if request.method == 'GET':
-        return search_by_keyword(keyword)
+        return search_by_keyword(request, keyword)
     if request.method == 'POST':
         pass
     if request.method == 'PUT':
@@ -156,8 +156,10 @@ def query_by_customer_all():
     return Products.objects(is_available=True).all()
 
 
-def search_by_keyword(keyword):
-    product = Products.objects.filter(name__icontains=keyword)
+def search_by_keyword(request, keyword):
+    data = get_page_data(request)
+
+    product = Products.objects.skip(data['offset']).limit(int(data['result'])).filter(name__icontains=keyword)
     if not product:
         return HttpResponse(status=204)
     return request_get_real(Products, product)
@@ -178,19 +180,18 @@ def get_page_data(request):
         data['page'] = 1
         data['is_page'] = False
 
+    data['offset'] = (int(data['page'])-1)*int(data['result'])
+
     return data
 
 
 def product_sort_by(request, sort_by):
     data = get_page_data(request)
 
-    items_per_page = int(data['result'])
-    offset = (int(data['page'])-1)*items_per_page
-    product = Products.objects.skip(offset).limit(items_per_page)
+    product = Products.objects.skip(data['offset']).limit(int(data['result']))
 
     if data['is_result'] is False and data['is_page'] is False:
         product = Products.objects.all()
-
     if sort_by == 'best-seller':
          product = product.order_by('-sold_unit')
     elif sort_by == 'most-views':
