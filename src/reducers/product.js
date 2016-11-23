@@ -29,7 +29,6 @@ const product = (state = initialState, action) => {
       })
     case LOAD_PRODUCT_FAILURE:
       return ({
-        ...state,
         detail: [],
         error: true,
         isLoading: false

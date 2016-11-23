@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ManProductApp } from '../../../components'
-import { loadProducts } from '../../../actions/product'
+import { loadProducts } from '../../../actions/manage/manProduct'
 
 class ManProductAppContainer extends Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class ManProductAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products.products
+  products: state.manProduct.products
 })
 
 const mapDispatchToProps = ({

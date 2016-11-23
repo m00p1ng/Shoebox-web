@@ -34,7 +34,7 @@ const renderProducts = (products) => {
 
 const ManProductList = ({products}) => (
   <div className="col l10 s12 card">
-    <h4>All Products</h4>
+    <h3>All Products</h3>
     <Link to={`${URL_ROOT}/manage/product/new`}>
       <button className="waves-effect waves-light btn">
         <i className="material-icons left white-text">add</i>
@@ -57,7 +57,10 @@ const ManProductList = ({products}) => (
       </thead>
 
       <tbody>
-        {renderProducts(products)}
+        {
+          (products.length > 0) ?
+          renderProducts(products) : <h4>Loading...</h4>
+        }
       </tbody>
     </table>
   </div>

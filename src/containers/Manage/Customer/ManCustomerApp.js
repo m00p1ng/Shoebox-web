@@ -1,13 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ManCustomerApp } from '../../../components'
+import { loadCustomers } from '../../../actions/manage/manCustomer'
 
 class ManCustomerAppContainer extends Component {
+  componentDidMount() {
+    this.props.loadCustomers()
+  }
+
   render() {
     return (
-      <ManCustomerApp />
+      <ManCustomerApp
+        customers={this.props.customers}/>
     )
   }
 }
 
-export default connect()(ManCustomerAppContainer)
+const mapStateToProps = (state) => ({
+  customers: state.manProduct.custmers
+})
+
+const mapDispatchToProps = ({
+  loadCustomers
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ManCustomerAppContainer)
