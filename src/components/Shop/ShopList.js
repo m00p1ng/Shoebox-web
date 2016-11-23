@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
+import { Loading, ErrorMsg } from './Message'
 import ShopPagination from './ShopPagination'
 
 const ShopItem = ({product}) => (
@@ -13,14 +14,20 @@ const ShopItem = ({product}) => (
 			</Link>
 			</div>
 			<div className="sb-shop-text-section" >
-				<span className="sb-bold black-text sb-shop-small-text">{product.brand}</span>
+				<span className="sb-bold black-text sb-shop-small-text">
+					{product.brand}
+				</span>
 				<br />
 					<Link to={`${URL_ROOT}/shop/${product.slug}`}>
-						<span className="sb-shop-small-text black-text">{product.name}</span>
+						<span className="sb-shop-small-text black-text">
+							{product.name}
+						</span>
 					</Link>
 				<br />
 				<div className="sb-shop-price-box">
-					<span className="sb-shop-small-text sb-bold sb-shop-price-text">$ {product.price}</span>
+					<span className="sb-shop-small-text sb-bold sb-shop-price-text">
+						$ {product.price}
+					</span>
 				</div>
 			</div>
 	</div>
@@ -51,25 +58,6 @@ const ShopList = ({
 			activePage={activePage}
 			handlePage={handlePage}/>
   </div>
-)
-
-const Loading = () => (
-  <div className="col l10 s12">
-    <div className="container center">
-      <h1 className="grey-text text-darken-2">Loading...</h1>
-      <div className="progress cyan lighten-3">
-        <div className="indeterminate cyan darken-1"></div>
-      </div>
-    </div>
-  </div>
-)
-
-const ErrorMsg = () => (
-	<div className="col l10 s12">
-		<div className="container center">
-			<h1 className="grey-text text-darken-2">Can't Fetch data</h1>
-		</div>
-	</div>
 )
 
 const renderShopList = (props) => {

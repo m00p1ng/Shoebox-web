@@ -19,10 +19,16 @@ const ShopItemDetail = ({product, onClickedAddToCart}) => (
 	<div className="col l5 sb-shop-detail sb-shop-detail-grey-box">
     <div className="sb-shop-detail-text">
       <div>
-        <h5 className="sb-bold">{product.brand}</h5>
-        <h5 className="sb-bold">{product.name}</h5>
+        <h5 className="sb-bold">
+          {product.brand}
+        </h5>
+        <h5 className="sb-bold">
+          {product.name}
+        </h5>
       </div>
-      <span className="sb-shop-detail-price sb-bold">$ {product.price}</span>
+      <span className="sb-shop-detail-price sb-bold">
+        $ {product.price}
+      </span>
       <br />
       <span className="sb-shop-detail-small-text">
         Incl. VAT in Thailand, packageing and shipping FREE
@@ -32,14 +38,26 @@ const ShopItemDetail = ({product, onClickedAddToCart}) => (
         PRODUCT DETAILS
       </span>
       <div className="sb-shop-detail-first-line">
-        <span className="sb-shop-detail-med-text sb-bold">Type: </span>
-        <span className="sb-shop-detail-med-text">{product.types}</span>
+        <span className="sb-shop-detail-med-text sb-bold">
+          Type:{' '}
+        </span>
+        <span className="sb-shop-detail-med-text">
+          {product.types}
+        </span>
       </div>
-      <span className="sb-shop-detail-med-text sb-bold">Color: </span>
-      <span className="sb-shop-detail-med-text">{product.color}</span>
+      <span className="sb-shop-detail-med-text sb-bold">
+        Color:{' '}
+      </span>
+      <span className="sb-shop-detail-med-text">
+        {product.color}
+      </span>
       <br />
-      <span className="sb-shop-detail-med-text sb-bold">Date Arrival: </span>
-      <span className="sb-shop-detail-med-text">{product.date.day}-{product.date.month}-{product.date.year}</span>
+      <span className="sb-shop-detail-med-text sb-bold">
+        Date Arrival:{' '}
+      </span>
+      <span className="sb-shop-detail-med-text">
+        {product.date.day}-{product.date.month}-{product.date.year}
+      </span>
       <div className="sb-shop-detail-desc">
         <span className="sb-shop-detail-med-text">
           {product.description}
