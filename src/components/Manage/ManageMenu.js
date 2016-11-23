@@ -19,13 +19,7 @@ const ManageMenu = () => (
       <div className="menu">
         <p className="menu-label">General</p>
         <ul className="menu-list">
-          <li>
-            <Link
-              to={`${URL_ROOT}/manage`}
-              className="hvr-bounce-to-right">
-              Dashboard
-            </Link>
-          </li>
+          <LinkManageMenu title="Dashboard" link="dashboard" />
         </ul>
         <p className="menu-label">Shop</p>
         <ul className="menu-list">

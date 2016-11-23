@@ -10,6 +10,9 @@ export ShopNewArrivalApp from './Shop/ShopNewArrivalApp'
 export ShopMostViewsApp from './Shop/ShopMostViewsApp'
 export ShopItemDetailApp from './Shop/ShopItemDetailApp'
 
+export ShopAllBrandApp from './Shop/Brand/ShopAllBrandApp'
+export ShopByBrandApp from './Shop/Brand/ShopByBrandApp'
+
 export CartApp from './Cart/CartApp'
 export CheckoutApp from './Checkout/CheckoutApp'
 export CheckoutSuccessApp from './Checkout/CheckoutSuccessApp'

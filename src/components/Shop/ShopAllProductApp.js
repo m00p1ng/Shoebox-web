@@ -6,10 +6,10 @@ import renderShopList from './ShopList'
 const ShopAllProductApp = (props) => (
   <div>
     <HeaderBar2StepApp
-      header="All Products"
+      header="Products"
       title1="Shop"
       link1="shop"
-      title2="All Products"
+      title2="Products"
     />
     <div className="container">
       <div className="row">

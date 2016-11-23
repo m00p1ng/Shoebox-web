@@ -24,7 +24,7 @@ const showDropdownByRole = (Role) => {
     return (
       <div>
         <LinkNavbar title="Profile" link="profile" />
-        <LinkNavbar title="Manage" link="manage" />
+        <LinkNavbar title="Manage" link="manage/dashboard" />
         <LinkNavbar title="Logout" link="logout" />
       </div>
     )
@@ -56,7 +56,7 @@ const NavbarUserDropdown = ({Role}) => (
 
 const NavbarDropdown = ({Role}) => (
   <div>
-    <NavbarBrandDropdown />
+    {/* <NavbarBrandDropdown /> */}
     <NavbarUserDropdown
       Role={Role}/>
   </div>

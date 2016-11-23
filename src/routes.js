@@ -24,6 +24,9 @@ import {
   ShopMostViewsApp,
   ShopItemDetailApp,
 
+  ShopAllBrandApp,
+  ShopByBrandApp,
+
   SearchApp,
 
   LoginApp,
@@ -66,7 +69,9 @@ export default (
         <Route path='new-arrival' component={ShopNewArrivalApp} />
         <Route path='most-views' component={ShopMostViewsApp} />
         <route path='brand'>
-          <IndexRoute component={ShopApp} />
+          <IndexRoute component={ShopAllBrandApp} />
+          <route path='all' component={ShopAllBrandApp} />
+          <route path=':brand' component={ShopByBrandApp} />
         </route>
         <Route path=':slug' component={ShopItemDetailApp} />
       </Route>
@@ -92,6 +97,7 @@ export default (
 
       <Route path='manage'>
         <IndexRoute component={ManageApp} />
+        <route path='dashboard' component={ManageApp}/>
         <route path='product'>
           <IndexRoute component={ManProductApp} />
           <route path='new' component={ManProductCreateApp} />

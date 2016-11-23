@@ -43,14 +43,12 @@ export const HeaderBar2StepApp = ({header, title1, link1, title2}) => (
 )
 
 HeaderBarApp.propTypes = {
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
 }
 
 HeaderBar2StepApp.propTypes = {
   header: PropTypes.string.isRequired,
   title1: PropTypes.string.isRequired,
   link1: PropTypes.string.isRequired,
-  title2: PropTypes.string.isRequired,
-  link2: PropTypes.string.isRequired
+  title2: PropTypes.string.isRequired
 }

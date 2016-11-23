@@ -40,7 +40,7 @@ const ShopMenu = () => (
         <div className="divider grey lighten-3"></div>
         <p className="menu-label">Brand</p>
         <ul className="menu-list">
-          <LinkShopMenu title="All Brands" link="brand" />
+          <LinkShopMenu title="All Brands" link="brand/all" />
           <LinkShopMenu title="Nike" link="brand/nike" />
           <LinkShopMenu title="Adidas" link="brand/adidas" />
           <LinkShopMenu title="New Balance" link="brand/new-balance" />
