@@ -13,7 +13,6 @@ export const loadOrderHistory = () => ({
     types: [
       LOAD_ORDER_REQUEST,
       LOAD_ORDER_SUCCESS,
-      // 'LOAD_ORDER_SUCCESS',
       LOAD_ORDER_FAILURE
     ]
   }
