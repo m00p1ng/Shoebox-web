@@ -53,7 +53,7 @@ const ShopItem = ({product}) => (
 			</Link>
 			</div>
 			<div className="sb-shop-text-section" >
-				<span className="sb-bold black-text sb-shop-small-text">{product.brand}</span>
+				<span className="sb-bold black-text sb-shop-small-text sb-brand">{product.brand}</span>
 				<br />
 					<Link to={`${URL_ROOT}/shop/${product.slug}`}>
 						<span className="sb-shop-small-text black-text">{product.name}</span>

@@ -25,3 +25,7 @@ nav ul li a {
     margin-left: 0px;
     margin-right: 0px;
 }
+
+.sb-brand {
+  text-transform: capitalize;
+}
