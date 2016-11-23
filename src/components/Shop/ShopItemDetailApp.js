@@ -16,7 +16,7 @@ const ShopPicture = ({picture}) => (
 )
 
 const ShopItemDetail = ({product, onClickedAddToCart}) => (
-	<div className="col l5 sb-shop-detail sb-shop-detail-grey-box">
+  <div className="col l5 sb-shop-detail sb-shop-detail-grey-box">
     <div className="sb-shop-detail-text">
       <div>
         <h5 className="sb-bold">
@@ -74,26 +74,26 @@ const ShopItemDetail = ({product, onClickedAddToCart}) => (
 )
 
 const ShopBody = ({product, onClickedAddToCart}) => (
-	<div className="container">
-		<div className="row">
-			<div className="col l12 card white">
-				<ShopPicture picture={product.picture} />
-			  <ShopItemDetail
+  <div className="container">
+    <div className="row">
+      <div className="col l12 card white">
+        <ShopPicture picture={product.picture} />
+        <ShopItemDetail
           product={product}
           onClickedAddToCart={onClickedAddToCart}/>
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 )
 
 const ShopItemDetailApp = ({product, onClickedAddToCart}) => (
   <div>
     <HeaderBar2StepApp
-			header="Product Detail"
-			title1="Shop"
-			link1="shop"
+      header="Product Detail"
+      title1="Shop"
+      link1="shop"
       title2={product.name}
-			link2={product.slug} />
+      link2={product.slug} />
     <ShopBody
       product={product}
       onClickedAddToCart={onClickedAddToCart}/>

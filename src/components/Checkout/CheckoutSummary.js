@@ -36,7 +36,7 @@ const CheckoutSummary = ({total, checkout}) => (
     className="divider"
     style={{
       paddingLeft: "10px",
-    	paddingRight: "20px"
+      paddingRight: "20px"
     }}>
   </div>
 

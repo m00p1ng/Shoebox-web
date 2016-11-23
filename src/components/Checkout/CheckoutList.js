@@ -3,7 +3,7 @@ import CheckoutItem from './CheckoutItem'
 
 const CheckoutList = ({products, qty}) => (
   <div>
-		{
+    {
       products.map(
         (product) => (
           <CheckoutItem
@@ -13,7 +13,7 @@ const CheckoutList = ({products, qty}) => (
         )
       )
     }
-	</div>
+  </div>
 )
 
 CheckoutList.propTypes = {

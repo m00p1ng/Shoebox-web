@@ -11,7 +11,7 @@ const ManProductCreateApp = () => (
       title2="New" link2="new"
     />
     <div className="container">
-	    <div className="row">
+      <div className="row">
         <ManageMenu />
         <ManProductForm />
       </div>

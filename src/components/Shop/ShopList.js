@@ -5,32 +5,32 @@ import { Loading, ErrorMsg } from './Message'
 import ShopPagination from './ShopPagination'
 
 const ShopItem = ({product}) => (
-	<div className="col l3 m4 s6 sb-shop-item">
-			<div>
-			<Link to={`${URL_ROOT}/shop/${product.slug}`}>
-				<img
-					src={product.picture}
-					alt={product.slug} />
-			</Link>
-			</div>
-			<div className="sb-shop-text-section" >
-				<span className="sb-bold black-text sb-shop-small-text">
-					{product.brand}
-				</span>
-				<br />
-					<Link to={`${URL_ROOT}/shop/${product.slug}`}>
-						<span className="sb-shop-small-text black-text">
-							{product.name}
-						</span>
-					</Link>
-				<br />
-				<div className="sb-shop-price-box">
-					<span className="sb-shop-small-text sb-bold sb-shop-price-text">
-						$ {product.price}
-					</span>
-				</div>
-			</div>
-	</div>
+  <div className="col l3 m4 s6 sb-shop-item">
+      <div>
+      <Link to={`${URL_ROOT}/shop/${product.slug}`}>
+        <img
+          src={product.picture}
+          alt={product.slug} />
+      </Link>
+      </div>
+      <div className="sb-shop-text-section" >
+        <span className="sb-bold black-text sb-shop-small-text">
+          {product.brand}
+        </span>
+        <br />
+          <Link to={`${URL_ROOT}/shop/${product.slug}`}>
+            <span className="sb-shop-small-text black-text">
+              {product.name}
+            </span>
+          </Link>
+        <br />
+        <div className="sb-shop-price-box">
+          <span className="sb-shop-small-text sb-bold sb-shop-price-text">
+            $ {product.price}
+          </span>
+        </div>
+      </div>
+  </div>
 )
 
 const renderShopItem = (products) => {
@@ -42,43 +42,43 @@ const renderShopItem = (products) => {
 }
 
 const ShopList = ({
-	children,
-	totalPage,
-	handlePage,
-	activePage
+  children,
+  totalPage,
+  handlePage,
+  activePage
 }) => (
-	<div className="col l10 s12 card white">
-		<div className="sb-shop-list">
+  <div className="col l10 s12 card white">
+    <div className="sb-shop-list">
       <div className="row">
         {children}
       </div>
     </div>
-		<ShopPagination
-			totalPage={totalPage}
-			activePage={activePage}
-			handlePage={handlePage}/>
+    <ShopPagination
+      totalPage={totalPage}
+      activePage={activePage}
+      handlePage={handlePage}/>
   </div>
 )
 
 const renderShopList = (props) => {
-	const {products, error, totalPage, handlePage, activePage} = props
+  const {products, error, totalPage, handlePage, activePage} = props
   const hasError = error === true
   const hasProducts = products.length > 0
 
   if(hasError) {
     return (
-    	<ErrorMsg />
+      <ErrorMsg />
     )
   } else if(hasProducts) {
     return (
-			<div>
-	      <ShopList
-					totalPage={totalPage}
-					activePage={activePage}
-					handlePage={handlePage}>
-	        {renderShopItem(products)}
-	      </ShopList>
-			</div>
+      <div>
+        <ShopList
+          totalPage={totalPage}
+          activePage={activePage}
+          handlePage={handlePage}>
+          {renderShopItem(products)}
+        </ShopList>
+      </div>
     )
   } else {
     return (

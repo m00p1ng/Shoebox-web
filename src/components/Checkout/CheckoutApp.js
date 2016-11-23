@@ -4,23 +4,23 @@ import{ HeaderBar2StepApp } from '../App/HeaderBarApp'
 const CheckoutApp = ({children}) => (
   <div>
     <HeaderBar2StepApp
-			header="Checkout"
-			title1="My Cart"
-			link1="cart"
-			title2="Checkout"
-			link2="checkout"/>
+      header="Checkout"
+      title1="My Cart"
+      link1="cart"
+      title2="Checkout"
+      link2="checkout"/>
     <div className="container">
       <div className="row">
-				<div className="card white">
-	        {children}
-				</div>
+        <div className="card white">
+          {children}
+        </div>
       </div>
     </div>
   </div>
 )
 
 CheckoutApp.propTypes = {
-	children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default CheckoutApp

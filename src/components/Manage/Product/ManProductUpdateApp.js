@@ -11,7 +11,7 @@ const ManProductUpdateApp = () => (
       title2="Edit" link2="edit"
     />
     <div className="container">
-	    <div className="row">
+      <div className="row">
         <ManageMenu />
         <ManProductForm />
       </div>
