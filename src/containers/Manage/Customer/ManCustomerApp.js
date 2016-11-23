@@ -17,7 +17,7 @@ class ManCustomerAppContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  customers: state.manProduct.custmers
+  customers: state.manCustomer.customers
 })
 
 const mapDispatchToProps = ({

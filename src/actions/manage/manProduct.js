@@ -5,7 +5,15 @@ import {
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
   LOAD_PRODUCTS_FAILURE,
+
+  CLEAR_PRODUCTS,
 } from 'actionTypes'
+
+export const clearProducts = () => (
+  (dispatch) => dispatch({
+    type: CLEAR_PRODUCTS
+  })
+)
 
 export const loadProducts = (slug) => ({
   [CALL_API]: {

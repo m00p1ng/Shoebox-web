@@ -32,6 +32,36 @@ const renderProducts = (products) => {
   )
 }
 
+const ProductTable = ({products}) => (
+  <table
+    className="sb-manage-table-in-card responsive-table striped">
+    <thead>
+      <tr>
+        <th data-field="id">#</th>
+        <th data-field="brand">Brand</th>
+        <th data-field="name">Name</th>
+        <th data-field="price">Price</th>
+        <th data-field="amount">Amount</th>
+        <th data-field="sold_unit">Sold</th>
+        <th data-field="avaliable">Avaiable</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {renderProducts(products)}
+    </tbody>
+  </table>
+)
+
+const renderTable = (products) => {
+  if(products.length > 0) {
+    return <ProductTable products={products} />
+  }
+  else {
+    return <h4>Loading...</h4>
+  }
+}
+
 const ManProductList = ({products}) => (
   <div className="col l10 s12 card">
     <h3>All Products</h3>
@@ -41,28 +71,7 @@ const ManProductList = ({products}) => (
         add product
       </button>
     </Link>
-    <table
-      className="sb-manage-table-in-card
-        responsive-table striped">
-      <thead>
-        <tr>
-          <th data-field="id">ID</th>
-          <th data-field="brand">Brand</th>
-          <th data-field="name">Name</th>
-          <th data-field="price">Price</th>
-          <th data-field="amount">Amount</th>
-          <th data-field="sold_unit">Sold</th>
-          <th data-field="avaliable">Avaiable</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {
-          (products.length > 0) ?
-          renderProducts(products) : <h4>Loading...</h4>
-        }
-      </tbody>
-    </table>
+    {renderTable(products)}
   </div>
 )
 
