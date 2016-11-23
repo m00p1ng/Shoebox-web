@@ -5,7 +5,6 @@ import datetime
 import json
 
 class Customers(User):
-    userID = IntField(min_value=1, required=True)
     firstname = StringField(max_length=50)
     lastname = StringField(max_length=50)
     gender = StringField(max_length=10)
@@ -107,9 +106,7 @@ class Customers(User):
 
     @classmethod
     def create_obj(cls, data):
-        userID = User.objects.count() + 1
         customer = cls(
-            userID = userID,
             username = data['username'],
             email = data['email'],
             firstname = data['firstname'],
