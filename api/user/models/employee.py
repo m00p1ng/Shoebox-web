@@ -5,7 +5,7 @@ import datetime
 import json
 
 class Employees(User):
-    employeeID = IntField(min_value=1, required=True, unique=True)
+    userID = IntField(min_value=1, required=True)
     firstname = StringField(max_length=50, required=True)
     lastname = StringField(max_length=50, required=True)
     gender = StringField(max_length=10, required=True)
@@ -80,9 +80,10 @@ class Employees(User):
 
     @classmethod
     def create_obj(cls, data):
-        employeeID = cls.objects.count() + 1
+        userID = User.objects.count() + 1
+        print(User.objects.count())
         employee = cls(
-            employeeID=employeeID,
+            userID = userID,
             username = data['username'],
             email = data['email'],
             firstname = data['firstname'],
