@@ -1,5 +1,30 @@
 import React, { PropTypes } from 'react'
-import { HeaderBar2StepApp } from '../App/HeaderBarApp'
+import { Link } from 'react-router'
+import { URL_ROOT } from 'endpoint'
+
+const HeaderBar3StepApp = (
+  {header, title1, link1, title2, link2, title3}
+) => (
+  <div className="nav-wrapper sbox-header-bar white-text">
+    <div className="container">
+      <div className="col s12 sbox-header-bread">
+        <Link to={`${URL_ROOT}`} className="breadcrumb">
+          <span>Home</span>
+        </Link>
+        <Link to={`${URL_ROOT}/${link1}`} className="breadcrumb">
+          <span>{title1}</span>
+        </Link>
+        <Link to={`${URL_ROOT}/${link1}/brand/${link2}`} className="breadcrumb">
+          <span>{title2}</span>
+        </Link>
+        <a className="breadcrumb">
+          <span>{title3}</span>
+        </a>
+      </div>
+      <h2 className="sbox-header-text">{header}</h2>
+  </div>
+</div>
+)
 
 const render_list = (list) => (
   list.map(item => {
@@ -86,14 +111,21 @@ const ShopBody = ({product, onClickedAddToCart}) => (
   </div>
 )
 
+const to_slug = (brand) => {
+  brand = brand.replace(/[^\w\s]/, '')
+  brand = brand.replace(/\s+/, '-')
+  return brand.toLowerCase()
+}
+
 const ShopItemDetailApp = ({product, onClickedAddToCart}) => (
   <div>
-    <HeaderBar2StepApp
+    <HeaderBar3StepApp
       header="Product Detail"
       title1="Shop"
       link1="shop"
-      title2={product.name}
-      link2={product.slug} />
+      title2={product.brand}
+      link2={to_slug(product.brand)}
+      title3={product.name}/>
     <ShopBody
       product={product}
       onClickedAddToCart={onClickedAddToCart}/>
