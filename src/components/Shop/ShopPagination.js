@@ -20,10 +20,16 @@ const initRow = (totalPage) => {
 const ShopPagination = ({handlePage, activePage, totalPage}) => (
   <div className="row center sbox-shop-pagination">
     <ul className="pagination">
-      <li className="disabled">
-        <a href="#!">
-          <i className="material-icons">chevron_left</i>
-        </a>
+      <li className={(activePage === 1) ? "disabled" : ""}>
+        {
+          (activePage === 1) ? (
+            <a><i className="material-icons">chevron_left</i></a>
+          ) : (
+            <Link onClick={() => handlePage(activePage-1)}>
+              <i className="material-icons">chevron_left</i>
+            </Link>
+          )
+        }
       </li>
       {
         initRow(totalPage).map((page) => (
@@ -34,10 +40,16 @@ const ShopPagination = ({handlePage, activePage, totalPage}) => (
             activePage={activePage}/>
         ))
       }
-      <li className="disabled">
-        <a href="#!">
-          <i className="material-icons">chevron_right</i>
-        </a>
+      <li className={(activePage === totalPage) ? "disabled" : ""}>
+        {
+          (activePage === totalPage) ? (
+            <a><i className="material-icons">chevron_right</i></a>
+          ) : (
+            <Link onClick={() => handlePage(activePage+1)}>
+              <i className="material-icons">chevron_right</i>
+            </Link>
+          )
+        }
       </li>
     </ul>
   </div>
