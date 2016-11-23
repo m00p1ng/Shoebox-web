@@ -183,7 +183,7 @@ class Products(Document):
 
     def map_page_data_product(product):
         brand = ProductBrands.objects(pk=product.brand.id).first().name
-        
+
         obj = {
             'name' : product.name,
             'price' : product.price,
@@ -235,6 +235,8 @@ class Products(Document):
     def search_product_view(product, real_data):
         obj = {
             'slug': product.slug,
+            'picture': product.picture,
+            'brand': real_data['brand'],
             'name' : product.name,
             'price' : product.price,
             'amount' : product.amount
@@ -304,4 +306,3 @@ class Products(Document):
                     obj = cls.mapID_to_obj(product, function, data)
                     output.append(obj)
                 return json.dumps(output)
-
