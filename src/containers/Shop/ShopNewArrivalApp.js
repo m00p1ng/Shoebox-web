@@ -35,6 +35,7 @@ class ShopNewArrivalAppContainer extends Component {
         products={this.props.products}
         error={this.props.error}
         totalPage={this.props.totalPage}
+        totalProduct={this.props.totalProduct}
         activePage={this.props.page}
         handlePage={this.handlePage.bind(this)}/>
     )

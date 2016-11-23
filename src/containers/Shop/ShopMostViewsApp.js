@@ -36,6 +36,7 @@ class ShopMostViewsAppContainer extends Component {
         error={this.props.error}
         activePage={this.props.page}
         totalPage={this.props.totalPage}
+        totalProduct={this.props.totalProduct}
         handlePage={this.handlePage.bind(this)}/>
     )
   }

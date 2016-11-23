@@ -44,12 +44,20 @@ const renderShopItem = (products) => {
 const ShopList = ({
   children,
   totalPage,
+  totalProduct,
   handlePage,
   activePage
 }) => (
   <div className="col l10 s12 card white">
     <div className="sb-shop-list">
       <div className="row">
+        <h5 className="grey-text text-darken-1">
+          {12*(activePage-1)+1}
+          {' '}-{' '}
+          {(activePage*12 > totalProduct)? (totalProduct): (activePage*12)}
+          {' '}from {totalProduct}
+        </h5>
+        <div className="divider grey lighten-4"></div>
         {children}
       </div>
     </div>
@@ -61,7 +69,14 @@ const ShopList = ({
 )
 
 const renderShopList = (props) => {
-  const {products, error, totalPage, handlePage, activePage} = props
+  const {
+    products,
+    error,
+    totalPage,
+    totalProduct,
+    handlePage,
+    activePage
+  } = props
   const hasError = error === true
   const hasProducts = products.length > 0
 
@@ -74,6 +89,7 @@ const renderShopList = (props) => {
       <div>
         <ShopList
           totalPage={totalPage}
+          totalProduct={totalProduct}
           activePage={activePage}
           handlePage={handlePage}>
           {renderShopItem(products)}

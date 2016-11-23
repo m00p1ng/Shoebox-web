@@ -18,7 +18,7 @@ class ShopBestSellerAppContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.loadProducts('best-seller', 10, 1)
+    this.props.loadProducts('best-seller', 12, 1)
   }
 
   componentWillUnmount() {
@@ -35,6 +35,7 @@ class ShopBestSellerAppContainer extends Component {
         products={this.props.products}
         error={this.props.error}
         totalPage={this.props.totalPage}
+        totalProduct={this.props.totalProduct}
         activePage={this.props.page}
         handlePage={this.handlePage.bind(this)} />
     )
