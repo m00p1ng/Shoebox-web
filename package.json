@@ -10,7 +10,7 @@
     "server": ". ./shoebox-env/bin/activate && python manage.py runserver",
     "mooping": ". ./shoebox-env/bin/activate && python manage-mooping.py runserver",
     "api-test": ". ./shoebox-env/bin/activate && python manage.py test api.tests",
-    "ui-test": "echo non set now"
+    "ui-test": "echo not set now"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "react": "^15.4.0",
-    "react-addons-css-transition-group": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
