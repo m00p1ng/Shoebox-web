@@ -267,13 +267,34 @@ i.sbox-icon-gray {
 
 /* Shoebox Search Style */
 
-#sbox-search-form {
+.sbox-search-loading {
+  display: inline;
+  padding-left: 20px;
+}
+
+#sbox-search-form input[type="text"] {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding-left: 2%;
+  color: #555;
+  min-height: 60px;
   font-size: 30px;
 }
 
-.sbox-search-form-input {
-  min-height: 60px;
+#sbox-search-form input[type="text"]:focus {
+  box-shadow: 0 0 5px #43D1AF;
+  padding: 1.25%;
+  border: 1px solid #43D1AF;
 }
+
 
 /* new checkout style */
 

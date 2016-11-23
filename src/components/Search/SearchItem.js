@@ -12,13 +12,19 @@ const SearchItem = ({product}) => (
         alt={product.slug} />
     </Link>
     </div>
-          <span className="sb-bold black-text sb-shop-med-text">{product.brand}</span>
-        <br />
-        <span className="sb-shop-med-text">{product.name}</span>
-        <br />
-        <div className="sb-shop-price-box">
-          <span className="sb-shop-med-text sb-shop-price-text">$ {product.price}</span>
-        </div>
+      <span className="sb-bold black-text sb-shop-med-text">
+        {product.brand}
+      </span>
+      <br />
+      <span className="sb-shop-med-text">
+        {product.name}
+      </span>
+      <br />
+      <div className="sb-shop-price-box">
+        <span className="sb-shop-med-text sb-shop-price-text">
+          $ {product.price}
+        </span>
+      </div>
   </div>
   </div>
 )

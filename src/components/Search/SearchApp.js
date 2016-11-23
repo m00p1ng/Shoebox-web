@@ -16,13 +16,11 @@ const SearchApp = ({
       link="search" />
     <SearchBar
       onSearchChange={onSearchChange}/>
-    <div className="row" >
     <SearchResult
       result={result}
       isLoading={isLoading}
       searchText={searchText}
       hasError={hasError}/>
-    </div>
   </div>
 )
 
