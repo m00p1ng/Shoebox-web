@@ -464,3 +464,15 @@ i.sbox-icon-gray {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.sb-shop-card-item {
+	margin-bottom: 20px;
+}
+
+.sb-shop-card-item img {
+	width: 100%;
+	height: auto;
+	display: block;
+	padding-left: 10%;
+  padding-right: 10%;
+}
