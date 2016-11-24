@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.supplier.models import Suppliers
-from api.include.api import request_get, errors_to_json
+from api.include.api import request_get, errors_to_json, request_get_to_json, get_page_data
 from mongoengine import NotUniqueError
 import json
+import math
 
 json_type = "application/json"
 
@@ -11,7 +12,7 @@ json_type = "application/json"
 def supplier(request):
     body = request.body
     if request.method == 'GET':
-        return request_get(query_all())
+        return supplier_list(request)
     if request.method == 'POST':
         return supplier_create(body)
     if request.method == 'PUT':
@@ -39,6 +40,19 @@ def query_all():
 
 def query_by_name(slug):
     return Suppliers.objects(slug=slug).first()
+
+
+def supplier_list(request):
+    data = get_page_data(request)
+
+    supplier = Suppliers.objects.skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is False and data['is_page'] is False:
+        supplier = Suppliers.objects.all()
+
+    if not supplier:
+        return HttpResponse(status=204)
+    return request_get_to_json(Suppliers, supplier, data)
 
 
 def supplier_create(body):

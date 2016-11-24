@@ -1,5 +1,7 @@
 from mongoengine import *
 from api.include.model import to_slug
+import json
+import math
 
 
 class Suppliers(Document):
@@ -77,3 +79,57 @@ class Suppliers(Document):
         supplier.update(**data)
         return supplier
     
+
+    def map_data_to_dict(supplier):
+        obj = {
+            'supplierID' : supplier.supplierID,
+            'name' : supplier.name,
+            'city' : supplier.city,
+            'district' : supplier.district,
+            'street' : supplier.street,
+            'zipcode' : supplier.zipcode,
+            'phone' : supplier.phone
+       }
+        return obj
+
+
+    def page_data(cls, data, suppliers):
+        if data['is_result'] is True or data['is_page'] is True:
+            totalpage = math.ceil(Suppliers.objects.count() / int(data['result']))
+            totalsupplier = Suppliers.objects.count()
+            dataArr = []
+
+            for supplier in suppliers:
+                dataArr.append(cls.map_data_to_dict(supplier))
+
+            obj = {
+                'totalpage': totalpage,
+                'page': int(data['page']),
+                'data': dataArr,
+                'totalsupplier' : totalsupplier
+            }
+
+        else:
+            obj = []
+            for supplier in suppliers:
+                obj.append(cls.map_data_to_dict(supplier))
+
+        return obj
+
+
+    @classmethod
+    def map_to_json(cls, suppliers, data='none'):
+        output = []
+        if not hasattr(suppliers, 'count'):
+            obj = cls.map_data_to_dict(suppliers)
+            return json.dumps(obj)
+        else:
+            if data is not 'none':
+                obj = cls.page_data(cls, data, suppliers)
+                return json.dumps(obj)
+            else:
+                for supplier in suppliers:
+                    obj = cls.map_data_to_dict(supplier)
+                    output.append(obj)
+                return json.dumps(output)
+

@@ -47,7 +47,7 @@ def customer_list(request):
     customer = Customers.objects.skip(data['offset']).limit(int(data['result'])).exclude('password')
 
     if data['is_result'] is False and data['is_page'] is False:
-        customer = Customers.objects.all()
+        customer = Customers.objects.all().exclude('password')
 
     if not customer:
         return HttpResponse(status=204)
