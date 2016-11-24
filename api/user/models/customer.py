@@ -3,6 +3,7 @@ from mongoengine.django.auth import User
 from api.include.model import timestamp_date, timestamp_fulldate
 import datetime
 import json
+import math
 
 class Customers(User):
     firstname = StringField(max_length=50)
@@ -219,14 +220,42 @@ class Customers(User):
         return obj
 
 
+    def page_data(cls, data, customers):
+        if data['is_result'] is True or data['is_page'] is True:
+            totalpage = math.ceil(Customers.objects.count() / int(data['result']))
+            totalcustomer = Customers.objects.count()
+            dataArr = []
+
+            for customer in customers:
+                dataArr.append(cls.map_data_to_dict(customer))
+
+            obj = {
+                'totalpage': totalpage,
+                'page': int(data['page']),
+                'data': dataArr,
+                'totalcustomer' : totalcustomer
+            }
+
+        else:
+            obj = []
+            for customer in customers:
+                obj.append(cls.map_data_to_dict(customer))
+
+        return obj
+
+
     @classmethod
-    def map_to_json(cls, customers):
+    def map_to_json(cls, customers, data='none'):
         output = []
         if not hasattr(customers, 'count'):
             obj = cls.map_data_to_dict(customers)
             return json.dumps(obj)
         else:
-            for customer in customers:
-                obj = cls.map_data_to_dict(customer)
-                output.append(obj)
-            return json.dumps(output)
+            if data is not 'none':
+                obj = cls.page_data(cls, data, customers)
+                return json.dumps(obj)
+            else:
+                for customer in customers:
+                    obj = cls.map_data_to_dict(customer)
+                    output.append(obj)
+                return json.dumps(output)

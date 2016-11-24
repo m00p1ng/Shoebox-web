@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.user.models import Customers
-from api.include.api import request_get, errors_to_json, request_get_to_json
+from api.include.api import request_get, errors_to_json, request_get_to_json, get_page_data
 from mongoengine import NotUniqueError
 import json
 
@@ -11,7 +11,7 @@ json_type = "application/json"
 def customer(request):
     body = request.body
     if request.method == 'GET':
-        return request_get_to_json(Customers, query_all())
+        return customer_list(request)
     if request.method == 'POST':
         return customer_create(body)
     if request.method == 'PUT':
@@ -39,6 +39,19 @@ def query_all():
 
 def query_by_username(username):
     return Customers.objects(username=username).exclude('password').first()
+
+
+def customer_list(request):
+    data = get_page_data(request)
+
+    customer = Customers.objects.skip(data['offset']).limit(int(data['result'])).exclude('password')
+
+    if data['is_result'] is False and data['is_page'] is False:
+        customer = Customers.objects.all()
+
+    if not customer:
+        return HttpResponse(status=204)
+    return request_get_to_json(Customers, customer, data)
 
 
 def customer_create(body):
