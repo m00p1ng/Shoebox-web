@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.order.models import Orders
 from api.user.models import Customers
-from api.include.api import request_get, request_get_real, errors_to_json
+from api.include.api import request_get, request_get_real, errors_to_json, get_page_data
 from mongoengine import NotUniqueError
 import json
 
@@ -15,10 +15,10 @@ def order(request):
 
         if 'username' in request.session:
             if request.session['role'] == 'employee':
-                return request_get_real(Orders, query_all())
+                return order_list(request)
             elif request.session['role'] == 'customer':
                 username = request.session['username']
-                return request_get_real(Orders, query_by_username(username), 'customer')
+                return order_list_by_username(request, username)
         return HttpResponse('You\'re guest', status=403)
 
     if request.method == 'POST':
@@ -66,6 +66,33 @@ def query_by_id(oid):
 def query_by_username(username):
     cus_user = Customers.objects(username=username).first().id
     return Orders.objects(username=cus_user)
+
+
+def order_list(request):
+    data = get_page_data(request)
+
+    order = Orders.objects.skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is false and data['is_page'] is false:
+        order = Orders.objects.all()
+
+    if not order:
+        return HttpResponse(status=204)
+    return request_get_real(Orders, order, 'order', data)
+
+
+def order_list_by_username(request, username):
+    data = get_page_data(request)
+
+    cus_user = Customers.objects(username=username).first().id
+    order = Orders.objects(username=cus_user).skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is False and data['is_page'] is False:
+        order = Orders.objects(username=cus_user)
+
+    if not order:
+        return HttpResponse(status=204)
+    return request_get_real(Orders, order, 'order', data)
 
 
 def order_create(body, session):

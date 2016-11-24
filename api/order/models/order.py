@@ -4,6 +4,7 @@ from api.user.models import Customers
 from api.product.models import Products
 from .cart import Cart
 import datetime
+import math
 import json
 
 class Orders(Document):
@@ -77,8 +78,32 @@ class Orders(Document):
         return real_data
 
 
+    def page_data(cls, data, orders):
+        if data['is_result'] is True or data['is_page'] is True:
+            totalpage = math.ceil(Orders.objects.count() / int(data['result']))
+            totalorder = Orders.objects.count()
+            dataArr = []
+
+            for order in orders:
+                dataArr.append(cls.mapID_to_obj(order))
+
+            obj = {
+                'totalpage': totalpage,
+                'page': int(data['page']),
+                'data': dataArr,
+                'totalorder' : totalorder
+            }
+
+        else:
+            obj = []
+            for order in orders:
+                obj.append(cls.mapID_to_obj(order))
+
+        return obj
+
+
     @classmethod
-    def mapID_to_obj(cls, order, function='none', page='none'):
+    def mapID_to_obj(cls, order, function='none', data='none'):
         data = {'username': order.username.id}
 
         real_data = cls.to_realData(data)
@@ -103,13 +128,17 @@ class Orders(Document):
 
 
     @classmethod
-    def map_referenceID(cls, orders, function='none', page='none'):
+    def map_referenceID(cls, orders, function='none', data='none'):
         output = []
         if not hasattr(orders, 'count'):
             obj = cls.mapID_to_obj(orders,function)
             return json.dumps(obj)
         else:
-            for order in orders:
-                obj = cls.mapID_to_obj(order,function)
-                output.append(obj)
-            return json.dumps(output)
+          if data is not 'none':
+                obj = cls.page_data(cls, data, orders)
+                return json.dumps(obj)
+          else:
+              for order in orders:
+                  obj = cls.mapID_to_obj(order,function)
+                  output.append(obj)
+              return json.dumps(output)
