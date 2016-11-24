@@ -42,7 +42,7 @@ def product_category(request, category, slug):
         if category == 'type':
             return product_type(slug)
         if category == 'brand':
-            return product_brand(slug)
+            return product_brand(request, slug)
         if category == 'size':
             return product_size(slug)
         if category == 'color':
@@ -160,9 +160,13 @@ def search_by_keyword(request, keyword):
     data = get_page_data(request)
 
     product = Products.objects.skip(data['offset']).limit(int(data['result'])).filter(name__icontains=keyword)
+
+    if data['is_result'] is False and data['is_page'] is False:
+        product = Products.objects.filter(name__icontains=keyword)
+
     if not product:
         return HttpResponse(status=204)
-    return request_get_real(Products, product)
+    return request_get_real(Products, product, 'search', data)
 
 
 def get_page_data(request):
@@ -212,12 +216,18 @@ def product_type(slug):
     return request_get_real(Products, product)
 
 
-def product_brand(slug):
+def product_brand(request, slug):
+    data = get_page_data(request)
+
     brand = ProductBrands.objects(slug=slug).first()
+    product = Products.objects(brand=brand.id).skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is False and data['is_page'] is False:
+        product = Products.objects(brand=brand.id)
+        
     if not brand:
         return HttpResponse('Not found', status=404)
-    product = Products.objects(brand=brand.id)
-    return request_get_real(Products, product)
+    return request_get_real(Products, product, 'brand', data)
 
 
 def product_size(slug):
