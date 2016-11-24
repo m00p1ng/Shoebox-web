@@ -7,9 +7,9 @@
 /* Shoebox Navbar */
 
 #sbox-nav-logo {
-    height: 48px;
-    position: relative;
-    top: 8px;
+  height: 48px;
+  position: relative;
+  top: 8px;
 }
 
 #sbox-nav-logo-small {
@@ -19,7 +19,7 @@
 }
 
 .sbox-white-nav {
-    background: #FAFAFA;
+  background: #FAFAFA;
 }
 
 /* Shoebox Sticky footer Style */
@@ -33,92 +33,92 @@
 /* Shoebox Cart Styles*/
 
 .sbox-brand-in-cart {
-    font-size: 20px;
-    color: #000000;
-    margin: 0 auto;
+  font-size: 20px;
+  color: #000000;
+  margin: 0 auto;
 }
 
 .sbox-name-in-cart {
-    font-size: 20px;
-    color: #000000;
-    padding-bottom: 18px;
+  font-size: 20px;
+  color: #000000;
+  padding-bottom: 18px;
 }
 
 .sbox-price-in-cart {
-    padding-top: 7px;
-    font-size: 14px;
-    font-weight: 100;
-    color: #000000;
+  padding-top: 7px;
+  font-size: 14px;
+  font-weight: 100;
+  color: #000000;
 }
 
 .sbox-quantity-in-cart {
-    font-size: 14px;
-    font-weight: 100;
-    color: #000000;
+  font-size: 14px;
+  font-weight: 100;
+  color: #000000;
 }
 
 .sbox-summary-header {
-    font-size: 17px;
-    color: #000000;
+  font-size: 17px;
+  color: #000000;
 }
 
 .sbox-cart-content-detail {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .sbox-cart-subtotal-left {
-    padding-top: 20px;
-    font-size: 16px;
-    font-weight: 200;
+  padding-top: 20px;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .sbox-cart-subtotal-right {
-    padding-top: 20px;
-    padding-right: 10px;
-    font-size: 16px;
-    font-weight: 500;
+  padding-top: 20px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .sbox-cart-item-left {
-    padding-top: 15px;
-    font-size: 16px;
-    font-weight: 200;
+  padding-top: 15px;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .sbox-cart-item-right {
-    padding-top: 15px;
-    padding-right: 10px;
-    font-size: 16px;
-    font-weight: 500;
+  padding-top: 15px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .sbox-cart-shipping {
-    font-size: 16px;
-    font-weight: 200;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .sbox-row-order {
-    padding-top: 3px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .sbox-checkout-button {
-    width: 100%;
+  width: 100%;
 }
 
 .sbox-cart-bin {
-    float: right;
-    padding-right: 25px;
-    padding-top: 25px;
+  float: right;
+  padding-right: 25px;
+  padding-top: 25px;
 }
 
 .sbox-cart-img {
-    padding-left: 54px;
-    padding-right: 50px;
-    height: 180px;
-    width: auto;
+  padding-left: 54px;
+  padding-right: 50px;
+  height: 180px;
+  width: auto;
 }
 
 i.sbox-giant-icon {
@@ -133,14 +133,15 @@ i.sbox-icon-gray {
 
 .sbox-header-bar {
   background: #78BF5A;
-	height: 120px;
-	margin-bottom: 30px;
+  min-height: 120px;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 .sbox-header-bar-manage {
-	background-color: #00bcd4;
-	height: 120px;
-	margin-bottom: 30px;
+  background-color: #00bcd4;
+  height: 120px;
+  margin-bottom: 30px;
 }
 
 .sbox-header-text {
@@ -148,87 +149,87 @@ i.sbox-icon-gray {
 }
 
 .sbox-header-bread {
-	position: relative;
-	top: 12px;
+  position: relative;
+  top: 12px;
 }
 
 .sbox-header-bread span {
-	position: relative;
-	top: 2px;
-	font-size: 20px;
+  position: relative;
+  top: 2px;
+  font-size: 20px;
 }
 
 /* Shoebox Checkout Style */
 
 .sb-edit-text {
-	float: right;
-	padding-right: 18px;
-	padding-top: 25px;
+  float: right;
+  padding-right: 18px;
+  padding-top: 25px;
 }
 
 .sb-grey-box {
-	background-color: #E0E0E0;
-	margin-top: 70px;
+  background-color: #E0E0E0;
+  margin-top: 70px;
   margin-bottom: 25px;
 }
 
 .sb-grey-box-2 {
-	background-color: #E0E0E0;
-	margin-top: 20px;
-    margin-bottom: 70px;
+  background-color: #E0E0E0;
+  margin-top: 20px;
+  margin-bottom: 70px;
 }
 
 .sb-grey-box-header {
-	font-size: 18px;
-	padding-top: 25px;
-	padding-left: 20px;
+  font-size: 18px;
+  padding-top: 25px;
+  padding-left: 20px;
 }
 
 .sb-grey-box-address {
-	font-size: 14px;
-	padding-top: 10px;
-	padding-left: 20px;
-	margin-bottom: 30px;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 20px;
+  margin-bottom: 30px;
 }
 
 .sb-checkout-list {
-	height: 80px;
+  height: 80px;
 }
 
 .sb-grey-box-card-number {
-	font-size: 14px;
-    margin-top: -15px;
-	padding-left: 20px;
+  font-size: 14px;
+  margin-top: -15px;
+  padding-left: 20px;
 }
 
 #sb-checkout-cvv-input {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .sb-checkout-cvv-input-width {
-    width: 80px;
-    margin-left: 15px;
-    margin-top: 10px;
+  width: 80px;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
 .sb-checkout-subtotal {
-    font-size: 14px;
-    opacity: 0.8;
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 .sb-checkout-total {
-    font-size: 14px;
-    font-weight: 500;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .sb-pay-button {
-    width: 100%;
-    position: relative;
-    left: -4px;
+  width: 100%;
+  position: relative;
+  left: -4px;
 }
 
 .sb-checkout-total-right {
-    text-align: right;
+  text-align: right;
 }
 
 /* Shoebox Login Style*/
@@ -299,65 +300,65 @@ i.sbox-icon-gray {
 /* new checkout style */
 
 .sb-checkout-list2-brand {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .sb-checkout-img2 {
-	height: 120px;
-	width: 120px;
+  height: 120px;
+  width: 120px;
 }
 
 .sb-checkout-middle-in-card {
-	margin-top: 17px;
+  margin-top: 17px;
 }
 
 .sb-checkout-margin-in-card {
-	margin-top: 7px
+  margin-top: 7px
 }
 
 .sb-checkout-list2-right {
-	float: right;
+  float: right;
 }
 
 .sb-bold {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .sb-checkout-list-header {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .sb-checkout-list-row {
-	margin-top: -20px;
+  margin-top: -20px;
 }
 
 /* Shoebox Shop Styles */
 
 .sb-shop-item-container {
-	background: #FFFFFF;
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
+  background: #FFFFFF;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 .sb-shop-item img {
-	width: 90%;
-	height: auto;
-	display: block;
-	margin: 0px auto 10px auto;
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 0px auto 10px auto;
 }
 
 .sb-shop-nav-panel {
-	margin-right: 20px;
+  margin-right: 20px;
 }
 
 .sb-shop-item-price {
-	font-size: 16px;
-	color: #F57C01;
-	padding-bottom: 10px;
+  font-size: 16px;
+  color: #F57C01;
+  padding-bottom: 10px;
 }
 
 .sb-shop-item-name {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .sbox-shop-pagination {
@@ -366,15 +367,15 @@ i.sbox-icon-gray {
 
 /* Zoom In #1 */
 .sb-hover-zoom {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 .sb-hover-zoom:hover {
-	-webkit-transform: scale(1.15);
-	transform: scale(1.15);
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
 }
 
 .sb-shop-item {
@@ -385,92 +386,93 @@ i.sbox-icon-gray {
 /* The new homepage with parallax */
 
 .sb-home-shop-now-btn {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 /* manage-product-detail-edit  */
 
 .sb-product-edit img {
-	width: 60%;
-	height: auto;
+  width: 60%;
+  height: auto;
 }
 
 .sb-product-edit-input {
-	width: 80%;
+  width: 80%;
 }
 
 /* shop-detail  */
 .sb-shop-detail-img img {
-	width: 80%;
+  width: 80%;
 }
 
 .sb-shop-detail-header {
-	padding-top: 10px;
-	padding-left: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .sb-shop-detail-grey-box {
-	background: #F6F6F6;
-	margin-top: 30px;
-	margin-bottom: 30px;
+  background: #F6F6F6;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 .sb-shop-detail-text {
-	padding-top: 10px;
+  padding-top: 10px;
 }
 
 .sb-shop-detail-price {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .sb-shop-detail-section {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .sb-shop-detail-med-text {
-	font-size: 14px;
-	word-wrap: break-word;
+  font-size: 14px;
+  word-wrap: break-word;
 }
 
 .sb-shop-detail-small-text {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .sb-shop-detail-first-line {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .sb-shop-detail-desc {
-	margin-top: 20px;
-	padding-bottom: 10px;
+  margin-top: 20px;
+  padding-bottom: 10px;
 }
 
 .sb-shop-detail-add-to-cart-btn {
-	margin-top: 10px;
-	width: 100%;
-	margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /* The new shop */
 
 .sb-shop-med-text {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .sb-shop-small-text {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .sb-shop-price-text {
-	color: #F57C01;
+  color: #F57C01;
 }
 
 .sb-shop-item {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sb-shop-price-box {
-	padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .sb-shop-text-section {
@@ -487,13 +489,13 @@ i.sbox-icon-gray {
 }
 
 .sb-shop-card-item {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sb-shop-card-item img {
-	width: 100%;
-	height: auto;
-	display: block;
-	padding-left: 10%;
+  width: 100%;
+  height: auto;
+  display: block;
+  padding-left: 10%;
   padding-right: 10%;
 }
