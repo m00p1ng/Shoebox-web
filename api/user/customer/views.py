@@ -50,7 +50,7 @@ def customer_list(request):
         customer = Customers.objects.all().exclude('password')
 
     if not customer:
-        return HttpResponse(status=204)
+        return HttpResponse('Not found', status=404)
     return request_get_to_json(Customers, customer, data)
 
 

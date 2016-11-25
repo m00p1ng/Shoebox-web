@@ -77,7 +77,7 @@ def order_list(request):
         order = Orders.objects.all()
 
     if not order:
-        return HttpResponse(status=204)
+        return HttpResponse('Not found', status=404)
     return request_get_real(Orders, order, 'order', data)
 
 

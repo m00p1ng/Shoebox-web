@@ -51,7 +51,7 @@ def supplier_list(request):
         supplier = Suppliers.objects.all()
 
     if not supplier:
-        return HttpResponse(status=204)
+        return HttpResponse('Not found', status=404)
     return request_get_to_json(Suppliers, supplier, data)
 
 
