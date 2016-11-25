@@ -155,7 +155,7 @@ class Employees(User):
         return obj
 
     @classmethod
-    def map_to_json(cls, employees):
+    def map_to_json(cls, employees, data='none'):
         output = []
         if not hasattr(employees, 'count'):
             obj = cls.map_data_to_dict(employees)
