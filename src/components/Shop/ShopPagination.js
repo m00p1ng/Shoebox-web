@@ -26,7 +26,8 @@ const ShopPagination = ({handlePage, activePage, totalPage}) => (
             <a><i className="material-icons">chevron_left</i></a>
           ) : (
             <Link onClick={() => handlePage(activePage-1)}>
-              <i className="material-icons">chevron_left</i>
+              <i className="material-icons"
+                style={{cursor: 'pointer'}}>chevron_left</i>
             </Link>
           )
         }
@@ -46,7 +47,8 @@ const ShopPagination = ({handlePage, activePage, totalPage}) => (
             <a><i className="material-icons">chevron_right</i></a>
           ) : (
             <Link onClick={() => handlePage(activePage+1)}>
-              <i className="material-icons">chevron_right</i>
+              <i className="material-icons"
+                style={{cursor: 'pointer'}}>chevron_right</i>
             </Link>
           )
         }

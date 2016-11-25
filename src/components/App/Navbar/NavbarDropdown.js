@@ -4,17 +4,18 @@ import { URL_ROOT } from 'endpoint'
 
 const NavbarBrandDropdown = () => (
   <ul id="sbox-brand-dropdown" className="dropdown-content">
-    <li><a><span className="black-text">Nike</span></a></li>
-    <li><a><span className="black-text">Vans</span></a></li>
-    <li><a><span className="black-text">Converse</span></a></li>
-    <li><a><span className="black-text">Allen Edmonds</span></a></li>
+    <LinkNavbar title="Nike" link="shop/brand/nike" />
+    <LinkNavbar title="Adidas" link="shop/brand/adidas" />
+    <LinkNavbar title="New Balance" link="shop/brand/new-balance" />
+    <LinkNavbar title="Vans" link="shop/brand/vans" />
+    <LinkNavbar title="Converse" link="shop/brand/converse" />
   </ul>
 )
 
 const LinkNavbar = ({title, link}) => (
   <li>
     <Link to={`${URL_ROOT}/${link}`}>
-      <span className="black-text">{title}</span>
+      <span className="grey-text text-darken-2">{title}</span>
     </Link>
   </li>
 )
@@ -56,7 +57,7 @@ const NavbarUserDropdown = ({Role}) => (
 
 const NavbarDropdown = ({Role}) => (
   <div>
-    {/* <NavbarBrandDropdown /> */}
+    <NavbarBrandDropdown />
     <NavbarUserDropdown
       Role={Role}/>
   </div>
