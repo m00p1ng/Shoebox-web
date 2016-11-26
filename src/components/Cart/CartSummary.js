@@ -35,14 +35,14 @@ const CartCheckoutButton = ({role}) => (
 )
 
 const CartOrderRow = ({left, right}) => (
-  <div className="row sbox-row-order">
+  <div className="row sbox-row-order padding-bottom-10">
     <div className="col s6 l6">
-      <p className="sbox-cart-subtotal-left">{left}</p>
+      <div className="sbox-cart-subtotal-left sb-shop-small-text">{left}</div>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-subtotal-right">
+      <div className="sbox-cart-subtotal-right sb-shop-small-text">
         {right}
-      </p>
+      </div>
     </div>
   </div>
 )
@@ -50,14 +50,14 @@ const CartOrderRow = ({left, right}) => (
 const CartItemRow = ({qty, name, price}) => (
   <div className="row sbox-row-order">
     <div className="col s6 l6">
-      <p className="sbox-cart-item-left">
+      <div className="sbox-cart-item-left sb-shop-small-text">
         {qty}{' x '}{name}
-      </p>
+      </div>
     </div>
     <div className="right-align">
-      <p className="sbox-cart-item-right">
+      <div className="sbox-cart-item-right sb-shop-small-text">
         $ {price*qty}
-      </p>
+      </div>
     </div>
   </div>
 )
@@ -75,14 +75,14 @@ const CartItemList = (products, qty) => (
 )
 
 const CartSummary = ({total, products, qty, role}) => (
-  <div className="col s12 l3 offset-l1">
+  <div className="col s12 l4 offset-l1">
     <div className="row">
       <div className="card white">
         <div className="card-content">
-          <p className="card-title sbox-summary-header"
+          <span className="sb-shop-med-text sb-cart-row-header"
             style={{paddingBottom: "10px"}}>
             Order Summary
-          </p>
+          </span>
           <div className="divider"></div>
 
           {CartItemList(products, qty)}
@@ -91,7 +91,7 @@ const CartSummary = ({total, products, qty, role}) => (
             left="Shipping fee"
             right="Free"/>
 
-          <div className="divider"></div>
+          <div className="divider padding-top-10"></div>
 
           <CartOrderRow
             left="Total"

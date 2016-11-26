@@ -2,7 +2,7 @@ import React, { PropTypes} from 'react'
 import CartItem from './CartItem'
 
 const CartList = ({products, qty}) => (
-  <div className="col s12 l8 card">
+  <div className="col s12 l7 card">
     <div className="row hide-on-med-and-down">
       <div className="col l3">
         <div className="sb-cart-row-header sb-shop-small-text center" >
