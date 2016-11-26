@@ -20,7 +20,7 @@ class ManCustomerAppContainer extends Component {
         totalPage={this.props.totalPage}
         totalCustomer={this.props.totalCustomer}
         activePage={this.props.page}
-        handlePage={this.handlePage.bind(this)}/>
+        handlePage={this.handlePage.bind(this)} />
     )
   }
 }

@@ -9,7 +9,7 @@ const initialState = {
   error: false,
   page: 1,
   totalPage: 0,
-  totalOrder: 0
+  totalCustomer: 0
 }
 
 const manCustomer = (state = initialState, action) => {
@@ -25,13 +25,14 @@ const manCustomer = (state = initialState, action) => {
         totalPage: action.payload.totalpage,
         totalCustomer: action.payload.totalcustomer
       })
+
     case LOAD_CUSTOMERS_FAILURE:
       return ({
         customers: [],
         error: true,
         page: 0,
         totalPage: 0,
-        totalOrder: 0
+        totalCustomer: 0
       })
 
     default:

@@ -7,9 +7,9 @@ import {
   LOAD_SUPPLIERS_FAILURE,
 } from 'actionTypes'
 
-export const loadSuppliers = () => ({
+export const loadSuppliers = (result, page) => ({
   [CALL_API]: {
-    endpoint: `${SUPPLIER_ENDPOINT}`,
+    endpoint: `${SUPPLIER_ENDPOINT}?result=${result}&page=${page}`,
     method: 'GET',
     types: [
       LOAD_SUPPLIERS_REQUEST,

@@ -1,16 +1,39 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../HeaderBarApp'
 import ManageMenu from '../ManageMenu'
-import ManSupplierList from './ManSupplierList'
+import renderTable from './ManSupplierList'
+import ManagePagination from '../ManagePagination'
+import { Link } from 'react-router'
+import { URL_ROOT } from 'endpoint'
 
-const ManSupplierApp = ({suppliers}) => (
+const ManSupplierApp = ({
+  suppliers,
+  error,
+  totalPage,
+  totalOrder,
+  activePage,
+  handlePage
+}) => (
   <div>
     <HeaderBar2StepApp
       title="Supplier" />
     <div className="container">
       <div className="row">
         <ManageMenu />
-        <ManSupplierList suppliers={suppliers} />
+        <div className="col l10 s12 card">
+          <h3>All Suppliers</h3>
+          <Link to={`${URL_ROOT}/manage/customer/new`}>
+            <button className="waves-effect waves-light btn">
+              <i className="material-icons left white-text">add</i>
+              suppliers
+            </button>
+          </Link>
+          {renderTable(suppliers)}
+          <ManagePagination
+            totalPage={totalPage}
+            activePage={activePage}
+            handlePage={handlePage}/>
+        </div>
       </div>
     </div>
   </div>

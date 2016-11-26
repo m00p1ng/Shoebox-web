@@ -61,17 +61,4 @@ const renderTable = (suppliers) => {
   }
 }
 
-const ManSupplierList = ({suppliers}) => (
-  <div className="col l10 s12 card">
-    <h3>All Suppliers</h3>
-    <Link to={`${URL_ROOT}/manage/customer/new`}>
-      <button className="waves-effect waves-light btn">
-        <i className="material-icons left white-text">add</i>
-        suppliers
-      </button>
-    </Link>
-    {renderTable(suppliers)}
-  </div>
-)
-
-export default ManSupplierList
+export default renderTable
