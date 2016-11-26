@@ -6,7 +6,13 @@ import RegisterValidate from './RegisterValidate'
 const RegisterAddress = (props) => {
   const { handleSubmit, previousPage, invalid, submitting } = props
   return(
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="form-style-6 sb-register-form">
+
+      <div className="row center">
+        <div className="sb-register-header sb-bold">Register</div>
+      </div>
 
       <Field
         name="address.city"
