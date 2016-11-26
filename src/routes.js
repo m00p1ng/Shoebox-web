@@ -105,7 +105,7 @@ export default (
         </route>
         <route path='customer'>
           <IndexRoute component={ManCustomerApp} />
-          <route path='create' component={ManCustomerCreateApp} />
+          <route path='new' component={ManCustomerCreateApp} />
           <route path='edit' component={ManCustomerUpdateApp} />
         </route>
         <route path='order'>

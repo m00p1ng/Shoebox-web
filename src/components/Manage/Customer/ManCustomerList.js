@@ -71,17 +71,4 @@ const renderTable = (customers) => {
   }
 }
 
-const ManCustomerList = ({customers}) => (
-  <div className="col l10 s12 card">
-    <h3>All Customer</h3>
-    <Link to={`${URL_ROOT}/manage/customer/new`}>
-      <button className="waves-effect waves-light btn">
-        <i className="material-icons left white-text">add</i>
-        customer
-      </button>
-    </Link>
-    {renderTable(customers)}
-  </div>
-)
-
-export default ManCustomerList
+export default renderTable

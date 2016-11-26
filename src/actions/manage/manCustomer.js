@@ -7,9 +7,9 @@ import {
   LOAD_CUSTOMERS_FAILURE,
 } from 'actionTypes'
 
-export const loadCustomers = () => ({
+export const loadCustomers = (result, page) => ({
   [CALL_API]: {
-    endpoint: `${USER_ENDPOINT}/customer`,
+    endpoint: `${USER_ENDPOINT}/customer?result=${result}&page=${page}`,
     method: 'GET',
     types: [
       LOAD_CUSTOMERS_REQUEST,

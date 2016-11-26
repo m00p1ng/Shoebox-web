@@ -7,29 +7,31 @@ import {
 const initialState = {
   customers: [],
   error: false,
-  isLoading: false
+  page: 1,
+  totalPage: 0,
+  totalOrder: 0
 }
 
 const manCustomer = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_CUSTOMERS_REQUEST:
-      return ({
-        customers: [],
-        error: false,
-        isLoading: true
-      })
+      return initialState
 
     case LOAD_CUSTOMERS_SUCCESS:
       return ({
-        customers: action.payload,
+        customers: action.payload.data,
         error: false,
-        isLoading: false
+        page: action.payload.page,
+        totalPage: action.payload.totalpage,
+        totalCustomer: action.payload.totalcustomer
       })
     case LOAD_CUSTOMERS_FAILURE:
       return ({
         customers: [],
         error: true,
-        isLoading: false
+        page: 0,
+        totalPage: 0,
+        totalOrder: 0
       })
 
     default:
