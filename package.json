@@ -1,6 +1,6 @@
 {
   "name": "shoebox-web",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "This is a The Shoebox project",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,14 @@
     "url": "git+ssh://git@github.com/moopings/Shoebox-web.git"
   },
   "author": "EZ-dev",
+  "contributors": [
+    "Mongkonchai Priyachiwa (https://github.com/moopings)",
+    "Santitham Ananwattanaporn (https://github.com/stsupertam)",
+    "Watcharaphat Manosatiankul (https://github.com/watcharaphat)",
+    "Nutchanon Roopsoung (https://github.com/DADDYofALL)",
+    "Parut Singhapun (https://github.com/nakid001)",
+    "Methus Mungkijpaisan (https://github.com/zibyl)"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/moopings/Shoebox-web/issues"
