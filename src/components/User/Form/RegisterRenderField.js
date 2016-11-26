@@ -13,7 +13,7 @@ const RegisterRenderField = ({
       </div>
     </div>
     <div className="col l4">
-      <input {...input} type={type}/>
+      <input className={(touched && error)? "sbox-register-danger" : ""} {...input} type={type}/>
     </div>
     {touched && error && <span>{error}</span>}
   </div>
