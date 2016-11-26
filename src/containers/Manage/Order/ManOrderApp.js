@@ -20,7 +20,7 @@ class ManOrderAppContainer extends Component {
         totalPage={this.props.totalPage}
         totalOrder={this.props.totalOrder}
         activePage={this.props.page}
-        handlePage={this.handlePage.bind(this)}/>
+        handlePage={this.handlePage.bind(this)} />
     )
   }
 }

@@ -6,9 +6,9 @@ import {
   LOAD_ORDER_FAILURE,
 } from 'actionTypes'
 
-export const loadOrderHistory = () => ({
+export const loadOrderHistory = (result, page) => ({
   [CALL_API]: {
-    endpoint: ORDER_ENDPOINT,
+    endpoint: `${ORDER_ENDPOINT}?result=${result}&page=${page}`,
     method: 'GET',
     types: [
       LOAD_ORDER_REQUEST,
