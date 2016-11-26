@@ -12,7 +12,15 @@ export const loadOrderHistory = () => ({
     method: 'GET',
     types: [
       LOAD_ORDER_REQUEST,
-      LOAD_ORDER_SUCCESS,
+      {
+        type: LOAD_ORDER_SUCCESS,
+        meta: (action, state, res) => {
+          return ({status: res.status})
+        },
+        payload: (action, state, res) => {
+          return res.json()
+        }
+      },
       LOAD_ORDER_FAILURE
     ]
   }

@@ -17,7 +17,7 @@ const OrderHistoryApp = ({orders, error}) => (
   <div>
     <HeaderBarApp
       title="History" />
-    {renderOrders(orders)}
+    {(!error) ? renderOrders(orders) : <h1>No order now</h1>}
   </div>
 )
 

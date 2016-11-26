@@ -118,9 +118,9 @@ ShopItemDetailApp.propTypes = {
     price: PropTypes.number.isRequired,
     picture: PropTypes.string.isRequired,
     date : PropTypes.shape({
-      year: PropTypes.number.isRequired,
-      month: PropTypes.number.isRequired,
-      day: PropTypes.number.isRequired
+      year: PropTypes.string.isRequired,
+      month: PropTypes.string.isRequired,
+      day: PropTypes.string.isRequired
     }).isRequired,
     amount: PropTypes.number.isRequired,
     size: PropTypes.array.isRequired,

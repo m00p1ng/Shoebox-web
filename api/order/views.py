@@ -88,7 +88,7 @@ def order_list_by_username(request, username):
     order = Orders.objects(username=cus_user).skip(data['offset']).limit(int(data['result']))
 
     if data['is_result'] is False and data['is_page'] is False:
-        order = Orders.objects(username=cus_user)
+        order = Orders.objects(username=cus_user).order_by('-id')
 
     if not order:
         return HttpResponse(status=204)

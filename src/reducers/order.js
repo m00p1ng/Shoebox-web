@@ -18,10 +18,18 @@ const order = (state = initialState, action) => {
       })
 
     case LOAD_ORDER_SUCCESS:
-      return ({
-        order: action.payload,
-        error: false
-      })
+      if(action.meta.status === 200) {
+        return ({
+          order: action.payload,
+          error: false
+        })
+      }
+      else if(action.meta.status === 204) {
+        return ({
+          order: [],
+          error: true
+        })
+      }
 
     case LOAD_ORDER_FAILURE:
       return ({

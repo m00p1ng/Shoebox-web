@@ -18,12 +18,24 @@ const renderCartItem = (cart) => {
   ))
 }
 
-const OrderList = ({order}) => (
-  <div className="container">
-    <h2>Order #{order.orderID}</h2>
-    {renderCartItem(order.cart)}
-    <h4>Total: {order.total}</h4>
-  </div>
-)
+const OrderList = ({order}) => {
+  const {
+    day, month, year,
+    hour, minute, second
+  } = order.timestamp
+  return (
+    <div className="container">
+      <h2>Order #{order.orderID}</h2>
+      Date: {day}/{month}/{year}
+      <br />
+      Time: {hour}:{minute}:{second}
+      <br />
+      <br />
+      {renderCartItem(order.cart)}
+      <h4>Total: {order.total}</h4>
+      <div className="divider black"></div>
+    </div>
+  )
+}
 
 export default OrderList
