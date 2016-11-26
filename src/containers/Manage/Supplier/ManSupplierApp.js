@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
   suppliers: state.manSupplier.suppliers
 })
 
-const mapDispatchToProps = (state) => ({
+const mapDispatchToProps = ({
   loadSuppliers
 })
 
