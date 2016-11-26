@@ -29,3 +29,39 @@ nav ul li a {
 .sb-brand {
   text-transform: capitalize;
 }
+
+/* cart */
+
+.sb-cart-row-header {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	opacity: 0.7;
+}
+
+.sb-cart-img img {
+	width: 70%;
+}
+
+.sb-cart-product-text {
+	margin-top: 10px;
+}
+
+.sb-cart-product-name {
+	margin-top: -15px;
+}
+
+.sb-cart-remove {
+	margin-top: 10px;
+	text-decoration: underline;
+	opacity: 0.6;
+}
+
+.sb-cart-divider {
+	margin-top: -20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.sb-cart-total-price {
+	padding-right: 1.2vw;
+}

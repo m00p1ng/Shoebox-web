@@ -75,7 +75,7 @@ const CartItemList = (products, qty) => (
 )
 
 const CartSummary = ({total, products, qty, role}) => (
-  <div className="col s12 l4 offset-l1">
+  <div className="col s12 l3 offset-l1">
     <div className="row">
       <div className="card white">
         <div className="card-content">
