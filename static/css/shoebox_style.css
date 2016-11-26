@@ -500,3 +500,28 @@ i.sbox-icon-gray {
   padding-left: 10%;
   padding-right: 10%;
 }
+
+/* register  */
+.sb-register-header {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-size: 32px;
+}
+
+.sb-register-form input {
+	margin-top: -25px;
+}
+
+.sb-register-grey-box {
+	background: #E5E5E5;
+	position: relative;
+	top: 30px;
+	margin-right: 2vw;
+	margin-left: 2vw;
+	margin-bottom: 60px;
+	padding-bottom: 20px;
+}
+
+.sb-register-row {
+	padding-bottom: 20px;
+}
