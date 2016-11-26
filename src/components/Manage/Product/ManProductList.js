@@ -15,6 +15,12 @@ const ProductRow = ({product, id}) => {
       <td>
         <Link
           to={`${URL_ROOT}/manage/product/edit`}>
+          More
+        </Link>
+      </td>
+      <td>
+        <Link
+          to={`${URL_ROOT}/manage/product/edit`}>
           Edit
         </Link>
       </td>
@@ -68,7 +74,7 @@ const ManProductList = ({products}) => (
     <Link to={`${URL_ROOT}/manage/product/new`}>
       <button className="waves-effect waves-light btn">
         <i className="material-icons left white-text">add</i>
-        add product
+        product
       </button>
     </Link>
     {renderTable(products)}

@@ -7,7 +7,7 @@ import {
   LOAD_CUSTOMERS_FAILURE,
 } from 'actionTypes'
 
-export const loadCustomers = (slug) => ({
+export const loadCustomers = () => ({
   [CALL_API]: {
     endpoint: `${USER_ENDPOINT}/customer`,
     method: 'GET',

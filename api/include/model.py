@@ -7,16 +7,34 @@ def to_slug(string):
 
 def timestamp_date(timestamp):
     to_date = {}
+
+    if timestamp.day < 10:
+        to_date['day'] = '0' + str(timestamp.day)
+    else:
+        to_date['day'] = str(timestamp.day)
+
+    if timestamp.month < 10:
+        to_date['month'] = '0' + str(timestamp.month)
+    else:
+        to_date['month'] = str(timestamp.month)
+
     to_date['year'] = str(timestamp.year)
-    to_date['month'] = str(timestamp.month)
-    to_date['day'] = str(timestamp.day)
     return to_date
 
 def timestamp_fulldate(timestamp):
     to_date = {}
+    
+    if timestamp.day < 10:
+        to_date['day'] = '0' + str(timestamp.day)
+    else:
+        to_date['day'] = str(timestamp.day)
+
+    if timestamp.month < 10:
+        to_date['month'] = '0' + str(timestamp.month)
+    else:
+        to_date['month'] = str(timestamp.month)
+
     to_date['year'] = str(timestamp.year)
-    to_date['month'] = str(timestamp.month)
-    to_date['day'] = str(timestamp.day)
 
     if timestamp.hour < 10:
         to_date['hour'] = '0' + str(timestamp.hour)

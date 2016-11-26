@@ -60,6 +60,9 @@ const ShopItemDetail = ({product, onClickedAddToCart}) => (
       <span className="sb-shop-detail-med-text">
         {product.date.day}-{product.date.month}-{product.date.year}
       </span>
+      <p className="sb-shop-detail-section sb-bold">
+        DESCRIPTION
+      </p>
       <div className="sb-shop-detail-desc">
         <span className="sb-shop-detail-med-text">
           {product.description}

@@ -20,6 +20,12 @@ const CustomerRow = ({customer, id}) => {
       <td>
         <Link
           to={`${URL_ROOT}/manage/customer/edit`}>
+          More
+        </Link>
+      </td>
+      <td>
+        <Link
+          to={`${URL_ROOT}/manage/customer/edit`}>
           Edit
         </Link>
       </td>
@@ -71,7 +77,7 @@ const ManCustomerList = ({customers}) => (
     <Link to={`${URL_ROOT}/manage/customer/new`}>
       <button className="waves-effect waves-light btn">
         <i className="material-icons left white-text">add</i>
-        add customer
+        customer
       </button>
     </Link>
     {renderTable(customers)}

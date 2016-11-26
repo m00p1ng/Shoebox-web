@@ -6,3 +6,4 @@ export const LOGIN_ENDPOINT = `${API_ROOT}/login`
 export const LOGOUT_ENDPOINT = `${API_ROOT}/logout`
 export const USER_ENDPOINT = `${API_ROOT}/user`
 export const ORDER_ENDPOINT = `${API_ROOT}/order`
+export const SUPPLIER_ENDPOINT = `${API_ROOT}/supplier`
