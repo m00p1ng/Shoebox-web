@@ -15,9 +15,6 @@ const NavbarApp = ({NumberOfCartItem, Username, Role}) => (
         <div className="nav-wrapper sbox-white-nav">
           <div className="container">
             <NavbarLogo />
-            <a data-activates="mobile-demo" className="button-collapse">
-              <i className="material-icons">menu</i>
-            </a>
             <NavbarDesktopMenu
               NumberOfCartItem={NumberOfCartItem}
               Username={Username}
