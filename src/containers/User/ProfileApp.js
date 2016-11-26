@@ -5,9 +5,16 @@ import { ProfileApp } from '../../components'
 class ProfileAppContainer extends Component {
   render() {
     return (
-      <ProfileApp />
+      <ProfileApp
+        user={this.props.user}/>
     )
   }
 }
 
-export default connect()(ProfileAppContainer)
+const mapStateToProps = (state) => ({
+  user: state.user.detail
+})
+
+export default connect(
+  mapStateToProps
+)(ProfileAppContainer)
