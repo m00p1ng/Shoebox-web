@@ -7,7 +7,7 @@ import json
 import math
 
 class Products(Document):
-    productID = IntField(min_value=1, required=True, unique=True)
+    productID = IntField(min_value=1, required=True)
     supplier = ReferenceField(Suppliers)
     name = StringField(max_length=200, required=True, unique=True)
     brand = ReferenceField(ProductBrands, required=True)
@@ -133,6 +133,19 @@ class Products(Document):
         return product
 
 
+    @classmethod
+    def mapID_to_obj(cls, product, function='none', data='none'):
+        data_id = {
+            'brand': product.brand.id,
+            'types': product.types.id,
+            'size': product.size,
+            'supplier' : product.supplier.id
+        }
+        real_data = cls.to_realData(data_id)
+
+        return real_data
+
+
     def to_realData(data):
         sizes = []
         supplier = Suppliers.objects(pk=data['supplier']).first().name
@@ -155,55 +168,26 @@ class Products(Document):
         return real_data
 
 
-    def customer_product_view(product, real_data):
-        obj = {
-            'name' : product.name,
-            'description' : product.description,
-            'slug' : product.slug,
-            'price' : product.price,
-            'picture' : product.picture,
-            'amount' : product.amount,
-            'color' : product.color,
-            'is_discount' : product.is_discount,
-            'discountPercent' : product.discountPercent,
-            'date' : timestamp_date(product.date),
-            'brand' : real_data['brand'],
-            'types' : real_data['types'],
-            'size' : real_data['size'],
-        }
-
-        if obj['is_discount'] is False:
-            obj.pop('is_discount')
-            obj.pop('discountPercent')
-        else:
-            obj.pop('is_discount')
-
-        return obj
-
-
-    def map_page_data_product(product):
-        brand = ProductBrands.objects(pk=product.brand.id).first().name
-
-        obj = {
-            'name' : product.name,
-            'price' : product.price,
-            'is_discount' : product.is_discount,
-            'discountPercent' : product.discountPercent,
-            'slug' : product.slug,
-            'brand' :  brand,
-            'picture' : product.picture
-        }
-        return obj
-
-
-    def page_data(cls, data, products):
+    def page_data(cls, data, products, function):
         if data['is_result'] is True or data['is_page'] is True:
             totalpage = math.ceil(Products.objects.count() / int(data['result']))
             totalproduct = Products.objects.count()
             dataArr = []
 
-            for product in products:
-                dataArr.append(cls.map_page_data_product(product))
+            if function is 'customer':
+                for product in products:
+                    real_data = cls.mapID_to_obj(product)
+                    dataArr.append(cls.customer_product_view(product, real_data))
+
+            elif function is 'search':
+               for product in products:
+                   real_data = cls.mapID_to_obj(product)
+                   dataArr.append(cls.search_product_view(product, real_data))
+
+            else:
+               for product in products:
+                   real_data = cls.mapID_to_obj(product)
+                   dataArr.append(cls.employee_product_view(product, real_data))
 
             obj = {
                 'totalpage': totalpage,
@@ -214,9 +198,14 @@ class Products(Document):
 
         else:
             obj = []
-            for product in products:
-                obj.append(cls.map_page_data_product(product))
-
+            if function is 'search':
+                for product in products:
+                    real_data = cls.mapID_to_obj(product)
+                    obj.append(cls.search_product_view(product, real_data))
+            else:
+               for product in products:
+                   real_data = cls.mapID_to_obj(product)
+                   obj.append(cls.employee_product_view(product, real_data))
         return obj
 
 
@@ -246,10 +235,12 @@ class Products(Document):
 
 
     def employee_product_view(product, real_data):
-         obj = {
+        print("Hello fuck u")
+        obj = {
             'name' : product.name,
             'description' : product.description,
             'price' : product.price,
+            'ID' : product.productID,
             'picture' : product.picture,
             'amount' : product.amount,
             'color' : product.color,
@@ -264,45 +255,16 @@ class Products(Document):
             'types' : real_data['types'],
             'size' : real_data['size'],
             'supplier': real_data['supplier']
-         }
-         return obj
-
-
-    @classmethod
-    def mapID_to_obj(cls, product, function='none', data='none'):
-        data = {
-            'brand': product.brand.id,
-            'types': product.types.id,
-            'size': product.size,
-            'supplier' : product.supplier.id
         }
-        real_data = cls.to_realData(data)
-
-        if function is 'customer':
-            obj = cls.customer_product_view(product, real_data)
-            return obj
-
-        elif function is 'search':
-            obj = cls.search_product_view(product, real_data)
-            return obj
-
-        else:
-            obj = cls.employee_product_view(product, real_data)
-            return obj
+        return obj
 
 
     @classmethod
     def map_referenceID(cls, products, function='none', data='none'):
         output = []
         if not hasattr(products, 'count'):
-            obj = cls.mapID_to_obj(products, function, data='none')
+            obj = cls.page_data(cls, data, products, function)
             return json.dumps(obj)
         else:
-            if data is not 'none':
-                obj = cls.page_data(cls, data, products)
-                return json.dumps(obj)
-            else:
-                for product in products:
-                    obj = cls.mapID_to_obj(product, function, data)
-                    output.append(obj)
-                return json.dumps(output)
+            obj = cls.page_data(cls, data, products, function)
+            return json.dumps(obj)

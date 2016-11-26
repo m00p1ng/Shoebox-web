@@ -12,8 +12,8 @@ def product(request):
     body = request.body
     if request.method == 'GET':
         if 'role' in request.session and request.session['role'] == 'employee':
-            return request_get_real(Products, query_all())
-        return request_get_real(Products, query_by_customer_all(), 'customer')
+            return product_list(request)
+        return customer_product_list(request)
     if request.method == 'POST':
         return product_create(body)
     if request.method == 'PUT':
@@ -121,6 +121,45 @@ def product_mostview(request):
         )
 
 
+def customer_product_list(request):
+    data = get_page_data(request)
+
+    product = Products.objects(is_available=True).skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is False and data['is_page'] is False:
+        product = Products.objects(is_available=True).all()
+
+    if not product:
+        return HttpResponse('Not found', status=404)
+    return request_get_real(Products, product, 'customer', data)
+
+
+def product_list(request):
+    data = get_page_data(request)
+
+    product = Products.objects.skip(data['offset']).limit(int(data['result']))
+
+    if data['is_result'] is False and data['is_page'] is False:
+        product = Products.objects.all()
+
+    if not product:
+        return HttpResponse('Not found', status=404)
+    return request_get_real(Products, product, 'employee', data)
+
+
+def search_by_keyword(request, keyword):
+    data = get_page_data(request)
+
+    product = Products.objects.skip(data['offset']).limit(int(data['result'])).filter(name__icontains=keyword)
+
+    if data['is_result'] is False and data['is_page'] is False:
+        product = Products.objects.filter(name__icontains=keyword)
+
+    if not product:
+        return HttpResponse(status=204)
+    return request_get_real(Products, product, 'search', data)
+
+
 def query_all():
     return Products.objects.all()
 
@@ -156,26 +195,6 @@ def search_by_keyword(request, keyword):
     if not product:
         return HttpResponse(status=204)
     return request_get_real(Products, product, 'search', data)
-
-
-def get_page_data(request):
-    data = {}
-    data['page'] = request.GET.get('page')
-    data['result'] = request.GET.get('result')
-    data['is_page'] = True
-    data['is_result'] = True
-
-    if data['result'] is None:
-        data['result'] = 10
-        data['is_result'] = False
-
-    if data['page'] is None:
-        data['page'] = 1
-        data['is_page'] = False
-
-    data['offset'] = (int(data['page'])-1)*int(data['result'])
-
-    return data
 
 
 def product_sort_by(request, sort_by):

@@ -5,7 +5,6 @@ urlpatterns = [
     url(r'^$', views.product),
     url(r'^name/(?P<slug>.+?)/?$', views.product_with_name),
     url(r'^by(?P<category>.+?)/(?P<slug>.+?)/?$', views.product_category),
-    url(r'^by-(?P<function>.+?)/?$', views.product_sort),
     url(r'^search/(?P<keyword>.+?)/?$', views.product_search),
     url(r'^page/(?P<page>.+?)/?$', views.product_page),
 

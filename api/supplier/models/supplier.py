@@ -87,6 +87,7 @@ class Suppliers(Document):
             'city' : supplier.city,
             'district' : supplier.district,
             'street' : supplier.street,
+            'slug' : supplier.slug,
             'zipcode' : supplier.zipcode,
             'phone' : supplier.phone
        }
