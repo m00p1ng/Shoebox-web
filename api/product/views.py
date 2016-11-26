@@ -26,7 +26,7 @@ def product(request):
 def product_with_name(request, slug):
     body = request.body
     if request.method == 'GET':
-        return request_get_real(Products, query_by_name(slug))
+        return request_get_real(Products, query_by_name(slug), 'none', get_page_data(request))
     if request.method == 'POST':
         return HttpResponse('Method not allowed', status=405)
     if request.method == 'PUT':

@@ -36,10 +36,3 @@ class productSize_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['created'], False)
 
 
-    def test_create_size_dubplicated(self):
-        create_request(URL_SIZE, CREATE_BODY)
-        res = create_request(URL_SIZE, CREATE_BODY)
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['Size already exist'])
-        self.assertEqual(data['created'], False)

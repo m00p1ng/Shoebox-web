@@ -36,10 +36,3 @@ class productBrand_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['created'], False)
 
 
-    def test_create_brand_dubplicated(self):
-        create_request(URL_BRAND, CREATE_BODY)
-        res = create_request(URL_BRAND, CREATE_BODY)
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['Brand already exist'])
-        self.assertEqual(data['created'], False)

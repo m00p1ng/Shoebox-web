@@ -198,7 +198,12 @@ class Products(Document):
 
         else:
             obj = []
-            if function is 'search':
+            if function is 'single':
+                real_data = cls.mapID_to_obj(products)
+                obj = cls.employee_product_view(products, real_data)
+                return obj
+
+            elif function is 'search':
                 for product in products:
                     real_data = cls.mapID_to_obj(product)
                     obj.append(cls.search_product_view(product, real_data))
@@ -239,7 +244,7 @@ class Products(Document):
             'name' : product.name,
             'description' : product.description,
             'price' : product.price,
-            'ID' : product.productID,
+            'productID' : product.productID,
             'picture' : product.picture,
             'amount' : product.amount,
             'color' : product.color,
@@ -262,7 +267,7 @@ class Products(Document):
     def map_referenceID(cls, products, function='none', data='none'):
         output = []
         if not hasattr(products, 'count'):
-            obj = cls.page_data(cls, data, products, function)
+            obj = cls.page_data(cls, data, products, function='single')
             return json.dumps(obj)
         else:
             obj = cls.page_data(cls, data, products, function)

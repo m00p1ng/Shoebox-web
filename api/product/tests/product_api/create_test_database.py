@@ -16,7 +16,7 @@ CREATE_BODY = json.dumps({
     "picture": "picture URL",
     "amount": 20,
     "size": ["48"],
-    "color": ["red"],
+    "color": "red",
     "is_available": True,
     "is_discount": False,
     "discountPercent": 20

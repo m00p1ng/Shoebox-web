@@ -35,13 +35,3 @@ class productType_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
         self.assertEqual(data['created'], False)
 
-
-    def test_create_type_dubplicated(self):
-        CREATE_BODY = json.dumps({"name": "Running"})
-
-        create_request(URL_TYPE, CREATE_BODY)
-        res = create_request(URL_TYPE, CREATE_BODY)
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['Type already exist'])
-        self.assertEqual(data['created'], False)
