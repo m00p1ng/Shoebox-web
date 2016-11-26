@@ -6,7 +6,37 @@ const OrderRow = ({order}) => {
   return (
     <tr>
       <td>{order.orderID}</td>
+      <td>
+        {
+          (order.timestamp) ? (
+            <span>
+              {order.timestamp.day}
+              /
+              {order.timestamp.month}
+              /
+              {order.timestamp.year}
+            </span>
+          ): (<span></span>)
+        }
+      </td>
+      <td>
+        {
+          (order.timestamp) ? (
+            <span>
+              {order.timestamp.hour}
+              :
+              {order.timestamp.minute}
+              :
+              {order.timestamp.second}
+            </span>
+          ): (<span></span>)
+        }
+      </td>
       <td>{order.username}</td>
+      <td className="left">$ {order.total.toFixed(2)}</td>
+      <td>{(order.is_ship) ? "Yes" : "No"}</td>
+      <td><a href="#">More</a></td>
+      <td><a href="#">Edit</a></td>
     </tr>
   )
 }
@@ -25,7 +55,11 @@ const OrderTable = ({orders}) => (
     <thead>
       <tr>
         <th data-field="id">#</th>
+        <th data-field="date">Date</th>
+        <th data-field="time">Time</th>
         <th data-field="brand">Username</th>
+        <th data-field="total">Total</th>
+        <th data-field="is-ship">Shiped</th>
       </tr>
     </thead>
 

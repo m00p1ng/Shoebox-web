@@ -10,7 +10,7 @@ import json
 class Orders(Document):
     orderID = IntField(min_value=1, required=True, unique=True)
     username = ReferenceField(Customers)
-    timestamp = DateTimeField(required=True, default=datetime.datetime.now())
+    timestamp = DateTimeField(required=True, default=datetime.datetime.now)
     is_ship = BooleanField(required=True, default=False)
     total = FloatField(required=True)
     cart = ListField(EmbeddedDocumentField(Cart))

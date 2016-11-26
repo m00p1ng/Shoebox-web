@@ -43,7 +43,7 @@ const ProductTable = ({products}) => (
         <th data-field="price">Price</th>
         <th data-field="amount">Amount</th>
         <th data-field="sold_unit">Sold</th>
-        <th data-field="avaliable">Avaiable</th>
+        <th data-field="avaliable">Avaliable</th>
       </tr>
     </thead>
 

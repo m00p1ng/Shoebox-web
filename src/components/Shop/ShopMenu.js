@@ -32,8 +32,8 @@ const ShopMenu = () => (
         <ul className="menu-list">
           <LinkShopMenu title="All Products" link="all" />
           <LinkShopMenu title="Feature" link="feature" />
-          <LinkShopMenu title="Best Seller" link="best-seller" />
           <LinkShopMenu title="New Arrival" link="new-arrival" />
+          <LinkShopMenu title="Best Seller" link="best-seller" />
           <LinkShopMenu title="Most Views" link="most-views" />
           <LinkToOtherPage title="Search" link="search" />
         </ul>
