@@ -14,11 +14,11 @@ class ShopBestSellerAppContainer extends Component {
   }
 
   handlePage(page) {
-    this.props.loadProducts('best-seller', 16, page)
+    this.props.loadProducts('best-seller', 24, page)
   }
 
   componentDidMount() {
-    this.props.loadProducts('best-seller', 16, 1)
+    this.props.loadProducts('best-seller', 24, 1)
   }
 
   componentWillUnmount() {

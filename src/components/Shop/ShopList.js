@@ -52,9 +52,9 @@ const ShopList = ({
     <div className="sb-shop-list">
       <div className="row">
         <h5 className="grey-text text-darken-1">
-          {12*(activePage-1)+1}
+          {24*(activePage-1)+1}
           {' '}-{' '}
-          {(activePage*12 > totalProduct)? (totalProduct): (activePage*12)}
+          {(activePage*24 > totalProduct)? (totalProduct): (activePage*24)}
           {' '}from {totalProduct}
         </h5>
         <div className="divider grey lighten-4"></div>

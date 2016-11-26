@@ -14,11 +14,11 @@ class ShopMostViewsAppContainer extends Component {
   }
 
   handlePage(page) {
-    this.props.loadProducts('most-views', 16, page)
+    this.props.loadProducts('most-views', 24, page)
   }
 
   componentDidMount() {
-    this.props.loadProducts('most-views', 16, 1)
+    this.props.loadProducts('most-views', 24, 1)
   }
 
   componentWillUnmount() {

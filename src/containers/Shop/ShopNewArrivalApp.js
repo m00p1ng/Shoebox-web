@@ -14,11 +14,11 @@ class ShopNewArrivalAppContainer extends Component {
   }
 
   handlePage(page) {
-    this.props.loadProducts('latest', 16, page)
+    this.props.loadProducts('latest', 24, page)
   }
 
   componentDidMount() {
-    this.props.loadProducts('latest', 16, 1)
+    this.props.loadProducts('latest', 24, 1)
   }
 
   componentWillUnmount() {
