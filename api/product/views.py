@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from api.product.models import *
-from api.include.api import request_get, request_get_real, errors_to_json, get_page_data
+from api.include.api import *
 from mongoengine import NotUniqueError
 import json
 
@@ -47,12 +47,6 @@ def product_category(request, category, slug):
             return product_size(slug)
         if category == 'color':
             return product_color(slug)
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
 
 
 @csrf_exempt
@@ -60,77 +54,72 @@ def product_sort(request, function):
     body = request.body
     if request.method == 'GET':
         if function == 'latest':
-            return request_get_real(Products, product_sort_by(request, 'latest'), 'sort_by', get_page_data(request))
+            return request_get_real(
+                Products,
+                product_sort_by(request, 'latest'),
+                'sort_by',
+                get_page_data(request)
+            )
         if function == 'best-seller':
-            return request_get_real(Products, product_sort_by(request, 'best-seller'), 'sort_by', get_page_data(request))
+            return request_get_real(
+                Products,
+                product_sort_by(request,'best-seller'),
+                'sort_by',
+                get_page_data(request)
+            )
         if function == 'most-views':
-            return request_get_real(Products, product_sort_by(request, 'most-views'), 'sort_by', get_page_data(request))
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
+            return request_get_real(
+                Products,
+                product_sort_by(request, 'most-views'),
+                'sort_by',
+                get_page_data(request)
+            )
 
 
 @csrf_exempt
-def product_page(request,page):
+def product_page(request, page):
     if request.method == 'GET':
         return product_by_page(page)
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
 
 
 @csrf_exempt
-def product_search(request,keyword):
+def product_search(request, keyword):
     if request.method == 'GET':
         return search_by_keyword(request, keyword)
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
 
 
 @csrf_exempt
 def product_latest(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'latest'), 'sort_by', get_page_data(request))
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
+        return request_get_real(
+            Products,
+            product_sort_by(request, 'latest'),
+            'sort_by',
+            get_page_data(request)
+        )
 
 
 @csrf_exempt
 def product_bestseller(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'best-seller'), 'sort_by', get_page_data(request))
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
+        return request_get_real(
+            Products,
+            product_sort_by(request, 'best-seller'),
+            'sort_by',
+            get_page_data(request)
+        )
 
 
 @csrf_exempt
 def product_mostview(request):
     if request.method == 'GET':
-        return request_get_real(Products, product_sort_by(request, 'most-views'), 'sort_by', get_page_data(request))
-    if request.method == 'POST':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
+        return request_get_real(
+            Products,
+            product_sort_by(request, 'most-views'),
+            'sort_by',
+            get_page_data(request)
+        )
+
 
 def query_all():
     return Products.objects.all()
@@ -224,7 +213,7 @@ def product_brand(request, slug):
 
     if data['is_result'] is False and data['is_page'] is False:
         product = Products.objects(brand=brand.id)
-        
+
     if not brand:
         return HttpResponse('Not found', status=404)
     return request_get_real(Products, product, 'brand', data)
