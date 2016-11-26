@@ -18,11 +18,37 @@ const HeaderBarApp = ({title}) => (
 </div>
 )
 
+const ProgressHeaderBar = () => (
+  <div className="ui steps">
+    <div className="step">
+      <i className="truck icon"></i>
+      <div className="content">
+        <div className="title">Shipping</div>
+        <div className="description">Choose your shipping options</div>
+      </div>
+    </div>
+    <div className="active step">
+      <i className="payment icon"></i>
+      <div className="content">
+        <div className="title">Billing</div>
+        <div className="description">Enter billing information</div>
+      </div>
+    </div>
+    <div className="disabled step">
+      <i className="info icon"></i>
+      <div className="content">
+        <div className="title">Confirm Order</div>
+      </div>
+    </div>
+  </div>
+)
+
 const RegisterApp = ({children, pageName}) => (
   <div>
     <HeaderBarApp
       title={pageName}/>
     <div className="container">
+      <ProgressHeaderBar />
       <div className="row card">
         {children}
       </div>
