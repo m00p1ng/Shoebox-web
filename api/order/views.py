@@ -56,7 +56,7 @@ def order_with_username(request, username):
 
 
 def query_all():
-    return Orders.objects.all()
+    return Orders.objects.all().order_by('-id')
 
 
 def query_by_id(oid):
@@ -73,8 +73,8 @@ def order_list(request):
 
     order = Orders.objects.skip(data['offset']).limit(int(data['result']))
 
-    if data['is_result'] is false and data['is_page'] is false:
-        order = Orders.objects.all()
+    if data['is_result'] is False and data['is_page'] is False:
+        order = Orders.objects.all().order_by('-id')
 
     if not order:
         return HttpResponse('Not found', status=404)
