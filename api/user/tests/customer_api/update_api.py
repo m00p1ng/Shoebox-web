@@ -40,14 +40,3 @@ class customer_Update_Fail_API_Test(MongoTestCase):
 
         self.assertEqual(data['errorMsg'], ['Data cannot empty'])
         self.assertEqual(data['updated'], False)
-
-
-    def test_update_JSON_error(self):
-        UPDATE_BODY = ""
-
-        create_request(URL_CUSTOMER, json.dumps(CREATE_BODY))
-        res = update_request(URL_CUSTOMER_USERNAME, UPDATE_BODY)
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['JSON Decode error'])
-        self.assertEqual(data['updated'], False)

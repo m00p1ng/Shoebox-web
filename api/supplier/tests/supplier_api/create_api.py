@@ -26,11 +26,3 @@ class Supplier_Create_Fail_API_Test(MongoTestCase):
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
         self.assertEqual(data['created'], False)
 
-
-    def test_create_size_dubplicated(self):
-        create_request(URL_SUPPLIER, json.dumps(CREATE_BODY))
-        res = create_request(URL_SUPPLIER, json.dumps(CREATE_BODY))
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['Supplier already exist'])
-        self.assertEqual(data['created'], False)

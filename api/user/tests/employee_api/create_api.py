@@ -49,12 +49,3 @@ class employee_Create_Fail_API_Test(MongoTestCase):
 
         self.assertEqual(data['errorMsg'], ['JSON Decode error'])
         self.assertEqual(data['created'], False)
-
-
-    def test_create_username_duplicated(self):
-        create_request(URL_EMPLOYEE, CREATE_BODY)
-        res = create_request(URL_EMPLOYEE, CREATE_BODY)
-        data = json.loads(res.content.decode())
-
-        self.assertEqual(data['errorMsg'], ['Username already exist'])
-        self.assertEqual(data['created'], False)
