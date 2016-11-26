@@ -23,7 +23,7 @@ const RegisterApp = ({children, pageName}) => (
     <HeaderBarApp
       title={pageName}/>
     <div className="container">
-      <div className="row">
+      <div className="row card">
         {children}
       </div>
     </div>

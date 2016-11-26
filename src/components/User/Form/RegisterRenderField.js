@@ -6,12 +6,16 @@ const RegisterRenderField = ({
   type,
   meta: { touched, error }
 }) => (
-  <div className="row">
-    <label>{label}</label>
-    <div>
-      <input {...input} type={type}/>
-      {touched && error && <span>{error}</span>}
+  <div className="row sb-register-row">
+		<div className="col l2 offset-l3">
+			<div className="sb-shop-med-text">
+				{label}:
+			</div>
     </div>
+    <div className="col l4">
+      <input {...input} type={type}/>
+    </div>
+    {touched && error && <span>{error}</span>}
   </div>
 )
 
