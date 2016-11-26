@@ -24,7 +24,7 @@ const ManOrderApp = ({
           <ManagePagination
             totalPage={totalPage}
             activePage={activePage}
-            handlePage={handlePage}/>
+            handlePage={handlePage} />
         </div>
       </div>
     </div>

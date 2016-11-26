@@ -15,9 +15,9 @@ export const clearProducts = () => (
   })
 )
 
-export const loadProducts = () => ({
+export const loadProducts = (result, page) => ({
   [CALL_API]: {
-    endpoint: `${PRODUCT_ENDPOINT}`,
+    endpoint: `${PRODUCT_ENDPOINT}/latest?result=${result}&page=${page}`,
     method: 'GET',
     types: [
       LOAD_PRODUCTS_REQUEST,

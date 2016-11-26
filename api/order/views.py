@@ -65,7 +65,7 @@ def query_by_id(oid):
 
 def query_by_username(username):
     cus_user = Customers.objects(username=username).first().id
-    return Orders.objects(username=cus_user)
+    return Orders.objects(username=cus_user).order_by('-id')
 
 
 def order_list(request):
@@ -85,7 +85,7 @@ def order_list_by_username(request, username):
     data = get_page_data(request)
 
     cus_user = Customers.objects(username=username).first().id
-    order = Orders.objects(username=cus_user).skip(data['offset']).limit(int(data['result']))
+    order = Orders.objects(username=cus_user).skip(data['offset']).limit(int(data['result'])).order_by('-id')
 
     if data['is_result'] is False and data['is_page'] is False:
         order = Orders.objects(username=cus_user).order_by('-id')

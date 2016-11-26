@@ -6,35 +6,44 @@ import {
 
 const initialState = {
   order: [],
-  error: false
+  error: false,
+  page: 1,
+  totalPage: 0,
+  totalCustomer: 0
 }
 
 const order = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_ORDER_REQUEST:
-      return ({
-        order: [],
-        error: false
-      })
+      return initialState
 
     case LOAD_ORDER_SUCCESS:
       if(action.meta.status === 200) {
         return ({
-          order: action.payload,
-          error: false
+          order: action.payload.data,
+          error: false,
+          page: action.payload.page,
+          totalPage: action.payload.totalpage,
+          totalOrder: action.payload.totalorder
         })
       }
       else if(action.meta.status === 204) {
         return ({
           order: [],
-          error: true
+          error: true,
+          page: 0,
+          totalPage: 0,
+          totalOrder: 0
         })
       }
 
     case LOAD_ORDER_FAILURE:
       return ({
         order: [],
-        error: true
+        error: true,
+        page: 0,
+        totalPage: 0,
+        totalOrder: 0
       })
 
     default:

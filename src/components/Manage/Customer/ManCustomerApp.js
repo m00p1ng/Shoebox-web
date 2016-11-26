@@ -10,7 +10,7 @@ const ManCustomerApp = ({
   customers,
   error,
   totalPage,
-  totalOrder,
+  totalCustomer,
   activePage,
   handlePage
 }) => (

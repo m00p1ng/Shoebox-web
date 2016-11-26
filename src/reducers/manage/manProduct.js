@@ -2,40 +2,38 @@ import {
   LOAD_PRODUCTS_REQUEST,
   LOAD_PRODUCTS_SUCCESS,
   LOAD_PRODUCTS_FAILURE,
-
-  CLEAR_PRODUCTS,
 } from 'actionTypes'
 
 const initialState = {
   products: [],
   error: false,
-  isLoading: false
+  page: 1,
+  totalPage: 0,
+  totalProduct: 0
 }
 
 const manProduct = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_PRODUCTS_REQUEST:
-      return ({
-        products: [],
-        error: false,
-        isLoading: true
-      })
+      return initialState
 
     case LOAD_PRODUCTS_SUCCESS:
       return ({
-        products: action.payload,
+        products: action.payload.data,
         error: false,
-        isLoading: false
+        page: action.payload.page,
+        totalPage: action.payload.totalpage,
+        totalProduct: action.payload.totalproduct
       })
+
     case LOAD_PRODUCTS_FAILURE:
       return ({
         products: [],
-        error: true,
-        isLoading: false
+          error: true,
+          page: 0,
+          totalPage: 0,
+          totalProduct: 0
       })
-
-    case CLEAR_PRODUCTS:
-      return initialState
 
     default:
       return state

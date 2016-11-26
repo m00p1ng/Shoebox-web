@@ -1,6 +1,7 @@
 import React from 'react'
 import { HeaderBarApp } from '../App/HeaderBarApp'
 import OrderList from './OrderList'
+import OrderPagination from './OrderPagination'
 
 const renderOrders = (orders) => {
   if(orders.length > 0) {
@@ -13,11 +14,26 @@ const renderOrders = (orders) => {
   }
 }
 
-const OrderHistoryApp = ({orders, error}) => (
+const OrderHistoryApp = ({
+  orders,
+  error,
+  totalPage,
+  totalProduct,
+  activePage,
+  handlePage
+}) => (
   <div>
     <HeaderBarApp
       title="History" />
-    {(!error) ? renderOrders(orders) : <h1>No order now</h1>}
+    {(!error) ? (
+      <div>
+        {renderOrders(orders)}
+        <OrderPagination
+          totalPage={totalPage}
+          activePage={activePage}
+          handlePage={handlePage} />
+      </div>
+    ) : <h1>No order now</h1>}
   </div>
 )
 

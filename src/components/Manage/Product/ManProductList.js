@@ -68,17 +68,4 @@ const renderTable = (products) => {
   }
 }
 
-const ManProductList = ({products}) => (
-  <div className="col l10 s12 card">
-    <h3>All Products</h3>
-    <Link to={`${URL_ROOT}/manage/product/new`}>
-      <button className="waves-effect waves-light btn">
-        <i className="material-icons left white-text">add</i>
-        product
-      </button>
-    </Link>
-    {renderTable(products)}
-  </div>
-)
-
-export default ManProductList
+export default renderTable
