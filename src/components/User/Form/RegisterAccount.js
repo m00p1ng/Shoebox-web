@@ -10,6 +10,29 @@ const RegisterAccount = (props) => {
       onSubmit={handleSubmit}
       className="form-style-6 sb-register-form">
 
+      <div className="ui steps">
+        <div className="step">
+          <i className="truck icon"></i>
+          <div className="content">
+            <div className="title">Shipping</div>
+            <div className="description">Choose your shipping options</div>
+          </div>
+        </div>
+        <div className="active step">
+          <i className="payment icon"></i>
+          <div className="content">
+            <div className="title">Billing</div>
+            <div className="description">Enter billing information</div>
+          </div>
+        </div>
+        <div className="disabled step">
+          <i className="info icon"></i>
+          <div className="content">
+            <div className="title">Confirm Order</div>
+          </div>
+        </div>
+      </div>
+
       <div className="row center">
         <div className="sb-register-header sb-bold">Register</div>
       </div>
