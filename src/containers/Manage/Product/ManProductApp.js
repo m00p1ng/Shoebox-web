@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ManProductApp } from '../../../components'
-import {
-  loadProducts,
-  clearProducts
-} from '../../../actions/manage/manProduct'
+import { loadProducts } from '../../../actions/manage/manProduct'
 
 class ManProductAppContainer extends Component {
   componentDidMount() {
     this.props.loadProducts()
-  }
-
-  componentWillUnmount() {
-    this.props.clearProducts()
   }
 
   render() {
@@ -28,8 +21,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  loadProducts,
-  clearProducts
+  loadProducts
 })
 
 export default connect(

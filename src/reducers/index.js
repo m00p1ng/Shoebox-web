@@ -8,6 +8,7 @@ import user from './user'
 import order from './order'
 import manProduct from './manage/manProduct'
 import manCustomer from './manage/manCustomer'
+import manOrder from './manage/manOrder'
 import { REGISTER_CUSTOMER_SUCCESS } from 'actionTypes'
 
 const rootReducer = combineReducers({
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   order,
   user,
   manProduct,
-  manCustomer
+  manCustomer,
+  manOrder
 });
 
 export default rootReducer;
