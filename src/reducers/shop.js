@@ -21,9 +21,8 @@ const shop = (state = initialState, action) => {
 
     case LOAD_SHOP_SUCCESS:
       return ({
-        ...state,
-        error: false,
         products: action.payload.data,
+        error: false,
         page: action.payload.page,
         totalPage: action.payload.totalpage,
         totalProduct: action.payload.totalproduct

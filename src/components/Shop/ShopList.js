@@ -86,15 +86,13 @@ const renderShopList = (props) => {
     )
   } else if(hasProducts) {
     return (
-      <div>
-        <ShopList
-          totalPage={totalPage}
-          totalProduct={totalProduct}
-          activePage={activePage}
-          handlePage={handlePage}>
-          {renderShopItem(products)}
-        </ShopList>
-      </div>
+      <ShopList
+        totalPage={totalPage}
+        totalProduct={totalProduct}
+        activePage={activePage}
+        handlePage={handlePage}>
+        {renderShopItem(products)}
+      </ShopList>
     )
   } else {
     return (
