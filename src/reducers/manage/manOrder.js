@@ -7,29 +7,31 @@ import {
 const initialState = {
   orders: [],
   error: false,
-  isLoading: false
+  page: 1,
+  totalPage: 0,
+  totalOrder: 0
 }
 
 const manOrder = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_ORDERS_REQUEST:
-      return ({
-        orders: [],
-        error: false,
-        isLoading: true
-      })
+      return initialState
 
     case LOAD_ORDERS_SUCCESS:
       return ({
-        orders: action.payload,
+        orders: action.payload.data,
         error: false,
-        isLoading: false
+        page: action.payload.page,
+        totalPage: action.payload.totalpage,
+        totalOrder: action.payload.totalorder
       })
     case LOAD_ORDERS_FAILURE:
       return ({
         orders: [],
         error: true,
-        isLoading: false
+        page: 0,
+        totalPage: 0,
+        totalOrder: 0
       })
 
     default:

@@ -1,17 +1,31 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../HeaderBarApp'
 import ManageMenu from '../ManageMenu'
-import ManOrderList from './ManOrderList'
+import renderTable from './ManOrderList'
+import ManagePagination from '../ManagePagination'
 
-const ManOrderApp = ({orders}) => (
+const ManOrderApp = ({
+  orders,
+  error,
+  totalPage,
+  totalProduct,
+  activePage,
+  handlePage
+}) => (
   <div>
     <HeaderBar2StepApp
       title="Order" />
     <div className="container">
       <div className="row">
         <ManageMenu />
-        <ManOrderList
-          orders={orders} />
+        <div className="col l10 s12 card">
+          <h3>All Orders</h3>
+          {renderTable(orders)}
+          <ManagePagination
+            totalPage={totalPage}
+            activePage={activePage}
+            handlePage={handlePage}/>
+        </div>
       </div>
     </div>
   </div>

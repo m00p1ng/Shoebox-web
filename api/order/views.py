@@ -71,7 +71,7 @@ def query_by_username(username):
 def order_list(request):
     data = get_page_data(request)
 
-    order = Orders.objects.skip(data['offset']).limit(int(data['result']))
+    order = Orders.objects.order_by('-id').skip(data['offset']).limit(int(data['result']))
 
     if data['is_result'] is False and data['is_page'] is False:
         order = Orders.objects.all().order_by('-id')

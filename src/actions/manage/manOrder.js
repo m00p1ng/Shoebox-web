@@ -7,9 +7,9 @@ import {
   LOAD_ORDERS_FAILURE,
 } from 'actionTypes'
 
-export const loadAllOrders = () => ({
+export const loadAllOrders = (result, page) => ({
   [CALL_API]: {
-    endpoint: `${ORDER_ENDPOINT}`,
+    endpoint: `${ORDER_ENDPOINT}?result=${result}&page=${page}`,
     method: 'GET',
     types: [
       LOAD_ORDERS_REQUEST,

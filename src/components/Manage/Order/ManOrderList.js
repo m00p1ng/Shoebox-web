@@ -78,11 +78,4 @@ const renderTable = (orders) => {
   }
 }
 
-const ManOrderList = ({orders}) => (
-  <div className="col l10 s12 card">
-    <h3>All Orders</h3>
-    {renderTable(orders)}
-  </div>
-)
-
-export default ManOrderList
+export default renderTable
