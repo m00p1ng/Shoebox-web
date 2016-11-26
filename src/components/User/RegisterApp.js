@@ -20,24 +20,34 @@ const HeaderBarApp = ({title}) => (
 
 const ProgressHeaderBar = () => (
   <div className="ui steps">
-    <div className="step">
-      <i className="truck icon"></i>
-      <div className="content">
-        <div className="title">Shipping</div>
-        <div className="description">Choose your shipping options</div>
-      </div>
-    </div>
     <div className="active step">
-      <i className="payment icon"></i>
       <div className="content">
-        <div className="title">Billing</div>
-        <div className="description">Enter billing information</div>
+        <div className="title">Account</div>
+        <div className="description">Get your username</div>
       </div>
     </div>
-    <div className="disabled step">
-      <i className="info icon"></i>
+    <div className="step">
       <div className="content">
-        <div className="title">Confirm Order</div>
+        <div className="title">Personal information</div>
+        <div className="description">Tell us your information</div>
+      </div>
+    </div>
+    <div className="step">
+      <div className="content">
+        <div className="title">Address</div>
+        <div className="description">Where do you live?</div>
+      </div>
+    </div>
+    <div className="step">
+      <div className="content">
+        <div className="title">Shipping Address</div>
+        <div className="description">Where to ship your package</div>
+      </div>
+    </div>
+    <div className="step">
+      <div className="content">
+        <div className="title">Credit Card</div>
+        <div className="description">Add your credit card</div>
       </div>
     </div>
   </div>
