@@ -39,7 +39,7 @@ const RegisterAccount = (props) => {
         label="Picture"/> */}
 
       <div className="row sb-register-row">
-        <div className="col l9">
+        <div className="col l9 m10 s11">
           <div className="right">
             <button
               type="submit"
