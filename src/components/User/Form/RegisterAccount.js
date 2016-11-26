@@ -61,13 +61,17 @@ const RegisterAccount = (props) => {
         type="text"
         label="Picture"/> */}
 
-      <div>
-        <button
-          type="submit"
-          className="btn"
-          disabled={invalid || submitting}>
-            Next
-        </button>
+      <div className="row sb-register-row">
+        <div className="col l9">
+          <div className="right">
+            <button
+              type="submit"
+              className="waves-effect waves-light btn orange darken-3"
+              disabled={invalid || submitting}>
+                Next
+            </button>
+          </div>
+        </div>
       </div>
     </form>
   )
