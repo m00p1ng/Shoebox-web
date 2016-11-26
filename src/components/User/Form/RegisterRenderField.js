@@ -7,10 +7,10 @@ const RegisterRenderField = ({
   meta: { touched, error }
 }) => (
   <div className="row sb-register-row">
-		<div className="col l2 offset-l3">
-			<div className="sb-shop-med-text">
-				{label}:
-			</div>
+    <div className="col l2 offset-l3">
+      <div className="sb-shop-med-text">
+        {label}:
+      </div>
     </div>
     <div className="col l4">
       <input {...input} type={type}/>

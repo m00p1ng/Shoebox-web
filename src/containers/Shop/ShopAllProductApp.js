@@ -11,11 +11,11 @@ class ShopAllProductAppContainer extends Component {
   }
 
   handlePage(page) {
-    this.props.loadProducts('latest', 12, page)
+    this.props.loadProducts('latest', 16, page)
   }
 
   componentDidMount() {
-    this.props.loadProducts('latest', 12, 1)
+    this.props.loadProducts('latest', 16, 1)
   }
 
   shouldComponentUpdate(nextProps) {
