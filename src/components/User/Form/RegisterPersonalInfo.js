@@ -34,30 +34,52 @@ const RegisterPersonalInfo = (props) => {
         type="text"
         label="Lastname"/>
 
-      <div className="row">
-        <label>Gender</label>
-        <div>
-          <label>
+        <div className="row sb-register-radio-group">
+          <div className="col l2 offset-l3">
+            <div className="sb-register-sub-header">Gender</div>
+            <label>
             <Field
               name="gender"
               component="input"
               type="radio"
               value="male"/>
-            Male
-          </label>
-          <label>
+              <div className="sb-radio-choice sb-shop-small-text">Male</div>
+              </label>
+
+            <label>
             <Field
               name="gender"
               component="input"
               type="radio"
               value="female"/>
-            Female
-          </label>
-          <Field name="gender" component={renderError}/>
+              <div className="sb-radio-choice sb-shop-small-text">Female</div>
+            </label>
+            <Field name="gender" component={renderError}/>
+          </div>
         </div>
-      </div>
 
-      <div className="row">
+        <div className="row sb-register-birthday-group">
+          <div className="col l6 offset-l3">
+            <div className="sb-register-sub-header">Birthday</div>
+            <div>Day:</div>
+            <Field
+              name="birthday.day"
+              component="input"
+              type="text"/>
+            Month:
+            <Field
+              name="birthday.month"
+              component="input"
+              type="text"/>
+              Year:
+            <Field
+              name="birthday.year"
+              component="input"
+              type="text"/>
+          </div>
+        </div>
+
+      {/* <div className="row">
         <label>Birthday</label>
         <div className="row">
           <Field
@@ -77,7 +99,7 @@ const RegisterPersonalInfo = (props) => {
             component="input"
             type="text"/>
         </div>
-      </div>
+      </div> */}
 
       <Field
         name="email"

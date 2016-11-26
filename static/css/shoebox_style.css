@@ -531,3 +531,18 @@ i.sbox-icon-gray {
     padding: 3%;
     border: 1px solid #e57373 !important;
 }
+
+.sb-register-sub-header {
+  padding-bottom: 10px;
+}
+
+.sb-radio-choice {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 25px;
+}
+
+.sb-register-radio-group {
+  margin-top: -15px;
+  padding-bottom: 15px;
+}
