@@ -235,7 +235,6 @@ class Products(Document):
 
 
     def employee_product_view(product, real_data):
-        print("Hello fuck u")
         obj = {
             'name' : product.name,
             'description' : product.description,
