@@ -10,7 +10,7 @@ const render_list = (list) => (
 )
 
 const ShopPicture = ({picture}) => (
-  <div className="col l7 sb-shop-detail-img">
+  <div className="col l7 m6 s12 sb-shop-detail-img">
     <div className="center">
       <img src={picture} alt="product-picture" />
     </div>
@@ -18,62 +18,64 @@ const ShopPicture = ({picture}) => (
 )
 
 const ShopItemDetail = ({product, onClickedAddToCart}) => (
-  <div className="col l5 sb-shop-detail sb-shop-detail-grey-box">
-    <div className="sb-shop-detail-text">
-      <div>
-        <h5 className="sb-bold">
-          {product.brand}
-        </h5>
-        <h5 className="sb-bold">
-          {product.name}
-        </h5>
-      </div>
-      <span className="sb-shop-detail-price sb-bold">
-        $ {product.price}
-      </span>
-      <br />
-      <span className="sb-shop-detail-small-text">
-        Incl. VAT in Thailand, packageing and shipping FREE
-      </span>
-      <br /><br />
-      <span className="sb-shop-detail-section sb-bold">
-        PRODUCT DETAILS
-      </span>
-      <div className="sb-shop-detail-first-line">
+  <div className="col l5 m6 s12">
+    <div className="sb-shop-detail-grey-box">
+      <div className="sb-shop-detail-text">
+        <div>
+          <h5 className="sb-bold">
+            {product.brand}
+          </h5>
+          <h5 className="sb-bold">
+            {product.name}
+          </h5>
+        </div>
+        <span className="sb-shop-detail-price sb-bold">
+          $ {product.price}
+        </span>
+        <br />
+        <span className="sb-shop-detail-small-text">
+          Incl. VAT in Thailand, packageing and shipping FREE
+        </span>
+        <br /><br />
+        <span className="sb-shop-detail-section sb-bold">
+          PRODUCT DETAILS
+        </span>
+        <div className="sb-shop-detail-first-line">
+          <span className="sb-shop-detail-med-text sb-bold">
+            Type:{' '}
+          </span>
+          <span className="sb-shop-detail-med-text">
+            {product.types}
+          </span>
+        </div>
         <span className="sb-shop-detail-med-text sb-bold">
-          Type:{' '}
+          Color:{' '}
         </span>
         <span className="sb-shop-detail-med-text">
-          {product.types}
+          {product.color}
         </span>
-      </div>
-      <span className="sb-shop-detail-med-text sb-bold">
-        Color:{' '}
-      </span>
-      <span className="sb-shop-detail-med-text">
-        {product.color}
-      </span>
-      <br />
-      <span className="sb-shop-detail-med-text sb-bold">
-        Date Arrival:{' '}
-      </span>
-      <span className="sb-shop-detail-med-text">
-        {product.date.day}-{product.date.month}-{product.date.year}
-      </span>
-      <p className="sb-shop-detail-section sb-bold">
-        DESCRIPTION
-      </p>
-      <div className="sb-shop-detail-desc">
+        <br />
+        <span className="sb-shop-detail-med-text sb-bold">
+          Date Arrival:{' '}
+        </span>
         <span className="sb-shop-detail-med-text">
-          {product.description}
+          {product.date.day}-{product.date.month}-{product.date.year}
         </span>
+        <p className="sb-shop-detail-section sb-bold">
+          DESCRIPTION
+        </p>
+        <div className="sb-shop-detail-desc">
+          <span className="sb-shop-detail-med-text">
+            {product.description}
+          </span>
+        </div>
       </div>
     </div>
     <button
-      className="waves-effect waves-light btn orange darken-3 sb-shop-detail-add-to-cart-btn"
+      className="waves-effect waves-light btn-large orange darken-2 sb-shop-detail-add-to-cart-btn"
       onClick={onClickedAddToCart}>
       <i className="material-icons right white-text">shopping_cart</i>
-      ADD TO CART
+      <strong>ADD TO CART</strong>
     </button>
   </div>
 )
