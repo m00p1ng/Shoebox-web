@@ -1,47 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router'
-import { URL_ROOT } from 'endpoint'
 import { Loading, ErrorMsg } from '../Message'
 import Pagination from '../../App/Pagination'
+import { renderShopItem } from '../ShopList'
 
-const ShopItem = ({product}) => (
-  <div className="col l3 m4 s6 sb-shop-item">
-      <div>
-      <Link to={`${URL_ROOT}/shop/${product.slug}`}>
-        <img
-          src={product.picture}
-          alt={product.slug} />
-      </Link>
-      </div>
-      <div className="sb-shop-text-section" >
-        <span className="sb-bold black-text sb-shop-small-text">
-          {product.brand}
-        </span>
-        <br />
-          <Link to={`${URL_ROOT}/shop/${product.slug}`}>
-            <span className="sb-shop-small-text black-text">
-              {product.name}
-            </span>
-          </Link>
-        <br />
-        <div className="sb-shop-price-box">
-          <span className="sb-shop-small-text sb-bold sb-shop-price-text">
-            $ {product.price}
-          </span>
-        </div>
-      </div>
-  </div>
-)
-
-const renderShopItem = (products) => {
-  return products.map((product) =>
-    <ShopItem
-      key={product.slug}
-      product={product}/>
-  )
-}
-
-const ShopList = ({
+const ShopBrandList = ({
   children,
   totalPage,
   totalProduct,
@@ -68,7 +30,7 @@ const ShopList = ({
   </div>
 )
 
-const renderShopList = (props) => {
+const renderShopBrandList = (props) => {
   const {
     products,
     error,
@@ -86,13 +48,13 @@ const renderShopList = (props) => {
     )
   } else if(hasProducts) {
     return (
-      <ShopList
+      <ShopBrandList
         totalPage={totalPage}
         totalProduct={totalProduct}
         activePage={activePage}
         handlePage={handlePage}>
         {renderShopItem(products)}
-      </ShopList>
+      </ShopBrandList>
     )
   } else {
     return (
@@ -101,4 +63,4 @@ const renderShopList = (props) => {
   }
 }
 
-export default renderShopList
+export default renderShopBrandList

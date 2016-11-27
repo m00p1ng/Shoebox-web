@@ -33,7 +33,7 @@ const ShopItem = ({product}) => (
   </div>
 )
 
-const renderShopItem = (products) => {
+export const renderShopItem = (products) => {
   return products.map((product) =>
     <ShopItem
       key={product.slug}

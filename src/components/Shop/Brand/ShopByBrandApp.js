@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeaderBar2StepApp } from '../../App/HeaderBarApp'
 import ShopMenu from '../ShopMenu'
-import renderShopList from './ShopList'
+import renderShopBrandList from './ShopBrandList'
 
 const ShopByBrandApp = (props) => {
   let brand = props.brand
@@ -18,7 +18,7 @@ const ShopByBrandApp = (props) => {
       <div className="container">
         <div className="row">
           <ShopMenu />
-          {renderShopList(props)}
+          {renderShopBrandList(props)}
         </div>
       </div>
     </div>
