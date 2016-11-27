@@ -6,9 +6,8 @@ const NavbarBrandDropdown = () => (
   <ul id="sbox-brand-dropdown" className="dropdown-content">
     <LinkNavbar title="Nike" link="shop/brand/nike" />
     <LinkNavbar title="Adidas" link="shop/brand/adidas" />
-    <LinkNavbar title="New Balance" link="shop/brand/new-balance" />
-    <LinkNavbar title="Vans" link="shop/brand/vans" />
-    <LinkNavbar title="Converse" link="shop/brand/converse" />
+    <LinkNavbar title="Jordan" link="shop/brand/jordan" />
+    <LinkNavbar title="Bata" link="shop/brand/bata" />
   </ul>
 )
 

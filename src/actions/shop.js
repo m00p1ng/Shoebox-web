@@ -8,6 +8,10 @@ import {
   LOAD_SHOP_SUCCESS,
   LOAD_SHOP_FAILURE,
 
+  LOAD_SHOP_BY_BRAND_REQUEST,
+  LOAD_SHOP_BY_BRAND_SUCCESS,
+  LOAD_SHOP_BY_BRAND_FAILURE,
+
   CLEAR_PRODUCTS,
 } from 'actionTypes'
 
@@ -25,6 +29,18 @@ export const loadProducts = (type, result, page) => ({
       LOAD_SHOP_REQUEST,
       LOAD_SHOP_SUCCESS,
       LOAD_SHOP_FAILURE
+    ]
+  }
+})
+
+export const loadProductsByBrand = (brand, result, page) => ({
+  [CALL_API]: {
+    endpoint: `${PRODUCT_ENDPOINT}/bybrand/${brand}?result=${result}&page=${page}`,
+    method: 'GET',
+    types: [
+      LOAD_SHOP_BY_BRAND_REQUEST,
+      LOAD_SHOP_BY_BRAND_SUCCESS,
+      LOAD_SHOP_BY_BRAND_FAILURE
     ]
   }
 })

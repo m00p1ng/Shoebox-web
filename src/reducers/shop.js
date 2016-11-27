@@ -3,6 +3,10 @@ import {
   LOAD_SHOP_SUCCESS,
   LOAD_SHOP_FAILURE,
 
+  LOAD_SHOP_BY_BRAND_REQUEST,
+  LOAD_SHOP_BY_BRAND_SUCCESS,
+  LOAD_SHOP_BY_BRAND_FAILURE,
+
   CLEAR_PRODUCTS,
 } from 'actionTypes'
 
@@ -17,9 +21,11 @@ const initialState = {
 const shop = (state = initialState, action) => {
   switch(action.type) {
     case LOAD_SHOP_REQUEST:
+    case LOAD_SHOP_BY_BRAND_REQUEST:
       return initialState
 
     case LOAD_SHOP_SUCCESS:
+    case LOAD_SHOP_BY_BRAND_SUCCESS:
       return ({
         products: action.payload.data,
         error: false,
@@ -27,7 +33,9 @@ const shop = (state = initialState, action) => {
         totalPage: action.payload.totalpage,
         totalProduct: action.payload.totalproduct
       })
+
     case LOAD_SHOP_FAILURE:
+    case LOAD_SHOP_BY_BRAND_FAILURE:
       return ({
         products: [],
         error: true,
