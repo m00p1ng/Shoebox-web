@@ -11,7 +11,13 @@ const ShopApp = (props) => (
     <div className="row">
       <div className="container">
         <ShopMenu />
-        <h1>bobo</h1>
+
+        <div className="col l10 card">
+          <div className="row">
+            eiei
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
