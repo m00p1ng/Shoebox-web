@@ -37,7 +37,9 @@ const CartCheckoutButton = ({role}) => (
 const CartOrderRow = ({left, right}) => (
   <div className="row sbox-row-order padding-bottom-10">
     <div className="col s6 l6">
-      <div className="sbox-cart-subtotal-left sb-shop-small-text">{left}</div>
+      <div className="sbox-cart-subtotal-left sb-shop-small-text">
+        {left}
+      </div>
     </div>
     <div className="right-align">
       <div className="sbox-cart-subtotal-right sb-shop-small-text">

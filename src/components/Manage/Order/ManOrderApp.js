@@ -2,7 +2,7 @@ import React from 'react'
 import { HeaderBar2StepApp } from '../HeaderBarApp'
 import ManageMenu from '../ManageMenu'
 import renderTable from './ManOrderList'
-import ManagePagination from '../ManagePagination'
+import Pagination from '../../App/Pagination'
 
 const ManOrderApp = ({
   orders,
@@ -21,7 +21,7 @@ const ManOrderApp = ({
         <div className="col l10 s12 card">
           <h3>All Orders</h3>
           {renderTable(orders)}
-          <ManagePagination
+          <Pagination
             totalPage={totalPage}
             activePage={activePage}
             handlePage={handlePage} />

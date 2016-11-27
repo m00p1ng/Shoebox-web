@@ -15,7 +15,8 @@ const RegisterPersonalInfo = (props) => {
   } = props
 
   return (
-    <form onSubmit={handleSubmit}
+    <form
+      onSubmit={handleSubmit}
       className="form-style-6 sb-register-form">
 
       <div className="row center">

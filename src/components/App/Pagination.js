@@ -4,7 +4,8 @@ import { URL_ROOT } from 'endpoint'
 
 const PageItem = ({page, handlePage, activePage}) => (
   <li
-    className={(page === activePage)? "waves-effect active": "waves-effect"}>
+    className={(page === activePage) ?
+      "waves-effect active": "waves-effect"}>
     <Link onClick={() => handlePage(page)}>{page}</Link>
   </li>
 )
@@ -17,7 +18,7 @@ const initRow = (totalPage) => {
   return row
 }
 
-const OrderPagination = ({handlePage, activePage, totalPage}) => (
+const Pagination = ({handlePage, activePage, totalPage}) => (
   <div className="row center sbox-shop-pagination">
     <ul className="pagination">
       <li className={(activePage === 1) ? "disabled" : ""}>
@@ -57,4 +58,4 @@ const OrderPagination = ({handlePage, activePage, totalPage}) => (
   </div>
 )
 
-export default OrderPagination
+export default Pagination

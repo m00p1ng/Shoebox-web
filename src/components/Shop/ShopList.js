@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 import { Loading, ErrorMsg } from './Message'
-import ShopPagination from './ShopPagination'
+import Pagination from '../App/Pagination'
 
 const ShopItem = ({product}) => (
   <div className="col l3 m4 s6 sb-shop-item">
@@ -61,7 +61,7 @@ const ShopList = ({
         {children}
       </div>
     </div>
-    <ShopPagination
+    <Pagination
       totalPage={totalPage}
       activePage={activePage}
       handlePage={handlePage}/>

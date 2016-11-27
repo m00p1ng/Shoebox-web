@@ -13,7 +13,8 @@ const RegisterCreditCard = (props) => {
   } = props
 
   return (
-    <form onSubmit={handleSubmit(sendRegisterForm)}
+    <form
+      onSubmit={handleSubmit(sendRegisterForm)}
       className="form-style-6 sb-register-form">
 
       <div className="row center">

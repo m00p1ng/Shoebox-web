@@ -2,7 +2,7 @@ import React from 'react'
 import { HeaderBar2StepApp } from '../HeaderBarApp'
 import ManageMenu from '../ManageMenu'
 import renderTable from './ManCustomerList'
-import ManagePagination from '../ManagePagination'
+import Pagination from '../../App/Pagination'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
@@ -29,7 +29,7 @@ const ManCustomerApp = ({
             </button>
           </Link>
           {renderTable(customers)}
-          <ManagePagination
+          <Pagination
             totalPage={totalPage}
             activePage={activePage}
             handlePage={handlePage}/>
