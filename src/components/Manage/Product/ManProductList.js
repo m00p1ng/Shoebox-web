@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router'
 import { URL_ROOT } from 'endpoint'
 
-const ProductRow = ({product, id}) => {
+const ProductRow = ({product}) => {
   return (
     <tr>
-      <td>{id}</td>
+      <td>{product.productID}</td>
       <td>{product.brand}</td>
       <td>{product.name}</td>
       <td>$ {product.price}</td>
@@ -29,11 +29,9 @@ const ProductRow = ({product, id}) => {
 }
 
 const renderProducts = (products, activePage) => {
-  let id = 1+(20*(activePage-1))
   return products.map(product =>
     <ProductRow
       key={product.slug}
-      id={id++}
       product={product} />
   )
 }
@@ -43,7 +41,7 @@ const ProductTable = ({products, activePage}) => (
     className="sb-manage-table-in-card responsive-table striped">
     <thead>
       <tr>
-        <th data-field="id">#</th>
+        <th data-field="id">ID</th>
         <th data-field="brand">Brand</th>
         <th data-field="name">Name</th>
         <th data-field="price">Price</th>

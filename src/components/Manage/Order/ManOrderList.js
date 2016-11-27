@@ -54,7 +54,7 @@ const OrderTable = ({orders}) => (
     className="sb-manage-table-in-card responsive-table striped">
     <thead>
       <tr>
-        <th data-field="id">#</th>
+        <th data-field="id">ID</th>
         <th data-field="date">Date</th>
         <th data-field="time">Time</th>
         <th data-field="brand">Username</th>

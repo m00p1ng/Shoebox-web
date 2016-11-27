@@ -23,11 +23,9 @@ const SupplierRow = ({supplier}) => {
 }
 
 const renderSuppliers = (suppliers) => {
-  let id = 1
   return suppliers.map(supplier =>
     <SupplierRow
       key={`supplier-${supplier.supplierID}`}
-      id={id++}
       supplier={supplier} />
   )
 }
@@ -37,7 +35,7 @@ const SupplierTable = ({suppliers}) => (
     className="sb-manage-table-in-card responsive-table striped">
     <thead>
       <tr>
-        <th data-field="id">#</th>
+        <th data-field="id">ID</th>
         <th data-field="name">Name</th>
         <th data-field="street">Street</th>
         <th data-field="district">District</th>
