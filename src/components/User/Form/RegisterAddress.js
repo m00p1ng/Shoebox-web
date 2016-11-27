@@ -38,21 +38,27 @@ const RegisterAddress = (props) => {
         type="text"
         label="Zipcode"/>
 
-      <div>
-        <button
-          type="button"
-          className="btn"
-          onClick={previousPage}>
-            Previous
-        </button>
-        {' '}
-        <button
-          type="submit"
-          className="btn"
-          disabled={invalid || submitting}>
-            Next
-        </button>
-      </div>
+        <div className="row sb-register-row">
+          <div className="col l9 m10 s11">
+            <div className="right">
+
+            <button
+              type="button"
+              className="btn waves-effect waves-light grey lighten-1"
+              onClick={previousPage}>
+                Previous
+            </button>
+            {' '}
+
+              <button
+                type="submit"
+                className="waves-effect waves-light btn orange darken-3"
+                disabled={invalid || submitting}>
+                  Next
+              </button>
+            </div>
+          </div>
+        </div>
     </form>
   )
 }
