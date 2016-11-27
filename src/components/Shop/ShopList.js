@@ -59,7 +59,7 @@ const ShopList = ({
             {' '}from {totalProduct}
           </strong>
         </h5>
-        <div className="divider grey lighten-4"></div>
+        <div className="divider grey lighten-3"></div>
         {children}
       </div>
     </div>
@@ -79,10 +79,9 @@ const renderShopList = (props) => {
     handlePage,
     activePage
   } = props
-  const hasError = error === true
   const hasProducts = products.length > 0
 
-  if(hasError) {
+  if(error) {
     return (
       <ErrorMsg />
     )
