@@ -28,7 +28,7 @@ const ProductRow = ({product}) => {
   )
 }
 
-const renderProducts = (products, activePage) => {
+const renderProducts = (products) => {
   return products.map(product =>
     <ProductRow
       key={product.slug}
@@ -36,7 +36,7 @@ const renderProducts = (products, activePage) => {
   )
 }
 
-const ProductTable = ({products, activePage}) => (
+const ProductTable = ({products}) => (
   <table
     className="sb-manage-table-in-card responsive-table striped">
     <thead>
@@ -52,15 +52,14 @@ const ProductTable = ({products, activePage}) => (
     </thead>
 
     <tbody>
-      {renderProducts(products, activePage)}
+      {renderProducts(products)}
     </tbody>
   </table>
 )
 
-const renderTable = (products, activePage) => {
+const renderTable = (products) => {
   if(products.length > 0) {
     return <ProductTable
-      activePage={activePage}
       products={products} />
   }
   else {
