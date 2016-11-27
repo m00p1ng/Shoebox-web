@@ -19,6 +19,12 @@ class ShopByBrandAppContainer extends Component {
     this.props.clearProducts()
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.products === newProps.products) {
+      this.props.loadProductsByBrand(newProps.params.brand, 24, 1)
+    }
+  }
+
   shouldComponentUpdate(nextProps) {
     return this.props.products !== nextProps.products
   }
