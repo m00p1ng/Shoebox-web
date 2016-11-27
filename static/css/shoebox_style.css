@@ -242,8 +242,8 @@ i.sbox-icon-gray {
 }
 
 #sbox-login-card {
-  margin-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 60px;
+  padding-bottom: 60px;
 }
 
 #sbox-login-form {
@@ -567,5 +567,6 @@ i.sbox-icon-gray {
 
 .sb-login-img {
   height: 60px;
+  margin-top: -10px;
   margin-bottom: 50px;
 }
