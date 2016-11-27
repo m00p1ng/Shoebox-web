@@ -2,6 +2,8 @@ import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import RegisterRenderField from './RegisterRenderField'
 import RegisterValidate from './RegisterValidate'
+import RegisterHeader from './RegisterHeader'
+
 
 const renderError = ({ meta: { touched, error } }) => touched && error ?
   <span>{error}</span> : false
@@ -19,9 +21,7 @@ const RegisterPersonalInfo = (props) => {
       onSubmit={handleSubmit}
       className="form-style-6 sb-register-form">
 
-      <div className="row center">
-        <div className="sb-register-header sb-bold">Register</div>
-      </div>
+      <RegisterHeader />
 
       <Field
         name="firstname"

@@ -132,7 +132,7 @@ i.sbox-icon-gray {
 /* Shoebox Header Styles */
 
 .sbox-header-bar {
-  background: #78BF5A;
+  background: #8BC801;
   min-height: 120px;
   height: 100%;
   margin-bottom: 30px;
@@ -505,6 +505,7 @@ i.sbox-icon-gray {
 .sb-register-header {
 	padding-top: 30px;
 	padding-bottom: 30px;
+  margin-bottom: 50px;
 	font-size: 32px;
 }
 
@@ -569,4 +570,13 @@ i.sbox-icon-gray {
   height: 60px;
   margin-top: -10px;
   margin-bottom: 50px;
+}
+
+/* sb-color */
+.sb-color-teal {
+  background: #01B4B6;
+}
+
+.sb-color-orange {
+  background: #FE8817;
 }

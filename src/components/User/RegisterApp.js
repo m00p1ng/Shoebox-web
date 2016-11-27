@@ -59,11 +59,15 @@ const RegisterApp = ({children, pageName}) => (
       title={pageName}/>
     <div className="container">
       <ProgressHeaderBar />
-      <div className="row card">
-        {children}
+      <div className="row">
+      <div className="card">
+        <div className="card-content no-padding">
+          {children}
+        </div>
+      </div>
       </div>
     </div>
-</div>
+  </div>
 )
 
 export default RegisterApp
