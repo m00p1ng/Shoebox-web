@@ -17,8 +17,12 @@ const RegisterRenderField = ({
         className={(touched && error)? "sbox-register-danger" : ""}
         {...input}
         type={type}/>
+      {touched && error && <p
+        className="deep-orange-text text-accent-4"
+        style={{marginTop: '10px'}}>
+        <strong>{error}</strong>
+      </p>}
     </div>
-    {touched && error && <span>{error}</span>}
   </div>
 )
 

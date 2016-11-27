@@ -2,7 +2,7 @@ const RegisterValidate = values => {
   const errors = {}
   if(!values.username) {
     errors.username = 'Required'
-  } else if(!/^[a-z][\w\.]{0,20}$/i.test(values.username)) {
+  } else if(!/^[a-z][\w]{0,20}$/i.test(values.username)) {
     errors.username = 'Username must contain only A-Z, a-z, 0-9 or _'
   } else if(values.username.length < 6) {
     errors.username = 'Username must be at least 6 characters'
