@@ -18,11 +18,14 @@ const LoginForm = ({
   handleSubmit,
   errorMsg
 }) => (
-  <div className="card brown lighten-5" id="sbox-login-card">
-    <div className="card-content">
+  <div className="card white" id="sbox-login-card">
+    <div className="card-content no-padding">
+    <div className="row center sb-login-header-bar">
+      <span className="sb-login-header-text">Login</span>
+    </div>
       <form onSubmit={handleSubmit}>
         <div className="form-style-6 center-block" id="sbox-login-form">
-          <div className="row">
+          <div className="row sb-login-img center">
             <img
               id="sbox-login-logo"
               className="responsive-img"
@@ -56,7 +59,7 @@ const LoginForm = ({
           <div className="row">
             <button
               id="sbox-login-button"
-              className="waves-effect waves-light btn-large"
+              className="waves-effect waves-light btn-large orange darken-2"
               type="submit"
               onClick={handleSubmit}>Login
             </button>

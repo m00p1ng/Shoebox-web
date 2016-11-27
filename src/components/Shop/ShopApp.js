@@ -8,10 +8,10 @@ const ShopApp = (props) => (
     <HeaderBarApp
       title="Shop"
       link="shop"/>
-    <div className="container">
-      <div className="row">
+    <div className="row">
+      <div className="container">
         <ShopMenu />
-        {renderShopList(props)}
+        <h1>bobo</h1>
       </div>
     </div>
   </div>

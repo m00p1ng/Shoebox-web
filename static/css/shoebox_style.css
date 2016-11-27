@@ -546,3 +546,26 @@ i.sbox-icon-gray {
   margin-top: -15px;
   padding-bottom: 15px;
 }
+
+/* Login */
+
+.sb-login-header-bar {
+  background: #CC3650;
+}
+
+.sb-login-header-text {
+  font-size: 24px;
+  color: #FFFFFF;
+  display: block;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.sb-login-img img {
+  height: 100%;
+}
+
+.sb-login-img {
+  height: 60px;
+  margin-bottom: 50px;
+}
