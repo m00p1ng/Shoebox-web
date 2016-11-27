@@ -12,18 +12,30 @@ const CartItem = ({product, qty}) => (
         {/* </div> */}
       </div>
       <div className="col l3 sb-cart-product-text">
-        <div className="row sb-bold">{product.brand}</div>
-        <div className="row sb-cart-product-name sb-shop-med-text">{product.name}</div>
-        <div className="row sb-cart-remove sb-shop-small-text">Remove</div>
+        <div className="row sb-bold">
+          {product.brand}
+        </div>
+        <div className="row sb-cart-product-name sb-shop-med-text">
+          {product.name}
+        </div>
+        <div className="row sb-cart-remove sb-shop-small-text">
+          Remove
+        </div>
       </div>
       <div className="col l2 sb-cart-product-text">
-        <div className="sb-shop-small-text left">{qty}</div>
+        <div className="sb-shop-small-text left">
+          {qty}
+        </div>
       </div>
       <div className="col l2 sb-cart-product-text">
-        <div className="sb-shop-small-text left">$ {product.price}</div>
+        <div className="sb-shop-small-text left">
+          $ {product.price}
+        </div>
       </div>
       <div className="col l2 sb-cart-product-text">
-        <div className="sb-shop-small-text right sb-cart-total-price">$ {product.price*qty}</div>
+        <div className="sb-shop-small-text right sb-cart-total-price">
+          $ {product.price*qty}
+        </div>
       </div>
     </div>
   </div>
