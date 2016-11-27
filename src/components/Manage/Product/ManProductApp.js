@@ -28,7 +28,7 @@ const ManProductApp = ({
               product
             </button>
           </Link>
-          {renderTable(products)}
+          {renderTable(products, activePage)}
           <Pagination
             totalPage={totalPage}
             activePage={activePage}

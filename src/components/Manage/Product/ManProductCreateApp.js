@@ -13,7 +13,9 @@ const ManProductCreateApp = () => (
     <div className="container">
       <div className="row">
         <ManageMenu />
-        <ManProductForm />
+        <div className="col l10 card">
+          <ManProductForm />
+        </div>
       </div>
     </div>
   </div>

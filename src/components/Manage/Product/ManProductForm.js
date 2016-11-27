@@ -1,18 +1,12 @@
 import React from 'react'
 
 const ManProductForm = () => (
-  <div className="col l10 card">
-
-    <div className="row">
-      <div className="col l6 offset-l3 sb-product-edit center">
-        <img src="https://ae01.alicdn.com/kf/HTB1hlyDMVXXXXa7XXXXq6xXFXXXo/Men-font-b-Shoes-b-font-Outdoor-Climbing-Mountain-2016-Large-Size-Sneaker-font-b-Leather.jpg" alt="img01" />
-      </div>
-    </div>
-
-    <div className="row">
+    <div className="row" style={{marginTop: '20px'}}>
       <div className="col l10 offset-l1">
-        <form className="input-field form-style-6" action="#eiei">
-          <table id="sb-product-edit-table" className="striped sb-manage-table-in-card responsive-table">
+        <form className="input-field form-style-6">
+          <table
+            id="sb-product-edit-table"
+            className="striped sb-manage-table-in-card responsive-table">
             <thead>
               <tr>
                 <th data-field="id">FIELD</th>
@@ -119,14 +113,23 @@ const ManProductForm = () => (
               </tr>
             </tbody>
           </table>
-          <div className="right">
-            <a className="waves-effect waves-light btn grey">Cancel</a>
-            <input className="waves-effect waves-light btn orange darken-3" type="submit" />
+          <div class="row" style={{marginTop: '20px'}}>
+            <div className="right">
+              <button
+                className="waves-effect waves-light btn grey">
+                Cancel
+              </button>
+              {' '}
+              <button
+                className="waves-effect waves-light btn orange darken-3"
+                type="submit">
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
     </div>
-  </div>
 )
 
 export default ManProductForm
