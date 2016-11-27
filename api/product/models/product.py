@@ -189,6 +189,8 @@ class Products(Document):
                    real_data = cls.mapID_to_obj(product)
                    dataArr.append(cls.employee_product_view(product, real_data))
 
+            if function is 'brand':
+                totalproduct = products.count()
             obj = {
                 'totalpage': totalpage,
                 'page': int(data['page']),
