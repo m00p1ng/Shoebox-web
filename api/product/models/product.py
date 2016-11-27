@@ -191,6 +191,7 @@ class Products(Document):
 
             if function is 'brand':
                 totalproduct = products.count()
+                totalpage = math.ceil(totalproduct / int(data['result']))
             obj = {
                 'totalpage': totalpage,
                 'page': int(data['page']),
