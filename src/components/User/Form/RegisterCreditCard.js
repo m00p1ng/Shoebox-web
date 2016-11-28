@@ -21,6 +21,9 @@ const RegisterCreditCard = (props) => {
 
       <RegisterHeader />
 
+      <span className="sb-register-progress-header sb-bold">Credit Card</span>
+
+
       <Field
         name="credit.id"
         component={RegisterRenderField}

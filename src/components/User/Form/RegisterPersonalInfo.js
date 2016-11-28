@@ -23,6 +23,9 @@ const RegisterPersonalInfo = (props) => {
 
       <RegisterHeader />
 
+      <span className="sb-register-progress-header sb-bold">Personal Information</span>
+
+
       <Field
         name="firstname"
         component={RegisterRenderField}

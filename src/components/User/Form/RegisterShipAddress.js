@@ -19,6 +19,9 @@ const RegisterShipAddress = (props) => {
 
       <RegisterHeader />
 
+      <span className="sb-register-progress-header sb-bold">Ship Address</span>
+
+
       <Field
         name="ship.city"
         component={RegisterRenderField}

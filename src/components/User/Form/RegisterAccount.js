@@ -13,6 +13,8 @@ const RegisterAccount = (props) => {
 
       <RegisterHeader />
 
+      <span className="sb-register-progress-header sb-bold">Account</span>
+
       <Field
         name="username"
         component={RegisterRenderField}
