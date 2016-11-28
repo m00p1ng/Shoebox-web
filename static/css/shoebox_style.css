@@ -580,3 +580,30 @@ i.sbox-icon-gray {
 .sb-color-orange {
   background: #FE8817;
 }
+
+.sb-color-pink {
+  background: #EA0041;
+}
+
+.sb-color-teal-pink {
+  background: #CE364F;
+}
+
+/* shop */
+.sb-shop-header-bar {
+  font-size: 32px;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.sb-shop-category-row {
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.sb-shop-category-row img {
+  padding-right: 10px;
+  padding-left: 10px;
+}
