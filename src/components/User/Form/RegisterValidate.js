@@ -144,7 +144,7 @@ const RegisterValidate = values => {
 
     if(!values.credit.exp) {
       credit["exp"] = ['Required']
-    } else if(values.credit.exp.length < 3 || values.credit.exp.length > 3) {
+    } else if(values.credit.exp.length < 5 || values.credit.exp.length > 5) {
       credit["exp"] = ['Invalid credit EXP']
     }
     errors.credit = credit
