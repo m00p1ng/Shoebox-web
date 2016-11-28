@@ -19,8 +19,6 @@ const RegisterShipAddress = (props) => {
 
       <RegisterHeader />
 
-      Shipping Address
-
       <Field
         name="ship.city"
         component={RegisterRenderField}

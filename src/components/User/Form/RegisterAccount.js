@@ -31,11 +31,11 @@ const RegisterAccount = (props) => {
         type="password"
         label="Re password"/>
 
-      {/* <Field
+      <Field
         name="picture"
         component={RegisterRenderField}
         type="text"
-        label="Picture"/> */}
+        label="Picture"/>
 
       <div className="row sb-register-row">
         <div className="col l9 m10 s11">

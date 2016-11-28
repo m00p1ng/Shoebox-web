@@ -33,7 +33,11 @@ const OrderHistoryApp = ({
           activePage={activePage}
           handlePage={handlePage} />
       </div>
-    ) : <h1>No order now</h1>}
+    ) : (
+      <div className="container">
+        <h1>No order now</h1>
+      </div>
+    )}
   </div>
 )
 

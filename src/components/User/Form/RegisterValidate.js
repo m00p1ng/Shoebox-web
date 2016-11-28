@@ -21,9 +21,9 @@ const RegisterValidate = values => {
     errors.repassword = 'Password didn\'t match'
   }
 
-  // if(!values.picture) {
-  //   errors.picture = 'Required'
-  // }
+  if(!values.picture) {
+    errors.picture = 'Required'
+  }
 
   if(!values.firstname) {
     errors.firstname = 'Required'
@@ -132,12 +132,20 @@ const RegisterValidate = values => {
   if(values.credit) {
     if(!values.credit.id) {
       credit["id"] = ['Required']
+    } else if(values.credit.id.length > 16 || values.credit.id.length < 16) {
+      credit["id"] = ['Invalid credit card number']
     }
+
     if(!values.credit.type) {
       credit["type"] = ['Required']
+    } else if(values.credit.type.length > 20) {
+      credit["type"] = ['Invalid credit type']
     }
+
     if(!values.credit.exp) {
       credit["exp"] = ['Required']
+    } else if(values.credit.exp.length < 3 || values.credit.exp.length > 3) {
+      credit["exp"] = ['Invalid credit EXP']
     }
     errors.credit = credit
   }
