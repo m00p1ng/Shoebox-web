@@ -58,7 +58,6 @@ const RegisterApp = ({children, pageName}) => (
     <HeaderBarApp
       title={pageName}/>
     <div className="container">
-      <ProgressHeaderBar />
       <div className="row">
       <div className="card">
         <div className="card-content no-padding">

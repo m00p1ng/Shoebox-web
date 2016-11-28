@@ -607,3 +607,19 @@ i.sbox-icon-gray {
   padding-right: 10px;
   padding-left: 10px;
 }
+
+.sb-shop-category-last-row {
+  padding-bottom: 60px;
+}
+
+.sb-header-text {
+  display: block;
+  font-size: 20px;
+}
+
+.sb-history-total {
+  display: block;
+  font-size: 24px;
+  padding-right: 60px;
+  padding-bottom: 30px;
+}

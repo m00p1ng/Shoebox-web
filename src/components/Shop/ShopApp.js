@@ -34,7 +34,7 @@ const ShopApp = (props) => (
               <img max-height="180px" className="responsive-img" src="http://i.imgur.com/DwTcv7E.png" alt="" />
             </div>
           </div>
-          <div className="row sb-shop-category-row">
+          <div className="row sb-shop-category-row sb-shop-category-last-row">
             <div className="col l6">
               <img max-height="180px" className="responsive-img" src="http://i.imgur.com/6pyHZQ1.png" alt="" />
             </div>
