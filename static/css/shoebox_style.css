@@ -625,9 +625,10 @@ i.sbox-icon-gray {
 }
 
 .sb-register-progress-header {
-  position: relative;
-  display: block;
   font-size: 28px;
-  top: -30px;
-  left: 40px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -35px;
+  padding-bottom: 20px;
 }

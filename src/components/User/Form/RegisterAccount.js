@@ -12,8 +12,11 @@ const RegisterAccount = (props) => {
       className="form-style-6 sb-register-form">
 
       <RegisterHeader />
-
-      <span className="sb-register-progress-header sb-bold">Account</span>
+      <div className="row">
+        <div className="col l12 center">
+          <span className="sb-register-progress-header sb-bold">Account</span>
+        </div>
+      </div>
 
       <Field
         name="username"

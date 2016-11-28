@@ -23,8 +23,11 @@ const RegisterPersonalInfo = (props) => {
 
       <RegisterHeader />
 
-      <span className="sb-register-progress-header sb-bold">Personal Information</span>
-
+      <div className="row">
+        <div className="col l12 center">
+          <span className="sb-register-progress-header sb-bold">Personal Information</span>
+        </div>
+      </div>
 
       <Field
         name="firstname"
@@ -129,7 +132,7 @@ const RegisterPersonalInfo = (props) => {
 
           <button
             type="button"
-            className="btn waves-effect waves-light grey lighten-1"
+            className="btn waves-effect waves-light orange"
             onClick={previousPage}>
               Previous
           </button>
